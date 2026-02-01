@@ -1,0 +1,23 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${default}",
+                "${workspaceFolder}/STM32/MX/STM32_CONTROLLER/Core/Inc",
+                "${workspaceFolder}/STM32/MX/STM32_CONTROLLER/Drivers/STM32L1xx_HAL_Driver/Inc",
+                "${workspaceFolder}/STM32/MX/STM32_CONTROLLER/Drivers/CMSIS/Device/ST/STM32L1xx/Include",
+                "${workspaceFolder}/STM32/MX/STM32_CONTROLLER/Drivers/CMSIS/Include"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "cStandard": "c17",
+            "cppStandard": "gnu++17",
+            "intelliSenseMode": "windows-gcc-x64"
+        }
+    ],
+    "version": 4
+}
