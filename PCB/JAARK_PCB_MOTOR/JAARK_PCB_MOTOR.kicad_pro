@@ -623,5 +623,7 @@
       "Root"
     ]
   ],
-  "text_variables": {}
+  "text_variables": {
+    "3D_DIR": "${KIPRJMOD}/libs/JAARK_lib.3dshapes"
+  }
 }

@@ -1,0 +1,223 @@
+(footprint "GRM21BR60J226ME39L"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(descr "GRM21x")
+	(tags "Capacitor")
+	(property "Reference" "C**"
+		(at 0 0 0)
+		(layer "F.SilkS")
+		(uuid "dde645ec-8960-40e7-b298-32acf0214eaa")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(property "Value" "GRM21BR60J226ME39L"
+		(at 0 0 0)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "ed2e2133-4bb9-42e7-9458-da271470700c")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "a2f54a58-217c-4316-aa9b-d4a7527ebeca")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "11ebdcc9-f792-4613-8bc4-b851dbf169fa")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_line
+		(start -2.1 -0.1)
+		(end -2.1 -0.1)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "8548b8e4-3bf8-4ca5-9e0c-644b35b48245")
+	)
+	(fp_line
+		(start -2.1 0.1)
+		(end -2.1 0.1)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "f4d022d0-a114-4c2a-a338-1ff4e58e5a8b")
+	)
+	(fp_line
+		(start 0 -0.525)
+		(end 0 0.525)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "9f982b3a-d158-4a1b-bc7b-adef6171792d")
+	)
+	(fp_arc
+		(start -2.1 -0.1)
+		(mid -2 0)
+		(end -2.1 0.1)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "deefa390-18fe-40d1-8f7a-1a9435d8dea7")
+	)
+	(fp_arc
+		(start -2.1 0.1)
+		(mid -2.2 0)
+		(end -2.1 -0.1)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "bd9d2ba8-32fa-443f-b518-41ddf92eca83")
+	)
+	(fp_line
+		(start -3 -1.825)
+		(end 3 -1.825)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "b2456277-113b-4866-ba77-0d10c4fd473f")
+	)
+	(fp_line
+		(start -3 1.825)
+		(end -3 -1.825)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "8fc5527e-3809-4cac-8599-6159e57827ff")
+	)
+	(fp_line
+		(start 3 -1.825)
+		(end 3 1.825)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "cbce90d4-b906-4901-9e72-2a752ff4f9d8")
+	)
+	(fp_line
+		(start 3 1.825)
+		(end -3 1.825)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "80598494-0c02-425a-b2b9-2da5788bc064")
+	)
+	(fp_line
+		(start -1 -0.625)
+		(end 1 -0.625)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "428e9503-84a7-4ec2-9264-53868046433b")
+	)
+	(fp_line
+		(start -1 0.625)
+		(end -1 -0.625)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "246b7034-3775-4d3f-966f-d782f9782fc6")
+	)
+	(fp_line
+		(start 1 -0.625)
+		(end 1 0.625)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "3be47eaa-f44d-4766-8bb1-8de1820a48ee")
+	)
+	(fp_line
+		(start 1 0.625)
+		(end -1 0.625)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "04453fcc-f501-4414-9eb7-ed3be7e96762")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "0cd1d850-6ea2-41ae-9042-44e072bbf5ee")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(pad "1" smd rect
+		(at -0.95 0)
+		(size 0.7 1.3)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "6d62c062-b91b-4c44-a9c8-958c68a252e6")
+	)
+	(pad "2" smd rect
+		(at 0.95 0)
+		(size 0.7 1.3)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "2d424953-a1ed-4632-88dd-a0aec6c02ec4")
+	)
+	(embedded_fonts no)
+	(model "${KIPRJMOD}/lib/SamacSys_Parts.3dshapes/GRM21BZ71E106KE15L.stp"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -90 0 0)
+		)
+	)
+)

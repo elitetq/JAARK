@@ -6133,7 +6133,7 @@
 				)
 			)
 		)
-		(property "Footprint" "1984617"
+		(property "Footprint" "SSys_Footprints:1984617"
 			(at 34.29 -51.74 0)
 			(effects
 				(font
@@ -6941,7 +6941,7 @@
 				)
 			)
 		)
-		(property "Footprint" "SOT95P240X110-3N"
+		(property "Footprint" "SSys_Footprints:SOT95P240X110-3N"
 			(at 297.18 183.82 0)
 			(effects
 				(font
@@ -7120,7 +7120,7 @@
 				)
 			)
 		)
-		(property "Footprint" "SOT95P240X110-3N"
+		(property "Footprint" "SSys_Footprints:SOT95P240X110-3N"
 			(at 339.09 183.82 0)
 			(effects
 				(font
@@ -8087,7 +8087,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "SOT95P237X112-3N"
+		(property "Footprint" "SSys_Footprints:SOT95P237X112-3N"
 			(at 280.67 216.84 0)
 			(effects
 				(font
@@ -8482,7 +8482,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "1984617"
+		(property "Footprint" "SSys_Footprints:1984617"
 			(at 225.12 83.82 0)
 			(effects
 				(font
@@ -8657,7 +8657,7 @@
 				)
 			)
 		)
-		(property "Footprint" "2SC2712GRLF"
+		(property "Footprint" "SSys_Footprints:2SC2712GRLF"
 			(at 186.36 34.29 0)
 			(effects
 				(font
@@ -8983,7 +8983,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "SOT95P237X112-3N"
+		(property "Footprint" "SSys_Footprints:SOT95P237X112-3N"
 			(at 355.6 216.84 0)
 			(effects
 				(font
@@ -9220,7 +9220,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "SOT95P237X112-3N"
+		(property "Footprint" "SSys_Footprints:SOT95P237X112-3N"
 			(at 280.67 160.96 0)
 			(effects
 				(font
@@ -9891,7 +9891,7 @@
 				)
 			)
 		)
-		(property "Footprint" "2SC2712GRLF"
+		(property "Footprint" "SSys_Footprints:2SC2712GRLF"
 			(at 340.36 -53.01 0)
 			(effects
 				(font
@@ -11005,7 +11005,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "SOT95P237X112-3N"
+		(property "Footprint" "SSys_Footprints:SOT95P237X112-3N"
 			(at 355.6 160.96 0)
 			(effects
 				(font
@@ -11532,7 +11532,7 @@
 				)
 			)
 		)
-		(property "Footprint" "SSys_Footprints:SOTFL50P160X60-6N"
+		(property "Footprint" "JAARK_lib:SOTFL50P160X60-6N"
 			(at 201.93 141.91 0)
 			(effects
 				(font
@@ -12315,7 +12315,7 @@
 				)
 			)
 		)
-		(property "Footprint" "2SC2712GRLF"
+		(property "Footprint" "SSys_Footprints:2SC2712GRLF"
 			(at 295.91 -53.01 0)
 			(effects
 				(font

@@ -1,0 +1,157 @@
+(footprint "SOT95P230X110-3N"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(descr "SOT95P230X110-3N")
+	(tags "MOSFET (N-Channel)")
+	(property "Reference" "Q**"
+		(at -3.4544 -2.54 0)
+		(layer "F.SilkS")
+		(uuid "34f7bce4-5c37-46d7-9178-d2e60baf79c1")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(property "Value" "SOT95P230X110-3N"
+		(at -3.4544 -2.54 0)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "fec4b11d-3a80-4e0c-bc91-5dd7054930ff")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "eb242cc2-7b69-446a-93ef-0e776a515aa4")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "5163f868-aa5f-44d1-875c-362acdf1f372")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_line
+		(start -0.7112 -0.3556)
+		(end -0.7112 0.3556)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "6dcef968-5d1d-4c77-b8b6-538219352bcc")
+	)
+	(fp_line
+		(start -0.3556 1.4986)
+		(end 0.7112 1.4986)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "b8d63766-e933-4d33-8c56-4fd2ea3ff15e")
+	)
+	(fp_line
+		(start 0.3048 -1.4986)
+		(end -0.3556 -1.4986)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "d2ce8501-4f91-4203-8742-2f1627082f3a")
+	)
+	(fp_line
+		(start 0.7112 -1.4986)
+		(end 0.3048 -1.4986)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "4780af70-d75e-4e35-be2f-9d06152a27f5")
+	)
+	(fp_line
+		(start 0.7112 -0.6096)
+		(end 0.7112 -1.4986)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "5599926b-fc7a-4286-95b4-c3abcd7e7829")
+	)
+	(fp_line
+		(start 0.7112 1.4986)
+		(end 0.7112 0.6096)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "386c3dbf-d482-46cd-8d70-fffec74d3d47")
+	)
+	(fp_text user "${REFERENCE}"
+		(at -3.4544 -2.54 0)
+		(layer "F.Fab")
+		(uuid "9a215624-58fd-43c1-bb2e-eb881174facd")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(pad "1" smd rect
+		(at -1.0922 -0.9398 90)
+		(size 0.5334 1.1684)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "dfda1aa0-ed7e-4917-b053-becbea64ff0e")
+	)
+	(pad "2" smd rect
+		(at -1.0922 0.9398 90)
+		(size 0.5334 1.1684)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "ca6f13ee-8909-40ce-af25-387d7a282cec")
+	)
+	(pad "3" smd rect
+		(at 1.0922 0 90)
+		(size 0.5334 1.1684)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "1dfcb2be-c19a-471a-bb0c-6d4bc8b94fcb")
+	)
+	(embedded_fonts no)
+	(model "${KIPRJMOD}/lib/SamacSys_Parts.3dshapes/2N7002P.stp"
+		(offset
+			(xyz 0 -1.499999977 0.09999999999)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -90 0 -180)
+		)
+	)
+)
