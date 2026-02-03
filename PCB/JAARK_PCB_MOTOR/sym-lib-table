@@ -1,4 +1,4 @@
 (sym_lib_table
   (version 7)
-  (lib (name "JAARK_lib")(type "KiCad")(uri "${KIPRJMOD}/lib/JAARK_lib.kicad_sym")(options "")(descr ""))
+  (lib (name "JAARK_lib")(type "KiCad")(uri "${KIPRJMOD}/lib/SamacSys_Parts.kicad_sym")(options "")(descr ""))
 )
