@@ -45,7 +45,7 @@
   (pad 18 smd rect (at 4.712 -3.175 90) (size 0.65 1.925) (layers F.Cu F.Paste F.Mask))
   (pad 19 smd rect (at 4.712 -4.445 90) (size 0.65 1.925) (layers F.Cu F.Paste F.Mask))
   (pad 20 smd rect (at 4.712 -5.715 90) (size 0.65 1.925) (layers F.Cu F.Paste F.Mask))
-  (model "C:\\Users\\jonar\\JAARK\\PCB\\JAARK_PCB_MOTOR\\lib\\SamacSys_Parts.3dshapes\\HIP4080AIBZT.stp"
+  (model "${KIPRJMOD}/lib/SamacSys_Parts.3dshapes/HIP4080AIBZT.stp"
     (at (xyz 0 0 0))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 0 0))

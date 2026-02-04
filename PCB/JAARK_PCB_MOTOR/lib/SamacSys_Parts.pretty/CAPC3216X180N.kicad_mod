@@ -22,7 +22,7 @@
   (fp_line (start 0 -0.7) (end 0 0.7) (layer F.SilkS) (width 0.2))
   (pad 1 smd rect (at -1.6 0 0) (size 0.62 1.82) (layers F.Cu F.Paste F.Mask))
   (pad 2 smd rect (at 1.6 0 0) (size 0.62 1.82) (layers F.Cu F.Paste F.Mask))
-  (model "C:\\Users\\jonar\\JAARK\\PCB\\JAARK_PCB_MOTOR\\lib\\SamacSys_Parts.3dshapes\\C3216X5R1E336M160AC.stp"
+  (model "${KIPRJMOD}/lib/SamacSys_Parts.3dshapes/C3216X5R1E336M160AC.stp"
     (at (xyz -0.064960628982604 0 0.031496063461454))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 0 0))

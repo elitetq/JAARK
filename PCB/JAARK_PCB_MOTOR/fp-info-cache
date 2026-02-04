@@ -1,4 +1,4 @@
-26862885628087667
+26875277548280924
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -69175,7 +69175,14 @@ Capacitor
 2
 JAARK_lib
 CAPC2012X145N
-2mm x 1.25mm
+2x1.25
+Capacitor
+0
+2
+2
+JAARK_lib
+CAPC3216X180N
+C3216 (160 thickness)
 Capacitor
 0
 2
@@ -69183,6 +69190,13 @@ Capacitor
 JAARK_lib
 ERA2AED122X
 ERA2A_(0402)
+Resistor
+0
+2
+2
+JAARK_lib
+ERA6AEB101V
+ERA6A
 Resistor
 0
 2
@@ -69209,6 +69223,13 @@ Capacitor
 2
 2
 JAARK_lib
+INDPM4141X200N
+4020
+Inductor
+0
+2
+2
+JAARK_lib
 NE555DR
 D (R-PDSO-G8)
 Integrated Circuit
@@ -69218,6 +69239,27 @@ Integrated Circuit
 JAARK_lib
 RESC1608X55N
 RC0603
+Resistor
+0
+2
+2
+JAARK_lib
+RESC2012X50N
+CRCW0805
+Resistor
+0
+2
+2
+JAARK_lib
+RESC2012X60N
+0805-4
+Resistor
+0
+2
+2
+JAARK_lib
+RESC2012X65N
+805
 Resistor
 0
 2
@@ -69257,6 +69299,13 @@ Integrated Circuit
 0
 8
 8
+JAARK_lib
+SOIC127P1032X265-20N
+M20.3
+Integrated Circuit
+0
+20
+20
 JAARK_lib
 SOT65P210X110-3N
 SOT-323 (Height 1.1mm)

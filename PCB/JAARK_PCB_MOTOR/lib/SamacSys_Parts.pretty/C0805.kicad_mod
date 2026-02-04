@@ -22,7 +22,7 @@
   (fp_circle (center -1.75 0) (end -1.75 0.05) (layer F.SilkS) (width 0.2))
   (pad 1 smd rect (at -0.9 0 0) (size 1.15 1.45) (layers F.Cu F.Paste F.Mask))
   (pad 2 smd rect (at 0.9 0 0) (size 1.15 1.45) (layers F.Cu F.Paste F.Mask))
-  (model "C:\\Users\\jonar\\JAARK\\PCB\\JAARK_PCB_MOTOR\\lib\\SamacSys_Parts.3dshapes\\C0805C104K5RACTU.stp"
+  (model "${KIPRJMOD}/lib/SamacSys_Parts.3dshapes/C0805C104K5RACTU.stp"
     (at (xyz -0.045275589612525 -0.030708660290936 0))
     (scale (xyz 1 1 1))
     (rotate (xyz -90 0 0))
