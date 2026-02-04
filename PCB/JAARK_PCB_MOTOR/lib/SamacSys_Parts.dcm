@@ -6,4 +6,94 @@ K
 F http://www.ti.com/lit/ds/symlink/ne555.pdf
 $ENDCMP
 #
+$CMP C0603C104K5RACTU
+D SMD Comm X7R, Ceramic, 0.1 uF, 10%, 50 VDC, 125 VDC, 125C, -55C, X7R, SMD, MLCC, Temperature Stable, Class II, 2.5 % , 5 GOhms, 7.3 mg, 0603, 1.6mm, 0.8mm, 0.8mm, 0.7mm, 0.35mm, 4000, 78  Weeks, 80
+K
+F https://content.kemet.com/datasheets/KEM_C1002_X7R_SMD.pdf
+$ENDCMP
+#
+$CMP C0805C104K5RACTU
+D SMD Comm X7R, Ceramic, 0.1 uF, 10%, 50 VDC, 125 VDC, 125C, -55C, X7R, SMD, MLCC, Temperature Stable, Class II, 2.5 % , 5 GOhms, 11 mg, 0805, 2mm, 1.25mm, 0.78mm, 0.75mm, 0.5mm, 4000, 78  Weeks, 80
+K
+F https://content.kemet.com/datasheets/KEM_C1002_X7R_SMD.pdf
+$ENDCMP
+#
+$CMP CL21A226MAYNNNE
+D Multilayer Ceramic Capacitors MLCC - SMD/SMT 22uF+/-20% 25V X5R 2012
+K
+F http://product.samsungsem.com/mlcc/CL21A226MAYNNN.do
+$ENDCMP
+#
+$CMP CL21A106KAYNNNG
+D Cap Ceramic 10uF 25V X5R 10% SMD 0805 85C Embossed T/R
+K
+F https://www.arrow.com/en/products/cl21a106kaynnng/samsung-electro-mechanics
+$ENDCMP
+#
+$CMP 74438356018
+D WE-MAPI SMT Power Inductor Size 4020; L = 1.8 H +/-20%; IR = 6.8 A; Isat = 8.7 A; RDC = 30 m
+K
+F https://www.we-online.com/components/products/download/3D_WE-IndMAPI_SSMC-4020_3D+%28rev1%29.pdf
+$ENDCMP
+#
+$CMP ERA-6ARW333V
+D Thin Film Resistors - SMD 0805 33Kohm 0.05% 10ppm AEC-Q200
+K
+F https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/AOA0000C307.pdf
+$ENDCMP
+#
+$CMP CRG0805F220K
+D Configuration Features: Number of Resistors 1 | Dimensions: Product Height .55 MM | Product Height .022 INCH | Product Length 2 MM | Product Width 1.25 MM | Product Length .079 INCH | Product Width .049 INCH | Electrical Characteristics: Resistance Class 1k  1M | Operating Voltage 150 V | Resistance Value 220K OHM | Passive Component Tolerance 1 PCT | Power Rating .125 WATT | Packaging Features: Packaging Method Taped & Reeled | Product Type Features: Package Size Code 0805 | Element Type Thick Film 
+K
+F https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=1773204&DocType=Data%20Sheet&DocLang=English&PartCntxt=1623155-1&DocFormat=pdf
+$ENDCMP
+#
+$CMP RG2012P-203-B-T5
+D Thin Film Resistors - SMD 1/8W 20K Ohms 0.1% 0805 25ppm
+K
+F http://www.susumu.co.jp/common/pdf/n_catalog_partition01_en.pdf
+$ENDCMP
+#
+$CMP RC0805FR-0740K2L
+D 40.2k 0805 Thick Film Surface Mount Resistor +/-1% 0.125W RC0805FR-0740K2L
+K
+F http://www.yageo.com/documents/recent/PYu-RC_Group_51_RoHS_L_10.pdf
+$ENDCMP
+#
+$CMP C3216X5R1E336M160AC
+D MULTILAYER CERAMIC CHIP CAPACITORS, 3216, Commercial grade, general (Up to 75V)
+K
+F https://product.tdk.com/info/en/catalog/datasheets/mlcc_commercial_midvoltage_en.pdf
+$ENDCMP
+#
+$CMP RC0805FR-0730K1L
+D 30.1k 0805 Thick Film Surface Mount Resistor +/-1% 0.125W RC0805FR-0730K1L
+K
+F http://www.yageo.com/documents/recent/PYu-RC_Group_51_RoHS_L_10.pdf
+$ENDCMP
+#
+$CMP RC0805FR-07261RL
+D 261 0805 Thick Film Surface Mount Resistor +/-1% 0.125W RC0805FR-07261RL
+K
+F http://www.yageo.com/documents/recent/PYu-RC_Group_51_RoHS_L_10.pdf
+$ENDCMP
+#
+$CMP CRCW08055K00FKTA
+D RESISTOR, 0805 5K Ohms +/-1% 0.125W
+K
+F http://www.vishay.com/docs/20035/dcrcwe3.pdf
+$ENDCMP
+#
+$CMP RC0805JR-0710KL
+D YAGEO - RC0805JR-0710KL - SMD Chip Resistor, 0805 [2012 Metric], 10 kohm, RC Series, 150 V, Thick Film, 125 mW
+K
+F http://www.yageo.com/documents/recent/PYu-RC_Group_51_RoHS_L_10.pdf
+$ENDCMP
+#
+$CMP HIP4080AIBZT
+D The HIP4080A is a high frequency, medium voltage Full Bridge N-Channel FET driver IC, available in 20 lead plastic SOIC and DIP packages. The HIP4080A includes an input comparator, used to facilitate the hysteresis and PWM modes of operation. Its HEN (high enable) lead can force current to freewheel in the bottom two external power MOSFETs, maintaining the upper power MOSFETs off. Since it can switch at frequencies up to 1MHz, the HIP4080A is well suited for driving Voice Coil Motors, switching power amplif
+K
+F https://www.renesas.com/en-us/www/doc/datasheet/hip4080a.pdf
+$ENDCMP
+#
 #End Doc Library
