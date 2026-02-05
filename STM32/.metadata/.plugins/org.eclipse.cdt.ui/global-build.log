@@ -514,3 +514,366 @@ Finished building: default.size.stdout
  
 Finished building: PCB_MOTOR_STM.list
  
+00:15:31 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
+make -j22 all 
+arm-none-eabi-gcc "../Core/Src/j_st7789.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/j_st7789.d" -MT"Core/Src/j_st7789.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/j_st7789.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/j_st7789.c: In function 'set_bounds':
+../Core/Src/j_st7789.c:13:26: warning: excess elements in scalar initializer
+   13 |     write_u8((uint8_t){0,xlo,0,xhi},4);
+      |                          ^~~
+../Core/Src/j_st7789.c:13:26: note: (near initialization for '(anonymous)')
+../Core/Src/j_st7789.c:13:30: warning: excess elements in scalar initializer
+   13 |     write_u8((uint8_t){0,xlo,0,xhi},4);
+      |                              ^
+../Core/Src/j_st7789.c:13:30: note: (near initialization for '(anonymous)')
+../Core/Src/j_st7789.c:13:32: warning: excess elements in scalar initializer
+   13 |     write_u8((uint8_t){0,xlo,0,xhi},4);
+      |                                ^~~
+../Core/Src/j_st7789.c:13:32: note: (near initialization for '(anonymous)')
+../Core/Src/j_st7789.c:13:23: warning: passing argument 1 of 'write_u8' makes pointer from integer without a cast [-Wint-conversion]
+   13 |     write_u8((uint8_t){0,xlo,0,xhi},4);
+      |                       ^~~~~~~~~~~~~
+      |                       |
+      |                       uint8_t {aka unsigned char}
+In file included from ../Core/Src/j_st7789.c:7:
+../Core/Inc/j_st7789.h:18:24: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'uint8_t' {aka 'unsigned char'}
+   18 | void write_u8(uint8_t* dat, size_t len);
+      |               ~~~~~~~~~^~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/j_st7789.c:15:26: warning: excess elements in scalar initializer
+   15 |     write_u8((uint8_t){0,ylo,0,yhi},4);
+      |                          ^~~
+../Core/Src/j_st7789.c:15:26: note: (near initialization for '(anonymous)')
+../Core/Src/j_st7789.c:15:30: warning: excess elements in scalar initializer
+   15 |     write_u8((uint8_t){0,ylo,0,yhi},4);
+      |                              ^
+../Core/Src/j_st7789.c:15:30: note: (near initialization for '(anonymous)')
+../Core/Src/j_st7789.c:15:32: warning: excess elements in scalar initializer
+   15 |     write_u8((uint8_t){0,ylo,0,yhi},4);
+      |                                ^~~
+../Core/Src/main.c:96:11: warning: unused variable 'val' [-Wunused-variable]
+   96 |   uint8_t val[2] = {0xF0,0x0F};
+      |           ^~~
+../Core/Src/j_st7789.c:15:32: note: (near initialization for '(anonymous)')
+../Core/Src/j_st7789.c:15:23: warning: passing argument 1 of 'write_u8' makes pointer from integer without a cast [-Wint-conversion]
+   15 |     write_u8((uint8_t){0,ylo,0,yhi},4);
+      |                       ^~~~~~~~~~~~~
+      |                       |
+      |                       uint8_t {aka unsigned char}
+../Core/Inc/j_st7789.h:18:24: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'uint8_t' {aka 'unsigned char'}
+   18 | void write_u8(uint8_t* dat, size_t len);
+      |               ~~~~~~~~~^~~
+arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: PCB_MOTOR_STM.elf
+ 
+arm-none-eabi-size  PCB_MOTOR_STM.elf 
+arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
+   text	   data	    bss	    dec	    hex	filename
+  10620	     12	  41156	  51788	   ca4c	PCB_MOTOR_STM.elf
+Finished building: default.size.stdout
+ 
+Finished building: PCB_MOTOR_STM.list
+ 
+00:16:49 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
+make -j22 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:103:3: warning: implicit declaration of function 'set_bounds' [-Wimplicit-function-declaration]
+  103 |   set_bounds(50,100,50,100);
+      |   ^~~~~~~~~~
+../Core/Src/main.c:96:11: warning: unused variable 'val' [-Wunused-variable]
+   96 |   uint8_t val[2] = {0xF0,0x0F};
+      |           ^~~
+arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: PCB_MOTOR_STM.elf
+ 
+arm-none-eabi-size  PCB_MOTOR_STM.elf 
+arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
+   text	   data	    bss	    dec	    hex	filename
+  10712	     12	  41156	  51880	   caa8	PCB_MOTOR_STM.elf
+Finished building: default.size.stdout
+ 
+Finished building: PCB_MOTOR_STM.list
+ 
+00:17:46 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
+make -j22 all 
+arm-none-eabi-gcc "../Core/Src/j_st7789.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/j_st7789.d" -MT"Core/Src/j_st7789.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/j_st7789.o"
+../Core/Src/j_st7789.c: In function 'set_bounds':
+../Core/Src/j_st7789.c:13:27: warning: excess elements in scalar initializer
+   13 |     write_u8((uint8_t*){0,xlo,0,xhi},4);
+      |                           ^~~
+../Core/Src/j_st7789.c:13:27: note: (near initialization for '(anonymous)')
+../Core/Src/j_st7789.c:13:31: warning: excess elements in scalar initializer
+   13 |     write_u8((uint8_t*){0,xlo,0,xhi},4);
+      |                               ^
+../Core/Src/j_st7789.c:13:31: note: (near initialization for '(anonymous)')
+../Core/Src/j_st7789.c:13:33: warning: excess elements in scalar initializer
+   13 |     write_u8((uint8_t*){0,xlo,0,xhi},4);
+      |                                 ^~~
+../Core/Src/j_st7789.c:13:33: note: (near initialization for '(anonymous)')
+../Core/Src/j_st7789.c:15:27: warning: excess elements in scalar initializer
+   15 |     write_u8((uint8_t*){0,ylo,0,yhi},4);
+      |                           ^~~
+../Core/Src/j_st7789.c:15:27: note: (near initialization for '(anonymous)')
+../Core/Src/j_st7789.c:15:31: warning: excess elements in scalar initializer
+   15 |     write_u8((uint8_t*){0,ylo,0,yhi},4);
+      |                               ^
+../Core/Src/j_st7789.c:15:31: note: (near initialization for '(anonymous)')
+../Core/Src/j_st7789.c:15:33: warning: excess elements in scalar initializer
+   15 |     write_u8((uint8_t*){0,ylo,0,yhi},4);
+      |                                 ^~~
+../Core/Src/j_st7789.c:15:33: note: (near initialization for '(anonymous)')
+arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: PCB_MOTOR_STM.elf
+ 
+arm-none-eabi-size  PCB_MOTOR_STM.elf 
+arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
+   text	   data	    bss	    dec	    hex	filename
+  10708	     12	  41156	  51876	   caa4	PCB_MOTOR_STM.elf
+Finished building: default.size.stdout
+ 
+Finished building: PCB_MOTOR_STM.list
+ 
+00:18:14 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
+make -j22 all 
+arm-none-eabi-gcc "../Core/Src/j_st7789.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/j_st7789.d" -MT"Core/Src/j_st7789.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/j_st7789.o"
+arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: PCB_MOTOR_STM.elf
+ 
+arm-none-eabi-size  PCB_MOTOR_STM.elf 
+arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
+   text	   data	    bss	    dec	    hex	filename
+  10748	     12	  41156	  51916	   cacc	PCB_MOTOR_STM.elf
+Finished building: default.size.stdout
+ 
+Finished building: PCB_MOTOR_STM.list
+ 
+00:19:04 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
+make -j22 all 
+arm-none-eabi-gcc "../Core/Src/j_st7789.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/j_st7789.d" -MT"Core/Src/j_st7789.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/j_st7789.o"
+../Core/Src/j_st7789.c: In function 'set_bounds':
+../Core/Src/j_st7789.c:12:12: error: expected identifier or '(' before '[' token
+   12 |     uint8_t[] bounds = {0,0,0,100};
+      |            ^
+../Core/Src/j_st7789.c:14:14: error: 'bounds' undeclared (first use in this function); did you mean 'set_bounds'?
+   14 |     write_u8(bounds,4);
+      |              ^~~~~~
+      |              set_bounds
+../Core/Src/j_st7789.c:14:14: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [Core/Src/subdir.mk:49: Core/Src/j_st7789.o] Error 1
+"make -j22 all" terminated with exit code 2. Build might be incomplete.
+00:19:37 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
+make -j22 all 
+arm-none-eabi-gcc "../Core/Src/j_st7789.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/j_st7789.d" -MT"Core/Src/j_st7789.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/j_st7789.o"
+arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: PCB_MOTOR_STM.elf
+ 
+arm-none-eabi-size  PCB_MOTOR_STM.elf 
+arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
+   text	   data	    bss	    dec	    hex	filename
+  10720	     12	  41156	  51888	   cab0	PCB_MOTOR_STM.elf
+Finished building: default.size.stdout
+ 
+Finished building: PCB_MOTOR_STM.list
+ 
+00:20:01 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
+make -j22 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:103:3: warning: implicit declaration of function 'set_bounds' [-Wimplicit-function-declaration]
+  103 |   set_bounds(50,100,50,100);
+      |   ^~~~~~~~~~
+../Core/Src/main.c:96:11: warning: unused variable 'val' [-Wunused-variable]
+   96 |   uint8_t val[2] = {0xF0,0x0F};
+      |           ^~~
+arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: PCB_MOTOR_STM.elf
+ 
+arm-none-eabi-size  PCB_MOTOR_STM.elf 
+arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
+   text	   data	    bss	    dec	    hex	filename
+  10712	     12	  41156	  51880	   caa8	PCB_MOTOR_STM.elf
+Finished building: default.size.stdout
+ 
+Finished building: PCB_MOTOR_STM.list
+ 
+00:20:55 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
+make -j22 all 
+arm-none-eabi-gcc "../Core/Src/j_st7789.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/j_st7789.d" -MT"Core/Src/j_st7789.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/j_st7789.o"
+arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: PCB_MOTOR_STM.elf
+ 
+arm-none-eabi-size  PCB_MOTOR_STM.elf 
+arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
+   text	   data	    bss	    dec	    hex	filename
+  10720	     12	  41156	  51888	   cab0	PCB_MOTOR_STM.elf
+Finished building: default.size.stdout
+ 
+Finished building: PCB_MOTOR_STM.list
+ 
+00:23:10 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
+make -j22 all 
+arm-none-eabi-gcc "../Core/Src/j_st7789.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/j_st7789.d" -MT"Core/Src/j_st7789.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/j_st7789.o"
+arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: PCB_MOTOR_STM.elf
+ 
+arm-none-eabi-size  PCB_MOTOR_STM.elf 
+arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
+   text	   data	    bss	    dec	    hex	filename
+  10744	     12	  41156	  51912	   cac8	PCB_MOTOR_STM.elf
+Finished building: default.size.stdout
+ 
+Finished building: PCB_MOTOR_STM.list
+ 
+00:25:15 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
+make -j22 all 
+arm-none-eabi-gcc "../Core/Src/j_st7789.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/j_st7789.d" -MT"Core/Src/j_st7789.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/j_st7789.o"
+arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: PCB_MOTOR_STM.elf
+ 
+arm-none-eabi-size  PCB_MOTOR_STM.elf 
+arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
+   text	   data	    bss	    dec	    hex	filename
+  10744	     12	  41156	  51912	   cac8	PCB_MOTOR_STM.elf
+Finished building: default.size.stdout
+ 
+Finished building: PCB_MOTOR_STM.list
+ 
+00:25:46 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
+make -j22 all 
+arm-none-eabi-gcc "../Core/Src/j_st7789.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/j_st7789.d" -MT"Core/Src/j_st7789.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/j_st7789.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:103:3: warning: implicit declaration of function 'set_bounds' [-Wimplicit-function-declaration]
+  103 |   set_bounds(50,100,50,100);
+      |   ^~~~~~~~~~
+../Core/Src/main.c:96:11: warning: unused variable 'val' [-Wunused-variable]
+   96 |   uint8_t val[2] = {0xF0,0x0F};
+      |           ^~~
+arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: PCB_MOTOR_STM.elf
+ 
+arm-none-eabi-size  PCB_MOTOR_STM.elf 
+arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
+   text	   data	    bss	    dec	    hex	filename
+  10744	     12	  41156	  51912	   cac8	PCB_MOTOR_STM.elf
+Finished building: default.size.stdout
+ 
+Finished building: PCB_MOTOR_STM.list
+ 
+00:26:25 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
+make -j22 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:103:3: warning: implicit declaration of function 'set_bounds' [-Wimplicit-function-declaration]
+  103 |   set_bounds(110,130,,110,130);
+      |   ^~~~~~~~~~
+../Core/Src/main.c:103:22: error: expected expression before ',' token
+  103 |   set_bounds(110,130,,110,130);
+      |                      ^
+../Core/Src/main.c:96:11: warning: unused variable 'val' [-Wunused-variable]
+   96 |   uint8_t val[2] = {0xF0,0x0F};
+      |           ^~~
+make: *** [Core/Src/subdir.mk:49: Core/Src/main.o] Error 1
+"make -j22 all" terminated with exit code 2. Build might be incomplete.
+00:26:35 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
+make -j22 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:103:3: warning: implicit declaration of function 'set_bounds' [-Wimplicit-function-declaration]
+  103 |   set_bounds(110,130,110,130);
+      |   ^~~~~~~~~~
+../Core/Src/main.c:96:11: warning: unused variable 'val' [-Wunused-variable]
+   96 |   uint8_t val[2] = {0xF0,0x0F};
+      |           ^~~
+arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: PCB_MOTOR_STM.elf
+ 
+arm-none-eabi-size  PCB_MOTOR_STM.elf 
+arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
+   text	   data	    bss	    dec	    hex	filename
+  10744	     12	  41156	  51912	   cac8	PCB_MOTOR_STM.elf
+Finished building: default.size.stdout
+ 
+Finished building: PCB_MOTOR_STM.list
+ 
+00:28:49 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
+make -j22 all 
+arm-none-eabi-gcc "../Core/Src/j_st7789.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/j_st7789.d" -MT"Core/Src/j_st7789.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/j_st7789.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:103:3: warning: implicit declaration of function 'set_bounds' [-Wimplicit-function-declaration]
+  103 |   set_bounds(110,130,110,130);
+      |   ^~~~~~~~~~
+../Core/Src/main.c:96:11: warning: unused variable 'val' [-Wunused-variable]
+   96 |   uint8_t val[2] = {0xF0,0x0F};
+      |           ^~~
+arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: PCB_MOTOR_STM.elf
+ 
+arm-none-eabi-size  PCB_MOTOR_STM.elf 
+arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
+   text	   data	    bss	    dec	    hex	filename
+  10744	     12	  41156	  51912	   cac8	PCB_MOTOR_STM.elf
+Finished building: default.size.stdout
+ 
+Finished building: PCB_MOTOR_STM.list
+ 
+00:29:16 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
+make -j22 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:103:3: warning: implicit declaration of function 'set_bounds' [-Wimplicit-function-declaration]
+  103 |   set_bounds(110,130,110,130);
+      |   ^~~~~~~~~~
+../Core/Src/main.c:96:11: warning: unused variable 'val' [-Wunused-variable]
+   96 |   uint8_t val[2] = {0xF0,0x0F};
+      |           ^~~
+arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: PCB_MOTOR_STM.elf
+ 
+arm-none-eabi-size  PCB_MOTOR_STM.elf 
+arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
+   text	   data	    bss	    dec	    hex	filename
+  10744	     12	  41156	  51912	   cac8	PCB_MOTOR_STM.elf
+Finished building: default.size.stdout
+ 
+Finished building: PCB_MOTOR_STM.list
+ 
+00:29:54 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
+make -j22 all 
+arm-none-eabi-gcc "../Core/Src/j_st7789.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/j_st7789.d" -MT"Core/Src/j_st7789.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/j_st7789.o"
+arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: PCB_MOTOR_STM.elf
+ 
+arm-none-eabi-size  PCB_MOTOR_STM.elf 
+arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
+   text	   data	    bss	    dec	    hex	filename
+  10744	     12	  41156	  51912	   cac8	PCB_MOTOR_STM.elf
+Finished building: default.size.stdout
+ 
+Finished building: PCB_MOTOR_STM.list
+ 
+00:39:56 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
+make -j22 all 
+arm-none-eabi-gcc "../Core/Src/j_st7789.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/j_st7789.d" -MT"Core/Src/j_st7789.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/j_st7789.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:104:3: warning: implicit declaration of function 'set_bounds' [-Wimplicit-function-declaration]
+  104 |   set_bounds(110,130,110,130);
+      |   ^~~~~~~~~~
+../Core/Src/main.c:96:11: warning: unused variable 'val' [-Wunused-variable]
+   96 |   uint8_t val[2] = {0xF0,0x0F};
+      |           ^~~
+arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: PCB_MOTOR_STM.elf
+ 
+arm-none-eabi-size  PCB_MOTOR_STM.elf 
+arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
+   text	   data	    bss	    dec	    hex	filename
+  10752	     12	  41156	  51920	   cad0	PCB_MOTOR_STM.elf
+Finished building: default.size.stdout
+ 
+Finished building: PCB_MOTOR_STM.list
+ 

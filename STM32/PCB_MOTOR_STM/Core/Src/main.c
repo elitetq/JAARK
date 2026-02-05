@@ -99,7 +99,10 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 
-  fill_area(0x000F);
+  //fill_area(0x000F);
+  j_color col = J_PINK;
+  set_bounds(110,130,110,130);
+  fill_area(col);
   while (1)
   {
     /* USER CODE END WHILE */

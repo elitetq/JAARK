@@ -1,7 +1,11 @@
-00:10:29 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
+00:39:56 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
 make -j22 all 
+arm-none-eabi-gcc "../Core/Src/j_st7789.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/j_st7789.d" -MT"Core/Src/j_st7789.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/j_st7789.o"
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
 ../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:104:3: warning: implicit declaration of function 'set_bounds' [-Wimplicit-function-declaration]
+  104 |   set_bounds(110,130,110,130);
+      |   ^~~~~~~~~~
 ../Core/Src/main.c:96:11: warning: unused variable 'val' [-Wunused-variable]
    96 |   uint8_t val[2] = {0xF0,0x0F};
       |           ^~~
@@ -11,11 +15,11 @@ Finished building target: PCB_MOTOR_STM.elf
 arm-none-eabi-size  PCB_MOTOR_STM.elf 
 arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
    text	   data	    bss	    dec	    hex	filename
-  10620	     12	  41156	  51788	   ca4c	PCB_MOTOR_STM.elf
+  10752	     12	  41156	  51920	   cad0	PCB_MOTOR_STM.elf
 Finished building: default.size.stdout
  
 Finished building: PCB_MOTOR_STM.list
  
 
-00:10:30 Build Finished. 0 errors, 1 warnings. (took 1s.240ms)
+00:39:58 Build Finished. 0 errors, 2 warnings. (took 1s.788ms)
 

@@ -7,7 +7,15 @@
 #include "j_st7789.h"
 static uint8_t col_arr[J_BUF_SIZE];
 
-void start_code() {
+
+void set_bounds(uint8_t xlo, uint8_t xhi, uint8_t ylo, uint8_t yhi) {
+    uint8_t bounds_x[] = {0,xlo,0,xhi};
+    uint8_t bounds_y[] = {0,ylo,0,yhi};
+    write_cmd(CMD_CASET);
+    write_u8(bounds_x,4);
+    write_cmd(CMD_RASET);
+    write_u8(bounds_y,4);
+    write_cmd(CMD_RAMWR);
 }
 
 void write_cmd(uint8_t CMD) {
@@ -58,8 +66,8 @@ void fill_area(uint16_t color) {
         col_arr[i] = hval;
         col_arr[i+1] = lval;
     }
-    for(int i = 0; i < J_DIV; i++) {
-        write_u8(col_arr,J_BUF_SIZE);
+    for(int i = 0; i < 1; i++) {
+        write_u8(col_arr,400);
     }
 }
 
