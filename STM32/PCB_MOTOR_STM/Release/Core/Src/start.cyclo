@@ -1,0 +1,5 @@
+../Core/Src/start.c:9:6:start_code	1
+../Core/Src/start.c:12:6:write_cmd	1
+../Core/Src/start.c:18:6:write_u8	1
+../Core/Src/start.c:23:6:write_s8	1
+../Core/Src/start.c:29:6:init_lcd	1

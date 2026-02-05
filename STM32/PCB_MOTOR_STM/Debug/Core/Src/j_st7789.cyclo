@@ -1,0 +1,6 @@
+../Core/Src/j_st7789.c:10:6:start_code	1
+../Core/Src/j_st7789.c:13:6:write_cmd	1
+../Core/Src/j_st7789.c:19:6:write_u8	1
+../Core/Src/j_st7789.c:24:6:write_s8	1
+../Core/Src/j_st7789.c:30:6:init_lcd	1
+../Core/Src/j_st7789.c:54:6:fill_area	3

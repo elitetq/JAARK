@@ -1,0 +1,57 @@
+/*
+ * start.c
+ *
+ *  Created on: Feb 4, 2026
+ *      Author: jonar
+ */
+#include "start.h"
+
+void start_code() {
+}
+
+void write_cmd(uint8_t CMD) {
+    HAL_GPIO_WritePin(J_DC_PORT,J_DC,0);
+
+    HAL_SPI_Transmit(&hspi2,&CMD,1,100);
+
+}
+void write_u8(uint8_t* dat, size_t len) {
+    HAL_GPIO_WritePin(J_DC_PORT,J_DC,1);
+    HAL_SPI_Transmit(&hspi2,dat,len,100);
+    
+}
+void write_s8(uint8_t dat) {
+    HAL_GPIO_WritePin(J_DC_PORT,J_DC,1);
+    HAL_SPI_Transmit(&hspi2,&dat,1,100);
+    
+}
+
+void init_lcd() {
+	HAL_GPIO_WritePin(J_RES_PORT,J_RES,0);
+    HAL_Delay(1000);
+    HAL_GPIO_WritePin(J_RES_PORT,J_RES,1);
+    HAL_Delay(1000);
+    write_cmd(CMD_SWFRES);
+    HAL_Delay(150);
+
+    write_cmd(CMD_SLPIN);
+    HAL_Delay(500);
+    write_cmd(CMD_SLPOUT);
+    HAL_Delay(500);
+    write_cmd(CMD_COLMOD);
+    write_s8(0x55);
+    HAL_Delay(500);
+    write_cmd(CMD_MADCTL);
+    write_s8(0x00);
+
+    write_cmd(CMD_NORON);
+    write_cmd(CMD_DISPON);
+    write_cmd(CMD_INVON);
+    HAL_Delay(100);
+    uint8_t bounds[] = {0,0,0,0xF0};
+    write_cmd(CMD_CASET);
+    write_u8(bounds,4);
+    write_cmd(CMD_RASET);
+    write_u8(bounds,4);
+    write_cmd(CMD_RAMWR);
+}

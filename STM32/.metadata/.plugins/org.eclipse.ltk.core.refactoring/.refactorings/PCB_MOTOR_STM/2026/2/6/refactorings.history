@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;PCB_MOTOR_STM/Core/Inc/st7789_config.h.template&apos; to &apos;st7789_config.h&apos;" description="Rename resource &apos;st7789_config.h.template&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Core/Inc/st7789_config.h.template" name="st7789_config.h" stamp="1770273160200" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;PCB_MOTOR_STM/Core/Src/start.c&apos; to &apos;j_st7789.c&apos;" description="Rename resource &apos;start.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Core/Src/start.c" name="j_st7789.c" stamp="1770274903968" updateReferences="true"/>
+</session>

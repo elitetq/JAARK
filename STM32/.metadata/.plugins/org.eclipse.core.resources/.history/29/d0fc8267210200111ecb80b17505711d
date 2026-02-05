@@ -1,0 +1,11 @@
+/*
+ * start.c
+ *
+ *  Created on: Feb 4, 2026
+ *      Author: jonar
+ */
+#include "start.h"
+
+void start_code() {
+	ret
+}

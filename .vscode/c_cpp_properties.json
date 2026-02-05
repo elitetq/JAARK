@@ -4,10 +4,10 @@
             "name": "Win32",
             "includePath": [
                 "${default}",
-                "${workspaceFolder}/STM32/MX/STM32_CONTROLLER/Core/Inc",
-                "${workspaceFolder}/STM32/MX/STM32_CONTROLLER/Drivers/STM32L1xx_HAL_Driver/Inc",
-                "${workspaceFolder}/STM32/MX/STM32_CONTROLLER/Drivers/CMSIS/Device/ST/STM32L1xx/Include",
-                "${workspaceFolder}/STM32/MX/STM32_CONTROLLER/Drivers/CMSIS/Include"
+                "${workspaceFolder}/STM32/PCB_MOTOR_STM/Core/Inc",
+                "${workspaceFolder}/STM32/PCB_MOTOR_STM/Drivers/CMSIS/Include",
+                "${workspaceFolder}/STM32/PCB_MOTOR_STM/Drivers/CMSIS/Device/ST/STM32F4xx/Include",
+                "${workspaceFolder}/STM32/PCB_MOTOR_STM/Drivers/STM32F4xx_HAL_Driver/Inc"
             ],
             "defines": [
                 "_DEBUG",
