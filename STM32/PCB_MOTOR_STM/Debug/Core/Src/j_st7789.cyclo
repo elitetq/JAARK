@@ -4,3 +4,5 @@
 ../Core/Src/j_st7789.c:38:6:write_s8	1
 ../Core/Src/j_st7789.c:44:6:init_lcd	1
 ../Core/Src/j_st7789.c:68:6:fill_area	3
+../Core/Src/j_st7789.c:82:6:fill_text	3
+../Core/Src/j_st7789.c:96:6:draw_text	4

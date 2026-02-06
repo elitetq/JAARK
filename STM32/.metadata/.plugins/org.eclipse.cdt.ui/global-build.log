@@ -1,1642 +1,32 @@
-17:07:40 **** Incremental Build of configuration Release for project PCB_MOTOR_STM ****
-make -j22 all 
-arm-none-eabi-gcc "../Core/Src/j_fonts.c" -mcpu=cortex-m4 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -Os -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/j_fonts.d" -MT"Core/Src/j_fonts.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/j_fonts.o"
-arm-none-eabi-gcc "../Core/Src/j_st7789.c" -mcpu=cortex-m4 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -Os -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/j_st7789.d" -MT"Core/Src/j_st7789.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/j_st7789.o"
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -Os -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/j_fonts.c:4:18: warning: 'ret_arr' defined but not used [-Wunused-variable]
-    4 | static uint16_t* ret_arr;
-      |                  ^~~~~~~
-In file included from ../Core/Src/j_fonts.c:1:
-../Core/Inc/j_fonts.h:23:16: warning: 'j_fonts_buffer' defined but not used [-Wunused-variable]
-   23 | static uint8_t j_fonts_buffer[J_FONT_BUFFER_SIZE];
-      |                ^~~~~~~~~~~~~~
-../Core/Inc/j_fonts.h:22:16: warning: 'j_fonts_length' defined but not used [-Wunused-variable]
-   22 | static uint8_t j_fonts_length[4] = {7,11,0,0};
-      |                ^~~~~~~~~~~~~~
-In file included from ../Core/Inc/j_fonts.h:6:
-../Core/Inc/j_st7789.h:87:17: warning: 'j_master_control' defined but not used [-Wunused-variable]
-   87 | static j_struct j_master_control = {
-      |                 ^~~~~~~~~~~~~~~~
-../Core/Inc/j_st7789.h:85:13: warning: 'j_flag_set_bounds' defined but not used [-Wunused-variable]
-   85 | static char j_flag_set_bounds = 1;
-      |             ^~~~~~~~~~~~~~~~~
-../Core/Inc/j_st7789.h:84:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
-   84 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
-      |                ^~~~~~~~
-../Core/Src/j_st7789.c: In function 'fill_text':
-../Core/Src/j_st7789.c:85:26: warning: comparison between pointer and integer
-   85 |         for(int j = 0; j < j_fonts_height; j++) {
-      |                          ^
-../Core/Src/j_st7789.c:86:30: warning: comparison between pointer and integer
-   86 |             for(int k = 0; k < j_fonts_length; k++) {
-      |                              ^
-../Core/Src/j_st7789.c:87:26: warning: unused variable 'offset' [-Wunused-variable]
-   87 |                 uint16_t offset = 0;
-      |                          ^~~~~~
-../Core/Src/j_st7789.c: In function 'draw_text':
-../Core/Src/j_st7789.c:98:26: warning: initialization discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
-   98 |     uint16_t* char_ptr = char_ptr_ret(ch,font_size);
-      |                          ^~~~~~~~~~~~
-../Core/Src/j_st7789.c:101:22: warning: comparison between pointer and integer
-  101 |     for(int i = 0; i < j_fonts_height; i++) {
-      |                      ^
-../Core/Src/j_st7789.c:103:46: warning: '<<' in boolean context, did you mean '<'? [-Wint-in-bool-context]
-  103 |             j_color ret_color = (char_ptr[i] << (j/2)) && 0x8000 == 0x8000 ? FILL_COL : BG_COL;
-      |                                 ~~~~~~~~~~~~~^~~~~~~~~
-In file included from ../Core/Inc/j_st7789.h:33,
-                 from ../Core/Src/j_st7789.c:7:
-../Core/Inc/j_fonts.h: At top level:
-../Core/Inc/j_fonts.h:233:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
-  233 | static const uint16_t* j_fonts[4] = {
-      |                        ^~~~~~~
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:119:9: warning: assignment discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
-  119 |     ret = char_ptr_ret(33+33,J_7X10_FONT);
-      |         ^
-../Core/Src/main.c:106:11: warning: unused variable 'i' [-Wunused-variable]
-  106 |   uint8_t i = 0;
-      |           ^
-../Core/Src/main.c:105:11: warning: unused variable 'col' [-Wunused-variable]
-  105 |   j_color col[4] = {J_BLUE, J_RED, J_GREEN, J_PINK};
-      |           ^~~
-../Core/Src/main.c:102:11: warning: unused variable 'val' [-Wunused-variable]
-  102 |   uint8_t val[2] = {0xF0,0x0F};
-      |           ^~~
-In file included from ../Core/Src/main.c:28:
-../Core/Inc/j_st7789.h: At top level:
-../Core/Inc/j_st7789.h:85:13: warning: 'j_flag_set_bounds' defined but not used [-Wunused-variable]
-   85 | static char j_flag_set_bounds = 1;
-      |             ^~~~~~~~~~~~~~~~~
-../Core/Inc/j_st7789.h:84:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
-   84 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
-      |                ^~~~~~~~
-In file included from ../Core/Inc/j_st7789.h:33:
-../Core/Inc/j_fonts.h:233:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
-  233 | static const uint16_t* j_fonts[4] = {
-      |                        ^~~~~~~
-../Core/Inc/j_fonts.h:23:16: warning: 'j_fonts_buffer' defined but not used [-Wunused-variable]
-   23 | static uint8_t j_fonts_buffer[J_FONT_BUFFER_SIZE];
-      |                ^~~~~~~~~~~~~~
-../Core/Inc/j_fonts.h:22:16: warning: 'j_fonts_length' defined but not used [-Wunused-variable]
-   22 | static uint8_t j_fonts_length[4] = {7,11,0,0};
-      |                ^~~~~~~~~~~~~~
-../Core/Inc/j_fonts.h:21:16: warning: 'j_fonts_height' defined but not used [-Wunused-variable]
-   21 | static uint8_t j_fonts_height[4] = {10,18,0,0};
-      |                ^~~~~~~~~~~~~~
-arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: PCB_MOTOR_STM.elf
- 
-arm-none-eabi-size  PCB_MOTOR_STM.elf 
-arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
-   text	   data	    bss	    dec	    hex	filename
-  15920	    116	  41972	  58008	   e298	PCB_MOTOR_STM.elf
-Finished building: default.size.stdout
- 
-Finished building: PCB_MOTOR_STM.list
- 
-17:07:52 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
-make -j22 all 
-arm-none-eabi-gcc "../Core/Src/j_fonts.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/j_fonts.d" -MT"Core/Src/j_fonts.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/j_fonts.o"
-arm-none-eabi-gcc "../Core/Src/j_st7789.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/j_st7789.d" -MT"Core/Src/j_st7789.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/j_st7789.o"
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/j_fonts.c:4:18: warning: 'ret_arr' defined but not used [-Wunused-variable]
-    4 | static uint16_t* ret_arr;
-      |                  ^~~~~~~
-In file included from ../Core/Src/j_fonts.c:1:
-../Core/Inc/j_fonts.h:23:16: warning: 'j_fonts_buffer' defined but not used [-Wunused-variable]
-   23 | static uint8_t j_fonts_buffer[J_FONT_BUFFER_SIZE];
-      |                ^~~~~~~~~~~~~~
-../Core/Inc/j_fonts.h:22:16: warning: 'j_fonts_length' defined but not used [-Wunused-variable]
-   22 | static uint8_t j_fonts_length[4] = {7,11,0,0};
-      |                ^~~~~~~~~~~~~~
-In file included from ../Core/Inc/j_fonts.h:6:
-../Core/Inc/j_st7789.h:87:17: warning: 'j_master_control' defined but not used [-Wunused-variable]
-   87 | static j_struct j_master_control = {
-      |                 ^~~~~~~~~~~~~~~~
-../Core/Inc/j_st7789.h:85:13: warning: 'j_flag_set_bounds' defined but not used [-Wunused-variable]
-   85 | static char j_flag_set_bounds = 1;
-      |             ^~~~~~~~~~~~~~~~~
-../Core/Inc/j_st7789.h:84:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
-   84 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
-      |                ^~~~~~~~
-../Core/Src/j_st7789.c: In function 'fill_text':
-../Core/Src/j_st7789.c:85:26: warning: comparison between pointer and integer
-   85 |         for(int j = 0; j < j_fonts_height; j++) {
-      |                          ^
-../Core/Src/j_st7789.c:86:30: warning: comparison between pointer and integer
-   86 |             for(int k = 0; k < j_fonts_length; k++) {
-      |                              ^
-../Core/Src/j_st7789.c:87:26: warning: unused variable 'offset' [-Wunused-variable]
-   87 |                 uint16_t offset = 0;
-      |                          ^~~~~~
-../Core/Src/j_st7789.c: In function 'draw_text':
-../Core/Src/j_st7789.c:98:26: warning: initialization discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
-   98 |     uint16_t* char_ptr = char_ptr_ret(ch,font_size);
-      |                          ^~~~~~~~~~~~
-../Core/Src/j_st7789.c:101:22: warning: comparison between pointer and integer
-  101 |     for(int i = 0; i < j_fonts_height; i++) {
-      |                      ^
-../Core/Src/j_st7789.c:103:46: warning: '<<' in boolean context, did you mean '<'? [-Wint-in-bool-context]
-  103 |             j_color ret_color = (char_ptr[i] << (j/2)) && 0x8000 == 0x8000 ? FILL_COL : BG_COL;
-      |                                 ~~~~~~~~~~~~~^~~~~~~~~
-In file included from ../Core/Inc/j_st7789.h:33,
-                 from ../Core/Src/j_st7789.c:7:
-../Core/Inc/j_fonts.h: At top level:
-../Core/Inc/j_fonts.h:233:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
-  233 | static const uint16_t* j_fonts[4] = {
-      |                        ^~~~~~~
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:119:9: warning: assignment discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
-  119 |     ret = char_ptr_ret(33+33,J_7X10_FONT);
-      |         ^
-../Core/Src/main.c:106:11: warning: unused variable 'i' [-Wunused-variable]
-  106 |   uint8_t i = 0;
-      |           ^
-../Core/Src/main.c:105:11: warning: unused variable 'col' [-Wunused-variable]
-  105 |   j_color col[4] = {J_BLUE, J_RED, J_GREEN, J_PINK};
-      |           ^~~
-../Core/Src/main.c:102:11: warning: unused variable 'val' [-Wunused-variable]
-  102 |   uint8_t val[2] = {0xF0,0x0F};
-      |           ^~~
-In file included from ../Core/Src/main.c:28:
-../Core/Inc/j_st7789.h: At top level:
-../Core/Inc/j_st7789.h:85:13: warning: 'j_flag_set_bounds' defined but not used [-Wunused-variable]
-   85 | static char j_flag_set_bounds = 1;
-      |             ^~~~~~~~~~~~~~~~~
-../Core/Inc/j_st7789.h:84:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
-   84 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
-      |                ^~~~~~~~
-In file included from ../Core/Inc/j_st7789.h:33:
-../Core/Inc/j_fonts.h:233:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
-  233 | static const uint16_t* j_fonts[4] = {
-      |                        ^~~~~~~
-../Core/Inc/j_fonts.h:23:16: warning: 'j_fonts_buffer' defined but not used [-Wunused-variable]
-   23 | static uint8_t j_fonts_buffer[J_FONT_BUFFER_SIZE];
-      |                ^~~~~~~~~~~~~~
-../Core/Inc/j_fonts.h:22:16: warning: 'j_fonts_length' defined but not used [-Wunused-variable]
-   22 | static uint8_t j_fonts_length[4] = {7,11,0,0};
-      |                ^~~~~~~~~~~~~~
-../Core/Inc/j_fonts.h:21:16: warning: 'j_fonts_height' defined but not used [-Wunused-variable]
-   21 | static uint8_t j_fonts_height[4] = {10,18,0,0};
-      |                ^~~~~~~~~~~~~~
-arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: PCB_MOTOR_STM.elf
- 
-arm-none-eabi-size  PCB_MOTOR_STM.elf 
-arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
-   text	   data	    bss	    dec	    hex	filename
-  20916	    144	  41968	  63028	   f634	PCB_MOTOR_STM.elf
-Finished building: default.size.stdout
- 
-Finished building: PCB_MOTOR_STM.list
- 
-17:11:22 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
-make -j22 all 
-arm-none-eabi-gcc "../Core/Src/j_st7789.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/j_st7789.d" -MT"Core/Src/j_st7789.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/j_st7789.o"
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:120:9: warning: assignment discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
-  120 |     ret = char_ptr_ret(33+33,J_7X10_FONT);
-      |         ^
-../Core/Src/j_st7789.c: In function 'fill_text':
-../Core/Src/j_st7789.c:85:26: warning: comparison between pointer and integer
-   85 |         for(int j = 0; j < j_fonts_height; j++) {
-      |                          ^
-../Core/Src/j_st7789.c:86:30: warning: comparison between pointer and integer
-   86 |             for(int k = 0; k < j_fonts_length; k++) {
-      |                              ^
-../Core/Src/j_st7789.c:87:26: warning: unused variable 'offset' [-Wunused-variable]
-   87 |                 uint16_t offset = 0;
-      |                          ^~~~~~
-../Core/Src/j_st7789.c: In function 'draw_text':
-../Core/Src/j_st7789.c:98:26: warning: initialization discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
-   98 |     uint16_t* char_ptr = char_ptr_ret(ch,font_size);
-      |                          ^~~~~~~~~~~~
-../Core/Src/j_st7789.c:101:22: warning: comparison between pointer and integer
-  101 |     for(int i = 0; i < j_fonts_height; i++) {
-      |                      ^
-../Core/Src/main.c:106:11: warning: unused variable 'i' [-Wunused-variable]
-  106 |   uint8_t i = 0;
-      |           ^
-../Core/Src/j_st7789.c:103:44: error: invalid operands to binary * (have 'int' and 'uint8_t *' {aka 'unsigned char *'})
-  103 |             j_color ret_color = (char_ptr[i*j_fonts_length] << (j/2)) && 0x8000 == 0x8000 ? FILL_COL : BG_COL;
-      |                                            ^
-      |                                            |
-      |                                            uint8_t * {aka unsigned char *}
-../Core/Src/main.c:105:11: warning: unused variable 'col' [-Wunused-variable]
-  105 |   j_color col[4] = {J_BLUE, J_RED, J_GREEN, J_PINK};
-      |           ^~~
-../Core/Src/j_st7789.c:98:15: warning: variable 'char_ptr' set but not used [-Wunused-but-set-variable]
-   98 |     uint16_t* char_ptr = char_ptr_ret(ch,font_size);
-      |               ^~~~~~~~
-../Core/Src/main.c:102:11: warning: unused variable 'val' [-Wunused-variable]
-  102 |   uint8_t val[2] = {0xF0,0x0F};
-      |           ^~~
-In file included from ../Core/Inc/j_st7789.h:33,
-                 from ../Core/Src/j_st7789.c:7:
-../Core/Inc/j_fonts.h: At top level:
-../Core/Inc/j_fonts.h:233:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
-  233 | static const uint16_t* j_fonts[4] = {
-      |                        ^~~~~~~
-In file included from ../Core/Src/main.c:28:
-../Core/Inc/j_st7789.h: At top level:
-../Core/Inc/j_st7789.h:85:13: warning: 'j_flag_set_bounds' defined but not used [-Wunused-variable]
-   85 | static char j_flag_set_bounds = 1;
-      |             ^~~~~~~~~~~~~~~~~
-../Core/Inc/j_st7789.h:84:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
-   84 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
-      |                ^~~~~~~~
-In file included from ../Core/Inc/j_st7789.h:33:
-../Core/Inc/j_fonts.h:233:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
-  233 | static const uint16_t* j_fonts[4] = {
-      |                        ^~~~~~~
-../Core/Inc/j_fonts.h:23:16: warning: 'j_fonts_buffer' defined but not used [-Wunused-variable]
-   23 | static uint8_t j_fonts_buffer[J_FONT_BUFFER_SIZE];
-      |                ^~~~~~~~~~~~~~
-../Core/Inc/j_fonts.h:22:16: warning: 'j_fonts_length' defined but not used [-Wunused-variable]
-   22 | static uint8_t j_fonts_length[4] = {7,11,0,0};
-      |                ^~~~~~~~~~~~~~
-../Core/Inc/j_fonts.h:21:16: warning: 'j_fonts_height' defined but not used [-Wunused-variable]
-   21 | static uint8_t j_fonts_height[4] = {10,18,0,0};
-      |                ^~~~~~~~~~~~~~
-make: *** [Core/Src/subdir.mk:52: Core/Src/j_st7789.o] Error 1
-make: *** Waiting for unfinished jobs....
-"make -j22 all" terminated with exit code 2. Build might be incomplete.
-17:12:22 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
-make -j22 all 
-arm-none-eabi-gcc "../Core/Src/j_fonts.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/j_fonts.d" -MT"Core/Src/j_fonts.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/j_fonts.o"
-arm-none-eabi-gcc "../Core/Src/j_st7789.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/j_st7789.d" -MT"Core/Src/j_st7789.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/j_st7789.o"
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/j_st7789.c: In function 'fill_text':
-../Core/Src/j_st7789.c:85:26: warning: comparison between pointer and integer
-   85 |         for(int j = 0; j < j_fonts_height; j++) {
-      |                          ^
-../Core/Src/j_st7789.c:86:30: warning: comparison between pointer and integer
-   86 |             for(int k = 0; k < j_fonts_length; k++) {
-      |                              ^
-../Core/Src/j_st7789.c:87:26: warning: unused variable 'offset' [-Wunused-variable]
-   87 |                 uint16_t offset = 0;
-      |                          ^~~~~~
-../Core/Src/j_st7789.c: In function 'draw_text':
-../Core/Src/j_st7789.c:98:26: warning: initialization discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
-   98 |     uint16_t* char_ptr = char_ptr_ret(ch,font_size);
-      |                          ^~~~~~~~~~~~
-../Core/Src/j_st7789.c:101:22: warning: comparison between pointer and integer
-  101 |     for(int i = 0; i < j_fonts_height; i++) {
-      |                      ^
-../Core/Src/j_st7789.c:103:44: error: invalid operands to binary * (have 'int' and 'const int *')
-  103 |             j_color ret_color = (char_ptr[i*j_fonts_length] << (j/2)) && 0x8000 == 0x8000 ? FILL_COL : BG_COL;
-      |                                            ^
-      |                                            |
-      |                                            const int *
-../Core/Src/j_st7789.c:98:15: warning: variable 'char_ptr' set but not used [-Wunused-but-set-variable]
-   98 |     uint16_t* char_ptr = char_ptr_ret(ch,font_size);
-      |               ^~~~~~~~
-../Core/Src/j_fonts.c:4:18: warning: 'ret_arr' defined but not used [-Wunused-variable]
-    4 | static uint16_t* ret_arr;
-      |                  ^~~~~~~
-In file included from ../Core/Src/j_fonts.c:1:
-../Core/Inc/j_fonts.h:23:16: warning: 'j_fonts_buffer' defined but not used [-Wunused-variable]
-   23 | static uint8_t j_fonts_buffer[J_FONT_BUFFER_SIZE];
-      |                ^~~~~~~~~~~~~~
-In file included from ../Core/Inc/j_st7789.h:33,
-                 from ../Core/Src/j_st7789.c:7:
-../Core/Inc/j_fonts.h: At top level:
-In file included from ../Core/Inc/j_fonts.h:6:
-../Core/Inc/j_st7789.h:87:17: warning: 'j_master_control' defined but not used [-Wunused-variable]
-   87 | static j_struct j_master_control = {
-      |                 ^~~~~~~~~~~~~~~~
-../Core/Inc/j_fonts.h:233:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
-  233 | static const uint16_t* j_fonts[4] = {
-      |                        ^~~~~~~
-../Core/Inc/j_st7789.h:85:13: warning: 'j_flag_set_bounds' defined but not used [-Wunused-variable]
-   85 | static char j_flag_set_bounds = 1;
-      |             ^~~~~~~~~~~~~~~~~
-../Core/Inc/j_st7789.h:84:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
-   84 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
-      |                ^~~~~~~~
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:120:9: warning: assignment discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
-  120 |     ret = char_ptr_ret(33+33,J_7X10_FONT);
-      |         ^
-../Core/Src/main.c:106:11: warning: unused variable 'i' [-Wunused-variable]
-  106 |   uint8_t i = 0;
-      |           ^
-../Core/Src/main.c:105:11: warning: unused variable 'col' [-Wunused-variable]
-  105 |   j_color col[4] = {J_BLUE, J_RED, J_GREEN, J_PINK};
-      |           ^~~
-../Core/Src/main.c:102:11: warning: unused variable 'val' [-Wunused-variable]
-  102 |   uint8_t val[2] = {0xF0,0x0F};
-      |           ^~~
-In file included from ../Core/Src/main.c:28:
-../Core/Inc/j_st7789.h: At top level:
-../Core/Inc/j_st7789.h:85:13: warning: 'j_flag_set_bounds' defined but not used [-Wunused-variable]
-   85 | static char j_flag_set_bounds = 1;
-      |             ^~~~~~~~~~~~~~~~~
-../Core/Inc/j_st7789.h:84:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
-   84 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
-      |                ^~~~~~~~
-In file included from ../Core/Inc/j_st7789.h:33:
-../Core/Inc/j_fonts.h:233:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
-  233 | static const uint16_t* j_fonts[4] = {
-      |                        ^~~~~~~
-../Core/Inc/j_fonts.h:23:16: warning: 'j_fonts_buffer' defined but not used [-Wunused-variable]
-   23 | static uint8_t j_fonts_buffer[J_FONT_BUFFER_SIZE];
-      |                ^~~~~~~~~~~~~~
-make: *** [Core/Src/subdir.mk:52: Core/Src/j_st7789.o] Error 1
-make: *** Waiting for unfinished jobs....
-"make -j22 all" terminated with exit code 2. Build might be incomplete.
-17:13:33 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
-make -j22 all 
-arm-none-eabi-gcc "../Core/Src/j_st7789.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/j_st7789.d" -MT"Core/Src/j_st7789.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/j_st7789.o"
-../Core/Src/j_st7789.c: In function 'fill_text':
-../Core/Src/j_st7789.c:85:26: warning: comparison between pointer and integer
-   85 |         for(int j = 0; j < j_fonts_height; j++) {
-      |                          ^
-../Core/Src/j_st7789.c:86:30: warning: comparison between pointer and integer
-   86 |             for(int k = 0; k < j_fonts_length; k++) {
-      |                              ^
-../Core/Src/j_st7789.c:87:26: warning: unused variable 'offset' [-Wunused-variable]
-   87 |                 uint16_t offset = 0;
-      |                          ^~~~~~
-../Core/Src/j_st7789.c: In function 'draw_text':
-../Core/Src/j_st7789.c:98:26: warning: initialization discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
-   98 |     uint16_t* char_ptr = char_ptr_ret(ch,font_size);
-      |                          ^~~~~~~~~~~~
-../Core/Src/j_st7789.c:103:72: warning: '<<' in boolean context, did you mean '<'? [-Wint-in-bool-context]
-  103 |             j_color ret_color = (char_ptr[i*j_fonts_length[font_size]] << (j/2)) && 0x8000 == 0x8000 ? FILL_COL : BG_COL;
-      |                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~
-In file included from ../Core/Inc/j_st7789.h:33,
-                 from ../Core/Src/j_st7789.c:7:
-../Core/Inc/j_fonts.h: At top level:
-../Core/Inc/j_fonts.h:233:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
-  233 | static const uint16_t* j_fonts[4] = {
-      |                        ^~~~~~~
-arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: PCB_MOTOR_STM.elf
- 
-arm-none-eabi-size  PCB_MOTOR_STM.elf 
-arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
-   text	   data	    bss	    dec	    hex	filename
-  21000	    136	  41968	  63104	   f680	PCB_MOTOR_STM.elf
-Finished building: default.size.stdout
- 
-Finished building: PCB_MOTOR_STM.list
- 
-17:16:21 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
-make -j22 all 
-arm-none-eabi-gcc "../Core/Src/j_fonts.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/j_fonts.d" -MT"Core/Src/j_fonts.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/j_fonts.o"
-arm-none-eabi-gcc "../Core/Src/j_st7789.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/j_st7789.d" -MT"Core/Src/j_st7789.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/j_st7789.o"
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/j_st7789.c: In function 'fill_text':
-../Core/Src/j_st7789.c:85:26: warning: comparison between pointer and integer
-   85 |         for(int j = 0; j < j_fonts_height; j++) {
-      |                          ^
-../Core/Src/j_st7789.c:86:30: warning: comparison between pointer and integer
-   86 |             for(int k = 0; k < j_fonts_length; k++) {
-      |                              ^
-../Core/Src/j_st7789.c:87:26: warning: unused variable 'offset' [-Wunused-variable]
-   87 |                 uint16_t offset = 0;
-      |                          ^~~~~~
-../Core/Src/j_st7789.c: In function 'draw_text':
-../Core/Src/j_st7789.c:98:26: warning: initialization discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
-   98 |     uint16_t* char_ptr = char_ptr_ret(ch,font_size);
-      |                          ^~~~~~~~~~~~
-../Core/Src/j_st7789.c:103:72: warning: '<<' in boolean context, did you mean '<'? [-Wint-in-bool-context]
-  103 |             j_color ret_color = (char_ptr[i*j_fonts_length[font_size]] << (j/2)) && 0x8000 == 0x8000 ? FILL_COL : BG_COL;
-      |                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~
-../Core/Src/j_fonts.c:4:18: warning: 'ret_arr' defined but not used [-Wunused-variable]
-    4 | static uint16_t* ret_arr;
-      |                  ^~~~~~~
-In file included from ../Core/Src/j_fonts.c:1:
-../Core/Inc/j_fonts.h:23:16: warning: 'j_fonts_buffer' defined but not used [-Wunused-variable]
-   23 | static uint8_t j_fonts_buffer[J_FONT_BUFFER_SIZE];
-      |                ^~~~~~~~~~~~~~
-In file included from ../Core/Inc/j_fonts.h:6:
-../Core/Inc/j_st7789.h:87:17: warning: 'j_master_control' defined but not used [-Wunused-variable]
-   87 | static j_struct j_master_control = {
-      |                 ^~~~~~~~~~~~~~~~
-../Core/Inc/j_st7789.h:85:13: warning: 'j_flag_set_bounds' defined but not used [-Wunused-variable]
-   85 | static char j_flag_set_bounds = 1;
-      |             ^~~~~~~~~~~~~~~~~
-../Core/Inc/j_st7789.h:84:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
-   84 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
-      |                ^~~~~~~~
-In file included from ../Core/Inc/j_st7789.h:33,
-                 from ../Core/Src/j_st7789.c:7:
-../Core/Inc/j_fonts.h: At top level:
-../Core/Inc/j_fonts.h:233:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
-  233 | static const uint16_t* j_fonts[4] = {
-      |                        ^~~~~~~
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:122:9: warning: assignment discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
-  122 |     ret = char_ptr_ret(33+33,J_7X10_FONT);
-      |         ^
-../Core/Src/main.c:106:11: warning: unused variable 'i' [-Wunused-variable]
-  106 |   uint8_t i = 0;
-      |           ^
-../Core/Src/main.c:105:11: warning: unused variable 'col' [-Wunused-variable]
-  105 |   j_color col[4] = {J_BLUE, J_RED, J_GREEN, J_PINK};
-      |           ^~~
-../Core/Src/main.c:102:11: warning: unused variable 'val' [-Wunused-variable]
-  102 |   uint8_t val[2] = {0xF0,0x0F};
-      |           ^~~
-In file included from ../Core/Src/main.c:28:
-../Core/Inc/j_st7789.h: At top level:
-../Core/Inc/j_st7789.h:85:13: warning: 'j_flag_set_bounds' defined but not used [-Wunused-variable]
-   85 | static char j_flag_set_bounds = 1;
-      |             ^~~~~~~~~~~~~~~~~
-../Core/Inc/j_st7789.h:84:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
-   84 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
-      |                ^~~~~~~~
-In file included from ../Core/Inc/j_st7789.h:33:
-../Core/Inc/j_fonts.h:233:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
-  233 | static const uint16_t* j_fonts[4] = {
-      |                        ^~~~~~~
-../Core/Inc/j_fonts.h:23:16: warning: 'j_fonts_buffer' defined but not used [-Wunused-variable]
-   23 | static uint8_t j_fonts_buffer[J_FONT_BUFFER_SIZE];
-      |                ^~~~~~~~~~~~~~
-arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: PCB_MOTOR_STM.elf
- 
-arm-none-eabi-size  PCB_MOTOR_STM.elf 
-arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
-   text	   data	    bss	    dec	    hex	filename
-  20744	    132	  41492	  62368	   f3a0	PCB_MOTOR_STM.elf
-Finished building: default.size.stdout
- 
-Finished building: PCB_MOTOR_STM.list
- 
-17:16:56 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
-make -j22 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:122:9: warning: assignment discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
-  122 |     ret = char_ptr_ret(33+33,J_7X10_FONT);
-      |         ^
-../Core/Src/main.c:106:11: warning: unused variable 'i' [-Wunused-variable]
-  106 |   uint8_t i = 0;
-      |           ^
-../Core/Src/main.c:105:11: warning: unused variable 'col' [-Wunused-variable]
-  105 |   j_color col[4] = {J_BLUE, J_RED, J_GREEN, J_PINK};
-      |           ^~~
-../Core/Src/main.c:102:11: warning: unused variable 'val' [-Wunused-variable]
-  102 |   uint8_t val[2] = {0xF0,0x0F};
-      |           ^~~
-In file included from ../Core/Src/main.c:28:
-../Core/Inc/j_st7789.h: At top level:
-../Core/Inc/j_st7789.h:85:13: warning: 'j_flag_set_bounds' defined but not used [-Wunused-variable]
-   85 | static char j_flag_set_bounds = 1;
-      |             ^~~~~~~~~~~~~~~~~
-../Core/Inc/j_st7789.h:84:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
-   84 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
-      |                ^~~~~~~~
-In file included from ../Core/Inc/j_st7789.h:33:
-../Core/Inc/j_fonts.h:233:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
-  233 | static const uint16_t* j_fonts[4] = {
-      |                        ^~~~~~~
-../Core/Inc/j_fonts.h:23:16: warning: 'j_fonts_buffer' defined but not used [-Wunused-variable]
-   23 | static uint8_t j_fonts_buffer[J_FONT_BUFFER_SIZE];
-      |                ^~~~~~~~~~~~~~
-arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: PCB_MOTOR_STM.elf
- 
-arm-none-eabi-size  PCB_MOTOR_STM.elf 
-arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
-   text	   data	    bss	    dec	    hex	filename
-  20744	    132	  41492	  62368	   f3a0	PCB_MOTOR_STM.elf
-Finished building: default.size.stdout
- 
-Finished building: PCB_MOTOR_STM.list
- 
-17:17:52 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
-make -j22 all 
-arm-none-eabi-gcc "../Core/Src/j_st7789.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/j_st7789.d" -MT"Core/Src/j_st7789.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/j_st7789.o"
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:122:9: warning: assignment discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
-  122 |     ret = char_ptr_ret(33+33,J_7X10_FONT);
-      |         ^
-../Core/Src/j_st7789.c: In function 'fill_text':
-../Core/Src/j_st7789.c:85:26: warning: comparison between pointer and integer
-   85 |         for(int j = 0; j < j_fonts_height; j++) {
-      |                          ^
-../Core/Src/j_st7789.c:86:30: warning: comparison between pointer and integer
-   86 |             for(int k = 0; k < j_fonts_length; k++) {
-      |                              ^
-../Core/Src/j_st7789.c:87:26: warning: unused variable 'offset' [-Wunused-variable]
-   87 |                 uint16_t offset = 0;
-      |                          ^~~~~~
-../Core/Src/j_st7789.c: In function 'draw_text':
-../Core/Src/j_st7789.c:98:26: warning: initialization discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
-   98 |     uint16_t* char_ptr = char_ptr_ret(ch,font_size);
-      |                          ^~~~~~~~~~~~
-../Core/Src/main.c:106:11: warning: unused variable 'i' [-Wunused-variable]
-  106 |   uint8_t i = 0;
-      |           ^
-../Core/Src/main.c:105:11: warning: unused variable 'col' [-Wunused-variable]
-  105 |   j_color col[4] = {J_BLUE, J_RED, J_GREEN, J_PINK};
-      |           ^~~
-../Core/Src/main.c:102:11: warning: unused variable 'val' [-Wunused-variable]
-  102 |   uint8_t val[2] = {0xF0,0x0F};
-      |           ^~~
-../Core/Src/j_st7789.c:103:72: warning: '<<' in boolean context, did you mean '<'? [-Wint-in-bool-context]
-  103 |             j_color ret_color = (char_ptr[i*j_fonts_length[font_size]] << (j/2)) && 0x8000 == 0x8000 ? FILL_COL : BG_COL;
-      |                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~
-In file included from ../Core/Inc/j_st7789.h:33,
-                 from ../Core/Src/j_st7789.c:7:
-../Core/Inc/j_fonts.h: At top level:
-../Core/Inc/j_fonts.h:233:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
-  233 | static const uint16_t* j_fonts[4] = {
-      |                        ^~~~~~~
-In file included from ../Core/Src/main.c:28:
-../Core/Inc/j_st7789.h: At top level:
-../Core/Inc/j_st7789.h:85:13: warning: 'j_flag_set_bounds' defined but not used [-Wunused-variable]
-   85 | static char j_flag_set_bounds = 1;
-      |             ^~~~~~~~~~~~~~~~~
-../Core/Inc/j_st7789.h:84:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
-   84 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
-      |                ^~~~~~~~
-In file included from ../Core/Inc/j_st7789.h:33:
-../Core/Inc/j_fonts.h:233:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
-  233 | static const uint16_t* j_fonts[4] = {
-      |                        ^~~~~~~
-../Core/Inc/j_fonts.h:23:16: warning: 'j_fonts_buffer' defined but not used [-Wunused-variable]
-   23 | static uint8_t j_fonts_buffer[J_FONT_BUFFER_SIZE];
-      |                ^~~~~~~~~~~~~~
-arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: PCB_MOTOR_STM.elf
- 
-arm-none-eabi-size  PCB_MOTOR_STM.elf 
-arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
-   text	   data	    bss	    dec	    hex	filename
-  20744	    132	  41492	  62368	   f3a0	PCB_MOTOR_STM.elf
-Finished building: default.size.stdout
- 
-Finished building: PCB_MOTOR_STM.list
- 
-17:20:34 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
-make -j22 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:120:9: warning: assignment discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
-  120 |     ret = char_ptr_ret(33+33,J_7X10_FONT);
-      |         ^
-../Core/Src/main.c:106:11: warning: unused variable 'i' [-Wunused-variable]
-  106 |   uint8_t i = 0;
-      |           ^
-../Core/Src/main.c:105:11: warning: unused variable 'col' [-Wunused-variable]
-  105 |   j_color col[4] = {J_BLUE, J_RED, J_GREEN, J_PINK};
-      |           ^~~
-../Core/Src/main.c:102:11: warning: unused variable 'val' [-Wunused-variable]
-  102 |   uint8_t val[2] = {0xF0,0x0F};
-      |           ^~~
-In file included from ../Core/Src/main.c:28:
-../Core/Inc/j_st7789.h: At top level:
-../Core/Inc/j_st7789.h:85:13: warning: 'j_flag_set_bounds' defined but not used [-Wunused-variable]
-   85 | static char j_flag_set_bounds = 1;
-      |             ^~~~~~~~~~~~~~~~~
-../Core/Inc/j_st7789.h:84:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
-   84 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
-      |                ^~~~~~~~
-In file included from ../Core/Inc/j_st7789.h:33:
-../Core/Inc/j_fonts.h:233:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
-  233 | static const uint16_t* j_fonts[4] = {
-      |                        ^~~~~~~
-../Core/Inc/j_fonts.h:23:16: warning: 'j_fonts_buffer' defined but not used [-Wunused-variable]
-   23 | static uint8_t j_fonts_buffer[J_FONT_BUFFER_SIZE];
-      |                ^~~~~~~~~~~~~~
-arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: PCB_MOTOR_STM.elf
- 
-arm-none-eabi-size  PCB_MOTOR_STM.elf 
-arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
-   text	   data	    bss	    dec	    hex	filename
-  20996	    136	  41968	  63100	   f67c	PCB_MOTOR_STM.elf
-Finished building: default.size.stdout
- 
-Finished building: PCB_MOTOR_STM.list
- 
-17:23:21 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
-make -j22 all 
-arm-none-eabi-gcc "../Core/Src/j_st7789.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/j_st7789.d" -MT"Core/Src/j_st7789.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/j_st7789.o"
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:120:9: warning: assignment discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
-  120 |     ret = char_ptr_ret(33+33,J_7X10_FONT);
-      |         ^
-../Core/Src/j_st7789.c: In function 'fill_text':
-../Core/Src/j_st7789.c:85:26: warning: comparison between pointer and integer
-   85 |         for(int j = 0; j < j_fonts_height; j++) {
-      |                          ^
-../Core/Src/j_st7789.c:86:30: warning: comparison between pointer and integer
-   86 |             for(int k = 0; k < j_fonts_length; k++) {
-      |                              ^
-../Core/Src/j_st7789.c:87:26: warning: unused variable 'offset' [-Wunused-variable]
-   87 |                 uint16_t offset = 0;
-      |                          ^~~~~~
-../Core/Src/main.c:106:11: warning: unused variable 'i' [-Wunused-variable]
-  106 |   uint8_t i = 0;
-      |           ^
-../Core/Src/main.c:105:11: warning: unused variable 'col' [-Wunused-variable]
-  105 |   j_color col[4] = {J_BLUE, J_RED, J_GREEN, J_PINK};
-      |           ^~~
-../Core/Src/main.c:102:11: warning: unused variable 'val' [-Wunused-variable]
-  102 |   uint8_t val[2] = {0xF0,0x0F};
-      |           ^~~
-../Core/Src/j_st7789.c: In function 'draw_text':
-../Core/Src/j_st7789.c:98:26: warning: initialization discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
-   98 |     uint16_t* char_ptr = char_ptr_ret(ch,font_size);
-      |                          ^~~~~~~~~~~~
-../Core/Src/j_st7789.c:103:47: warning: '<<' in boolean context, did you mean '<'? [-Wint-in-bool-context]
-  103 |             j_color ret_color = ((char_ptr[i] << (j/2)) && 0x8000 == 0x8000) ? FILL_COL : BG_COL;
-      |                                  ~~~~~~~~~~~~~^~~~~~~~~
-In file included from ../Core/Inc/j_st7789.h:33,
-                 from ../Core/Src/j_st7789.c:7:
-../Core/Inc/j_fonts.h: At top level:
-../Core/Inc/j_fonts.h:233:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
-  233 | static const uint16_t* j_fonts[4] = {
-      |                        ^~~~~~~
-In file included from ../Core/Src/main.c:28:
-../Core/Inc/j_st7789.h: At top level:
-../Core/Inc/j_st7789.h:85:13: warning: 'j_flag_set_bounds' defined but not used [-Wunused-variable]
-   85 | static char j_flag_set_bounds = 1;
-      |             ^~~~~~~~~~~~~~~~~
-../Core/Inc/j_st7789.h:84:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
-   84 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
-      |                ^~~~~~~~
-In file included from ../Core/Inc/j_st7789.h:33:
-../Core/Inc/j_fonts.h:233:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
-  233 | static const uint16_t* j_fonts[4] = {
-      |                        ^~~~~~~
-../Core/Inc/j_fonts.h:23:16: warning: 'j_fonts_buffer' defined but not used [-Wunused-variable]
-   23 | static uint8_t j_fonts_buffer[J_FONT_BUFFER_SIZE];
-      |                ^~~~~~~~~~~~~~
-arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: PCB_MOTOR_STM.elf
- 
-arm-none-eabi-size  PCB_MOTOR_STM.elf 
-arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
-   text	   data	    bss	    dec	    hex	filename
-  20964	    136	  41968	  63068	   f65c	PCB_MOTOR_STM.elf
-Finished building: default.size.stdout
- 
-Finished building: PCB_MOTOR_STM.list
- 
-17:24:08 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
-make -j22 all 
-arm-none-eabi-gcc "../Core/Src/j_st7789.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/j_st7789.d" -MT"Core/Src/j_st7789.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/j_st7789.o"
-../Core/Src/j_st7789.c: In function 'fill_text':
-../Core/Src/j_st7789.c:85:26: warning: comparison between pointer and integer
-   85 |         for(int j = 0; j < j_fonts_height; j++) {
-      |                          ^
-../Core/Src/j_st7789.c:86:30: warning: comparison between pointer and integer
-   86 |             for(int k = 0; k < j_fonts_length; k++) {
-      |                              ^
-../Core/Src/j_st7789.c:87:26: warning: unused variable 'offset' [-Wunused-variable]
-   87 |                 uint16_t offset = 0;
-      |                          ^~~~~~
-../Core/Src/j_st7789.c: In function 'draw_text':
-../Core/Src/j_st7789.c:98:26: warning: initialization discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
-   98 |     uint16_t* char_ptr = char_ptr_ret(ch,font_size);
-      |                          ^~~~~~~~~~~~
-../Core/Src/j_st7789.c:103:57: warning: suggest parentheses around comparison in operand of '&' [-Wparentheses]
-  103 |             j_color ret_color = ((char_ptr[i] << (j/2)) & 0x8000 == 0x8000) ? FILL_COL : BG_COL;
-      |                                                         ^
-In file included from ../Core/Inc/j_st7789.h:33,
-                 from ../Core/Src/j_st7789.c:7:
-../Core/Inc/j_fonts.h: At top level:
-../Core/Inc/j_fonts.h:233:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
-  233 | static const uint16_t* j_fonts[4] = {
-      |                        ^~~~~~~
-arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: PCB_MOTOR_STM.elf
- 
-arm-none-eabi-size  PCB_MOTOR_STM.elf 
-arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
-   text	   data	    bss	    dec	    hex	filename
-  20968	    136	  41968	  63072	   f660	PCB_MOTOR_STM.elf
-Finished building: default.size.stdout
- 
-Finished building: PCB_MOTOR_STM.list
- 
-17:25:02 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
-make -j22 all 
-arm-none-eabi-gcc "../Core/Src/j_st7789.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/j_st7789.d" -MT"Core/Src/j_st7789.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/j_st7789.o"
-../Core/Src/j_st7789.c: In function 'fill_text':
-../Core/Src/j_st7789.c:85:26: warning: comparison between pointer and integer
-   85 |         for(int j = 0; j < j_fonts_height; j++) {
-      |                          ^
-../Core/Src/j_st7789.c:86:30: warning: comparison between pointer and integer
-   86 |             for(int k = 0; k < j_fonts_length; k++) {
-      |                              ^
-../Core/Src/j_st7789.c:87:26: warning: unused variable 'offset' [-Wunused-variable]
-   87 |                 uint16_t offset = 0;
-      |                          ^~~~~~
-../Core/Src/j_st7789.c: In function 'draw_text':
-../Core/Src/j_st7789.c:98:26: warning: initialization discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
-   98 |     uint16_t* char_ptr = char_ptr_ret(ch,font_size);
-      |                          ^~~~~~~~~~~~
-In file included from ../Core/Inc/j_st7789.h:33,
-                 from ../Core/Src/j_st7789.c:7:
-../Core/Inc/j_fonts.h: At top level:
-../Core/Inc/j_fonts.h:233:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
-  233 | static const uint16_t* j_fonts[4] = {
-      |                        ^~~~~~~
-arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: PCB_MOTOR_STM.elf
- 
-arm-none-eabi-size  PCB_MOTOR_STM.elf 
-arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
-   text	   data	    bss	    dec	    hex	filename
-  20992	    136	  41968	  63096	   f678	PCB_MOTOR_STM.elf
-Finished building: default.size.stdout
- 
-Finished building: PCB_MOTOR_STM.list
- 
-17:25:58 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
-make -j22 all 
-arm-none-eabi-gcc "../Core/Src/j_st7789.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/j_st7789.d" -MT"Core/Src/j_st7789.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/j_st7789.o"
-../Core/Src/j_st7789.c: In function 'fill_text':
-../Core/Src/j_st7789.c:85:26: warning: comparison between pointer and integer
-   85 |         for(int j = 0; j < j_fonts_height; j++) {
-      |                          ^
-../Core/Src/j_st7789.c:86:30: warning: comparison between pointer and integer
-   86 |             for(int k = 0; k < j_fonts_length; k++) {
-      |                              ^
-../Core/Src/j_st7789.c:87:26: warning: unused variable 'offset' [-Wunused-variable]
-   87 |                 uint16_t offset = 0;
-      |                          ^~~~~~
-../Core/Src/j_st7789.c: In function 'draw_text':
-../Core/Src/j_st7789.c:98:26: warning: initialization discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
-   98 |     uint16_t* char_ptr = char_ptr_ret(ch,font_size);
-      |                          ^~~~~~~~~~~~
-In file included from ../Core/Inc/j_st7789.h:33,
-                 from ../Core/Src/j_st7789.c:7:
-../Core/Inc/j_fonts.h: At top level:
-../Core/Inc/j_fonts.h:233:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
-  233 | static const uint16_t* j_fonts[4] = {
-      |                        ^~~~~~~
-arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: PCB_MOTOR_STM.elf
- 
-arm-none-eabi-size  PCB_MOTOR_STM.elf 
-arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
-   text	   data	    bss	    dec	    hex	filename
-  20996	    136	  41968	  63100	   f67c	PCB_MOTOR_STM.elf
-Finished building: default.size.stdout
- 
-Finished building: PCB_MOTOR_STM.list
- 
-17:30:47 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
-make -j22 all 
-arm-none-eabi-gcc "../Core/Src/j_st7789.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/j_st7789.d" -MT"Core/Src/j_st7789.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/j_st7789.o"
-../Core/Src/j_st7789.c: In function 'fill_text':
-../Core/Src/j_st7789.c:85:26: warning: comparison between pointer and integer
-   85 |         for(int j = 0; j < j_fonts_height; j++) {
-      |                          ^
-../Core/Src/j_st7789.c:86:30: warning: comparison between pointer and integer
-   86 |             for(int k = 0; k < j_fonts_length; k++) {
-      |                              ^
-../Core/Src/j_st7789.c:87:26: warning: unused variable 'offset' [-Wunused-variable]
-   87 |                 uint16_t offset = 0;
-      |                          ^~~~~~
-../Core/Src/j_st7789.c: In function 'draw_text':
-../Core/Src/j_st7789.c:98:26: warning: initialization discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
-   98 |     uint16_t* char_ptr = char_ptr_ret(ch,font_size);
-      |                          ^~~~~~~~~~~~
-In file included from ../Core/Inc/j_st7789.h:33,
-                 from ../Core/Src/j_st7789.c:7:
-../Core/Inc/j_fonts.h: At top level:
-../Core/Inc/j_fonts.h:233:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
-  233 | static const uint16_t* j_fonts[4] = {
-      |                        ^~~~~~~
-arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: PCB_MOTOR_STM.elf
- 
-arm-none-eabi-size  PCB_MOTOR_STM.elf 
-arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
-   text	   data	    bss	    dec	    hex	filename
-  20996	    136	  41968	  63100	   f67c	PCB_MOTOR_STM.elf
-Finished building: default.size.stdout
- 
-Finished building: PCB_MOTOR_STM.list
- 
-17:34:30 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
-make -j22 all 
-arm-none-eabi-gcc "../Core/Src/j_st7789.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/j_st7789.d" -MT"Core/Src/j_st7789.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/j_st7789.o"
-../Core/Src/j_st7789.c: In function 'fill_text':
-../Core/Src/j_st7789.c:85:26: warning: comparison between pointer and integer
-   85 |         for(int j = 0; j < j_fonts_height; j++) {
-      |                          ^
-../Core/Src/j_st7789.c:86:30: warning: comparison between pointer and integer
-   86 |             for(int k = 0; k < j_fonts_length; k++) {
-      |                              ^
-../Core/Src/j_st7789.c:87:26: warning: unused variable 'offset' [-Wunused-variable]
-   87 |                 uint16_t offset = 0;
-      |                          ^~~~~~
-../Core/Src/j_st7789.c: In function 'draw_text':
-../Core/Src/j_st7789.c:98:26: warning: initialization discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
-   98 |     uint16_t* char_ptr = char_ptr_ret(ch,font_size);
-      |                          ^~~~~~~~~~~~
-In file included from ../Core/Inc/j_st7789.h:33,
-                 from ../Core/Src/j_st7789.c:7:
-../Core/Inc/j_fonts.h: At top level:
-../Core/Inc/j_fonts.h:233:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
-  233 | static const uint16_t* j_fonts[4] = {
-      |                        ^~~~~~~
-arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: PCB_MOTOR_STM.elf
- 
-arm-none-eabi-size  PCB_MOTOR_STM.elf 
-arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
-   text	   data	    bss	    dec	    hex	filename
-  21000	    136	  41968	  63104	   f680	PCB_MOTOR_STM.elf
-Finished building: default.size.stdout
- 
-Finished building: PCB_MOTOR_STM.list
- 
-17:35:50 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
-make -j22 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:116:17: error: 'J_11X18_FONT' undeclared (first use in this function); did you mean 'J_11x18_FONT'?
-  116 |   draw_text('A',J_11X18_FONT,J_BLACK);
-      |                 ^~~~~~~~~~~~
-      |                 J_11x18_FONT
-../Core/Src/main.c:116:17: note: each undeclared identifier is reported only once for each function it appears in
-../Core/Src/main.c:120:9: warning: assignment discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
-  120 |     ret = char_ptr_ret(33+33,J_7X10_FONT);
-      |         ^
-../Core/Src/main.c:106:11: warning: unused variable 'i' [-Wunused-variable]
-  106 |   uint8_t i = 0;
-      |           ^
-../Core/Src/main.c:105:11: warning: unused variable 'col' [-Wunused-variable]
-  105 |   j_color col[4] = {J_BLUE, J_RED, J_GREEN, J_PINK};
-      |           ^~~
-../Core/Src/main.c:102:11: warning: unused variable 'val' [-Wunused-variable]
-  102 |   uint8_t val[2] = {0xF0,0x0F};
-      |           ^~~
-In file included from ../Core/Src/main.c:28:
-../Core/Inc/j_st7789.h: At top level:
-../Core/Inc/j_st7789.h:85:13: warning: 'j_flag_set_bounds' defined but not used [-Wunused-variable]
-   85 | static char j_flag_set_bounds = 1;
-      |             ^~~~~~~~~~~~~~~~~
-../Core/Inc/j_st7789.h:84:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
-   84 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
-      |                ^~~~~~~~
-In file included from ../Core/Inc/j_st7789.h:33:
-../Core/Inc/j_fonts.h:233:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
-  233 | static const uint16_t* j_fonts[4] = {
-      |                        ^~~~~~~
-../Core/Inc/j_fonts.h:23:16: warning: 'j_fonts_buffer' defined but not used [-Wunused-variable]
-   23 | static uint8_t j_fonts_buffer[J_FONT_BUFFER_SIZE];
-      |                ^~~~~~~~~~~~~~
-make: *** [Core/Src/subdir.mk:52: Core/Src/main.o] Error 1
-"make -j22 all" terminated with exit code 2. Build might be incomplete.
-17:36:25 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
-make -j22 all 
-arm-none-eabi-gcc "../Core/Src/j_fonts.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/j_fonts.d" -MT"Core/Src/j_fonts.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/j_fonts.o"
-arm-none-eabi-gcc "../Core/Src/j_st7789.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/j_st7789.d" -MT"Core/Src/j_st7789.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/j_st7789.o"
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/j_fonts.c:4:18: warning: 'ret_arr' defined but not used [-Wunused-variable]
-    4 | static uint16_t* ret_arr;
-      |                  ^~~~~~~
-In file included from ../Core/Src/j_fonts.c:1:
-../Core/Inc/j_fonts.h:23:16: warning: 'j_fonts_buffer' defined but not used [-Wunused-variable]
-   23 | static uint8_t j_fonts_buffer[J_FONT_BUFFER_SIZE];
-      |                ^~~~~~~~~~~~~~
-In file included from ../Core/Inc/j_fonts.h:6:
-../Core/Inc/j_st7789.h:87:17: warning: 'j_master_control' defined but not used [-Wunused-variable]
-   87 | static j_struct j_master_control = {
-      |                 ^~~~~~~~~~~~~~~~
-../Core/Inc/j_st7789.h:85:13: warning: 'j_flag_set_bounds' defined but not used [-Wunused-variable]
-   85 | static char j_flag_set_bounds = 1;
-      |             ^~~~~~~~~~~~~~~~~
-../Core/Inc/j_st7789.h:84:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
-   84 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
-      |                ^~~~~~~~
-../Core/Src/j_st7789.c: In function 'fill_text':
-../Core/Src/j_st7789.c:85:26: warning: comparison between pointer and integer
-   85 |         for(int j = 0; j < j_fonts_height; j++) {
-      |                          ^
-../Core/Src/j_st7789.c:86:30: warning: comparison between pointer and integer
-   86 |             for(int k = 0; k < j_fonts_length; k++) {
-      |                              ^
-../Core/Src/j_st7789.c:87:26: warning: unused variable 'offset' [-Wunused-variable]
-   87 |                 uint16_t offset = 0;
-      |                          ^~~~~~
-../Core/Src/j_st7789.c: In function 'draw_text':
-../Core/Src/j_st7789.c:98:26: warning: initialization discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
-   98 |     uint16_t* char_ptr = char_ptr_ret(ch,font_size);
-      |                          ^~~~~~~~~~~~
-In file included from ../Core/Inc/j_st7789.h:33,
-                 from ../Core/Src/j_st7789.c:7:
-../Core/Inc/j_fonts.h: At top level:
-../Core/Src/main.c: In function 'main':
-../Core/Inc/j_fonts.h:233:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
-  233 | static const uint16_t* j_fonts[4] = {
-      |                        ^~~~~~~
-../Core/Src/main.c:120:9: warning: assignment discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
-  120 |     ret = char_ptr_ret(33+33,J_7X10_FONT);
-      |         ^
-../Core/Src/main.c:106:11: warning: unused variable 'i' [-Wunused-variable]
-  106 |   uint8_t i = 0;
-      |           ^
-../Core/Src/main.c:105:11: warning: unused variable 'col' [-Wunused-variable]
-  105 |   j_color col[4] = {J_BLUE, J_RED, J_GREEN, J_PINK};
-      |           ^~~
-../Core/Src/main.c:102:11: warning: unused variable 'val' [-Wunused-variable]
-  102 |   uint8_t val[2] = {0xF0,0x0F};
-      |           ^~~
-In file included from ../Core/Src/main.c:28:
-../Core/Inc/j_st7789.h: At top level:
-../Core/Inc/j_st7789.h:85:13: warning: 'j_flag_set_bounds' defined but not used [-Wunused-variable]
-   85 | static char j_flag_set_bounds = 1;
-      |             ^~~~~~~~~~~~~~~~~
-../Core/Inc/j_st7789.h:84:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
-   84 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
-      |                ^~~~~~~~
-In file included from ../Core/Inc/j_st7789.h:33:
-../Core/Inc/j_fonts.h:233:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
-  233 | static const uint16_t* j_fonts[4] = {
-      |                        ^~~~~~~
-../Core/Inc/j_fonts.h:23:16: warning: 'j_fonts_buffer' defined but not used [-Wunused-variable]
-   23 | static uint8_t j_fonts_buffer[J_FONT_BUFFER_SIZE];
-      |                ^~~~~~~~~~~~~~
-arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: PCB_MOTOR_STM.elf
- 
-arm-none-eabi-size  PCB_MOTOR_STM.elf 
-arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
-   text	   data	    bss	    dec	    hex	filename
-  21000	    136	  41968	  63104	   f680	PCB_MOTOR_STM.elf
-Finished building: default.size.stdout
- 
-Finished building: PCB_MOTOR_STM.list
- 
-17:38:25 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
-make -j22 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:120:9: warning: assignment discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
-  120 |     ret = char_ptr_ret(33+33,J_7X10_FONT);
-      |         ^
-../Core/Src/main.c:106:11: warning: unused variable 'i' [-Wunused-variable]
-  106 |   uint8_t i = 0;
-      |           ^
-../Core/Src/main.c:105:11: warning: unused variable 'col' [-Wunused-variable]
-  105 |   j_color col[4] = {J_BLUE, J_RED, J_GREEN, J_PINK};
-      |           ^~~
-../Core/Src/main.c:102:11: warning: unused variable 'val' [-Wunused-variable]
-  102 |   uint8_t val[2] = {0xF0,0x0F};
-      |           ^~~
-In file included from ../Core/Src/main.c:28:
-../Core/Inc/j_st7789.h: At top level:
-../Core/Inc/j_st7789.h:85:13: warning: 'j_flag_set_bounds' defined but not used [-Wunused-variable]
-   85 | static char j_flag_set_bounds = 1;
-      |             ^~~~~~~~~~~~~~~~~
-../Core/Inc/j_st7789.h:84:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
-   84 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
-      |                ^~~~~~~~
-In file included from ../Core/Inc/j_st7789.h:33:
-../Core/Inc/j_fonts.h:233:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
-  233 | static const uint16_t* j_fonts[4] = {
-      |                        ^~~~~~~
-../Core/Inc/j_fonts.h:23:16: warning: 'j_fonts_buffer' defined but not used [-Wunused-variable]
-   23 | static uint8_t j_fonts_buffer[J_FONT_BUFFER_SIZE];
-      |                ^~~~~~~~~~~~~~
-arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: PCB_MOTOR_STM.elf
- 
-arm-none-eabi-size  PCB_MOTOR_STM.elf 
-arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
-   text	   data	    bss	    dec	    hex	filename
-  21000	    136	  41968	  63104	   f680	PCB_MOTOR_STM.elf
-Finished building: default.size.stdout
- 
-Finished building: PCB_MOTOR_STM.list
- 
-17:47:57 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
+18:30:54 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
 make -j22 all 
 arm-none-eabi-size  PCB_MOTOR_STM.elf 
-   text	   data	    bss	    dec	    hex	filename
-  21000	    136	  41968	  63104	   f680	PCB_MOTOR_STM.elf
-Finished building: default.size.stdout
- 
-17:48:58 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
-make -j22 all 
-arm-none-eabi-size  PCB_MOTOR_STM.elf 
-   text	   data	    bss	    dec	    hex	filename
-  21000	    136	  41968	  63104	   f680	PCB_MOTOR_STM.elf
-Finished building: default.size.stdout
- 
-17:52:02 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
-make -j22 all 
-arm-none-eabi-gcc "../Core/Src/j_st7789.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/j_st7789.d" -MT"Core/Src/j_st7789.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/j_st7789.o"
-../Core/Src/j_st7789.c: In function 'fill_text':
-../Core/Src/j_st7789.c:85:26: warning: comparison between pointer and integer
-   85 |         for(int j = 0; j < j_fonts_height; j++) {
-      |                          ^
-../Core/Src/j_st7789.c:86:30: warning: comparison between pointer and integer
-   86 |             for(int k = 0; k < j_fonts_length; k++) {
-      |                              ^
-../Core/Src/j_st7789.c:87:26: warning: unused variable 'offset' [-Wunused-variable]
-   87 |                 uint16_t offset = 0;
-      |                          ^~~~~~
-../Core/Src/j_st7789.c: In function 'draw_text':
-../Core/Src/j_st7789.c:98:26: warning: initialization discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
-   98 |     uint16_t* char_ptr = char_ptr_ret(ch,font_size);
-      |                          ^~~~~~~~~~~~
-In file included from ../Core/Inc/j_st7789.h:33,
-                 from ../Core/Src/j_st7789.c:7:
-../Core/Inc/j_fonts.h: At top level:
-../Core/Inc/j_fonts.h:233:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
-  233 | static const uint16_t* j_fonts[4] = {
-      |                        ^~~~~~~
-arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: PCB_MOTOR_STM.elf
- 
-arm-none-eabi-size  PCB_MOTOR_STM.elf 
-arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
-   text	   data	    bss	    dec	    hex	filename
-  21004	    136	  41968	  63108	   f684	PCB_MOTOR_STM.elf
-Finished building: default.size.stdout
- 
-Finished building: PCB_MOTOR_STM.list
- 
-17:57:07 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
-make -j22 all 
-arm-none-eabi-gcc "../Core/Src/j_st7789.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/j_st7789.d" -MT"Core/Src/j_st7789.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/j_st7789.o"
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/j_st7789.c: In function 'fill_text':
-../Core/Src/j_st7789.c:86:10: warning: assignment to 'uint8_t' {aka 'unsigned char'} from 'const int *' makes integer from pointer without a cast [-Wint-conversion]
-   86 |         x+= j_fonts_length + 10;
-      |          ^~
-../Core/Src/j_st7789.c: In function 'draw_text':
-../Core/Src/j_st7789.c:94:26: warning: initialization discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
-   94 |     uint16_t* char_ptr = char_ptr_ret(ch,font_size);
-      |                          ^~~~~~~~~~~~
-In file included from ../Core/Inc/j_st7789.h:33,
-                 from ../Core/Src/j_st7789.c:7:
-../Core/Inc/j_fonts.h: At top level:
-../Core/Inc/j_fonts.h:233:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
-  233 | static const uint16_t* j_fonts[4] = {
-      |                        ^~~~~~~
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:116:3: error: too few arguments to function 'fill_text'
-  116 |   fill_text(50,50,"ABC",J_11X18_FONT);
-      |   ^~~~~~~~~
-In file included from ../Core/Src/main.c:28:
-../Core/Inc/j_st7789.h:99:6: note: declared here
-   99 | void fill_text(uint8_t x, uint8_t y, char* str, uint8_t font_size, j_color color);
-      |      ^~~~~~~~~
-../Core/Src/main.c:120:9: warning: assignment discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
-  120 |     ret = char_ptr_ret(33+33,J_7X10_FONT);
-      |         ^
-../Core/Src/main.c:106:11: warning: unused variable 'i' [-Wunused-variable]
-  106 |   uint8_t i = 0;
-      |           ^
-../Core/Src/main.c:105:11: warning: unused variable 'col' [-Wunused-variable]
-  105 |   j_color col[4] = {J_BLUE, J_RED, J_GREEN, J_PINK};
-      |           ^~~
-../Core/Src/main.c:102:11: warning: unused variable 'val' [-Wunused-variable]
-  102 |   uint8_t val[2] = {0xF0,0x0F};
-      |           ^~~
-../Core/Inc/j_st7789.h: At top level:
-../Core/Inc/j_st7789.h:85:13: warning: 'j_flag_set_bounds' defined but not used [-Wunused-variable]
-   85 | static char j_flag_set_bounds = 1;
-      |             ^~~~~~~~~~~~~~~~~
-../Core/Inc/j_st7789.h:84:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
-   84 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
-      |                ^~~~~~~~
-In file included from ../Core/Inc/j_st7789.h:33:
-../Core/Inc/j_fonts.h:233:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
-  233 | static const uint16_t* j_fonts[4] = {
-      |                        ^~~~~~~
-../Core/Inc/j_fonts.h:23:16: warning: 'j_fonts_buffer' defined but not used [-Wunused-variable]
-   23 | static uint8_t j_fonts_buffer[J_FONT_BUFFER_SIZE];
-      |                ^~~~~~~~~~~~~~
-make: *** [Core/Src/subdir.mk:52: Core/Src/main.o] Error 1
-make: *** Waiting for unfinished jobs....
-"make -j22 all" terminated with exit code 2. Build might be incomplete.
-17:57:38 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
-make -j22 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:120:9: warning: assignment discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
-  120 |     ret = char_ptr_ret(33+33,J_7X10_FONT);
-      |         ^
-../Core/Src/main.c:106:11: warning: unused variable 'i' [-Wunused-variable]
-  106 |   uint8_t i = 0;
-      |           ^
-../Core/Src/main.c:105:11: warning: unused variable 'col' [-Wunused-variable]
-  105 |   j_color col[4] = {J_BLUE, J_RED, J_GREEN, J_PINK};
-      |           ^~~
-../Core/Src/main.c:102:11: warning: unused variable 'val' [-Wunused-variable]
-  102 |   uint8_t val[2] = {0xF0,0x0F};
-      |           ^~~
-In file included from ../Core/Src/main.c:28:
-../Core/Inc/j_st7789.h: At top level:
-../Core/Inc/j_st7789.h:85:13: warning: 'j_flag_set_bounds' defined but not used [-Wunused-variable]
-   85 | static char j_flag_set_bounds = 1;
-      |             ^~~~~~~~~~~~~~~~~
-../Core/Inc/j_st7789.h:84:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
-   84 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
-      |                ^~~~~~~~
-In file included from ../Core/Inc/j_st7789.h:33:
-../Core/Inc/j_fonts.h:233:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
-  233 | static const uint16_t* j_fonts[4] = {
-      |                        ^~~~~~~
-../Core/Inc/j_fonts.h:23:16: warning: 'j_fonts_buffer' defined but not used [-Wunused-variable]
-   23 | static uint8_t j_fonts_buffer[J_FONT_BUFFER_SIZE];
-      |                ^~~~~~~~~~~~~~
-arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: PCB_MOTOR_STM.elf
- 
-arm-none-eabi-size  PCB_MOTOR_STM.elf 
-arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
-   text	   data	    bss	    dec	    hex	filename
-  21188	    136	  41968	  63292	   f73c	PCB_MOTOR_STM.elf
-Finished building: default.size.stdout
- 
-Finished building: PCB_MOTOR_STM.list
- 
-17:59:51 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
-make -j22 all 
-arm-none-eabi-gcc "../Core/Src/j_st7789.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/j_st7789.d" -MT"Core/Src/j_st7789.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/j_st7789.o"
-../Core/Src/j_st7789.c: In function 'fill_text':
-../Core/Src/j_st7789.c:86:10: warning: assignment to 'uint8_t' {aka 'unsigned char'} from 'const int *' makes integer from pointer without a cast [-Wint-conversion]
-   86 |         x+= (j_fonts_length + 10);
-      |          ^~
-../Core/Src/j_st7789.c: In function 'draw_text':
-../Core/Src/j_st7789.c:95:26: warning: initialization discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
-   95 |     uint16_t* char_ptr = char_ptr_ret(ch,font_size);
-      |                          ^~~~~~~~~~~~
-In file included from ../Core/Inc/j_st7789.h:33,
-                 from ../Core/Src/j_st7789.c:7:
-../Core/Inc/j_fonts.h: At top level:
-../Core/Inc/j_fonts.h:233:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
-  233 | static const uint16_t* j_fonts[4] = {
-      |                        ^~~~~~~
-arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: PCB_MOTOR_STM.elf
- 
-arm-none-eabi-size  PCB_MOTOR_STM.elf 
-arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
-   text	   data	    bss	    dec	    hex	filename
-  21184	    136	  41968	  63288	   f738	PCB_MOTOR_STM.elf
-Finished building: default.size.stdout
- 
-Finished building: PCB_MOTOR_STM.list
- 
-18:01:29 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
-make -j22 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:121:9: warning: assignment discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
-  121 |     ret = char_ptr_ret(33+33,J_7X10_FONT);
-      |         ^
-../Core/Src/main.c:106:11: warning: unused variable 'i' [-Wunused-variable]
-  106 |   uint8_t i = 0;
-      |           ^
-../Core/Src/main.c:105:11: warning: unused variable 'col' [-Wunused-variable]
-  105 |   j_color col[4] = {J_BLUE, J_RED, J_GREEN, J_PINK};
-      |           ^~~
-../Core/Src/main.c:102:11: warning: unused variable 'val' [-Wunused-variable]
-  102 |   uint8_t val[2] = {0xF0,0x0F};
-      |           ^~~
-In file included from ../Core/Src/main.c:28:
-../Core/Inc/j_st7789.h: At top level:
-../Core/Inc/j_st7789.h:85:13: warning: 'j_flag_set_bounds' defined but not used [-Wunused-variable]
-   85 | static char j_flag_set_bounds = 1;
-      |             ^~~~~~~~~~~~~~~~~
-../Core/Inc/j_st7789.h:84:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
-   84 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
-      |                ^~~~~~~~
-In file included from ../Core/Inc/j_st7789.h:33:
-../Core/Inc/j_fonts.h:233:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
-  233 | static const uint16_t* j_fonts[4] = {
-      |                        ^~~~~~~
-../Core/Inc/j_fonts.h:23:16: warning: 'j_fonts_buffer' defined but not used [-Wunused-variable]
-   23 | static uint8_t j_fonts_buffer[J_FONT_BUFFER_SIZE];
-      |                ^~~~~~~~~~~~~~
-arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: PCB_MOTOR_STM.elf
- 
-arm-none-eabi-size  PCB_MOTOR_STM.elf 
-arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
-   text	   data	    bss	    dec	    hex	filename
-  21004	    136	  41968	  63108	   f684	PCB_MOTOR_STM.elf
-Finished building: default.size.stdout
- 
-Finished building: PCB_MOTOR_STM.list
- 
-18:02:53 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
-make -j22 all 
-arm-none-eabi-gcc "../Core/Src/j_st7789.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/j_st7789.d" -MT"Core/Src/j_st7789.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/j_st7789.o"
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:122:9: warning: assignment discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
-  122 |     ret = char_ptr_ret(33+33,J_7X10_FONT);
-      |         ^
-../Core/Src/j_st7789.c: In function 'fill_text':
-../Core/Src/j_st7789.c:86:10: warning: assignment to 'uint8_t' {aka 'unsigned char'} from 'const int *' makes integer from pointer without a cast [-Wint-conversion]
-   86 |         x+= (j_fonts_length + 10);
-      |          ^~
-../Core/Src/j_st7789.c: In function 'draw_text':
-../Core/Src/j_st7789.c:95:26: warning: initialization discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
-   95 |     uint16_t* char_ptr = char_ptr_ret(ch,font_size);
-      |                          ^~~~~~~~~~~~
-../Core/Src/main.c:106:11: warning: unused variable 'i' [-Wunused-variable]
-  106 |   uint8_t i = 0;
-      |           ^
-../Core/Src/main.c:105:11: warning: unused variable 'col' [-Wunused-variable]
-  105 |   j_color col[4] = {J_BLUE, J_RED, J_GREEN, J_PINK};
-      |           ^~~
-../Core/Src/main.c:102:11: warning: unused variable 'val' [-Wunused-variable]
-  102 |   uint8_t val[2] = {0xF0,0x0F};
-      |           ^~~
-In file included from ../Core/Inc/j_st7789.h:33,
-                 from ../Core/Src/j_st7789.c:7:
-../Core/Inc/j_fonts.h: At top level:
-../Core/Inc/j_fonts.h:233:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
-  233 | static const uint16_t* j_fonts[4] = {
-      |                        ^~~~~~~
-In file included from ../Core/Src/main.c:28:
-../Core/Inc/j_st7789.h: At top level:
-../Core/Inc/j_st7789.h:85:13: warning: 'j_flag_set_bounds' defined but not used [-Wunused-variable]
-   85 | static char j_flag_set_bounds = 1;
-      |             ^~~~~~~~~~~~~~~~~
-../Core/Inc/j_st7789.h:84:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
-   84 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
-      |                ^~~~~~~~
-In file included from ../Core/Inc/j_st7789.h:33:
-../Core/Inc/j_fonts.h:233:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
-  233 | static const uint16_t* j_fonts[4] = {
-      |                        ^~~~~~~
-../Core/Inc/j_fonts.h:23:16: warning: 'j_fonts_buffer' defined but not used [-Wunused-variable]
-   23 | static uint8_t j_fonts_buffer[J_FONT_BUFFER_SIZE];
-      |                ^~~~~~~~~~~~~~
-arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: PCB_MOTOR_STM.elf
- 
-arm-none-eabi-size  PCB_MOTOR_STM.elf 
-arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
-   text	   data	    bss	    dec	    hex	filename
-  21184	    136	  41968	  63288	   f738	PCB_MOTOR_STM.elf
-Finished building: default.size.stdout
- 
-Finished building: PCB_MOTOR_STM.list
- 
-18:03:55 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
-make -j22 all 
-arm-none-eabi-gcc "../Core/Src/j_st7789.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/j_st7789.d" -MT"Core/Src/j_st7789.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/j_st7789.o"
-../Core/Src/j_st7789.c: In function 'fill_text':
-../Core/Src/j_st7789.c:86:10: warning: assignment to 'uint8_t' {aka 'unsigned char'} from 'const int *' makes integer from pointer without a cast [-Wint-conversion]
-   86 |         x+= (j_fonts_length + 5);
-      |          ^~
-../Core/Src/j_st7789.c: In function 'draw_text':
-../Core/Src/j_st7789.c:95:26: warning: initialization discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
-   95 |     uint16_t* char_ptr = char_ptr_ret(ch,font_size);
-      |                          ^~~~~~~~~~~~
-In file included from ../Core/Inc/j_st7789.h:33,
-                 from ../Core/Src/j_st7789.c:7:
-../Core/Inc/j_fonts.h: At top level:
-../Core/Inc/j_fonts.h:233:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
-  233 | static const uint16_t* j_fonts[4] = {
-      |                        ^~~~~~~
-arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: PCB_MOTOR_STM.elf
- 
-arm-none-eabi-size  PCB_MOTOR_STM.elf 
-arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
-   text	   data	    bss	    dec	    hex	filename
-  21184	    136	  41968	  63288	   f738	PCB_MOTOR_STM.elf
-Finished building: default.size.stdout
- 
-Finished building: PCB_MOTOR_STM.list
- 
-18:04:12 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
-make -j22 all 
-arm-none-eabi-size  PCB_MOTOR_STM.elf 
-   text	   data	    bss	    dec	    hex	filename
-  21184	    136	  41968	  63288	   f738	PCB_MOTOR_STM.elf
-Finished building: default.size.stdout
- 
-18:06:29 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
-make -j22 all 
-arm-none-eabi-gcc "../Core/Src/j_st7789.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/j_st7789.d" -MT"Core/Src/j_st7789.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/j_st7789.o"
-../Core/Src/j_st7789.c: In function 'draw_text':
-../Core/Src/j_st7789.c:96:26: warning: initialization discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
-   96 |     uint16_t* char_ptr = char_ptr_ret(ch,font_size);
-      |                          ^~~~~~~~~~~~
-In file included from ../Core/Inc/j_st7789.h:33,
-                 from ../Core/Src/j_st7789.c:7:
-../Core/Inc/j_fonts.h: At top level:
-../Core/Inc/j_fonts.h:233:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
-  233 | static const uint16_t* j_fonts[4] = {
-      |                        ^~~~~~~
-arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: PCB_MOTOR_STM.elf
- 
-arm-none-eabi-size  PCB_MOTOR_STM.elf 
-arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
-   text	   data	    bss	    dec	    hex	filename
-  21200	    136	  41968	  63304	   f748	PCB_MOTOR_STM.elf
-Finished building: default.size.stdout
- 
-Finished building: PCB_MOTOR_STM.list
- 
-18:13:51 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
-make -j22 all 
-arm-none-eabi-gcc "../Core/Src/fonts.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/fonts.d" -MT"Core/Src/fonts.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/fonts.o"
-arm-none-eabi-gcc "../Core/Src/j_fonts.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/j_fonts.d" -MT"Core/Src/j_fonts.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/j_fonts.o"
-arm-none-eabi-gcc "../Core/Src/j_st7789.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/j_st7789.d" -MT"Core/Src/j_st7789.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/j_st7789.o"
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/j_st7789.c: In function 'draw_text':
-../Core/Src/j_st7789.c:96:26: warning: initialization discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
-   96 |     uint16_t* char_ptr = char_ptr_ret(ch,font_size);
-      |                          ^~~~~~~~~~~~
-In file included from ../Core/Inc/j_st7789.h:33,
-                 from ../Core/Src/j_st7789.c:7:
-../Core/Inc/j_fonts.h: At top level:
-../Core/Inc/j_fonts.h:336:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
-  336 | static const uint16_t* j_fonts[4] = {
-      |                        ^~~~~~~
-../Core/Src/j_fonts.c:4:18: warning: 'ret_arr' defined but not used [-Wunused-variable]
-    4 | static uint16_t* ret_arr;
-      |                  ^~~~~~~
-In file included from ../Core/Src/j_fonts.c:1:
-../Core/Inc/j_fonts.h:25:16: warning: 'j_fonts_buffer' defined but not used [-Wunused-variable]
-   25 | static uint8_t j_fonts_buffer[J_FONT_BUFFER_SIZE];
-      |                ^~~~~~~~~~~~~~
-In file included from ../Core/Inc/j_fonts.h:6:
-../Core/Inc/j_st7789.h:87:17: warning: 'j_master_control' defined but not used [-Wunused-variable]
-   87 | static j_struct j_master_control = {
-      |                 ^~~~~~~~~~~~~~~~
-../Core/Inc/j_st7789.h:85:13: warning: 'j_flag_set_bounds' defined but not used [-Wunused-variable]
-   85 | static char j_flag_set_bounds = 1;
-      |             ^~~~~~~~~~~~~~~~~
-../Core/Inc/j_st7789.h:84:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
-   84 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
-      |                ^~~~~~~~
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:122:9: warning: assignment discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
-  122 |     ret = char_ptr_ret(33+33,J_7X10_FONT);
-      |         ^
-../Core/Src/main.c:106:11: warning: unused variable 'i' [-Wunused-variable]
-  106 |   uint8_t i = 0;
-      |           ^
-../Core/Src/main.c:105:11: warning: unused variable 'col' [-Wunused-variable]
-  105 |   j_color col[4] = {J_BLUE, J_RED, J_GREEN, J_PINK};
-      |           ^~~
-../Core/Src/main.c:102:11: warning: unused variable 'val' [-Wunused-variable]
-  102 |   uint8_t val[2] = {0xF0,0x0F};
-      |           ^~~
-In file included from ../Core/Src/main.c:28:
-../Core/Inc/j_st7789.h: At top level:
-../Core/Inc/j_st7789.h:85:13: warning: 'j_flag_set_bounds' defined but not used [-Wunused-variable]
-   85 | static char j_flag_set_bounds = 1;
-      |             ^~~~~~~~~~~~~~~~~
-../Core/Inc/j_st7789.h:84:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
-   84 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
-      |                ^~~~~~~~
-In file included from ../Core/Inc/j_st7789.h:33:
-../Core/Inc/j_fonts.h:336:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
-  336 | static const uint16_t* j_fonts[4] = {
-      |                        ^~~~~~~
-../Core/Inc/j_fonts.h:25:16: warning: 'j_fonts_buffer' defined but not used [-Wunused-variable]
-   25 | static uint8_t j_fonts_buffer[J_FONT_BUFFER_SIZE];
-      |                ^~~~~~~~~~~~~~
-arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: PCB_MOTOR_STM.elf
- 
-arm-none-eabi-size  PCB_MOTOR_STM.elf 
-arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
-   text	   data	    bss	    dec	    hex	filename
-  26144	    136	  41968	  68248	  10a98	PCB_MOTOR_STM.elf
-Finished building: default.size.stdout
- 
-Finished building: PCB_MOTOR_STM.list
- 
-18:15:02 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
-make -j22 all 
-arm-none-eabi-gcc "../Core/Src/usart.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/usart.d" -MT"Core/Src/usart.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/usart.o"
-arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: PCB_MOTOR_STM.elf
- 
-arm-none-eabi-size  PCB_MOTOR_STM.elf 
-arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
-   text	   data	    bss	    dec	    hex	filename
-  26144	    136	  41968	  68248	  10a98	PCB_MOTOR_STM.elf
-Finished building: default.size.stdout
- 
-Finished building: PCB_MOTOR_STM.list
- 
-18:17:07 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
-make -j22 all 
-arm-none-eabi-gcc "../Core/Src/j_fonts.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/j_fonts.d" -MT"Core/Src/j_fonts.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/j_fonts.o"
-arm-none-eabi-gcc "../Core/Src/j_st7789.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/j_st7789.d" -MT"Core/Src/j_st7789.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/j_st7789.o"
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/j_fonts.c:4:18: warning: 'ret_arr' defined but not used [-Wunused-variable]
-    4 | static uint16_t* ret_arr;
-      |                  ^~~~~~~
-In file included from ../Core/Src/j_fonts.c:1:
-../Core/Inc/j_fonts.h:25:16: warning: 'j_fonts_buffer' defined but not used [-Wunused-variable]
-   25 | static uint8_t j_fonts_buffer[J_FONT_BUFFER_SIZE];
-      |                ^~~~~~~~~~~~~~
-In file included from ../Core/Inc/j_fonts.h:6:
-../Core/Inc/j_st7789.h:87:17: warning: 'j_master_control' defined but not used [-Wunused-variable]
-   87 | static j_struct j_master_control = {
-      |                 ^~~~~~~~~~~~~~~~
-../Core/Inc/j_st7789.h:85:13: warning: 'j_flag_set_bounds' defined but not used [-Wunused-variable]
-   85 | static char j_flag_set_bounds = 1;
-      |             ^~~~~~~~~~~~~~~~~
-../Core/Inc/j_st7789.h:84:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
-   84 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
-      |                ^~~~~~~~
-../Core/Src/j_st7789.c: In function 'draw_text':
-../Core/Src/j_st7789.c:96:26: warning: initialization discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
-   96 |     uint16_t* char_ptr = char_ptr_ret(ch,font_size);
-      |                          ^~~~~~~~~~~~
-In file included from ../Core/Inc/j_st7789.h:33,
-                 from ../Core/Src/j_st7789.c:7:
-../Core/Inc/j_fonts.h: At top level:
-../Core/Inc/j_fonts.h:336:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
-  336 | static const uint16_t* j_fonts[4] = {
-      |                        ^~~~~~~
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:122:9: warning: assignment discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
-  122 |     ret = char_ptr_ret(33+33,J_7X10_FONT);
-      |         ^
-../Core/Src/main.c:106:11: warning: unused variable 'i' [-Wunused-variable]
-  106 |   uint8_t i = 0;
-      |           ^
-../Core/Src/main.c:105:11: warning: unused variable 'col' [-Wunused-variable]
-  105 |   j_color col[4] = {J_BLUE, J_RED, J_GREEN, J_PINK};
-      |           ^~~
-../Core/Src/main.c:102:11: warning: unused variable 'val' [-Wunused-variable]
-  102 |   uint8_t val[2] = {0xF0,0x0F};
-      |           ^~~
-In file included from ../Core/Src/main.c:28:
-../Core/Inc/j_st7789.h: At top level:
-../Core/Inc/j_st7789.h:85:13: warning: 'j_flag_set_bounds' defined but not used [-Wunused-variable]
-   85 | static char j_flag_set_bounds = 1;
-      |             ^~~~~~~~~~~~~~~~~
-../Core/Inc/j_st7789.h:84:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
-   84 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
-      |                ^~~~~~~~
-In file included from ../Core/Inc/j_st7789.h:33:
-../Core/Inc/j_fonts.h:336:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
-  336 | static const uint16_t* j_fonts[4] = {
-      |                        ^~~~~~~
-../Core/Inc/j_fonts.h:25:16: warning: 'j_fonts_buffer' defined but not used [-Wunused-variable]
-   25 | static uint8_t j_fonts_buffer[J_FONT_BUFFER_SIZE];
-      |                ^~~~~~~~~~~~~~
-arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: PCB_MOTOR_STM.elf
- 
-arm-none-eabi-size  PCB_MOTOR_STM.elf 
-arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
-   text	   data	    bss	    dec	    hex	filename
-  20824	    136	  41968	  62928	   f5d0	PCB_MOTOR_STM.elf
-Finished building: default.size.stdout
- 
-Finished building: PCB_MOTOR_STM.list
- 
-18:17:42 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
-make -j22 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:111:13: warning: unused variable 'ret' [-Wunused-variable]
-  111 |   uint16_t* ret;
-      |             ^~~
-../Core/Src/main.c:106:11: warning: unused variable 'i' [-Wunused-variable]
-  106 |   uint8_t i = 0;
-      |           ^
-../Core/Src/main.c:105:11: warning: unused variable 'col' [-Wunused-variable]
-  105 |   j_color col[4] = {J_BLUE, J_RED, J_GREEN, J_PINK};
-      |           ^~~
-../Core/Src/main.c:102:11: warning: unused variable 'val' [-Wunused-variable]
-  102 |   uint8_t val[2] = {0xF0,0x0F};
-      |           ^~~
-In file included from ../Core/Src/main.c:28:
-../Core/Inc/j_st7789.h: At top level:
-../Core/Inc/j_st7789.h:85:13: warning: 'j_flag_set_bounds' defined but not used [-Wunused-variable]
-   85 | static char j_flag_set_bounds = 1;
-      |             ^~~~~~~~~~~~~~~~~
-../Core/Inc/j_st7789.h:84:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
-   84 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
-      |                ^~~~~~~~
-In file included from ../Core/Inc/j_st7789.h:33:
-../Core/Inc/j_fonts.h:336:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
-  336 | static const uint16_t* j_fonts[4] = {
-      |                        ^~~~~~~
-../Core/Inc/j_fonts.h:25:16: warning: 'j_fonts_buffer' defined but not used [-Wunused-variable]
-   25 | static uint8_t j_fonts_buffer[J_FONT_BUFFER_SIZE];
-      |                ^~~~~~~~~~~~~~
-arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: PCB_MOTOR_STM.elf
- 
-arm-none-eabi-size  PCB_MOTOR_STM.elf 
-arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
-   text	   data	    bss	    dec	    hex	filename
-  16336	     44	  41636	  58016	   e2a0	PCB_MOTOR_STM.elf
-Finished building: default.size.stdout
- 
-Finished building: PCB_MOTOR_STM.list
- 
-18:18:52 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
-make -j22 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:111:13: warning: unused variable 'ret' [-Wunused-variable]
-  111 |   uint16_t* ret;
-      |             ^~~
-../Core/Src/main.c:106:11: warning: unused variable 'i' [-Wunused-variable]
-  106 |   uint8_t i = 0;
-      |           ^
-../Core/Src/main.c:105:11: warning: unused variable 'col' [-Wunused-variable]
-  105 |   j_color col[4] = {J_BLUE, J_RED, J_GREEN, J_PINK};
-      |           ^~~
-../Core/Src/main.c:102:11: warning: unused variable 'val' [-Wunused-variable]
-  102 |   uint8_t val[2] = {0xF0,0x0F};
-      |           ^~~
-In file included from ../Core/Src/main.c:28:
-../Core/Inc/j_st7789.h: At top level:
-../Core/Inc/j_st7789.h:85:13: warning: 'j_flag_set_bounds' defined but not used [-Wunused-variable]
-   85 | static char j_flag_set_bounds = 1;
-      |             ^~~~~~~~~~~~~~~~~
-../Core/Inc/j_st7789.h:84:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
-   84 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
-      |                ^~~~~~~~
-In file included from ../Core/Inc/j_st7789.h:33:
-../Core/Inc/j_fonts.h:336:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
-  336 | static const uint16_t* j_fonts[4] = {
-      |                        ^~~~~~~
-../Core/Inc/j_fonts.h:25:16: warning: 'j_fonts_buffer' defined but not used [-Wunused-variable]
-   25 | static uint8_t j_fonts_buffer[J_FONT_BUFFER_SIZE];
-      |                ^~~~~~~~~~~~~~
-arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: PCB_MOTOR_STM.elf
- 
-arm-none-eabi-size  PCB_MOTOR_STM.elf 
-arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
-   text	   data	    bss	    dec	    hex	filename
-  16336	     44	  41636	  58016	   e2a0	PCB_MOTOR_STM.elf
-Finished building: default.size.stdout
- 
-Finished building: PCB_MOTOR_STM.list
- 
-18:19:14 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
-make -j22 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:111:13: warning: unused variable 'ret' [-Wunused-variable]
-  111 |   uint16_t* ret;
-      |             ^~~
-../Core/Src/main.c:106:11: warning: unused variable 'i' [-Wunused-variable]
-  106 |   uint8_t i = 0;
-      |           ^
-../Core/Src/main.c:105:11: warning: unused variable 'col' [-Wunused-variable]
-  105 |   j_color col[4] = {J_BLUE, J_RED, J_GREEN, J_PINK};
-      |           ^~~
-../Core/Src/main.c:102:11: warning: unused variable 'val' [-Wunused-variable]
-  102 |   uint8_t val[2] = {0xF0,0x0F};
-      |           ^~~
-In file included from ../Core/Src/main.c:28:
-../Core/Inc/j_st7789.h: At top level:
-../Core/Inc/j_st7789.h:85:13: warning: 'j_flag_set_bounds' defined but not used [-Wunused-variable]
-   85 | static char j_flag_set_bounds = 1;
-      |             ^~~~~~~~~~~~~~~~~
-../Core/Inc/j_st7789.h:84:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
-   84 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
-      |                ^~~~~~~~
-In file included from ../Core/Inc/j_st7789.h:33:
-../Core/Inc/j_fonts.h:336:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
-  336 | static const uint16_t* j_fonts[4] = {
-      |                        ^~~~~~~
-../Core/Inc/j_fonts.h:25:16: warning: 'j_fonts_buffer' defined but not used [-Wunused-variable]
-   25 | static uint8_t j_fonts_buffer[J_FONT_BUFFER_SIZE];
-      |                ^~~~~~~~~~~~~~
-arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: PCB_MOTOR_STM.elf
- 
-arm-none-eabi-size  PCB_MOTOR_STM.elf 
-arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
    text	   data	    bss	    dec	    hex	filename
   10828	     24	  41152	  52004	   cb24	PCB_MOTOR_STM.elf
 Finished building: default.size.stdout
  
-Finished building: PCB_MOTOR_STM.list
- 
-18:19:47 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
+18:31:00 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
 make -j22 all 
-arm-none-eabi-gcc "../Core/Src/j_fonts.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/j_fonts.d" -MT"Core/Src/j_fonts.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/j_fonts.o"
-arm-none-eabi-gcc "../Core/Src/j_st7789.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/j_st7789.d" -MT"Core/Src/j_st7789.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/j_st7789.o"
+arm-none-eabi-size  PCB_MOTOR_STM.elf 
+   text	   data	    bss	    dec	    hex	filename
+  10828	     24	  41152	  52004	   cb24	PCB_MOTOR_STM.elf
+Finished building: default.size.stdout
+ 
+18:31:37 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
+make -j22 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
 ../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:140:9: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+  140 |         printf("Hello?\n");
+      |         ^~~~~~
+../Core/Src/main.c:29:1: note: include '<stdio.h>' or provide a declaration of 'printf'
+   28 | #include "j_st7789.h"
+  +++ |+#include <stdio.h>
+   29 | /* USER CODE END Includes */
+../Core/Src/main.c:140:9: warning: incompatible implicit declaration of built-in function 'printf' [-Wbuiltin-declaration-mismatch]
+  140 |         printf("Hello?\n");
+      |         ^~~~~~
+../Core/Src/main.c:140:9: note: include '<stdio.h>' or provide a declaration of 'printf'
 ../Core/Src/main.c:111:13: warning: unused variable 'ret' [-Wunused-variable]
   111 |   uint16_t* ret;
       |             ^~~
@@ -1649,11 +39,69 @@ arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -D
 ../Core/Src/main.c:102:11: warning: unused variable 'val' [-Wunused-variable]
   102 |   uint8_t val[2] = {0xF0,0x0F};
       |           ^~~
+In file included from ../Core/Src/main.c:28:
+../Core/Inc/j_st7789.h: At top level:
+../Core/Inc/j_st7789.h:87:17: warning: 'j_master_control' defined but not used [-Wunused-variable]
+   87 | static j_struct j_master_control = {
+      |                 ^~~~~~~~~~~~~~~~
+../Core/Inc/j_st7789.h:85:13: warning: 'j_flag_set_bounds' defined but not used [-Wunused-variable]
+   85 | static char j_flag_set_bounds = 1;
+      |             ^~~~~~~~~~~~~~~~~
+../Core/Inc/j_st7789.h:84:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
+   84 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
+      |                ^~~~~~~~
+arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: PCB_MOTOR_STM.elf
+ 
+arm-none-eabi-size  PCB_MOTOR_STM.elf 
+arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
+   text	   data	    bss	    dec	    hex	filename
+  13544	    112	  41488	  55144	   d768	PCB_MOTOR_STM.elf
+Finished building: default.size.stdout
+ 
+Finished building: PCB_MOTOR_STM.list
+ 
+18:35:02 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
+make -j22 all 
+arm-none-eabi-gcc "../Core/Src/j_fonts.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/j_fonts.d" -MT"Core/Src/j_fonts.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/j_fonts.o"
+arm-none-eabi-gcc "../Core/Src/j_st7789.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/j_st7789.d" -MT"Core/Src/j_st7789.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/j_st7789.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
 ../Core/Src/j_st7789.c: In function 'fill_text':
-../Core/Src/j_st7789.c:83:30: error: 'J_MAX_PRINT_SIZE' undeclared (first use in this function)
-   83 |     while(str[i] != 0 && i < J_MAX_PRINT_SIZE) {
+../Core/Src/j_st7789.c:84:30: error: 'J_MAX_PRINT_SIZE' undeclared (first use in this function)
+   84 |     while(str[i] != 0 && i < J_MAX_PRINT_SIZE) {
       |                              ^~~~~~~~~~~~~~~~
-../Core/Src/j_st7789.c:83:30: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/j_st7789.c:84:30: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/j_st7789.c:85:24: error: 'j_fonts_length' undeclared (first use in this function)
+   85 |         set_bounds(x,x+j_fonts_length[font_size]-1,y,y+j_fonts_height[font_size]-1);
+      |                        ^~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:117:25: error: 'J_16X26_FONT' undeclared (first use in this function)
+  117 |   fill_text(50,50,"ABC",J_16X26_FONT,J_BLACK);
+      |                         ^~~~~~~~~~~~
+../Core/Src/main.c:117:25: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/main.c:140:9: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+  140 |         printf("Hello?\n");
+      |         ^~~~~~
+../Core/Src/main.c:29:1: note: include '<stdio.h>' or provide a declaration of 'printf'
+   28 | #include "j_st7789.h"
+  +++ |+#include <stdio.h>
+   29 | /* USER CODE END Includes */
+../Core/Src/main.c:140:9: warning: incompatible implicit declaration of built-in function 'printf' [-Wbuiltin-declaration-mismatch]
+  140 |         printf("Hello?\n");
+      |         ^~~~~~
+../Core/Src/main.c:140:9: note: include '<stdio.h>' or provide a declaration of 'printf'
+../Core/Src/main.c:111:13: warning: unused variable 'ret' [-Wunused-variable]
+  111 |   uint16_t* ret;
+      |             ^~~
+../Core/Src/main.c:106:11: warning: unused variable 'i' [-Wunused-variable]
+  106 |   uint8_t i = 0;
+      |           ^
+../Core/Src/main.c:105:11: warning: unused variable 'col' [-Wunused-variable]
+  105 |   j_color col[4] = {J_BLUE, J_RED, J_GREEN, J_PINK};
+      |           ^~~
+../Core/Src/main.c:102:11: warning: unused variable 'val' [-Wunused-variable]
+  102 |   uint8_t val[2] = {0xF0,0x0F};
+      |           ^~~
 In file included from ../Core/Src/main.c:28:
 ../Core/Inc/j_st7789.h: At top level:
 ../Core/Inc/j_st7789.h:85:13: warning: 'j_flag_set_bounds' defined but not used [-Wunused-variable]
@@ -1662,9 +110,6 @@ In file included from ../Core/Src/main.c:28:
 ../Core/Inc/j_st7789.h:84:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
    84 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
       |                ^~~~~~~~
-../Core/Src/j_st7789.c:84:24: error: 'j_fonts_length' undeclared (first use in this function)
-   84 |         set_bounds(x,x+j_fonts_length[font_size]-1,y,y+j_fonts_height[font_size]-1);
-      |                        ^~~~~~~~~~~~~~
 ../Core/Src/j_fonts.c:4:18: warning: 'ret_arr' defined but not used [-Wunused-variable]
     4 | static uint16_t* ret_arr;
       |                  ^~~~~~~
@@ -1682,47 +127,32 @@ In file included from ../Core/Inc/j_fonts.h:6:
 ../Core/Inc/j_st7789.h:84:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
    84 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
       |                ^~~~~~~~
-../Core/Src/j_st7789.c:84:56: error: 'j_fonts_height' undeclared (first use in this function)
-   84 |         set_bounds(x,x+j_fonts_length[font_size]-1,y,y+j_fonts_height[font_size]-1);
+../Core/Src/j_st7789.c:85:56: error: 'j_fonts_height' undeclared (first use in this function)
+   85 |         set_bounds(x,x+j_fonts_length[font_size]-1,y,y+j_fonts_height[font_size]-1);
       |                                                        ^~~~~~~~~~~~~~
 ../Core/Src/j_st7789.c: In function 'draw_text':
-../Core/Src/j_st7789.c:96:26: warning: implicit declaration of function 'char_ptr_ret' [-Wimplicit-function-declaration]
-   96 |     uint16_t* char_ptr = char_ptr_ret(ch,font_size);
+../Core/Src/j_st7789.c:97:26: warning: implicit declaration of function 'char_ptr_ret' [-Wimplicit-function-declaration]
+   97 |     uint16_t* char_ptr = char_ptr_ret(ch,font_size);
       |                          ^~~~~~~~~~~~
-../Core/Src/j_st7789.c:96:26: warning: initialization of 'uint16_t *' {aka 'short unsigned int *'} from 'int' makes pointer from integer without a cast [-Wint-conversion]
-../Core/Src/j_st7789.c:99:24: error: 'j_fonts_height' undeclared (first use in this function)
-   99 |     for(int i = 0; i < j_fonts_height[font_size]; i++) {
+../Core/Src/j_st7789.c:97:26: warning: initialization of 'uint16_t *' {aka 'short unsigned int *'} from 'int' makes pointer from integer without a cast [-Wint-conversion]
+make: *** [Core/Src/subdir.mk:52: Core/Src/main.o] Error 1
+make: *** Waiting for unfinished jobs....
+../Core/Src/j_st7789.c:100:24: error: 'j_fonts_height' undeclared (first use in this function)
+  100 |     for(int i = 0; i < j_fonts_height[font_size]; i++) {
       |                        ^~~~~~~~~~~~~~
-../Core/Src/j_st7789.c:100:28: error: 'j_fonts_length' undeclared (first use in this function)
-  100 |         for(int j = 0; j < j_fonts_length[font_size]*2; j+= 2) {
+../Core/Src/j_st7789.c:101:28: error: 'j_fonts_length' undeclared (first use in this function)
+  101 |         for(int j = 0; j < j_fonts_length[font_size]*2; j+= 2) {
       |                            ^~~~~~~~~~~~~~
-../Core/Src/j_st7789.c:102:13: error: 'j_fonts_buffer' undeclared (first use in this function)
-  102 |             j_fonts_buffer[j] = (uint8_t)(ret_color >> 8);
+../Core/Src/j_st7789.c:103:13: error: 'j_fonts_buffer' undeclared (first use in this function)
+  103 |             j_fonts_buffer[j] = (uint8_t)(ret_color >> 8);
       |             ^~~~~~~~~~~~~~
 make: *** [Core/Src/subdir.mk:52: Core/Src/j_st7789.o] Error 1
-make: *** Waiting for unfinished jobs....
 "make -j22 all" terminated with exit code 2. Build might be incomplete.
-18:20:26 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
-make -j22 all 
-arm-none-eabi-gcc "../Core/Src/j_st7789.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/j_st7789.d" -MT"Core/Src/j_st7789.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/j_st7789.o"
-In file included from ../Core/Src/j_st7789.c:7:
-../Core/Inc/j_st7789.h:87:17: warning: 'j_master_control' defined but not used [-Wunused-variable]
-   87 | static j_struct j_master_control = {
-      |                 ^~~~~~~~~~~~~~~~
-arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: PCB_MOTOR_STM.elf
- 
-arm-none-eabi-size  PCB_MOTOR_STM.elf 
-arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
-   text	   data	    bss	    dec	    hex	filename
-  10828	     24	  41152	  52004	   cb24	PCB_MOTOR_STM.elf
-Finished building: default.size.stdout
- 
-Finished building: PCB_MOTOR_STM.list
- 
-18:21:23 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
+18:35:17 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
 make -j22 all 
 arm-none-eabi-gcc "../Core/Src/j_fonts.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/j_fonts.d" -MT"Core/Src/j_fonts.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/j_fonts.o"
+arm-none-eabi-gcc "../Core/Src/j_st7789.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/j_st7789.d" -MT"Core/Src/j_st7789.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/j_st7789.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
 ../Core/Src/j_fonts.c:4:18: warning: 'ret_arr' defined but not used [-Wunused-variable]
     4 | static uint16_t* ret_arr;
       |                  ^~~~~~~
@@ -1740,13 +170,520 @@ In file included from ../Core/Inc/j_fonts.h:6:
 ../Core/Inc/j_st7789.h:84:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
    84 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
       |                ^~~~~~~~
+../Core/Src/j_st7789.c: In function 'draw_text':
+../Core/Src/j_st7789.c:97:26: warning: initialization discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+   97 |     uint16_t* char_ptr = char_ptr_ret(ch,font_size);
+      |                          ^~~~~~~~~~~~
+In file included from ../Core/Inc/j_st7789.h:33,
+                 from ../Core/Src/j_st7789.c:7:
+../Core/Inc/j_fonts.h: At top level:
+../Core/Inc/j_fonts.h:336:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
+  336 | static const uint16_t* j_fonts[4] = {
+      |                        ^~~~~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:111:13: warning: unused variable 'ret' [-Wunused-variable]
+  111 |   uint16_t* ret;
+      |             ^~~
+../Core/Src/main.c:106:11: warning: unused variable 'i' [-Wunused-variable]
+  106 |   uint8_t i = 0;
+      |           ^
+../Core/Src/main.c:105:11: warning: unused variable 'col' [-Wunused-variable]
+  105 |   j_color col[4] = {J_BLUE, J_RED, J_GREEN, J_PINK};
+      |           ^~~
+../Core/Src/main.c:102:11: warning: unused variable 'val' [-Wunused-variable]
+  102 |   uint8_t val[2] = {0xF0,0x0F};
+      |           ^~~
+In file included from ../Core/Src/main.c:28:
+../Core/Inc/j_st7789.h: At top level:
+../Core/Inc/j_st7789.h:85:13: warning: 'j_flag_set_bounds' defined but not used [-Wunused-variable]
+   85 | static char j_flag_set_bounds = 1;
+      |             ^~~~~~~~~~~~~~~~~
+../Core/Inc/j_st7789.h:84:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
+   84 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
+      |                ^~~~~~~~
+In file included from ../Core/Inc/j_st7789.h:33:
+../Core/Inc/j_fonts.h:336:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
+  336 | static const uint16_t* j_fonts[4] = {
+      |                        ^~~~~~~
+../Core/Inc/j_fonts.h:25:16: warning: 'j_fonts_buffer' defined but not used [-Wunused-variable]
+   25 | static uint8_t j_fonts_buffer[J_FONT_BUFFER_SIZE];
+      |                ^~~~~~~~~~~~~~
 arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: PCB_MOTOR_STM.elf
  
 arm-none-eabi-size  PCB_MOTOR_STM.elf 
 arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
    text	   data	    bss	    dec	    hex	filename
-  10828	     24	  41152	  52004	   cb24	PCB_MOTOR_STM.elf
+  24384	    136	  41968	  66488	  103b8	PCB_MOTOR_STM.elf
+Finished building: default.size.stdout
+ 
+Finished building: PCB_MOTOR_STM.list
+ 
+18:36:42 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
+make -j22 all 
+arm-none-eabi-gcc "../Core/Src/j_fonts.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/j_fonts.d" -MT"Core/Src/j_fonts.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/j_fonts.o"
+arm-none-eabi-gcc "../Core/Src/j_st7789.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/j_st7789.d" -MT"Core/Src/j_st7789.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/j_st7789.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/j_st7789.c: In function 'draw_text':
+../Core/Src/j_st7789.c:97:26: warning: initialization discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+   97 |     uint16_t* char_ptr = char_ptr_ret(ch,font_size);
+      |                          ^~~~~~~~~~~~
+../Core/Src/j_fonts.c:4:18: warning: 'ret_arr' defined but not used [-Wunused-variable]
+    4 | static uint16_t* ret_arr;
+      |                  ^~~~~~~
+In file included from ../Core/Inc/j_st7789.h:33,
+                 from ../Core/Src/j_st7789.c:7:
+../Core/Inc/j_fonts.h: At top level:
+In file included from ../Core/Src/j_fonts.c:1:
+../Core/Inc/j_fonts.h:27:16: warning: 'j_fonts_buffer' defined but not used [-Wunused-variable]
+   27 | static uint8_t j_fonts_buffer[J_FONT_BUFFER_SIZE];
+      |                ^~~~~~~~~~~~~~
+../Core/Inc/j_fonts.h:338:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
+  338 | static const uint16_t* j_fonts[4] = {
+      |                        ^~~~~~~
+In file included from ../Core/Inc/j_fonts.h:6:
+../Core/Inc/j_st7789.h:87:17: warning: 'j_master_control' defined but not used [-Wunused-variable]
+   87 | static j_struct j_master_control = {
+      |                 ^~~~~~~~~~~~~~~~
+../Core/Inc/j_st7789.h:85:13: warning: 'j_flag_set_bounds' defined but not used [-Wunused-variable]
+   85 | static char j_flag_set_bounds = 1;
+      |             ^~~~~~~~~~~~~~~~~
+../Core/Inc/j_st7789.h:84:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
+   84 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
+      |                ^~~~~~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:111:13: warning: unused variable 'ret' [-Wunused-variable]
+  111 |   uint16_t* ret;
+      |             ^~~
+../Core/Src/main.c:106:11: warning: unused variable 'i' [-Wunused-variable]
+  106 |   uint8_t i = 0;
+      |           ^
+../Core/Src/main.c:105:11: warning: unused variable 'col' [-Wunused-variable]
+  105 |   j_color col[4] = {J_BLUE, J_RED, J_GREEN, J_PINK};
+      |           ^~~
+../Core/Src/main.c:102:11: warning: unused variable 'val' [-Wunused-variable]
+  102 |   uint8_t val[2] = {0xF0,0x0F};
+      |           ^~~
+In file included from ../Core/Src/main.c:28:
+../Core/Inc/j_st7789.h: At top level:
+../Core/Inc/j_st7789.h:85:13: warning: 'j_flag_set_bounds' defined but not used [-Wunused-variable]
+   85 | static char j_flag_set_bounds = 1;
+      |             ^~~~~~~~~~~~~~~~~
+../Core/Inc/j_st7789.h:84:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
+   84 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
+      |                ^~~~~~~~
+In file included from ../Core/Inc/j_st7789.h:33:
+../Core/Inc/j_fonts.h:338:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
+  338 | static const uint16_t* j_fonts[4] = {
+      |                        ^~~~~~~
+../Core/Inc/j_fonts.h:27:16: warning: 'j_fonts_buffer' defined but not used [-Wunused-variable]
+   27 | static uint8_t j_fonts_buffer[J_FONT_BUFFER_SIZE];
+      |                ^~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: PCB_MOTOR_STM.elf
+ 
+arm-none-eabi-size  PCB_MOTOR_STM.elf 
+arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
+   text	   data	    bss	    dec	    hex	filename
+  24396	    136	  41968	  66500	  103c4	PCB_MOTOR_STM.elf
+Finished building: default.size.stdout
+ 
+Finished building: PCB_MOTOR_STM.list
+ 
+18:37:08 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
+make -j22 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:111:13: warning: unused variable 'ret' [-Wunused-variable]
+  111 |   uint16_t* ret;
+      |             ^~~
+../Core/Src/main.c:106:11: warning: unused variable 'i' [-Wunused-variable]
+  106 |   uint8_t i = 0;
+      |           ^
+../Core/Src/main.c:105:11: warning: unused variable 'col' [-Wunused-variable]
+  105 |   j_color col[4] = {J_BLUE, J_RED, J_GREEN, J_PINK};
+      |           ^~~
+../Core/Src/main.c:102:11: warning: unused variable 'val' [-Wunused-variable]
+  102 |   uint8_t val[2] = {0xF0,0x0F};
+      |           ^~~
+In file included from ../Core/Src/main.c:28:
+../Core/Inc/j_st7789.h: At top level:
+../Core/Inc/j_st7789.h:85:13: warning: 'j_flag_set_bounds' defined but not used [-Wunused-variable]
+   85 | static char j_flag_set_bounds = 1;
+      |             ^~~~~~~~~~~~~~~~~
+../Core/Inc/j_st7789.h:84:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
+   84 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
+      |                ^~~~~~~~
+In file included from ../Core/Inc/j_st7789.h:33:
+../Core/Inc/j_fonts.h:338:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
+  338 | static const uint16_t* j_fonts[4] = {
+      |                        ^~~~~~~
+../Core/Inc/j_fonts.h:27:16: warning: 'j_fonts_buffer' defined but not used [-Wunused-variable]
+   27 | static uint8_t j_fonts_buffer[J_FONT_BUFFER_SIZE];
+      |                ^~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: PCB_MOTOR_STM.elf
+ 
+arm-none-eabi-size  PCB_MOTOR_STM.elf 
+arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
+   text	   data	    bss	    dec	    hex	filename
+  24396	    136	  41968	  66500	  103c4	PCB_MOTOR_STM.elf
+Finished building: default.size.stdout
+ 
+Finished building: PCB_MOTOR_STM.list
+ 
+18:37:34 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
+make -j22 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:111:13: warning: unused variable 'ret' [-Wunused-variable]
+  111 |   uint16_t* ret;
+      |             ^~~
+../Core/Src/main.c:106:11: warning: unused variable 'i' [-Wunused-variable]
+  106 |   uint8_t i = 0;
+      |           ^
+../Core/Src/main.c:105:11: warning: unused variable 'col' [-Wunused-variable]
+  105 |   j_color col[4] = {J_BLUE, J_RED, J_GREEN, J_PINK};
+      |           ^~~
+../Core/Src/main.c:102:11: warning: unused variable 'val' [-Wunused-variable]
+  102 |   uint8_t val[2] = {0xF0,0x0F};
+      |           ^~~
+In file included from ../Core/Src/main.c:28:
+../Core/Inc/j_st7789.h: At top level:
+../Core/Inc/j_st7789.h:85:13: warning: 'j_flag_set_bounds' defined but not used [-Wunused-variable]
+   85 | static char j_flag_set_bounds = 1;
+      |             ^~~~~~~~~~~~~~~~~
+../Core/Inc/j_st7789.h:84:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
+   84 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
+      |                ^~~~~~~~
+In file included from ../Core/Inc/j_st7789.h:33:
+../Core/Inc/j_fonts.h:338:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
+  338 | static const uint16_t* j_fonts[4] = {
+      |                        ^~~~~~~
+../Core/Inc/j_fonts.h:27:16: warning: 'j_fonts_buffer' defined but not used [-Wunused-variable]
+   27 | static uint8_t j_fonts_buffer[J_FONT_BUFFER_SIZE];
+      |                ^~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: PCB_MOTOR_STM.elf
+ 
+arm-none-eabi-size  PCB_MOTOR_STM.elf 
+arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
+   text	   data	    bss	    dec	    hex	filename
+  24396	    136	  41968	  66500	  103c4	PCB_MOTOR_STM.elf
+Finished building: default.size.stdout
+ 
+Finished building: PCB_MOTOR_STM.list
+ 
+18:40:51 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
+make -j22 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:107:3: error: expected ',' or ';' before 'uint8_t'
+  107 |   uint8_t i = 0;
+      |   ^~~~~~~
+../Core/Src/main.c:129:19: error: 'i' undeclared (first use in this function)
+  129 |     fill_area(col[i]);
+      |                   ^
+../Core/Src/main.c:129:19: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/main.c:133:7: error: expected expression before '/' token
+  133 |      */
+      |       ^
+../Core/Src/main.c:112:13: warning: unused variable 'ret' [-Wunused-variable]
+  112 |   uint16_t* ret;
+      |             ^~~
+../Core/Src/main.c:106:11: warning: variable 'col_text' set but not used [-Wunused-but-set-variable]
+  106 |   j_color col_text[4] = {J_WHITE,J_BLACK,J_WHITE,J_BLACK}
+      |           ^~~~~~~~
+../Core/Src/main.c:105:11: warning: variable 'col' set but not used [-Wunused-but-set-variable]
+  105 |   j_color col[4] = {J_BLUE, J_RED, J_BLACK, J_PINK};
+      |           ^~~
+../Core/Src/main.c:102:11: warning: unused variable 'val' [-Wunused-variable]
+  102 |   uint8_t val[2] = {0xF0,0x0F};
+      |           ^~~
+In file included from ../Core/Src/main.c:28:
+../Core/Inc/j_st7789.h: At top level:
+../Core/Inc/j_st7789.h:85:13: warning: 'j_flag_set_bounds' defined but not used [-Wunused-variable]
+   85 | static char j_flag_set_bounds = 1;
+      |             ^~~~~~~~~~~~~~~~~
+../Core/Inc/j_st7789.h:84:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
+   84 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
+      |                ^~~~~~~~
+In file included from ../Core/Inc/j_st7789.h:33:
+../Core/Inc/j_fonts.h:338:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
+  338 | static const uint16_t* j_fonts[4] = {
+      |                        ^~~~~~~
+../Core/Inc/j_fonts.h:27:16: warning: 'j_fonts_buffer' defined but not used [-Wunused-variable]
+   27 | static uint8_t j_fonts_buffer[J_FONT_BUFFER_SIZE];
+      |                ^~~~~~~~~~~~~~
+make: *** [Core/Src/subdir.mk:52: Core/Src/main.o] Error 1
+"make -j22 all" terminated with exit code 2. Build might be incomplete.
+18:41:04 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
+make -j22 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:107:3: error: expected ',' or ';' before 'uint8_t'
+  107 |   uint8_t i = 0;
+      |   ^~~~~~~
+../Core/Src/main.c:133:7: error: expected expression before '/' token
+  133 |      */
+      |       ^
+../Core/Src/main.c:112:13: warning: unused variable 'ret' [-Wunused-variable]
+  112 |   uint16_t* ret;
+      |             ^~~
+../Core/Src/main.c:102:11: warning: unused variable 'val' [-Wunused-variable]
+  102 |   uint8_t val[2] = {0xF0,0x0F};
+      |           ^~~
+In file included from ../Core/Src/main.c:28:
+../Core/Inc/j_st7789.h: At top level:
+../Core/Inc/j_st7789.h:85:13: warning: 'j_flag_set_bounds' defined but not used [-Wunused-variable]
+   85 | static char j_flag_set_bounds = 1;
+      |             ^~~~~~~~~~~~~~~~~
+../Core/Inc/j_st7789.h:84:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
+   84 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
+      |                ^~~~~~~~
+In file included from ../Core/Inc/j_st7789.h:33:
+../Core/Inc/j_fonts.h:338:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
+  338 | static const uint16_t* j_fonts[4] = {
+      |                        ^~~~~~~
+../Core/Inc/j_fonts.h:27:16: warning: 'j_fonts_buffer' defined but not used [-Wunused-variable]
+   27 | static uint8_t j_fonts_buffer[J_FONT_BUFFER_SIZE];
+      |                ^~~~~~~~~~~~~~
+make: *** [Core/Src/subdir.mk:52: Core/Src/main.o] Error 1
+"make -j22 all" terminated with exit code 2. Build might be incomplete.
+18:41:11 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
+make -j22 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:107:3: error: expected ',' or ';' before 'uint8_t'
+  107 |   uint8_t i = 0;
+      |   ^~~~~~~
+../Core/Src/main.c:112:13: warning: unused variable 'ret' [-Wunused-variable]
+  112 |   uint16_t* ret;
+      |             ^~~
+../Core/Src/main.c:102:11: warning: unused variable 'val' [-Wunused-variable]
+  102 |   uint8_t val[2] = {0xF0,0x0F};
+      |           ^~~
+In file included from ../Core/Src/main.c:28:
+../Core/Inc/j_st7789.h: At top level:
+../Core/Inc/j_st7789.h:85:13: warning: 'j_flag_set_bounds' defined but not used [-Wunused-variable]
+   85 | static char j_flag_set_bounds = 1;
+      |             ^~~~~~~~~~~~~~~~~
+../Core/Inc/j_st7789.h:84:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
+   84 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
+      |                ^~~~~~~~
+In file included from ../Core/Inc/j_st7789.h:33:
+../Core/Inc/j_fonts.h:338:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
+  338 | static const uint16_t* j_fonts[4] = {
+      |                        ^~~~~~~
+../Core/Inc/j_fonts.h:27:16: warning: 'j_fonts_buffer' defined but not used [-Wunused-variable]
+   27 | static uint8_t j_fonts_buffer[J_FONT_BUFFER_SIZE];
+      |                ^~~~~~~~~~~~~~
+make: *** [Core/Src/subdir.mk:52: Core/Src/main.o] Error 1
+"make -j22 all" terminated with exit code 2. Build might be incomplete.
+18:41:22 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
+make -j22 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:107:3: error: expected ',' or ';' before 'uint8_t'
+  107 |   uint8_t i = 0;
+      |   ^~~~~~~
+../Core/Src/main.c:127:19: error: 'i' undeclared (first use in this function)
+  127 |     fill_area(col[i]);
+      |                   ^
+../Core/Src/main.c:127:19: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/main.c:112:13: warning: unused variable 'ret' [-Wunused-variable]
+  112 |   uint16_t* ret;
+      |             ^~~
+../Core/Src/main.c:106:11: warning: variable 'col_text' set but not used [-Wunused-but-set-variable]
+  106 |   j_color col_text[4] = {J_WHITE,J_BLACK,J_WHITE,J_BLACK}
+      |           ^~~~~~~~
+../Core/Src/main.c:105:11: warning: variable 'col' set but not used [-Wunused-but-set-variable]
+  105 |   j_color col[4] = {J_BLUE, J_RED, J_BLACK, J_PINK};
+      |           ^~~
+../Core/Src/main.c:102:11: warning: unused variable 'val' [-Wunused-variable]
+  102 |   uint8_t val[2] = {0xF0,0x0F};
+      |           ^~~
+In file included from ../Core/Src/main.c:28:
+../Core/Inc/j_st7789.h: At top level:
+../Core/Inc/j_st7789.h:85:13: warning: 'j_flag_set_bounds' defined but not used [-Wunused-variable]
+   85 | static char j_flag_set_bounds = 1;
+      |             ^~~~~~~~~~~~~~~~~
+../Core/Inc/j_st7789.h:84:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
+   84 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
+      |                ^~~~~~~~
+In file included from ../Core/Inc/j_st7789.h:33:
+../Core/Inc/j_fonts.h:338:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
+  338 | static const uint16_t* j_fonts[4] = {
+      |                        ^~~~~~~
+../Core/Inc/j_fonts.h:27:16: warning: 'j_fonts_buffer' defined but not used [-Wunused-variable]
+   27 | static uint8_t j_fonts_buffer[J_FONT_BUFFER_SIZE];
+      |                ^~~~~~~~~~~~~~
+make: *** [Core/Src/subdir.mk:52: Core/Src/main.o] Error 1
+"make -j22 all" terminated with exit code 2. Build might be incomplete.
+18:41:34 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
+make -j22 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:112:13: warning: unused variable 'ret' [-Wunused-variable]
+  112 |   uint16_t* ret;
+      |             ^~~
+../Core/Src/main.c:102:11: warning: unused variable 'val' [-Wunused-variable]
+  102 |   uint8_t val[2] = {0xF0,0x0F};
+      |           ^~~
+In file included from ../Core/Src/main.c:28:
+../Core/Inc/j_st7789.h: At top level:
+../Core/Inc/j_st7789.h:85:13: warning: 'j_flag_set_bounds' defined but not used [-Wunused-variable]
+   85 | static char j_flag_set_bounds = 1;
+      |             ^~~~~~~~~~~~~~~~~
+../Core/Inc/j_st7789.h:84:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
+   84 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
+      |                ^~~~~~~~
+In file included from ../Core/Inc/j_st7789.h:33:
+../Core/Inc/j_fonts.h:338:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
+  338 | static const uint16_t* j_fonts[4] = {
+      |                        ^~~~~~~
+../Core/Inc/j_fonts.h:27:16: warning: 'j_fonts_buffer' defined but not used [-Wunused-variable]
+   27 | static uint8_t j_fonts_buffer[J_FONT_BUFFER_SIZE];
+      |                ^~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: PCB_MOTOR_STM.elf
+ 
+arm-none-eabi-size  PCB_MOTOR_STM.elf 
+arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
+   text	   data	    bss	    dec	    hex	filename
+  24464	    136	  41968	  66568	  10408	PCB_MOTOR_STM.elf
+Finished building: default.size.stdout
+ 
+Finished building: PCB_MOTOR_STM.list
+ 
+18:42:40 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
+make -j22 all 
+arm-none-eabi-gcc "../Core/Src/j_st7789.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/j_st7789.d" -MT"Core/Src/j_st7789.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/j_st7789.o"
+../Core/Src/j_st7789.c: In function 'draw_text':
+../Core/Src/j_st7789.c:98:26: warning: initialization discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+   98 |     uint16_t* char_ptr = char_ptr_ret(ch,font_size);
+      |                          ^~~~~~~~~~~~
+In file included from ../Core/Inc/j_st7789.h:33,
+                 from ../Core/Src/j_st7789.c:7:
+../Core/Inc/j_fonts.h: At top level:
+../Core/Inc/j_fonts.h:338:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
+  338 | static const uint16_t* j_fonts[4] = {
+      |                        ^~~~~~~
+arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: PCB_MOTOR_STM.elf
+ 
+arm-none-eabi-size  PCB_MOTOR_STM.elf 
+arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
+   text	   data	    bss	    dec	    hex	filename
+  24476	    136	  41968	  66580	  10414	PCB_MOTOR_STM.elf
+Finished building: default.size.stdout
+ 
+Finished building: PCB_MOTOR_STM.list
+ 
+18:44:15 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
+make -j22 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:112:13: warning: unused variable 'ret' [-Wunused-variable]
+  112 |   uint16_t* ret;
+      |             ^~~
+../Core/Src/main.c:102:11: warning: unused variable 'val' [-Wunused-variable]
+  102 |   uint8_t val[2] = {0xF0,0x0F};
+      |           ^~~
+In file included from ../Core/Src/main.c:28:
+../Core/Inc/j_st7789.h: At top level:
+../Core/Inc/j_st7789.h:85:13: warning: 'j_flag_set_bounds' defined but not used [-Wunused-variable]
+   85 | static char j_flag_set_bounds = 1;
+      |             ^~~~~~~~~~~~~~~~~
+../Core/Inc/j_st7789.h:84:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
+   84 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
+      |                ^~~~~~~~
+In file included from ../Core/Inc/j_st7789.h:33:
+../Core/Inc/j_fonts.h:338:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
+  338 | static const uint16_t* j_fonts[4] = {
+      |                        ^~~~~~~
+../Core/Inc/j_fonts.h:27:16: warning: 'j_fonts_buffer' defined but not used [-Wunused-variable]
+   27 | static uint8_t j_fonts_buffer[J_FONT_BUFFER_SIZE];
+      |                ^~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: PCB_MOTOR_STM.elf
+ 
+arm-none-eabi-size  PCB_MOTOR_STM.elf 
+arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
+   text	   data	    bss	    dec	    hex	filename
+  24472	    136	  41968	  66576	  10410	PCB_MOTOR_STM.elf
+Finished building: default.size.stdout
+ 
+Finished building: PCB_MOTOR_STM.list
+ 
+18:46:47 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
+make -j22 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:112:13: warning: unused variable 'ret' [-Wunused-variable]
+  112 |   uint16_t* ret;
+      |             ^~~
+../Core/Src/main.c:102:11: warning: unused variable 'val' [-Wunused-variable]
+  102 |   uint8_t val[2] = {0xF0,0x0F};
+      |           ^~~
+In file included from ../Core/Src/main.c:28:
+../Core/Inc/j_st7789.h: At top level:
+../Core/Inc/j_st7789.h:85:13: warning: 'j_flag_set_bounds' defined but not used [-Wunused-variable]
+   85 | static char j_flag_set_bounds = 1;
+      |             ^~~~~~~~~~~~~~~~~
+../Core/Inc/j_st7789.h:84:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
+   84 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
+      |                ^~~~~~~~
+In file included from ../Core/Inc/j_st7789.h:33:
+../Core/Inc/j_fonts.h:338:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
+  338 | static const uint16_t* j_fonts[4] = {
+      |                        ^~~~~~~
+../Core/Inc/j_fonts.h:27:16: warning: 'j_fonts_buffer' defined but not used [-Wunused-variable]
+   27 | static uint8_t j_fonts_buffer[J_FONT_BUFFER_SIZE];
+      |                ^~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: PCB_MOTOR_STM.elf
+ 
+arm-none-eabi-size  PCB_MOTOR_STM.elf 
+arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
+   text	   data	    bss	    dec	    hex	filename
+  24472	    136	  41968	  66576	  10410	PCB_MOTOR_STM.elf
+Finished building: default.size.stdout
+ 
+Finished building: PCB_MOTOR_STM.list
+ 
+18:48:01 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
+make -j22 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:112:13: warning: unused variable 'ret' [-Wunused-variable]
+  112 |   uint16_t* ret;
+      |             ^~~
+../Core/Src/main.c:102:11: warning: unused variable 'val' [-Wunused-variable]
+  102 |   uint8_t val[2] = {0xF0,0x0F};
+      |           ^~~
+In file included from ../Core/Src/main.c:28:
+../Core/Inc/j_st7789.h: At top level:
+../Core/Inc/j_st7789.h:85:13: warning: 'j_flag_set_bounds' defined but not used [-Wunused-variable]
+   85 | static char j_flag_set_bounds = 1;
+      |             ^~~~~~~~~~~~~~~~~
+../Core/Inc/j_st7789.h:84:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
+   84 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
+      |                ^~~~~~~~
+In file included from ../Core/Inc/j_st7789.h:33:
+../Core/Inc/j_fonts.h:338:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
+  338 | static const uint16_t* j_fonts[4] = {
+      |                        ^~~~~~~
+../Core/Inc/j_fonts.h:27:16: warning: 'j_fonts_buffer' defined but not used [-Wunused-variable]
+   27 | static uint8_t j_fonts_buffer[J_FONT_BUFFER_SIZE];
+      |                ^~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: PCB_MOTOR_STM.elf
+ 
+arm-none-eabi-size  PCB_MOTOR_STM.elf 
+arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
+   text	   data	    bss	    dec	    hex	filename
+  24512	    136	  41968	  66616	  10438	PCB_MOTOR_STM.elf
 Finished building: default.size.stdout
  
 Finished building: PCB_MOTOR_STM.list

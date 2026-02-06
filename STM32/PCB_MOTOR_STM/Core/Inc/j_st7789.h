@@ -30,7 +30,7 @@
 #define J_CFG_SPI_OBJ hspi3
 // ----------------------------------------
 
-//#include "j_fonts.h"
+#include "j_fonts.h"
 
 // PRIVATE DEFINES (do not change) --------
 #define CMD_SLPIN 0x10

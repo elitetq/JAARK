@@ -1,8 +1,6 @@
 ../Core/Src/j_st7789.c:27:6:write_cmd	1
 ../Core/Src/j_st7789.c:33:6:write_u8	1
-../Core/Src/j_st7789.c:11:6:set_bounds	2
+../Core/Src/j_st7789.c:11:6:set_bounds	1
 ../Core/Src/j_st7789.c:38:6:write_s8	1
 ../Core/Src/j_st7789.c:44:6:init_lcd	1
 ../Core/Src/j_st7789.c:68:6:fill_area	2
-../Core/Src/j_st7789.c:80:6:fill_text	2
-../Core/Src/j_st7789.c:96:6:draw_text	3

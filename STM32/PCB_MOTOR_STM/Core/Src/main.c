@@ -102,7 +102,8 @@ int main(void)
   uint8_t val[2] = {0xF0,0x0F};
   
   //fill_area(0x000F);
-  j_color col[4] = {J_BLUE, J_RED, J_GREEN, J_PINK};
+  j_color col[4] = {J_BLUE, J_RED, J_BLACK, J_PINK};
+  j_color col_text[4] = {J_WHITE,J_BLACK,J_WHITE,J_BLACK};
   uint8_t i = 0;
   /* USER CODE END 2 */
 
@@ -114,8 +115,6 @@ int main(void)
   fill_area(J_BLUE);
   //set_bounds(30,40,30,47);
   //draw_text('A',J_11X18_FONT,J_BLACK);
-  //fill_text(50,50,"ABC",J_11X18_FONT,J_BLACK);
-
 
   while (1)
   {
@@ -124,19 +123,13 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
     
-    /**
-     * 
-    set_bounds(0,120,0,120);
+
     fill_area(col[i]);
-    set_bounds(0,120,120,240);
-    fill_area(col[(i + 1) % 4]);
-    set_bounds(120,240,120,240);
-    fill_area(col[(i + 2) % 4]);
-    set_bounds(120,240,0,120);
-    fill_area(col[(i + 3) % 4]);
+    fill_text(10,106,"1234567890",J_16X26_FONT,col_text[i]);
+    fill_text(10,130,"AbCdEfGhIj",J_16X26_FONT,col_text[i]);
     i++;
     i %= 4;
-     */
+	printf("Hello?\n");
     HAL_Delay(1000);
   }
 

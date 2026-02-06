@@ -68,6 +68,7 @@ void init_lcd() {
 void fill_area(uint16_t color) {
     uint8_t lval = color;
     uint8_t hval = color >> 8;
+    j_master_control.bgcol = color;
     for(int i = 0; i < J_BUF_SIZE; i+= 2) {
         col_arr[i] = hval;
         col_arr[i+1] = lval;
@@ -77,14 +78,14 @@ void fill_area(uint16_t color) {
     }
 }
 
-/**
- * void fill_text(uint8_t x, uint8_t y, char* str, uint8_t font_size, j_color color) {
+
+void fill_text(uint8_t x, uint8_t y, char* str, uint8_t font_size, j_color color) {
     j_flag_set_bounds = 0;
     int i = 0;
     while(str[i] != 0 && i < J_MAX_PRINT_SIZE) {
         set_bounds(x,x+j_fonts_length[font_size]-1,y,y+j_fonts_height[font_size]-1);
         draw_text(str[i],font_size,color);
-        x+= (j_fonts_length[font_size] + 5);
+        x+= (j_fonts_length[font_size] + J_KERNING);
         i++;
 
     }
@@ -106,4 +107,4 @@ void draw_text(char ch, uint8_t font_size, j_color FILL_COL) {
         write_u8(j_fonts_buffer,j_fonts_length[font_size]*2);
     }
 }
- */
+
