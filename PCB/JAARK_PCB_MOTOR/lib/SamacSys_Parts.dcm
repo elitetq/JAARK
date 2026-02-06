@@ -96,4 +96,16 @@ K
 F https://www.renesas.com/en-us/www/doc/datasheet/hip4080a.pdf
 $ENDCMP
 #
+$CMP DRV8231DDAR
+D Motor Drives 33V H bridge motor driver with current regulation
+K
+F https://www.ti.com/lit/ds/symlink/drv8231.pdf?HQS=dis-mous-null-mousermode-dsf-pf-null-wwe&ts=1677835700436&ref_url=https%253A%252F%252Fwww.mouser.ch%252F
+$ENDCMP
+#
+$CMP CL21C221JBANNNC
+D Samsung Electro-Mechanics 0805 CL 220pF Ceramic Multilayer Capacitor, 50 V, +125C, C0G Dielectric, +/-5% SMD
+K
+F http://uk.rs-online.com/web/p/products/7665916
+$ENDCMP
+#
 #End Doc Library
