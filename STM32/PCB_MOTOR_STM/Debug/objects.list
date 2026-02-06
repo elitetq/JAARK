@@ -1,5 +1,6 @@
 "./Core/Src/fonts.o"
 "./Core/Src/gpio.o"
+"./Core/Src/j_fonts.o"
 "./Core/Src/j_st7789.o"
 "./Core/Src/main.o"
 "./Core/Src/spi.o"

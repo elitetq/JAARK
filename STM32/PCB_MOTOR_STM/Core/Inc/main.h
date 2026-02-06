@@ -94,12 +94,6 @@ void Error_Handler(void);
 #define J_RES GPIO_PIN_4
 #define J_RES_PORT GPIOC
 
-// Important variables
-#define J_BIT_DEPTH 2
-#define J_HEIGHT 240
-#define J_LENGTH 240
-#define J_DIV 3
-#define J_BUF_SIZE (J_HEIGHT * (J_LENGTH/J_DIV) * 2)
 
 
 /* USER CODE END Private defines */

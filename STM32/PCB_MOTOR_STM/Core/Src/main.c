@@ -21,6 +21,7 @@
 #include "spi.h"
 #include "usart.h"
 #include "gpio.h"
+#include "inttypes.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -55,6 +56,12 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+int _write(int file, char *ptr, int len) {
+  for(int i = 0; i < len; i++) {
+    ITM_SendChar(*ptr++);
+  }
+  return len;
+}
 
 /* USER CODE END 0 */
 
@@ -72,7 +79,6 @@ int main(void)
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
-
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
   HAL_Init();
 
@@ -94,21 +100,46 @@ int main(void)
   /* USER CODE BEGIN 2 */
   init_lcd();
   uint8_t val[2] = {0xF0,0x0F};
+  
+  //fill_area(0x000F);
+  j_color col[4] = {J_BLUE, J_RED, J_GREEN, J_PINK};
+  uint8_t i = 0;
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  uint16_t* ret;
+  j_master_control.bgcol = J_BLUE;
+  set_bounds(0,240,0,240);
+  fill_area(J_BLUE);
+  //set_bounds(30,40,30,47);
+  //draw_text('A',J_11X18_FONT,J_BLACK);
+  //fill_text(50,50,"ABC",J_11X18_FONT,J_BLACK);
 
-  //fill_area(0x000F);
-  j_color col = J_PINK;
-  set_bounds(110,130,110,130);
-  fill_area(col);
+
   while (1)
   {
     /* USER CODE END WHILE */
 
+
     /* USER CODE BEGIN 3 */
+    
+    /**
+     * 
+    set_bounds(0,120,0,120);
+    fill_area(col[i]);
+    set_bounds(0,120,120,240);
+    fill_area(col[(i + 1) % 4]);
+    set_bounds(120,240,120,240);
+    fill_area(col[(i + 2) % 4]);
+    set_bounds(120,240,0,120);
+    fill_area(col[(i + 3) % 4]);
+    i++;
+    i %= 4;
+     */
+    HAL_Delay(1000);
   }
+
   /* USER CODE END 3 */
 }
 

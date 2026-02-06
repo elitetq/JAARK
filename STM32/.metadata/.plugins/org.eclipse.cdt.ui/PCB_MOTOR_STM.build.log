@@ -1,25 +1,34 @@
-00:39:56 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
+18:21:23 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
 make -j22 all 
-arm-none-eabi-gcc "../Core/Src/j_st7789.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/j_st7789.d" -MT"Core/Src/j_st7789.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/j_st7789.o"
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:104:3: warning: implicit declaration of function 'set_bounds' [-Wimplicit-function-declaration]
-  104 |   set_bounds(110,130,110,130);
-      |   ^~~~~~~~~~
-../Core/Src/main.c:96:11: warning: unused variable 'val' [-Wunused-variable]
-   96 |   uint8_t val[2] = {0xF0,0x0F};
-      |           ^~~
+arm-none-eabi-gcc "../Core/Src/j_fonts.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/j_fonts.d" -MT"Core/Src/j_fonts.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/j_fonts.o"
+../Core/Src/j_fonts.c:4:18: warning: 'ret_arr' defined but not used [-Wunused-variable]
+    4 | static uint16_t* ret_arr;
+      |                  ^~~~~~~
+In file included from ../Core/Src/j_fonts.c:1:
+../Core/Inc/j_fonts.h:25:16: warning: 'j_fonts_buffer' defined but not used [-Wunused-variable]
+   25 | static uint8_t j_fonts_buffer[J_FONT_BUFFER_SIZE];
+      |                ^~~~~~~~~~~~~~
+In file included from ../Core/Inc/j_fonts.h:6:
+../Core/Inc/j_st7789.h:87:17: warning: 'j_master_control' defined but not used [-Wunused-variable]
+   87 | static j_struct j_master_control = {
+      |                 ^~~~~~~~~~~~~~~~
+../Core/Inc/j_st7789.h:85:13: warning: 'j_flag_set_bounds' defined but not used [-Wunused-variable]
+   85 | static char j_flag_set_bounds = 1;
+      |             ^~~~~~~~~~~~~~~~~
+../Core/Inc/j_st7789.h:84:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
+   84 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
+      |                ^~~~~~~~
 arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: PCB_MOTOR_STM.elf
  
 arm-none-eabi-size  PCB_MOTOR_STM.elf 
 arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
    text	   data	    bss	    dec	    hex	filename
-  10752	     12	  41156	  51920	   cad0	PCB_MOTOR_STM.elf
+  10828	     24	  41152	  52004	   cb24	PCB_MOTOR_STM.elf
 Finished building: default.size.stdout
  
 Finished building: PCB_MOTOR_STM.list
  
 
-00:39:58 Build Finished. 0 errors, 2 warnings. (took 1s.788ms)
+18:21:24 Build Finished. 0 errors, 5 warnings. (took 1s.595ms)
 

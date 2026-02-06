@@ -1,0 +1,8 @@
+#include "j_fonts.h"
+
+
+static uint16_t* ret_arr;
+
+uint16_t* char_ptr_ret(char item, uint8_t font_size) {
+    return item < 33 ? NULL : (j_fonts[font_size] + item - 33);   
+}
