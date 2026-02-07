@@ -1,4 +1,4 @@
-26889441448233751
+26892982346556558
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -69230,6 +69230,13 @@ Resistor
 2
 2
 JAARK_lib
+ERJ6_B_BW_R_LW_CW_D
+ERJ6_B_BW_R_LW_CW_D
+Resistor
+0
+2
+2
+JAARK_lib
 FUSC3216X86N
 0440
 Fuse
@@ -69288,6 +69295,13 @@ Resistor
 JAARK_lib
 RESC2012X65N
 805
+Resistor
+0
+2
+2
+JAARK_lib
+RESC2013X65N
+RESC2013X65N
 Resistor
 0
 2
