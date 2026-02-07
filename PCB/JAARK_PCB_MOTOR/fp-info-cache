@@ -1,4 +1,4 @@
-26875277548280924
+26889441448233751
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -69118,9 +69118,23 @@ MOSFET (P-Channel)
 3
 3
 JAARK_lib
+3586TR
+3586TR-7
+Undefined or Miscellaneous
+0
+3
+3
+JAARK_lib
 1984617
 1984617-3
 Connector
+0
+2
+2
+JAARK_lib
+A768KE187M1ELAE029_footprint
+
+
 0
 2
 2
@@ -69146,6 +69160,13 @@ Capacitor
 2
 2
 JAARK_lib
+CAPAE660X800N
+6.3*7.7/
+Capacitor Polarised
+0
+2
+2
+JAARK_lib
 CAPAE830X1080N
 8x10 -H
 Capacitor Polarised
@@ -69162,6 +69183,13 @@ Capacitor
 JAARK_lib
 CAPC1608X90N
 0603(thickness 0.9)
+Capacitor
+0
+2
+2
+JAARK_lib
+CAPC2012X75N
+MLCC
 Capacitor
 0
 2
@@ -69286,8 +69314,22 @@ Zener Diode
 2
 2
 JAARK_lib
+SODFL3616X135N
+SOD-123FL*
+TVS Diode (Bi-directional)
+0
+2
+2
+JAARK_lib
+SOIC-8-DDA-DRV8231_TEX
+
+DRV8231ADDAR 
+0
+9
+9
+JAARK_lib
 SOIC127P600X170-9N
-DDA0008B _2021
+DDA0008B_2023
 Integrated Circuit
 0
 9
@@ -69355,6 +69397,20 @@ Inductor
 0
 2
 2
+JAARK_lib
+SSW11901TD
+SSW-119-01-T-D-2
+Connector
+0
+38
+38
+JAARK_lib
+STM_Nucleo_Morpho_x2_Footprint
+SSW-119-01-T-D-2
+Connector
+0
+76
+76
 Jumper
 Jumper_Harwin_S1621_P10.9mm
 Harwin SMD jumper link, 12.3x2.3mm, 1.8mm height, 10.9mm pad pitch, https://cdn.harwin.com/pdfs/S1621R.pdf

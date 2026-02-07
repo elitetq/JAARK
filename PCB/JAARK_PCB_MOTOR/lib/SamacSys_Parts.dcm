@@ -108,4 +108,34 @@ K
 F http://uk.rs-online.com/web/p/products/7665916
 $ENDCMP
 #
+$CMP SMF12CA
+D  Uni and Bi-directional Type Available (Suffix"C"means Bi-directional)  Surface Mount  Low Clamping Voltage  Small, High Thermal Efficiency  Halogen Free. Green Device (Note 1)  Moisture Sensitivity Level 1  Epoxy Meets UL 94 V-0 Flammability Rating  Lead Free Finish/RoHS Compliant (Note 2) ("P" Suffix Designates RoHS Compliant. See Ordering Information)
+K
+F https://www.mccsemi.com/pdf/products/SMF5.0-170(SOD-123FL).pdf
+$ENDCMP
+#
+$CMP UWT1V101MCL1GS
+D Al Cap WT series SMT 100uF 35V Nichicon Aluminium Electrolytic Capacitor 100uF 35 V 6.3mm Surface Mount 5101-4 series WT lifetime 1000h
+K
+F http://www.mouser.com/ds/2/293/e-uwt-880115.pdf
+$ENDCMP
+#
+$CMP 3586TR
+D Fuse Clips SMT Fuse Clip on Tape/Reel
+K
+F https://www.mouser.co.uk/datasheet/2/215/3586TR-741548.pdf
+$ENDCMP
+#
+$CMP RL1220S-R20-F
+D RESISTOR, 0805 0.2 Ohm +/- 1% 1/4W
+K
+F http://componentsearchengine.com/Datasheets/1/RL1220S-R20-F.pdf
+$ENDCMP
+#
+$CMP ERJ-6DSFR20V
+D SMD Current Sense Resistor, 0805 [2012 Metric], Thick Film
+K
+F http://industrial.panasonic.com/cdbs/www-data/pdf/RDN0000/AOA0000C313.pdf
+$ENDCMP
+#
 #End Doc Library

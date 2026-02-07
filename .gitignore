@@ -55,3 +55,5 @@ dkms.conf
 *.dwo
 
 LCD/nrf_test/
+
+PCB/JAARK_PCB_MOTOR/lib/SamacSys_Parts.3dshapes/NUCLEO-F411RE.STEP
