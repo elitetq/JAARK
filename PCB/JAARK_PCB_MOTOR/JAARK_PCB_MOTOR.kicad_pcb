@@ -203,6 +203,8 @@
 	(net 83 "unconnected-(J2B-PC5-PadB6)")
 	(net 84 "unconnected-(J2B-PC9-PadB1)")
 	(net 85 "unconnected-(J2B-PC8-PadB2)")
+	(net 86 "unconnected-(H1-Pad3)")
+	(net 87 "unconnected-(H1-Pad1)")
 	(footprint "JAARK_lib:2SC2712GRLF"
 		(layer "F.Cu")
 		(uuid "0cf21c30-02d1-4bca-ade5-0af393e07340")
@@ -2291,6 +2293,387 @@
 		(model "${KIPRJMOD}/lib/SamacSys_Parts.3dshapes/1984617.stp"
 			(offset
 				(xyz -1.749999974 -3.949999988 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+	)
+	(footprint "JAARK_lib:V1100SMDBL"
+		(layer "F.Cu")
+		(uuid "21d8b47e-4542-4f2e-a6dc-12d6f52dd1fc")
+		(at 178.36 90)
+		(descr "V-1100-SMD/B-L-1")
+		(tags "Hardware")
+		(property "Reference" "H1"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(uuid "e0b7cdb0-99d5-4ddf-b28b-0442fc5cacaa")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.254)
+				)
+			)
+		)
+		(property "Value" "V-1100-SMD_B-L"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "c43b3212-9a63-42b8-b85e-0408d001156f")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.254)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.digikey.com/en/products/detail/assmann-wsw-components/V-1100-SMD-B-L/3511509?msockid=3e3afa68a50969ca3057ef1ca4c9684b"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a2c5c0da-b0a7-4055-b600-b6e00d1c14d6")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description" "Heat Sink TO-252 (DPak) Copper Top Mount"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "309ec691-7e98-41bf-8835-516f31f36066")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Height" "10.206"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "1467a5fc-115f-459e-b1a3-c04f7053d875")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_Name" "ASSMANN WSW components GmbH"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "adc53058-fff8-4115-826d-49b10e011d8c")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_Part_Number" "V-1100-SMD/B-L"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b3870cd1-c5d6-461f-a356-e1c7982e8c20")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Mouser Part Number" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "060286b9-5a31-444e-867b-9d7246772a88")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Mouser Price/Stock" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "7bc56dd8-3947-43ab-a1a0-9446d75282f2")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Arrow Part Number" "V-1100-SMD/B-L"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "cdb00fd5-30db-4a0f-bbe6-2914c3b38aba")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Arrow Price/Stock" "https://www.arrow.com/en/products/v-1100-smdb-l/assmann-wsw-components-inc?utm_currency=USD&region=nac"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d853a570-d51d-4c39-9051-b214791db2dc")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(path "/2d8a4b33-75ad-49cc-ac00-4472e59c72bd")
+		(sheetname "/")
+		(sheetfile "JAARK_PCB_MOTOR.kicad_sch")
+		(attr smd)
+		(fp_line
+			(start -10.6 0)
+			(end -10.6 0)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "23e25127-6dca-4237-97ab-c499d0670635")
+		)
+		(fp_line
+			(start -10.5 0)
+			(end -10.5 0)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "49d2b0a3-7ae4-45a1-8eae-0523a454dd46")
+		)
+		(fp_line
+			(start -10.033 -4.064)
+			(end -10.033 4.064)
+			(stroke
+				(width 0.2)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "73de8dab-566e-426f-ad23-c79e383573df")
+		)
+		(fp_line
+			(start -10.033 4.064)
+			(end -5.6 4.064)
+			(stroke
+				(width 0.2)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "4ff3500d-cd05-443a-bd53-64a5b0760f26")
+		)
+		(fp_line
+			(start -5.6 -4.064)
+			(end -10.033 -4.064)
+			(stroke
+				(width 0.2)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "2ada57ab-deec-4d8e-8de6-160649d06b6d")
+		)
+		(fp_line
+			(start 5.6 -4.064)
+			(end 10.033 -4.064)
+			(stroke
+				(width 0.2)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "c1235614-b30d-49a7-8b07-f050723b9d10")
+		)
+		(fp_line
+			(start 10.033 -4.064)
+			(end 10.033 4.064)
+			(stroke
+				(width 0.2)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "a987c26b-52c0-4501-932c-86402088ebeb")
+		)
+		(fp_line
+			(start 10.033 4.064)
+			(end 5.6 4.064)
+			(stroke
+				(width 0.2)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "a7308f77-bdf8-44eb-b19c-0308ef4ef182")
+		)
+		(fp_arc
+			(start -10.6 0)
+			(mid -10.55 -0.05)
+			(end -10.5 0)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "d0b839c9-6a3c-4434-b97a-657f85157159")
+		)
+		(fp_arc
+			(start -10.5 0)
+			(mid -10.55 0.05)
+			(end -10.6 0)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "d9059503-230d-4ec9-8cda-f82ad111c0c8")
+		)
+		(fp_line
+			(start -11.033 -5.55)
+			(end 11.033 -5.55)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "d8b18331-2ce9-4cb4-9bf0-870978d3186e")
+		)
+		(fp_line
+			(start -11.033 5.55)
+			(end -11.033 -5.55)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "ce4fe39f-4a86-4ca3-bfca-a9c48409e08d")
+		)
+		(fp_line
+			(start 11.033 -5.55)
+			(end 11.033 5.55)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "516543eb-b7ef-41e6-886d-92690cd26547")
+		)
+		(fp_line
+			(start 11.033 5.55)
+			(end -11.033 5.55)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "f9f74832-a45c-4db7-8527-e315678bc190")
+		)
+		(fp_line
+			(start -10.033 -4.064)
+			(end 10.033 -4.064)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "5093d1d6-a8ab-4993-a969-e6520e9933e3")
+		)
+		(fp_line
+			(start -10.033 4.064)
+			(end -10.033 -4.064)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "fa69f957-f634-4e32-972b-5590d218890b")
+		)
+		(fp_line
+			(start 10.033 -4.064)
+			(end 10.033 4.064)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "d308a14c-409b-4f4b-81d3-23be0b2592e3")
+		)
+		(fp_line
+			(start 10.033 4.064)
+			(end -10.033 4.064)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "29cce859-976a-46a5-860b-f604a8a3bb2d")
+		)
+		(fp_text user "${REFERENCE}"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(uuid "1a9616d8-a7a9-4887-9b2d-f473d4657249")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.254)
+				)
+			)
+		)
+		(pad "1" smd rect
+			(at -4.64 0)
+			(size 1.4 9.1)
+			(layers "F.Cu" "F.Mask" "F.Paste")
+			(net 87 "unconnected-(H1-Pad1)")
+			(pinfunction "1")
+			(pintype "passive")
+			(uuid "e0f2d492-a0e7-4a91-bb79-c2e641d0bcea")
+		)
+		(pad "2" smd rect
+			(at 0 0)
+			(size 6.28 9.1)
+			(layers "F.Cu" "F.Mask" "F.Paste")
+			(net 1 "GND")
+			(pinfunction "2")
+			(pintype "passive")
+			(uuid "05261d12-0033-479d-835e-475ce9cb737e")
+		)
+		(pad "3" smd rect
+			(at 4.64 0)
+			(size 1.4 9.1)
+			(layers "F.Cu" "F.Mask" "F.Paste")
+			(net 86 "unconnected-(H1-Pad3)")
+			(pinfunction "3")
+			(pintype "passive")
+			(uuid "3375d511-f53f-4448-b93f-cec5b5d845de")
+		)
+		(embedded_fonts no)
+		(model "C:\\Users\\Rohan\\JAARK\\PCB\\JAARK_PCB_MOTOR\\lib\\SamacSys_Parts.3dshapes\\V-1100-SMD_B-L.stp"
+			(offset
+				(xyz 0 -4.479999952 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -4627,7 +5010,7 @@
 			(at 1.18 -3.46 90)
 			(layer "F.SilkS")
 			(hide yes)
-			(uuid "4a3e2682-744a-4419-9ae0-29542979106a")
+			(uuid "70342798-fdf6-4e28-9beb-7a2e0d7e4b8b")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4639,7 +5022,7 @@
 			(at -10.16 13.25 90)
 			(layer "F.SilkS")
 			(hide yes)
-			(uuid "dd8a7177-817b-455a-99dc-8090d87176e0")
+			(uuid "a5694f78-2d47-4751-a4b1-4c52e7d36555")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4651,7 +5034,7 @@
 			(at 12.7 14.52 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "1939ed54-8fc8-457e-85f2-af684a3b6d04")
+			(uuid "e61f2691-f291-4a9a-a31f-1688b30f4caf")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4663,7 +5046,7 @@
 			(at 12.7 14.52 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "d2381cd5-44c1-4ddf-961c-0d0ff9a1c692")
+			(uuid "49ee8660-9dd0-41fc-b54f-b99ad16cde8e")
 			(effects
 				(font
 					(size 1.27 1.27)
