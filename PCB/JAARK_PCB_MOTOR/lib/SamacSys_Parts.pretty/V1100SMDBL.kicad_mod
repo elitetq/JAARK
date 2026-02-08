@@ -32,7 +32,7 @@
   (pad 1 smd rect (at -4.640 -0 0) (size 1.400 9.100) (layers F.Cu F.Paste F.Mask))
   (pad 2 smd rect (at 0.000 -0 0) (size 6.280 9.100) (layers F.Cu F.Paste F.Mask))
   (pad 3 smd rect (at 4.640 -0 0) (size 1.400 9.100) (layers F.Cu F.Paste F.Mask))
-  (model "C:\\Users\\Rohan\\JAARK\\PCB\\JAARK_PCB_MOTOR\\lib\\SamacSys_Parts.3dshapes\\V-1100-SMD_B-L.stp"
+  (model "${KIPRJMOD}/lib/SamacSys_Parts.3dshapes/V-1100-SMD_B-L.stp"
     (at (xyz 0 -0.17637795350683 0))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 0 0))

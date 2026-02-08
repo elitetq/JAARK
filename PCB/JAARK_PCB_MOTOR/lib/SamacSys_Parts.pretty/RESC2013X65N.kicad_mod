@@ -15,7 +15,7 @@
   (fp_line (start 0.1016 -0.7112) (end -0.1016 -0.7112) (layer F.SilkS) (width 0.1524))
   (pad 1 smd rect (at -0.9398 0 0) (size 1.016 1.397) (layers F.Cu F.Paste F.Mask))
   (pad 2 smd rect (at 0.9398 0 0) (size 1.016 1.397) (layers F.Cu F.Paste F.Mask))
-  (model "C:\\Users\\jonar\\JAARK\\PCB\\JAARK_PCB_MOTOR\\lib\\SamacSys_Parts.3dshapes\\RL1220S-R20-F.stp"
+  (model "${KIPRJMOD}/lib/SamacSys_Parts.3dshapes/RL1220S-R20-F.stp"
     (at (xyz 0 0 0.0078740158653635))
     (scale (xyz 1 1 1))
     (rotate (xyz -90 0 0))
