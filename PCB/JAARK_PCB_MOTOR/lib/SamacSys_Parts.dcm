@@ -138,4 +138,10 @@ K
 F http://industrial.panasonic.com/cdbs/www-data/pdf/RDN0000/AOA0000C313.pdf
 $ENDCMP
 #
+$CMP V-1100-SMD_B-L
+D Heat Sink TO-252 (DPak) Copper Top Mount
+K
+F https://www.digikey.com/en/products/detail/assmann-wsw-components/V-1100-SMD-B-L/3511509?msockid=3e3afa68a50969ca3057ef1ca4c9684b
+$ENDCMP
+#
 #End Doc Library
