@@ -1,4 +1,4 @@
-26894753169478586
+26898294499531259
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -69272,6 +69272,13 @@ Integrated Circuit
 8
 8
 JAARK_lib
+PPPC061LGBNRC
+PPPC061LGBN-RC-2
+Connector
+0
+6
+6
+JAARK_lib
 RESC1608X55N
 RC0603
 Resistor
@@ -69425,6 +69432,13 @@ Connector
 0
 76
 76
+JAARK_lib
+TO-92__TO-226_
+TO−92 (TO−226)
+Transistor BJT NPN
+0
+3
+3
 JAARK_lib
 V1100SMDBL
 V-1100-SMD/B-L-1

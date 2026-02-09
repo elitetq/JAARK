@@ -144,4 +144,16 @@ K
 F https://www.digikey.com/en/products/detail/assmann-wsw-components/V-1100-SMD-B-L/3511509?msockid=3e3afa68a50969ca3057ef1ca4c9684b
 $ENDCMP
 #
+$CMP PPPC061LGBN-RC
+D CONN HDR 6POS 0.1 GOLD PCB R/A
+K
+F https://drawings-pdf.s3.amazonaws.com/10493.pdf
+$ENDCMP
+#
+$CMP BC237B
+D ON Semi BC237B NPN Bipolar Transistor, 100 mA, 45 V, 3-Pin TO-92
+K
+F https://www.onsemi.com/pub/Collateral/BC237-D.PDF
+$ENDCMP
+#
 #End Doc Library
