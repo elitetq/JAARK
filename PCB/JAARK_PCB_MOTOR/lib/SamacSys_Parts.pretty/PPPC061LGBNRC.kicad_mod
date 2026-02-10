@@ -28,7 +28,7 @@
   (pad 4 thru_hole circle (at 7.620 -0) (size 1.605 1.605) (drill 1.07) (layers *.Cu *.Mask))
   (pad 5 thru_hole circle (at 10.160 -0) (size 1.605 1.605) (drill 1.07) (layers *.Cu *.Mask))
   (pad 6 thru_hole circle (at 12.700 -0) (size 1.605 1.605) (drill 1.07) (layers *.Cu *.Mask))
-  (model "C:\\Users\\jonar\\JAARK\\PCB\\JAARK_PCB_MOTOR\\lib\\SamacSys_Parts.3dshapes\\PPPC061LGBN-RC.stp"
+  (model "${KIPRJMOD}/lib/SamacSys_Parts.3dshapes/PPPC061LGBN-RC.stp"
     (at (xyz 0 0 0))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 0 0))

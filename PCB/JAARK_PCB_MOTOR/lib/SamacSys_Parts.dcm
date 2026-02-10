@@ -156,4 +156,10 @@ K
 F https://www.onsemi.com/pub/Collateral/BC237-D.PDF
 $ENDCMP
 #
+$CMP CRG0805F30K
+D Configuration Features: Number of Resistors 1 | Dimensions: Product Height .022 INCH | Product Width 1.25 MM | Product Length 2 MM | Product Width .049 INCH | Product Length .079 INCH | Product Height .55 MM | Electrical Characteristics: Power Rating .125 WATT | Resistance Class 1k  1M | Operating Voltage 150 V | Resistance Value 30K OHM | Passive Component Tolerance 1 PCT | Packaging Features: Packaging Method Taped & Reeled | Product Type Features: Element Type Thick Film | Resistor Type General Pu
+K
+F https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=1773204&DocType=Data%20Sheet&DocLang=English&PartCntxt=1623191-1&DocFormat=pdf
+$ENDCMP
+#
 #End Doc Library

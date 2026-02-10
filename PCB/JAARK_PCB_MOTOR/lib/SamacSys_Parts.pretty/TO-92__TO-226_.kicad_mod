@@ -17,7 +17,7 @@
   (pad 1 thru_hole circle (at 0 0) (size 1.44 1.44) (drill 0.94) (layers *.Cu *.Mask))
   (pad 2 thru_hole circle (at -1.27 1.27) (size 1.44 1.44) (drill 0.94) (layers *.Cu *.Mask))
   (pad 3 thru_hole circle (at -2.54 0) (size 1.44 1.44) (drill 0.94) (layers *.Cu *.Mask))
-  (model "C:\\Users\\jonar\\JAARK\\PCB\\JAARK_PCB_MOTOR\\lib\\SamacSys_Parts.3dshapes\\BC237B.stp"
+  (model "${KIPRJMOD}/lib/SamacSys_Parts.3dshapes/BC237B.stp"
     (at (xyz -0.049999999249075 0.0062992124576268 0.11811023622047))
     (scale (xyz 1 1 1))
     (rotate (xyz -90 0 -180))
