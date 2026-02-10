@@ -540,7 +540,7 @@
       "plot": "",
       "pos_files": "",
       "specctra_dsn": "",
-      "step": "",
+      "step": "JAARK_PCB_MOTOR.step",
       "svg": "",
       "vrml": ""
     },
