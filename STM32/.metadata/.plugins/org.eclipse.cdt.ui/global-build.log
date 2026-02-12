@@ -1084,3 +1084,237 @@ Finished building: default.size.stdout
  
 Finished building: PCB_MOTOR_STM.list
  
+16:26:46 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
+make -j22 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:112:13: warning: unused variable 'ret' [-Wunused-variable]
+  112 |   uint16_t* ret;
+      |             ^~~
+../Core/Src/main.c:106:11: warning: unused variable 'col_text' [-Wunused-variable]
+  106 |   j_color col_text[4] = {J_WHITE,J_GREEN,J_PINK,J_CYAN};
+      |           ^~~~~~~~
+../Core/Src/main.c:102:11: warning: unused variable 'val' [-Wunused-variable]
+  102 |   uint8_t val[2] = {0xF0,0x0F};
+      |           ^~~
+In file included from ../Core/Src/main.c:28:
+../Core/Inc/j_st7789.h: At top level:
+../Core/Inc/j_st7789.h:85:13: warning: 'j_flag_set_bounds' defined but not used [-Wunused-variable]
+   85 | static char j_flag_set_bounds = 1;
+      |             ^~~~~~~~~~~~~~~~~
+../Core/Inc/j_st7789.h:84:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
+   84 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
+      |                ^~~~~~~~
+In file included from ../Core/Inc/j_st7789.h:33:
+../Core/Inc/j_fonts.h:338:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
+  338 | static const uint16_t* j_fonts[4] = {
+      |                        ^~~~~~~
+../Core/Inc/j_fonts.h:27:16: warning: 'j_fonts_buffer' defined but not used [-Wunused-variable]
+   27 | static uint8_t j_fonts_buffer[J_FONT_BUFFER_SIZE];
+      |                ^~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: PCB_MOTOR_STM.elf
+ 
+arm-none-eabi-size  PCB_MOTOR_STM.elf 
+arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
+   text	   data	    bss	    dec	    hex	filename
+  21844	     44	  41636	  63524	   f824	PCB_MOTOR_STM.elf
+Finished building: default.size.stdout
+ 
+Finished building: PCB_MOTOR_STM.list
+ 
+16:27:14 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
+make -j22 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:112:13: warning: unused variable 'ret' [-Wunused-variable]
+  112 |   uint16_t* ret;
+      |             ^~~
+../Core/Src/main.c:106:11: warning: unused variable 'col_text' [-Wunused-variable]
+  106 |   j_color col_text[4] = {J_WHITE,J_GREEN,J_PINK,J_CYAN};
+      |           ^~~~~~~~
+../Core/Src/main.c:102:11: warning: unused variable 'val' [-Wunused-variable]
+  102 |   uint8_t val[2] = {0xF0,0x0F};
+      |           ^~~
+In file included from ../Core/Src/main.c:28:
+../Core/Inc/j_st7789.h: At top level:
+../Core/Inc/j_st7789.h:85:13: warning: 'j_flag_set_bounds' defined but not used [-Wunused-variable]
+   85 | static char j_flag_set_bounds = 1;
+      |             ^~~~~~~~~~~~~~~~~
+../Core/Inc/j_st7789.h:84:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
+   84 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
+      |                ^~~~~~~~
+In file included from ../Core/Inc/j_st7789.h:33:
+../Core/Inc/j_fonts.h:338:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
+  338 | static const uint16_t* j_fonts[4] = {
+      |                        ^~~~~~~
+../Core/Inc/j_fonts.h:27:16: warning: 'j_fonts_buffer' defined but not used [-Wunused-variable]
+   27 | static uint8_t j_fonts_buffer[J_FONT_BUFFER_SIZE];
+      |                ^~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: PCB_MOTOR_STM.elf
+ 
+arm-none-eabi-size  PCB_MOTOR_STM.elf 
+arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
+   text	   data	    bss	    dec	    hex	filename
+  21844	     44	  41636	  63524	   f824	PCB_MOTOR_STM.elf
+Finished building: default.size.stdout
+ 
+Finished building: PCB_MOTOR_STM.list
+ 
+16:30:55 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
+make -j22 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:112:13: warning: unused variable 'ret' [-Wunused-variable]
+  112 |   uint16_t* ret;
+      |             ^~~
+../Core/Src/main.c:106:11: warning: unused variable 'col_text' [-Wunused-variable]
+  106 |   j_color col_text[4] = {J_WHITE,J_GREEN,J_PINK,J_CYAN};
+      |           ^~~~~~~~
+../Core/Src/main.c:102:11: warning: unused variable 'val' [-Wunused-variable]
+  102 |   uint8_t val[2] = {0xF0,0x0F};
+      |           ^~~
+In file included from ../Core/Src/main.c:28:
+../Core/Inc/j_st7789.h: At top level:
+../Core/Inc/j_st7789.h:85:13: warning: 'j_flag_set_bounds' defined but not used [-Wunused-variable]
+   85 | static char j_flag_set_bounds = 1;
+      |             ^~~~~~~~~~~~~~~~~
+../Core/Inc/j_st7789.h:84:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
+   84 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
+      |                ^~~~~~~~
+In file included from ../Core/Inc/j_st7789.h:33:
+../Core/Inc/j_fonts.h:338:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
+  338 | static const uint16_t* j_fonts[4] = {
+      |                        ^~~~~~~
+../Core/Inc/j_fonts.h:27:16: warning: 'j_fonts_buffer' defined but not used [-Wunused-variable]
+   27 | static uint8_t j_fonts_buffer[J_FONT_BUFFER_SIZE];
+      |                ^~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: PCB_MOTOR_STM.elf
+ 
+arm-none-eabi-size  PCB_MOTOR_STM.elf 
+arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
+   text	   data	    bss	    dec	    hex	filename
+  21844	     44	  41636	  63524	   f824	PCB_MOTOR_STM.elf
+Finished building: default.size.stdout
+ 
+Finished building: PCB_MOTOR_STM.list
+ 
+16:31:30 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
+make -j22 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:112:13: warning: unused variable 'ret' [-Wunused-variable]
+  112 |   uint16_t* ret;
+      |             ^~~
+../Core/Src/main.c:106:11: warning: unused variable 'col_text' [-Wunused-variable]
+  106 |   j_color col_text[4] = {J_WHITE,J_GREEN,J_PINK,J_CYAN};
+      |           ^~~~~~~~
+../Core/Src/main.c:102:11: warning: unused variable 'val' [-Wunused-variable]
+  102 |   uint8_t val[2] = {0xF0,0x0F};
+      |           ^~~
+In file included from ../Core/Src/main.c:28:
+../Core/Inc/j_st7789.h: At top level:
+../Core/Inc/j_st7789.h:85:13: warning: 'j_flag_set_bounds' defined but not used [-Wunused-variable]
+   85 | static char j_flag_set_bounds = 1;
+      |             ^~~~~~~~~~~~~~~~~
+../Core/Inc/j_st7789.h:84:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
+   84 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
+      |                ^~~~~~~~
+In file included from ../Core/Inc/j_st7789.h:33:
+../Core/Inc/j_fonts.h:338:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
+  338 | static const uint16_t* j_fonts[4] = {
+      |                        ^~~~~~~
+../Core/Inc/j_fonts.h:27:16: warning: 'j_fonts_buffer' defined but not used [-Wunused-variable]
+   27 | static uint8_t j_fonts_buffer[J_FONT_BUFFER_SIZE];
+      |                ^~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: PCB_MOTOR_STM.elf
+ 
+arm-none-eabi-size  PCB_MOTOR_STM.elf 
+arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
+   text	   data	    bss	    dec	    hex	filename
+  21844	     44	  41636	  63524	   f824	PCB_MOTOR_STM.elf
+Finished building: default.size.stdout
+ 
+Finished building: PCB_MOTOR_STM.list
+ 
+16:31:55 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
+make -j22 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:112:13: warning: unused variable 'ret' [-Wunused-variable]
+  112 |   uint16_t* ret;
+      |             ^~~
+../Core/Src/main.c:106:11: warning: unused variable 'col_text' [-Wunused-variable]
+  106 |   j_color col_text[4] = {J_WHITE,J_GREEN,J_PINK,J_CYAN};
+      |           ^~~~~~~~
+../Core/Src/main.c:102:11: warning: unused variable 'val' [-Wunused-variable]
+  102 |   uint8_t val[2] = {0xF0,0x0F};
+      |           ^~~
+In file included from ../Core/Src/main.c:28:
+../Core/Inc/j_st7789.h: At top level:
+../Core/Inc/j_st7789.h:85:13: warning: 'j_flag_set_bounds' defined but not used [-Wunused-variable]
+   85 | static char j_flag_set_bounds = 1;
+      |             ^~~~~~~~~~~~~~~~~
+../Core/Inc/j_st7789.h:84:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
+   84 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
+      |                ^~~~~~~~
+In file included from ../Core/Inc/j_st7789.h:33:
+../Core/Inc/j_fonts.h:338:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
+  338 | static const uint16_t* j_fonts[4] = {
+      |                        ^~~~~~~
+../Core/Inc/j_fonts.h:27:16: warning: 'j_fonts_buffer' defined but not used [-Wunused-variable]
+   27 | static uint8_t j_fonts_buffer[J_FONT_BUFFER_SIZE];
+      |                ^~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: PCB_MOTOR_STM.elf
+ 
+arm-none-eabi-size  PCB_MOTOR_STM.elf 
+arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
+   text	   data	    bss	    dec	    hex	filename
+  21844	     44	  41636	  63524	   f824	PCB_MOTOR_STM.elf
+Finished building: default.size.stdout
+ 
+Finished building: PCB_MOTOR_STM.list
+ 
+16:32:33 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
+make -j22 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:112:13: warning: unused variable 'ret' [-Wunused-variable]
+  112 |   uint16_t* ret;
+      |             ^~~
+../Core/Src/main.c:106:11: warning: unused variable 'col_text' [-Wunused-variable]
+  106 |   j_color col_text[4] = {J_WHITE,J_GREEN,J_PINK,J_CYAN};
+      |           ^~~~~~~~
+../Core/Src/main.c:102:11: warning: unused variable 'val' [-Wunused-variable]
+  102 |   uint8_t val[2] = {0xF0,0x0F};
+      |           ^~~
+In file included from ../Core/Src/main.c:28:
+../Core/Inc/j_st7789.h: At top level:
+../Core/Inc/j_st7789.h:85:13: warning: 'j_flag_set_bounds' defined but not used [-Wunused-variable]
+   85 | static char j_flag_set_bounds = 1;
+      |             ^~~~~~~~~~~~~~~~~
+../Core/Inc/j_st7789.h:84:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
+   84 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
+      |                ^~~~~~~~
+In file included from ../Core/Inc/j_st7789.h:33:
+../Core/Inc/j_fonts.h:338:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
+  338 | static const uint16_t* j_fonts[4] = {
+      |                        ^~~~~~~
+../Core/Inc/j_fonts.h:27:16: warning: 'j_fonts_buffer' defined but not used [-Wunused-variable]
+   27 | static uint8_t j_fonts_buffer[J_FONT_BUFFER_SIZE];
+      |                ^~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: PCB_MOTOR_STM.elf
+ 
+arm-none-eabi-size  PCB_MOTOR_STM.elf 
+arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
+   text	   data	    bss	    dec	    hex	filename
+  21844	     44	  41636	  63524	   f824	PCB_MOTOR_STM.elf
+Finished building: default.size.stdout
+ 
+Finished building: PCB_MOTOR_STM.list
+ 

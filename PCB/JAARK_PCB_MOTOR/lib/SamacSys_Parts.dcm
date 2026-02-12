@@ -162,4 +162,10 @@ K
 F https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=1773204&DocType=Data%20Sheet&DocLang=English&PartCntxt=1623191-1&DocFormat=pdf
 $ENDCMP
 #
+$CMP 3568
+D Fuse Holder 30A 500V 1 Circuit Blade Through Hole
+K
+F https://www.mouser.com/datasheet/2/215/3568-742601.pdf
+$ENDCMP
+#
 #End Doc Library

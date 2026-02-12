@@ -716,7 +716,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "JAARK_lib:3586TR"
+		(symbol "JAARK_lib:3568"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -729,7 +729,7 @@
 					(justify left top)
 				)
 			)
-			(property "Value" "3586TR"
+			(property "Value" "3568"
 				(at 16.51 5.08 0)
 				(effects
 					(font
@@ -738,7 +738,7 @@
 					(justify left top)
 				)
 			)
-			(property "Footprint" "3586TR"
+			(property "Footprint" "3568"
 				(at 16.51 -94.92 0)
 				(effects
 					(font
@@ -748,7 +748,7 @@
 					(hide yes)
 				)
 			)
-			(property "Datasheet" "https://www.mouser.co.uk/datasheet/2/215/3586TR-741548.pdf"
+			(property "Datasheet" "https://www.mouser.com/datasheet/2/215/3568-742601.pdf"
 				(at 16.51 -194.92 0)
 				(effects
 					(font
@@ -758,7 +758,7 @@
 					(hide yes)
 				)
 			)
-			(property "Description" "Fuse Clips SMT Fuse Clip on Tape/Reel"
+			(property "Description" "Fuse Holder 30A 500V 1 Circuit Blade Through Hole"
 				(at 0 0 0)
 				(effects
 					(font
@@ -767,7 +767,7 @@
 					(hide yes)
 				)
 			)
-			(property "Height" "7.41"
+			(property "Height" "7.5"
 				(at 16.51 -394.92 0)
 				(effects
 					(font
@@ -787,7 +787,7 @@
 					(hide yes)
 				)
 			)
-			(property "Manufacturer_Part_Number" "3586TR"
+			(property "Manufacturer_Part_Number" "3568"
 				(at 16.51 -594.92 0)
 				(effects
 					(font
@@ -797,7 +797,7 @@
 					(hide yes)
 				)
 			)
-			(property "Mouser Part Number" "534-3586TR"
+			(property "Mouser Part Number" "534-3568"
 				(at 16.51 -694.92 0)
 				(effects
 					(font
@@ -807,7 +807,7 @@
 					(hide yes)
 				)
 			)
-			(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Keystone-Electronics/3586TR?qs=BMR1h6ig6pAYeXjmnRaR8A%3D%3D"
+			(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Keystone-Electronics/3568?qs=fP5bVVCrK%2Fd7nbA%2FPpwnKw%3D%3D"
 				(at 16.51 -794.92 0)
 				(effects
 					(font
@@ -817,7 +817,7 @@
 					(hide yes)
 				)
 			)
-			(property "Arrow Part Number" ""
+			(property "Arrow Part Number" "3568"
 				(at 16.51 -894.92 0)
 				(effects
 					(font
@@ -827,7 +827,7 @@
 					(hide yes)
 				)
 			)
-			(property "Arrow Price/Stock" ""
+			(property "Arrow Price/Stock" "https://www.arrow.com/en/products/3568/keystone-electronics?utm_currency=USD&region=europe"
 				(at 16.51 -994.92 0)
 				(effects
 					(font
@@ -837,7 +837,7 @@
 					(hide yes)
 				)
 			)
-			(symbol "3586TR_1_1"
+			(symbol "3568_1_1"
 				(rectangle
 					(start 5.08 2.54)
 					(end 15.24 -5.08)
@@ -852,14 +852,14 @@
 				(pin passive line
 					(at 0 0 0)
 					(length 5.08)
-					(name "3"
+					(name "2"
 						(effects
 							(font
 								(size 1.27 1.27)
 							)
 						)
 					)
-					(number "3"
+					(number "2"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -888,14 +888,32 @@
 				(pin passive line
 					(at 20.32 0 180)
 					(length 5.08)
-					(name "2"
+					(name "4"
 						(effects
 							(font
 								(size 1.27 1.27)
 							)
 						)
 					)
-					(number "2"
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 20.32 -2.54 180)
+					(length 5.08)
+					(name "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -5245,7 +5263,7 @@
 		(uuid "00e583fe-c112-422f-983c-97f1d747294d")
 	)
 	(junction
-		(at 59.69 58.42)
+		(at 59.69 52.07)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "38696269-f917-4e6d-bf6b-2dee4da0b1bc")
@@ -5323,7 +5341,7 @@
 		(uuid "7768dcfa-f06c-4d59-8e13-3040c2fbb1d1")
 	)
 	(junction
-		(at 86.36 58.42)
+		(at 86.36 52.07)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "89246495-07ae-4292-808a-7f83dc9b1ac4")
@@ -5339,6 +5357,18 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "8c664dcb-0777-4c75-b718-da0bd37b9e74")
+	)
+	(junction
+		(at 66.04 52.07)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "910104b9-4b37-4281-ae72-d4495b96d013")
+	)
+	(junction
+		(at 40.64 40.64)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "91fc82d8-c5e1-498e-bff1-b0b9532e9b8b")
 	)
 	(junction
 		(at 212.09 53.34)
@@ -5365,13 +5395,7 @@
 		(uuid "bee1b2db-51f1-4e93-9f12-889d17816bd0")
 	)
 	(junction
-		(at 68.58 58.42)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "c6a16f4d-d88b-4dd1-9d33-390e9e6613c8")
-	)
-	(junction
-		(at 73.66 58.42)
+		(at 73.66 52.07)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "cb07c2aa-2685-4672-9afc-0a90618ce2a4")
@@ -5405,6 +5429,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "e3716e52-e531-4a8d-8f61-b4e4f70e11f0")
+	)
+	(junction
+		(at 60.96 38.1)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "e614a449-b75b-4b4a-875f-34124b6cdedb")
 	)
 	(junction
 		(at 138.43 67.31)
@@ -5467,10 +5497,6 @@
 	(no_connect
 		(at 127 137.16)
 		(uuid "318e8216-ed89-4456-bedb-f2401a1a157c")
-	)
-	(no_connect
-		(at 60.96 40.64)
-		(uuid "3246ebcb-8874-4776-ab95-f5965a0da7af")
 	)
 	(no_connect
 		(at 24.13 124.46)
@@ -5690,16 +5716,6 @@
 	)
 	(wire
 		(pts
-			(xy 170.18 111.76) (xy 170.18 104.14)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "030fb838-ab94-4959-b73c-18b7bc9f165f")
-	)
-	(wire
-		(pts
 			(xy 246.38 152.4) (xy 246.38 153.67)
 		)
 		(stroke
@@ -5840,7 +5856,7 @@
 	)
 	(wire
 		(pts
-			(xy 156.21 123.19) (xy 157.48 123.19)
+			(xy 156.21 124.46) (xy 157.48 124.46)
 		)
 		(stroke
 			(width 0)
@@ -5870,7 +5886,7 @@
 	)
 	(wire
 		(pts
-			(xy 156.21 125.73) (xy 156.21 123.19)
+			(xy 156.21 124.46) (xy 156.21 125.73)
 		)
 		(stroke
 			(width 0)
@@ -5897,16 +5913,6 @@
 			(type default)
 		)
 		(uuid "336384e3-554e-454a-81b0-45315ad9a4a3")
-	)
-	(wire
-		(pts
-			(xy 68.58 58.42) (xy 73.66 58.42)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3564358b-5a77-484b-8716-a3df3e3ae99c")
 	)
 	(wire
 		(pts
@@ -5970,16 +5976,6 @@
 	)
 	(wire
 		(pts
-			(xy 36.83 54.61) (xy 41.91 54.61)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "439f07e8-5ff0-425c-ae6c-d606c2b02a99")
-	)
-	(wire
-		(pts
 			(xy 153.67 53.34) (xy 153.67 55.88)
 		)
 		(stroke
@@ -6010,7 +6006,7 @@
 	)
 	(wire
 		(pts
-			(xy 96.52 38.1) (xy 96.52 40.64)
+			(xy 96.52 38.1) (xy 96.52 39.37)
 		)
 		(stroke
 			(width 0)
@@ -6060,7 +6056,7 @@
 	)
 	(wire
 		(pts
-			(xy 36.83 80.01) (xy 40.64 80.01)
+			(xy 36.83 74.93) (xy 40.64 74.93)
 		)
 		(stroke
 			(width 0)
@@ -6090,6 +6086,16 @@
 	)
 	(wire
 		(pts
+			(xy 43.18 43.18) (xy 36.83 43.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "560a5976-379f-4023-80d0-60c30a8475bf")
+	)
+	(wire
+		(pts
 			(xy 96.52 38.1) (xy 97.79 38.1)
 		)
 		(stroke
@@ -6110,7 +6116,7 @@
 	)
 	(wire
 		(pts
-			(xy 41.91 58.42) (xy 41.91 54.61)
+			(xy 43.18 43.18) (xy 43.18 52.07)
 		)
 		(stroke
 			(width 0)
@@ -6190,6 +6196,16 @@
 	)
 	(wire
 		(pts
+			(xy 40.64 38.1) (xy 40.64 40.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "685693cf-7124-4768-89d3-e629d3b1436b")
+	)
+	(wire
+		(pts
 			(xy 204.47 93.98) (xy 204.47 96.52)
 		)
 		(stroke
@@ -6240,7 +6256,7 @@
 	)
 	(wire
 		(pts
-			(xy 41.91 58.42) (xy 59.69 58.42)
+			(xy 43.18 52.07) (xy 59.69 52.07)
 		)
 		(stroke
 			(width 0)
@@ -6260,7 +6276,7 @@
 	)
 	(wire
 		(pts
-			(xy 36.83 82.55) (xy 40.64 82.55)
+			(xy 36.83 77.47) (xy 40.64 77.47)
 		)
 		(stroke
 			(width 0)
@@ -6277,6 +6293,16 @@
 			(type default)
 		)
 		(uuid "768a685e-f147-4163-aed9-9a83f136c273")
+	)
+	(wire
+		(pts
+			(xy 36.83 59.69) (xy 40.64 59.69)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "78fe65dc-f46a-4ead-a316-43bf12a636e6")
 	)
 	(wire
 		(pts
@@ -6310,7 +6336,7 @@
 	)
 	(wire
 		(pts
-			(xy 167.64 104.14) (xy 167.64 115.57)
+			(xy 167.64 104.14) (xy 167.64 116.84)
 		)
 		(stroke
 			(width 0)
@@ -6350,7 +6376,7 @@
 	)
 	(wire
 		(pts
-			(xy 86.36 58.42) (xy 96.52 58.42)
+			(xy 86.36 52.07) (xy 96.52 52.07)
 		)
 		(stroke
 			(width 0)
@@ -6410,7 +6436,7 @@
 	)
 	(wire
 		(pts
-			(xy 73.66 58.42) (xy 86.36 58.42)
+			(xy 73.66 52.07) (xy 86.36 52.07)
 		)
 		(stroke
 			(width 0)
@@ -6430,6 +6456,16 @@
 	)
 	(wire
 		(pts
+			(xy 181.61 116.84) (xy 170.18 116.84)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9251cdd4-4701-4505-8d28-b0c0c8868644")
+	)
+	(wire
+		(pts
 			(xy 196.85 49.53) (xy 196.85 53.34)
 		)
 		(stroke
@@ -6437,16 +6473,6 @@
 			(type default)
 		)
 		(uuid "9344f70f-7ced-4faa-96af-bf3480831b69")
-	)
-	(wire
-		(pts
-			(xy 167.64 130.81) (xy 167.64 132.08)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9365d430-484c-48d8-a439-c06e7eef77ad")
 	)
 	(wire
 		(pts
@@ -6467,16 +6493,6 @@
 			(type default)
 		)
 		(uuid "99681a31-2993-49bd-9cfc-939ef97340b1")
-	)
-	(wire
-		(pts
-			(xy 96.52 53.34) (xy 96.52 58.42)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9bbdbf2a-55c7-4e6b-a74c-f30868121610")
 	)
 	(wire
 		(pts
@@ -6560,7 +6576,7 @@
 	)
 	(wire
 		(pts
-			(xy 86.36 38.1) (xy 86.36 43.18)
+			(xy 86.36 38.1) (xy 86.36 40.64)
 		)
 		(stroke
 			(width 0)
@@ -6660,6 +6676,26 @@
 	)
 	(wire
 		(pts
+			(xy 66.04 52.07) (xy 73.66 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bf7bc07b-6d57-4d49-9506-6457687f784a")
+	)
+	(wire
+		(pts
+			(xy 60.96 38.1) (xy 60.96 40.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c113aeaf-91e2-4479-9a1c-ea9262f31bd3")
+	)
+	(wire
+		(pts
 			(xy 204.47 133.35) (xy 204.47 130.81)
 		)
 		(stroke
@@ -6700,6 +6736,16 @@
 	)
 	(wire
 		(pts
+			(xy 170.18 116.84) (xy 170.18 104.14)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c4755d7a-a28a-404a-9e1c-9574fced2b6a")
+	)
+	(wire
+		(pts
 			(xy 54.61 149.86) (xy 58.42 149.86)
 		)
 		(stroke
@@ -6730,7 +6776,7 @@
 	)
 	(wire
 		(pts
-			(xy 59.69 58.42) (xy 59.69 59.69)
+			(xy 59.69 52.07) (xy 59.69 53.34)
 		)
 		(stroke
 			(width 0)
@@ -6860,7 +6906,7 @@
 	)
 	(wire
 		(pts
-			(xy 59.69 58.42) (xy 68.58 58.42)
+			(xy 59.69 52.07) (xy 66.04 52.07)
 		)
 		(stroke
 			(width 0)
@@ -6930,7 +6976,7 @@
 	)
 	(wire
 		(pts
-			(xy 73.66 45.72) (xy 73.66 58.42)
+			(xy 73.66 45.72) (xy 73.66 52.07)
 		)
 		(stroke
 			(width 0)
@@ -7020,7 +7066,7 @@
 	)
 	(wire
 		(pts
-			(xy 86.36 50.8) (xy 86.36 58.42)
+			(xy 86.36 48.26) (xy 86.36 52.07)
 		)
 		(stroke
 			(width 0)
@@ -7050,16 +7096,6 @@
 	)
 	(wire
 		(pts
-			(xy 36.83 43.18) (xy 36.83 54.61)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f8522ab1-9dbc-4183-9cd9-ff495cd2fb60")
-	)
-	(wire
-		(pts
 			(xy 212.09 49.53) (xy 212.09 53.34)
 		)
 		(stroke
@@ -7070,7 +7106,7 @@
 	)
 	(wire
 		(pts
-			(xy 123.19 77.47) (xy 123.19 81.28)
+			(xy 123.19 85.09) (xy 123.19 88.9)
 		)
 		(stroke
 			(width 0)
@@ -7107,6 +7143,16 @@
 			(type default)
 		)
 		(uuid "fe825508-753b-4142-888c-631ef6ec2161")
+	)
+	(wire
+		(pts
+			(xy 36.83 57.15) (xy 40.64 57.15)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ff3f8cab-2817-4d86-82c2-888cbfef257f")
 	)
 	(wire
 		(pts
@@ -7229,7 +7275,7 @@
 		(uuid "bde3209c-076b-48b1-b174-19b25a497b10")
 	)
 	(label "IN4"
-		(at 199.39 138.43 180)
+		(at 199.39 135.89 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -7289,7 +7335,7 @@
 		(uuid "ec97aa6d-ad54-4658-a2a6-f17fded8fc44")
 	)
 	(label "IN3"
-		(at 199.39 135.89 180)
+		(at 199.39 138.43 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -8092,7 +8138,7 @@
 	)
 	(symbol
 		(lib_id "power:+5V")
-		(at 170.18 111.76 180)
+		(at 181.61 116.84 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -8101,7 +8147,7 @@
 		(fields_autoplaced yes)
 		(uuid "0c63a4fd-d1fe-47c2-bb2e-6fc1f0839631")
 		(property "Reference" "#PWR015"
-			(at 170.18 107.95 0)
+			(at 177.8 116.84 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8110,7 +8156,7 @@
 			)
 		)
 		(property "Value" "+5V"
-			(at 170.1799 115.57 90)
+			(at 185.42 116.8399 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8119,7 +8165,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 170.18 111.76 0)
+			(at 181.61 116.84 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8128,7 +8174,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 170.18 111.76 0)
+			(at 181.61 116.84 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8137,7 +8183,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+5V\""
-			(at 170.18 111.76 0)
+			(at 181.61 116.84 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8795,7 +8841,7 @@
 	)
 	(symbol
 		(lib_id "power:GNDREF")
-		(at 59.69 59.69 0)
+		(at 59.69 53.34 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -8804,7 +8850,7 @@
 		(fields_autoplaced yes)
 		(uuid "2a4fdac6-f336-49ef-9f17-ab1065fad439")
 		(property "Reference" "#PWR010"
-			(at 59.69 66.04 0)
+			(at 59.69 59.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8813,7 +8859,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 59.69 64.77 0)
+			(at 59.69 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8821,7 +8867,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 59.69 59.69 0)
+			(at 59.69 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8830,7 +8876,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 59.69 59.69 0)
+			(at 59.69 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8839,7 +8885,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GNDREF\" , reference supply ground"
-			(at 59.69 59.69 0)
+			(at 59.69 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8927,7 +8973,7 @@
 	)
 	(symbol
 		(lib_id "SSys_Parts:1984617")
-		(at 36.83 82.55 180)
+		(at 36.83 77.47 180)
 		(unit 1)
 		(exclude_from_sim yes)
 		(in_bom yes)
@@ -8936,7 +8982,7 @@
 		(fields_autoplaced yes)
 		(uuid "2e351fd5-4efb-4b57-944d-e03a42a023fc")
 		(property "Reference" "J4"
-			(at 26.67 72.39 0)
+			(at 26.67 67.31 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8944,7 +8990,7 @@
 			)
 		)
 		(property "Value" "Metal Detector"
-			(at 26.67 74.93 0)
+			(at 26.67 69.85 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8952,7 +8998,7 @@
 			)
 		)
 		(property "Footprint" "JAARK_lib:1984617"
-			(at 20.32 -12.37 0)
+			(at 20.32 -17.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8962,7 +9008,7 @@
 			)
 		)
 		(property "Datasheet" "https://datasheet.datasheetarchive.com/originals/distributors/Datasheets-DGA17/1074867.pdf"
-			(at 20.32 -112.37 0)
+			(at 20.32 -117.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8972,7 +9018,7 @@
 			)
 		)
 		(property "Description" "PCB terminal block, Nominal current: 17.5 A, Nom. voltage: 200 V, Pitch: 3.5 mm, Number of positions: 2, Connection method: Screw connection with wire protector, Mounting: Wave soldering, Conductor/PCB connection direction: 0 , Color: green"
-			(at 36.83 82.55 0)
+			(at 36.83 77.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8981,7 +9027,7 @@
 			)
 		)
 		(property "Height" "9.3"
-			(at 20.32 -312.37 0)
+			(at 20.32 -317.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8991,7 +9037,7 @@
 			)
 		)
 		(property "Manufacturer_Name" "Phoenix Contact"
-			(at 20.32 -412.37 0)
+			(at 20.32 -417.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9001,7 +9047,7 @@
 			)
 		)
 		(property "Manufacturer_Part_Number" "1984617"
-			(at 20.32 -512.37 0)
+			(at 20.32 -517.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9011,7 +9057,7 @@
 			)
 		)
 		(property "Mouser Part Number" "651-1984617"
-			(at 20.32 -612.37 0)
+			(at 20.32 -617.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9021,7 +9067,7 @@
 			)
 		)
 		(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Phoenix-Contact/1984617?qs=ATjOrvm3mOhUrGlJQoUcpQ%3D%3D"
-			(at 20.32 -712.37 0)
+			(at 20.32 -717.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9031,7 +9077,7 @@
 			)
 		)
 		(property "Arrow Part Number" "1984617"
-			(at 20.32 -812.37 0)
+			(at 20.32 -817.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9041,7 +9087,7 @@
 			)
 		)
 		(property "Arrow Price/Stock" "https://www.arrow.com/en/products/1984617/phoenix-contact?utm_currency=USD&region=nac"
-			(at 20.32 -912.37 0)
+			(at 20.32 -917.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9051,7 +9097,7 @@
 			)
 		)
 		(property "Sim.Device" "V"
-			(at 36.83 82.55 0)
+			(at 36.83 77.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9060,7 +9106,7 @@
 			)
 		)
 		(property "Sim.Type" "DC"
-			(at 36.83 82.55 0)
+			(at 36.83 77.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9069,7 +9115,7 @@
 			)
 		)
 		(property "Sim.Pins" "1=- 2=+"
-			(at 36.83 82.55 0)
+			(at 36.83 77.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9078,7 +9124,7 @@
 			)
 		)
 		(property "Sim.Params" "dc=12"
-			(at 36.83 82.55 0)
+			(at 36.83 77.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9087,7 +9133,7 @@
 			)
 		)
 		(property "Spice_Node_Sequence" ""
-			(at 36.83 82.55 0)
+			(at 36.83 77.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9096,7 +9142,7 @@
 			)
 		)
 		(property "Manufacturer Name" ""
-			(at 36.83 82.55 0)
+			(at 36.83 77.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9105,7 +9151,7 @@
 			)
 		)
 		(property "Manufacturer Part Number" ""
-			(at 36.83 82.55 0)
+			(at 36.83 77.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10508,7 +10554,7 @@
 	)
 	(symbol
 		(lib_id "power:GNDREF")
-		(at 123.19 81.28 0)
+		(at 123.19 88.9 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -10517,7 +10563,7 @@
 		(fields_autoplaced yes)
 		(uuid "57d9afab-1037-4bf5-b2ef-cb636f010b39")
 		(property "Reference" "#PWR021"
-			(at 123.19 87.63 0)
+			(at 123.19 95.25 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10526,7 +10572,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 123.19 86.36 0)
+			(at 123.19 93.98 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10534,7 +10580,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 123.19 81.28 0)
+			(at 123.19 88.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10543,7 +10589,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 123.19 81.28 0)
+			(at 123.19 88.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10552,7 +10598,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GNDREF\" , reference supply ground"
-			(at 123.19 81.28 0)
+			(at 123.19 88.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10573,194 +10619,8 @@
 		)
 	)
 	(symbol
-		(lib_id "JAARK_lib:3586TR")
-		(at 60.96 40.64 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "58de1ab4-19ba-40c7-9383-160c7df20c1d")
-		(property "Reference" "U1"
-			(at 50.546 31.75 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "4A"
-			(at 50.546 34.29 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "JAARK_lib:3586TR"
-			(at 44.45 -54.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.mouser.co.uk/datasheet/2/215/3586TR-741548.pdf"
-			(at 44.45 -154.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Description" "Fuse Clips SMT Fuse Clip on Tape/Reel"
-			(at 60.96 40.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Height" "7.41"
-			(at 44.45 -354.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer_Name" "Keystone Electronics"
-			(at 44.45 -454.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer_Part_Number" "3586TR"
-			(at 44.45 -554.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Mouser Part Number" "534-3586TR"
-			(at 44.45 -654.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Keystone-Electronics/3586TR?qs=BMR1h6ig6pAYeXjmnRaR8A%3D%3D"
-			(at 44.45 -754.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Arrow Part Number" ""
-			(at 44.45 -854.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Arrow Price/Stock" ""
-			(at 44.45 -954.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer Name" ""
-			(at 60.96 40.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer Part Number" ""
-			(at 60.96 40.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Device" "SPICE"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Params" "4A"
-			(at 50.546 34.29 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Pins" "1=1 2=2 3=3"
-			(at 60.96 40.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "0afa10b1-1cc7-42c3-af24-5b2fa678e72c")
-		)
-		(pin "2"
-			(uuid "4b08f292-8004-4835-8f19-d79b203283a8")
-		)
-		(pin "3"
-			(uuid "2962ae14-8554-4415-bdb0-cf0304cc96d6")
-		)
-		(instances
-			(project ""
-				(path "/855a2ad7-0ca6-4188-a452-4c1fc0d76ca5"
-					(reference "U1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:+12V")
-		(at 40.64 80.01 270)
+		(at 40.64 74.93 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -10769,7 +10629,7 @@
 		(fields_autoplaced yes)
 		(uuid "5c211b56-86db-47b0-aae6-6414b9f5c1a9")
 		(property "Reference" "#PWR016"
-			(at 36.83 80.01 0)
+			(at 36.83 74.93 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10778,7 +10638,7 @@
 			)
 		)
 		(property "Value" "+12V"
-			(at 44.45 80.0099 90)
+			(at 44.45 74.9299 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10787,7 +10647,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 40.64 80.01 0)
+			(at 40.64 74.93 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10796,7 +10656,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 40.64 80.01 0)
+			(at 40.64 74.93 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10805,7 +10665,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+12V\""
-			(at 40.64 80.01 0)
+			(at 40.64 74.93 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10820,6 +10680,73 @@
 			(project ""
 				(path "/855a2ad7-0ca6-4188-a452-4c1fc0d76ca5"
 					(reference "#PWR016")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+5V")
+		(at 40.64 57.15 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "5f0e7ac7-0eca-442f-9759-0de2a57724af")
+		(property "Reference" "#PWR025"
+			(at 36.83 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+5V"
+			(at 44.45 57.1499 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 40.64 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 40.64 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+5V\""
+			(at 40.64 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "addaf118-3d3c-4349-aa06-0bffd5ebe7cf")
+		)
+		(instances
+			(project ""
+				(path "/855a2ad7-0ca6-4188-a452-4c1fc0d76ca5"
+					(reference "#PWR025")
 					(unit 1)
 				)
 			)
@@ -11774,7 +11701,7 @@
 	)
 	(symbol
 		(lib_id "Device:R_Small_US")
-		(at 199.39 39.37 270)
+		(at 189.23 39.37 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -11782,7 +11709,7 @@
 		(dnp no)
 		(uuid "6ee5f0ef-f040-45cc-9714-4cda4bbe86a0")
 		(property "Reference" "R4"
-			(at 199.644 35.052 90)
+			(at 189.484 35.052 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11790,7 +11717,7 @@
 			)
 		)
 		(property "Value" "40kR"
-			(at 199.644 37.084 90)
+			(at 189.484 37.084 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11798,7 +11725,7 @@
 			)
 		)
 		(property "Footprint" "JAARK_lib:RESC2012X60N"
-			(at 199.39 39.37 0)
+			(at 189.23 39.37 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11807,7 +11734,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 199.39 39.37 0)
+			(at 189.23 39.37 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11816,7 +11743,7 @@
 			)
 		)
 		(property "Description" "Resistor, small US symbol"
-			(at 199.39 39.37 0)
+			(at 189.23 39.37 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11825,7 +11752,7 @@
 			)
 		)
 		(property "Height" "0.6"
-			(at -196.8 53.34 0)
+			(at -206.96 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11835,7 +11762,7 @@
 			)
 		)
 		(property "Manufacturer_Name" "KEMET"
-			(at -296.8 53.34 0)
+			(at -306.96 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11845,7 +11772,7 @@
 			)
 		)
 		(property "Manufacturer_Part_Number" "RC0805FR-0740K2L"
-			(at -396.8 53.34 0)
+			(at -406.96 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11855,7 +11782,7 @@
 			)
 		)
 		(property "Mouser Part Number" "603-RC0805FR-0740K2L"
-			(at -496.8 53.34 0)
+			(at -506.96 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11865,7 +11792,7 @@
 			)
 		)
 		(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Yageo/RC0805FR-0740K2L?qs=QrWOOBGzeCbZpVapvyHnwA%3D%3D"
-			(at -596.8 53.34 0)
+			(at -606.96 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11875,7 +11802,7 @@
 			)
 		)
 		(property "Arrow Part Number" "RC0805FR-0740K2L"
-			(at -696.8 53.34 0)
+			(at -706.96 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11885,7 +11812,7 @@
 			)
 		)
 		(property "Arrow Price/Stock" "https://www.arrow.com/en/products/rc0805fr-0740k2l/yageo"
-			(at -796.8 53.34 0)
+			(at -806.96 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11895,7 +11822,7 @@
 			)
 		)
 		(property "Manufacturer Name" ""
-			(at 199.39 39.37 90)
+			(at 189.23 39.37 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11904,7 +11831,7 @@
 			)
 		)
 		(property "Manufacturer Part Number" ""
-			(at 199.39 39.37 90)
+			(at 189.23 39.37 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11913,7 +11840,7 @@
 			)
 		)
 		(property "Sim.Device" "SPICE"
-			(at 0 0 0)
+			(at -10.16 0 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11922,7 +11849,7 @@
 			)
 		)
 		(property "Sim.Params" "40kR"
-			(at 199.644 37.084 90)
+			(at 189.484 37.084 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11930,7 +11857,7 @@
 			)
 		)
 		(property "Sim.Pins" "1=1 2=2"
-			(at 199.39 39.37 90)
+			(at 189.23 39.37 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12770,7 +12697,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "8f1f3024-6cc6-4306-8d49-c0ce4c74cf1e")
-		(property "Reference" "5V"
+		(property "Reference" "5V1"
 			(at 93.98 72.8979 0)
 			(effects
 				(font
@@ -12843,12 +12770,13 @@
 			)
 		)
 		(property "Sim.Params" "5V"
-			(at 93.98 75.4379 0)
+			(at 93.98 76.7079 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Sim.Pins" "1=1"
@@ -12866,7 +12794,7 @@
 		(instances
 			(project "JAARK_PCB_MOTOR"
 				(path "/855a2ad7-0ca6-4188-a452-4c1fc0d76ca5"
-					(reference "5V")
+					(reference "5V1")
 					(unit 1)
 				)
 			)
@@ -13714,6 +13642,152 @@
 		)
 	)
 	(symbol
+		(lib_id "JAARK_lib:3568")
+		(at 40.64 38.1 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "9e329426-4ef2-44d0-872c-a9aac0e3c87a")
+		(property "Reference" "U1"
+			(at 50.8 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "3568"
+			(at 50.8 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "3568"
+			(at 57.15 133.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.mouser.com/datasheet/2/215/3568-742601.pdf"
+			(at 57.15 233.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Description" "Fuse Holder 30A 500V 1 Circuit Blade Through Hole"
+			(at 40.64 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Height" "7.5"
+			(at 57.15 433.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Name" "Keystone Electronics"
+			(at 57.15 533.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Part_Number" "3568"
+			(at 57.15 633.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Mouser Part Number" "534-3568"
+			(at 57.15 733.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Keystone-Electronics/3568?qs=fP5bVVCrK%2Fd7nbA%2FPpwnKw%3D%3D"
+			(at 57.15 833.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Arrow Part Number" "3568"
+			(at 57.15 933.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Arrow Price/Stock" "https://www.arrow.com/en/products/3568/keystone-electronics?utm_currency=USD&region=europe"
+			(at 57.15 1033.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c610c780-b1ad-4828-8432-a2d6160fdd08")
+		)
+		(pin "2"
+			(uuid "2a5929d7-9586-4027-988e-e9f0901148e2")
+		)
+		(pin "3"
+			(uuid "da68d910-f1d1-43d2-a332-bf2d72915917")
+		)
+		(pin "4"
+			(uuid "1f6b9ec3-4194-4bc4-b0c1-9cc404d90d70")
+		)
+		(instances
+			(project ""
+				(path "/855a2ad7-0ca6-4188-a452-4c1fc0d76ca5"
+					(reference "U1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "JAARK_lib:Morpho_x2_SSW-119-01-T-D")
 		(at 96.52 104.14 0)
 		(unit 2)
@@ -14506,7 +14580,7 @@
 	)
 	(symbol
 		(lib_id "Diode:ESD9B3.3ST5G")
-		(at 86.36 46.99 90)
+		(at 86.36 44.45 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -14514,7 +14588,7 @@
 		(dnp no)
 		(uuid "b6f1d557-d763-4dac-80b3-6d79271bde5c")
 		(property "Reference" "D4"
-			(at 81.788 49.276 90)
+			(at 81.788 46.736 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14523,7 +14597,7 @@
 			)
 		)
 		(property "Value" "15V"
-			(at 81.788 51.816 90)
+			(at 81.788 49.276 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14532,7 +14606,7 @@
 			)
 		)
 		(property "Footprint" "JAARK_lib:SODFL3616X135N"
-			(at 180.01 34.29 0)
+			(at 180.01 31.75 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14542,7 +14616,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.mccsemi.com/pdf/products/SMF5.0-170(SOD-123FL).pdf"
-			(at 280.01 34.29 0)
+			(at 280.01 31.75 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14552,7 +14626,7 @@
 			)
 		)
 		(property "Description" "Uni and Bi-directional Type Available (Suffix\"C\"means Bi-directional)  Surface Mount  Low Clamping Voltage  Small, High Thermal Efficiency  Halogen Free. Green Device (Note 1)  Moisture Sensitivity Level 1  Epoxy Meets UL 94 V-0 Flammability Rating  Lead Free Finish/RoHS Compliant (Note 2) (\"P\" Suffix Designates RoHS Compliant. See Ordering Information)"
-			(at 86.36 46.99 0)
+			(at 86.36 44.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14561,7 +14635,7 @@
 			)
 		)
 		(property "Height" "1.35"
-			(at 480.01 34.29 0)
+			(at 480.01 31.75 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14571,7 +14645,7 @@
 			)
 		)
 		(property "Manufacturer_Name" "MCC"
-			(at 580.01 34.29 0)
+			(at 580.01 31.75 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14581,7 +14655,7 @@
 			)
 		)
 		(property "Manufacturer_Part_Number" "SMF12CA"
-			(at 680.01 34.29 0)
+			(at 680.01 31.75 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14591,7 +14665,7 @@
 			)
 		)
 		(property "Mouser Part Number" ""
-			(at 780.01 34.29 0)
+			(at 780.01 31.75 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14601,7 +14675,7 @@
 			)
 		)
 		(property "Mouser Price/Stock" ""
-			(at 880.01 34.29 0)
+			(at 880.01 31.75 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14611,7 +14685,7 @@
 			)
 		)
 		(property "Arrow Part Number" ""
-			(at 980.01 34.29 0)
+			(at 980.01 31.75 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14621,7 +14695,7 @@
 			)
 		)
 		(property "Arrow Price/Stock" ""
-			(at 1080.01 34.29 0)
+			(at 1080.01 31.75 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14631,7 +14705,7 @@
 			)
 		)
 		(property "Manufacturer Name" ""
-			(at 86.36 46.99 90)
+			(at 86.36 44.45 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14640,7 +14714,7 @@
 			)
 		)
 		(property "Manufacturer Part Number" ""
-			(at 86.36 46.99 90)
+			(at 86.36 44.45 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14649,7 +14723,7 @@
 			)
 		)
 		(property "Sim.Device" "SPICE"
-			(at 0 0 0)
+			(at 0 -2.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14658,7 +14732,7 @@
 			)
 		)
 		(property "Sim.Params" "15V"
-			(at 81.788 51.816 90)
+			(at 81.788 49.276 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14667,7 +14741,7 @@
 			)
 		)
 		(property "Sim.Pins" "1=1 2=2"
-			(at 86.36 46.99 90)
+			(at 86.36 44.45 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15062,7 +15136,7 @@
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
-		(at 123.19 77.47 0)
+		(at 123.19 85.09 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -15070,8 +15144,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c7826088-b90b-4316-92a7-8a3c1e04ff0d")
-		(property "Reference" "GND"
-			(at 125.73 72.8979 0)
+		(property "Reference" "GND1"
+			(at 125.73 80.5179 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15080,7 +15154,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 125.73 75.4379 0)
+			(at 125.73 83.0579 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15089,7 +15163,7 @@
 			)
 		)
 		(property "Footprint" "TestPoint:TestPoint_Pad_1.5x1.5mm"
-			(at 128.27 77.47 0)
+			(at 128.27 85.09 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15098,7 +15172,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 128.27 77.47 0)
+			(at 128.27 85.09 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15107,7 +15181,7 @@
 			)
 		)
 		(property "Description" "test point"
-			(at 123.19 77.47 0)
+			(at 123.19 85.09 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15116,7 +15190,7 @@
 			)
 		)
 		(property "Manufacturer Name" ""
-			(at 123.19 77.47 0)
+			(at 123.19 85.09 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15125,7 +15199,7 @@
 			)
 		)
 		(property "Manufacturer Part Number" ""
-			(at 123.19 77.47 0)
+			(at 123.19 85.09 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15134,7 +15208,7 @@
 			)
 		)
 		(property "Sim.Device" "SPICE"
-			(at 0 0 0)
+			(at 0 7.62 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15143,16 +15217,17 @@
 			)
 		)
 		(property "Sim.Params" "GND"
-			(at 125.73 75.4379 0)
+			(at 125.73 84.3279 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Sim.Pins" "1=1"
-			(at 123.19 77.47 0)
+			(at 123.19 85.09 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15166,7 +15241,210 @@
 		(instances
 			(project "JAARK_PCB_MOTOR"
 				(path "/855a2ad7-0ca6-4188-a452-4c1fc0d76ca5"
-					(reference "GND")
+					(reference "GND1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "SSys_Parts:1984617")
+		(at 36.83 59.69 180)
+		(unit 1)
+		(exclude_from_sim yes)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "c7cd076e-be11-4ebd-9e35-65d0827b43b9")
+		(property "Reference" "J7"
+			(at 26.67 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Metal Detector"
+			(at 26.67 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "JAARK_lib:1984617"
+			(at 20.32 -35.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://datasheet.datasheetarchive.com/originals/distributors/Datasheets-DGA17/1074867.pdf"
+			(at 20.32 -135.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Description" "PCB terminal block, Nominal current: 17.5 A, Nom. voltage: 200 V, Pitch: 3.5 mm, Number of positions: 2, Connection method: Screw connection with wire protector, Mounting: Wave soldering, Conductor/PCB connection direction: 0 , Color: green"
+			(at 36.83 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Height" "9.3"
+			(at 20.32 -335.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Name" "Phoenix Contact"
+			(at 20.32 -435.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Part_Number" "1984617"
+			(at 20.32 -535.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Mouser Part Number" "651-1984617"
+			(at 20.32 -635.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Phoenix-Contact/1984617?qs=ATjOrvm3mOhUrGlJQoUcpQ%3D%3D"
+			(at 20.32 -735.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Arrow Part Number" "1984617"
+			(at 20.32 -835.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Arrow Price/Stock" "https://www.arrow.com/en/products/1984617/phoenix-contact?utm_currency=USD&region=nac"
+			(at 20.32 -935.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" "V"
+			(at 36.83 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" "DC"
+			(at 36.83 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" "1=- 2=+"
+			(at 36.83 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Params" "dc=12"
+			(at 36.83 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Spice_Node_Sequence" ""
+			(at 36.83 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Name" ""
+			(at 36.83 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Part Number" ""
+			(at 36.83 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "f65161fa-b4de-469d-9039-eafaa1884f73")
+		)
+		(pin "1"
+			(uuid "859b7047-767e-4cd1-9aca-560ee0493695")
+		)
+		(instances
+			(project "JAARK_PCB_MOTOR"
+				(path "/855a2ad7-0ca6-4188-a452-4c1fc0d76ca5"
+					(reference "J7")
 					(unit 1)
 				)
 			)
@@ -15240,7 +15518,7 @@
 	)
 	(symbol
 		(lib_id "power:PWR_FLAG")
-		(at 68.58 58.42 0)
+		(at 66.04 52.07 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -15249,7 +15527,7 @@
 		(fields_autoplaced yes)
 		(uuid "ca21fd9a-48a3-4f18-860f-09f1f860355d")
 		(property "Reference" "#FLG04"
-			(at 68.58 56.515 0)
+			(at 66.04 50.165 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15258,7 +15536,7 @@
 			)
 		)
 		(property "Value" "PWR_FLAG"
-			(at 68.58 53.34 0)
+			(at 66.04 46.99 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15266,7 +15544,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 68.58 58.42 0)
+			(at 66.04 52.07 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15275,7 +15553,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 68.58 58.42 0)
+			(at 66.04 52.07 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15284,7 +15562,7 @@
 			)
 		)
 		(property "Description" "Special symbol for telling ERC where power comes from"
-			(at 68.58 58.42 0)
+			(at 66.04 52.07 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15556,7 +15834,7 @@
 	)
 	(symbol
 		(lib_id "Device:R_Small_US")
-		(at 189.23 39.37 270)
+		(at 199.39 39.37 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -15564,7 +15842,7 @@
 		(dnp no)
 		(uuid "db71198f-53b2-422e-9664-6d5c808b3194")
 		(property "Reference" "R3"
-			(at 189.484 35.052 90)
+			(at 199.644 35.052 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15572,7 +15850,7 @@
 			)
 		)
 		(property "Value" "20kR"
-			(at 189.484 37.084 90)
+			(at 199.644 37.084 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15580,7 +15858,7 @@
 			)
 		)
 		(property "Footprint" "JAARK_lib:RESC2012X50N"
-			(at 189.23 39.37 0)
+			(at 199.39 39.37 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15589,7 +15867,7 @@
 			)
 		)
 		(property "Datasheet" "http://www.susumu.co.jp/common/pdf/n_catalog_partition01_en.pdf"
-			(at 189.23 39.37 0)
+			(at 199.39 39.37 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15598,7 +15876,7 @@
 			)
 		)
 		(property "Description" "Thin Film Resistors - SMD 1/8W 20K Ohms 0.1% 0805 25ppm"
-			(at 189.23 39.37 0)
+			(at 199.39 39.37 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15607,7 +15885,7 @@
 			)
 		)
 		(property "Height" "0.5"
-			(at -206.96 53.34 0)
+			(at -196.8 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15617,7 +15895,7 @@
 			)
 		)
 		(property "Manufacturer_Name" "Susumu"
-			(at -306.96 53.34 0)
+			(at -296.8 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15627,7 +15905,7 @@
 			)
 		)
 		(property "Manufacturer_Part_Number" "RG2012P-203-B-T5"
-			(at -406.96 53.34 0)
+			(at -396.8 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15637,7 +15915,7 @@
 			)
 		)
 		(property "Mouser Part Number" "754-RG2012P-203-B-T5"
-			(at -506.96 53.34 0)
+			(at -496.8 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15647,7 +15925,7 @@
 			)
 		)
 		(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Susumu/RG2012P-203-B-T5?qs=juJhw1yPxAE0uzMTBmg8Hw%3D%3D"
-			(at -606.96 53.34 0)
+			(at -596.8 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15657,7 +15935,7 @@
 			)
 		)
 		(property "Arrow Part Number" ""
-			(at -706.96 53.34 0)
+			(at -696.8 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15667,7 +15945,7 @@
 			)
 		)
 		(property "Arrow Price/Stock" ""
-			(at -806.96 53.34 0)
+			(at -796.8 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15677,7 +15955,7 @@
 			)
 		)
 		(property "Manufacturer Name" ""
-			(at 189.23 39.37 90)
+			(at 199.39 39.37 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15686,7 +15964,7 @@
 			)
 		)
 		(property "Manufacturer Part Number" ""
-			(at 189.23 39.37 90)
+			(at 199.39 39.37 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15695,7 +15973,7 @@
 			)
 		)
 		(property "Sim.Device" "SPICE"
-			(at 0 0 0)
+			(at 10.16 0 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15704,7 +15982,7 @@
 			)
 		)
 		(property "Sim.Params" "20kR"
-			(at 189.484 37.084 90)
+			(at 199.644 37.084 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15712,7 +15990,7 @@
 			)
 		)
 		(property "Sim.Pins" "1=1 2=2"
-			(at 189.23 39.37 90)
+			(at 199.39 39.37 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16746,7 +17024,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f06d3da1-8410-47c0-a535-e0bdc94ab937")
-		(property "Reference" "12V"
+		(property "Reference" "12V1"
 			(at 71.12 72.8979 0)
 			(effects
 				(font
@@ -16819,12 +17097,13 @@
 			)
 		)
 		(property "Sim.Params" "12V"
-			(at 71.12 75.4379 0)
+			(at 71.12 76.7079 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Sim.Pins" "1=1"
@@ -16842,7 +17121,7 @@
 		(instances
 			(project ""
 				(path "/855a2ad7-0ca6-4188-a452-4c1fc0d76ca5"
-					(reference "12V")
+					(reference "12V1")
 					(unit 1)
 				)
 			)
@@ -17034,16 +17313,15 @@
 	)
 	(symbol
 		(lib_id "JAARK_lib:BC237B")
-		(at 157.48 123.19 0)
+		(at 157.48 124.46 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "f4ab7e12-4300-4c2a-9f52-2b6a785b22cf")
 		(property "Reference" "Q3"
-			(at 171.45 121.9199 0)
+			(at 171.45 123.1899 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17052,7 +17330,7 @@
 			)
 		)
 		(property "Value" "BC237B"
-			(at 171.45 124.4599 0)
+			(at 171.45 125.7299 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17061,7 +17339,7 @@
 			)
 		)
 		(property "Footprint" "JAARK_lib:TO-92__TO-226_"
-			(at 171.45 224.46 0)
+			(at 171.45 225.73 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17071,7 +17349,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.onsemi.com/pub/Collateral/BC237-D.PDF"
-			(at 171.45 324.46 0)
+			(at 171.45 325.73 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17081,7 +17359,7 @@
 			)
 		)
 		(property "Description" "ON Semi BC237B NPN Bipolar Transistor, 100 mA, 45 V, 3-Pin TO-92"
-			(at 157.48 123.19 0)
+			(at 157.48 124.46 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17090,7 +17368,7 @@
 			)
 		)
 		(property "Height" "5.33"
-			(at 171.45 524.46 0)
+			(at 171.45 525.73 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17100,7 +17378,7 @@
 			)
 		)
 		(property "Manufacturer_Name" "onsemi"
-			(at 171.45 624.46 0)
+			(at 171.45 625.73 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17110,7 +17388,7 @@
 			)
 		)
 		(property "Manufacturer_Part_Number" "BC237B"
-			(at 171.45 724.46 0)
+			(at 171.45 725.73 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17120,7 +17398,7 @@
 			)
 		)
 		(property "Mouser Part Number" "512-BC237B"
-			(at 171.45 824.46 0)
+			(at 171.45 825.73 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17130,7 +17408,7 @@
 			)
 		)
 		(property "Mouser Price/Stock" "http://www.mouser.com/Search/ProductDetail.aspx?qs=UMEuL5FsraB1q1ZF99shAQ%3d%3d"
-			(at 171.45 924.46 0)
+			(at 171.45 925.73 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17140,7 +17418,7 @@
 			)
 		)
 		(property "Arrow Part Number" ""
-			(at 171.45 1024.46 0)
+			(at 171.45 1025.73 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17150,7 +17428,7 @@
 			)
 		)
 		(property "Arrow Price/Stock" ""
-			(at 171.45 1124.46 0)
+			(at 171.45 1125.73 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17160,7 +17438,7 @@
 			)
 		)
 		(property "Manufacturer Name" ""
-			(at 157.48 123.19 0)
+			(at 157.48 124.46 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17169,7 +17447,7 @@
 			)
 		)
 		(property "Manufacturer Part Number" ""
-			(at 157.48 123.19 0)
+			(at 157.48 124.46 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17178,7 +17456,7 @@
 			)
 		)
 		(property "Sim.Device" "SPICE"
-			(at 0 0 0)
+			(at 0 1.27 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17187,7 +17465,7 @@
 			)
 		)
 		(property "Sim.Params" "BC237B"
-			(at 171.45 124.4599 0)
+			(at 171.45 125.7299 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17196,7 +17474,7 @@
 			)
 		)
 		(property "Sim.Pins" "1=1 2=2 3=3"
-			(at 157.48 123.19 0)
+			(at 157.48 124.46 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17284,6 +17562,73 @@
 			(project "JAARK_PCB_MOTOR"
 				(path "/855a2ad7-0ca6-4188-a452-4c1fc0d76ca5"
 					(reference "#PWR043")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GNDREF")
+		(at 40.64 59.69 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "f7ce657e-4c8a-4ef7-9dc5-9ec669ae9874")
+		(property "Reference" "#PWR024"
+			(at 46.99 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 44.45 59.6899 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 40.64 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 40.64 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GNDREF\" , reference supply ground"
+			(at 40.64 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "1f4ded22-e926-4352-b126-1c0ecdbe654e")
+		)
+		(instances
+			(project "JAARK_PCB_MOTOR"
+				(path "/855a2ad7-0ca6-4188-a452-4c1fc0d76ca5"
+					(reference "#PWR024")
 					(unit 1)
 				)
 			)
@@ -17477,7 +17822,7 @@
 	)
 	(symbol
 		(lib_id "JAARK_lib:UWT1V101MCL1GS")
-		(at 96.52 40.64 270)
+		(at 96.52 39.37 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -17486,7 +17831,7 @@
 		(fields_autoplaced yes)
 		(uuid "fe10a032-26bd-4302-b601-f78b124aa9c1")
 		(property "Reference" "C7"
-			(at 100.33 45.7199 90)
+			(at 100.33 44.4499 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17495,7 +17840,7 @@
 			)
 		)
 		(property "Value" "100uF"
-			(at 100.33 48.2599 90)
+			(at 100.33 46.9899 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17504,7 +17849,7 @@
 			)
 		)
 		(property "Footprint" "JAARK_lib:CAPAE660X800N"
-			(at 0.33 49.53 0)
+			(at 0.33 48.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17514,7 +17859,7 @@
 			)
 		)
 		(property "Datasheet" "http://www.mouser.com/ds/2/293/e-uwt-880115.pdf"
-			(at -99.67 49.53 0)
+			(at -99.67 48.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17524,7 +17869,7 @@
 			)
 		)
 		(property "Description" "Al Cap WT series SMT 100uF 35V Nichicon Aluminium Electrolytic Capacitor 100uF 35 V 6.3mm Surface Mount 5101-4 series WT lifetime 1000h"
-			(at 96.52 40.64 0)
+			(at 96.52 39.37 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17533,7 +17878,7 @@
 			)
 		)
 		(property "Height" "8"
-			(at -299.67 49.53 0)
+			(at -299.67 48.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17543,7 +17888,7 @@
 			)
 		)
 		(property "Manufacturer_Name" "Nichicon"
-			(at -399.67 49.53 0)
+			(at -399.67 48.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17553,7 +17898,7 @@
 			)
 		)
 		(property "Manufacturer_Part_Number" "UWT1V101MCL1GS"
-			(at -499.67 49.53 0)
+			(at -499.67 48.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17563,7 +17908,7 @@
 			)
 		)
 		(property "Mouser Part Number" "647-UWT1V101MCL1S"
-			(at -599.67 49.53 0)
+			(at -599.67 48.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17573,7 +17918,7 @@
 			)
 		)
 		(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Nichicon/UWT1V101MCL1GS?qs=nG%2Fv56AVa5sB1atDEGzDJQ%3D%3D"
-			(at -699.67 49.53 0)
+			(at -699.67 48.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17583,7 +17928,7 @@
 			)
 		)
 		(property "Arrow Part Number" "UWT1V101MCL1GS"
-			(at -799.67 49.53 0)
+			(at -799.67 48.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17593,7 +17938,7 @@
 			)
 		)
 		(property "Arrow Price/Stock" "https://www.arrow.com/en/products/uwt1v101mcl1gs/nichicon?utm_currency=USD&region=nac"
-			(at -899.67 49.53 0)
+			(at -899.67 48.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17603,7 +17948,7 @@
 			)
 		)
 		(property "Manufacturer Name" ""
-			(at 96.52 40.64 90)
+			(at 96.52 39.37 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17612,7 +17957,7 @@
 			)
 		)
 		(property "Manufacturer Part Number" ""
-			(at 96.52 40.64 90)
+			(at 96.52 39.37 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17621,7 +17966,7 @@
 			)
 		)
 		(property "Sim.Device" "SPICE"
-			(at 0 0 0)
+			(at 0 -1.27 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17630,7 +17975,7 @@
 			)
 		)
 		(property "Sim.Params" "100uF"
-			(at 100.33 48.2599 90)
+			(at 100.33 46.9899 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17639,7 +17984,7 @@
 			)
 		)
 		(property "Sim.Pins" "1=1 2=2"
-			(at 96.52 40.64 90)
+			(at 96.52 39.37 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17664,7 +18009,7 @@
 	)
 	(symbol
 		(lib_id "power:GNDREF")
-		(at 40.64 82.55 90)
+		(at 40.64 77.47 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -17673,7 +18018,7 @@
 		(fields_autoplaced yes)
 		(uuid "ffe3bd7a-4764-4fe4-8904-9871c3a06b39")
 		(property "Reference" "#PWR017"
-			(at 46.99 82.55 0)
+			(at 46.99 77.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17682,7 +18027,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 44.45 82.5499 90)
+			(at 44.45 77.4699 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17691,7 +18036,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 40.64 82.55 0)
+			(at 40.64 77.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17700,7 +18045,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 40.64 82.55 0)
+			(at 40.64 77.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17709,7 +18054,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GNDREF\" , reference supply ground"
-			(at 40.64 82.55 0)
+			(at 40.64 77.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)

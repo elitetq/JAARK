@@ -116,6 +116,8 @@ int main(void)
   //draw_text('A',J_11X18_FONT,J_BLACK);
   fill_area(J_BLACK);
   char number[] = "0";
+  char text1[] = "LCD Test";
+  int s = 0;
 
   while (1)
   {
@@ -127,9 +129,15 @@ int main(void)
     number[0] = i + 48;
 
     fill_text(112,106,number,J_16X26_FONT,J_WHITE);
+    fill_text(75,85,text1,J_11X18_FONT,J_WHITE);
     HAL_Delay(100);
     i++;
-	i %= 10;
+    if(!(i %= 10)) {
+      s++;
+      s %= 4;
+      fill_area(col[s]);
+    }
+	
   }
 
   /* USER CODE END 3 */

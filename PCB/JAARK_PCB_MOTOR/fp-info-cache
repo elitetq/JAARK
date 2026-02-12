@@ -1,4 +1,4 @@
-26898295008550197
+26903607480550200
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -69118,6 +69118,13 @@ MOSFET (P-Channel)
 3
 3
 JAARK_lib
+3568
+3568-1
+Undefined or Miscellaneous
+0
+4
+4
+JAARK_lib
 3586TR
 3586TR-7
 Undefined or Miscellaneous
@@ -69446,6 +69453,20 @@ Hardware
 0
 3
 3
+JAARK_lib
+jaark
+
+
+0
+0
+0
+JAARK_lib
+jaark_big
+
+
+0
+0
+0
 Jumper
 Jumper_Harwin_S1621_P10.9mm
 Harwin SMD jumper link, 12.3x2.3mm, 1.8mm height, 10.9mm pad pitch, https://cdn.harwin.com/pdfs/S1621R.pdf
