@@ -11,7 +11,7 @@
 
 #define J_MAX_PRINT_SIZE 20
 
-#define J_KERNING 3// Spacing between letters
+#define J_KERNING 0// Spacing between letters
 // -----------------------------------------------------------
 
 

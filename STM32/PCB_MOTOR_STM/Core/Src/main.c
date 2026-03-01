@@ -19,9 +19,9 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "spi.h"
+#include "tim.h"
 #include "usart.h"
 #include "gpio.h"
-#include "inttypes.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -35,17 +35,25 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+#define J_TIMEOUT 10000 // Timeout for sensor reading
 
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
+#define TRIG_PIN GPIO_PIN_4
+#define TRIG_BUS GPIOB
+#define ECHO_PIN GPIO_PIN_10
+#define ECHO_BUS GPIOB
 
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
+volatile uint32_t sensor_time = 0;
+volatile float sensor_time_seconds = 0;
+volatile bool update_flag = false;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -56,6 +64,19 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
+  if(GPIO_Pin == ECHO_PIN) {
+    if(HAL_GPIO_ReadPin(ECHO_BUS,ECHO_PIN) == GPIO_PIN_SET) { // Rising edge echo
+      __HAL_TIM_SET_COUNTER(&htim1,0); // Initialize clock to 0
+    } else { // Falling edge echo
+      sensor_time = __HAL_TIM_GET_COUNTER(&htim1);
+      // Prescaler is set to 1MHz, therefore seconds = counter / 10^6
+      sensor_time_seconds = sensor_time/1000000.0f;
+      update_flag = true;
+    }
+  }
+}
+
 int _write(int file, char *ptr, int len) {
   for(int i = 0; i < len; i++) {
     ITM_SendChar(*ptr++);
@@ -79,6 +100,7 @@ int main(void)
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
+
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
   HAL_Init();
 
@@ -97,47 +119,54 @@ int main(void)
   MX_GPIO_Init();
   MX_USART2_UART_Init();
   MX_SPI3_Init();
+  MX_TIM1_Init();
   /* USER CODE BEGIN 2 */
+
+  HAL_TIM_Base_Start(&htim1);
+
   init_lcd();
-  uint8_t val[2] = {0xF0,0x0F};
   
   //fill_area(0x000F);
-  j_color col[4] = {J_BLUE, J_RED, J_BLACK, J_PINK};
-  j_color col_text[4] = {J_WHITE,J_GREEN,J_PINK,J_CYAN};
-  uint8_t i = 5;
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  uint16_t* ret;
-  j_master_control.bgcol = J_BLUE;
-  set_bounds(0,245,0,245);
+  j_master_control.bgcol = J_BLACK;
+  set_bounds(0,239,0,239);
   //set_bounds(30,40,30,47);
   //draw_text('A',J_11X18_FONT,J_BLACK);
-  fill_area(J_BLACK);
-  char number[] = "0";
-  char text1[] = "LCD Test";
-  int s = 0;
+  fill_area(j_master_control.bgcol);
+  float s, prev_s;
+  s = prev_s = 0;
+  j_counter my_counter = J_CREATE_COUNTER;
+  volatile float distance = 0;
 
   while (1)
+
   {
     /* USER CODE END WHILE */
 
-
     /* USER CODE BEGIN 3 */
+    __HAL_TIM_SET_COUNTER(&htim1,0);
+    HAL_GPIO_WritePin(TRIG_BUS,TRIG_PIN,GPIO_PIN_SET); // Set trig pin on
+    while(__HAL_TIM_GET_COUNTER(&htim1) < 15) {
 
-    number[0] = i + 48;
-
-    fill_text(112,106,number,J_16X26_FONT,J_WHITE);
-    fill_text(75,85,text1,J_11X18_FONT,J_WHITE);
-    HAL_Delay(100);
-    i++;
-    if(!(i %= 10)) {
-      s++;
-      s %= 4;
-      fill_area(col[s]);
     }
-	
+    HAL_GPIO_WritePin(TRIG_BUS,TRIG_PIN,GPIO_PIN_RESET); // Set trig pin off after about 1000 microseconds
+
+
+    while(__HAL_TIM_GET_COUNTER(&htim1) < 65000) {
+      if(update_flag) break;
+    }
+    update_flag = false;
+
+    distance = (sensor_time_seconds * 34300.0f)/2.0;
+    //printf("%lf\n",distance);
+    printf("sensor_time: %d\nsensor_time_seconds: %lf\n",sensor_time,sensor_time_seconds);
+
+    fill_counter(&my_counter,120,120,distance,J_16X26_FONT,J_WHITE,J_CENTER);
+
+    HAL_Delay(65);
   }
 
   /* USER CODE END 3 */

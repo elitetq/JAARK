@@ -168,4 +168,10 @@ K
 F https://www.mouser.com/datasheet/2/215/3568-742601.pdf
 $ENDCMP
 #
+$CMP 2N4403TFR
+D High gain; Pb-Free Packages
+K
+F https://www.onsemi.com/pub/Collateral/2N4403T.PDF
+$ENDCMP
+#
 #End Doc Library

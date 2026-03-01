@@ -15,6 +15,10 @@
 #include "spi.h"
 #include "usart.h"
 #include "gpio.h"
+#include "math.h"
+#include <stdlib.h>
+#include <stdio.h>
+#include <stdbool.h>
 
 // J_ST CFG ------------------------------
 #define J_CFG_DC_PIN GPIO_PIN_0
@@ -52,6 +56,11 @@
 #define J_LENGTH J_CFG_SCREEN_LENGTH
 #define J_DIV 3
 #define J_BUF_SIZE (J_HEIGHT * (J_LENGTH/J_DIV) * 2)
+
+#define J_CREATE_COUNTER ((j_counter){.start_x = -1, .end_x = -1, .prev_val = 0})
+
+#define MAX_TEXT_TO_STRING_SIZE 10
+#define MAX_DECIMAL_SIZE 2
 // ----------------------------------------
 
 typedef enum {
@@ -75,28 +84,68 @@ typedef struct {
     
 } j_entity;
 
+typedef enum {
+    J_LEFT = 0,
+    J_CENTER,
+    J_RIGHT
+} j_centering;
+
 typedef struct {
     j_color bgcol;
     uint8_t num_entities;
     
 } j_struct;
 
+typedef struct {
+    float prev_val;
+    int16_t start_x, end_x; // Previous values
+} j_counter;
+
+
 static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
 static char j_flag_set_bounds = 1;
 
-static j_struct j_master_control = {
+static j_struct j_master_control = { // We should change this to be more user-friendly
     J_BLUE,
     0
 };
 
 
+/**
+ * @brief Write comand via SPI
+ * 
+ * @param CMD 8-bit command
+ */
 void write_cmd(uint8_t CMD);
+/**
+ * @brief write multiple 8-bit integers via SPI
+ * 
+ * @param dat Data pointer to uint8_t array
+ * @param len Length of array
+ */
 void write_u8(uint8_t* dat, size_t len);
+/**
+ * @brief Write single line of 8-bit data via SPI
+ * 
+ * @param dat 8-bit data
+ */
 void write_s8(uint8_t dat);
+/**
+ * @brief Initialize the LCD by sending the basic commands
+ */
 void init_lcd();
+/**
+ * @brief Set bounds of the screen for drawing
+ * 
+ * @param xlo Low X coordinate
+ * @param xhi High X coordinate
+ * @param ylo Low Y coordinate
+ * @param yhi High Y coordinate
+ */
 void set_bounds(uint8_t xlo, uint8_t xhi, uint8_t ylo, uint8_t yhi);
 void fill_area(uint16_t color);
-void fill_text(uint8_t x, uint8_t y, char* str, uint8_t font_size, j_color color);
+void fill_text(uint8_t x, uint8_t y, char* str, int len, uint8_t font_size, j_color color, j_centering CENTERING);
 void draw_text(char ch, uint8_t font_size, j_color FILL_COL);
+void fill_counter(j_counter* counter, uint16_t x, uint16_t y, float num, uint8_t font_size, j_color FILL_COL, j_centering CENTERING);
 
 #endif /* J_ST7789_H_ */
