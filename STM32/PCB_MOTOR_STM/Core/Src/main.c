@@ -18,6 +18,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "adc.h"
 #include "spi.h"
 #include "tim.h"
 #include "usart.h"
@@ -45,15 +46,33 @@
 #define TRIG_BUS GPIOB
 #define ECHO_PIN GPIO_PIN_10
 #define ECHO_BUS GPIOB
+#define LED_PIN GPIO_PIN_1
+#define LED_BUS GPIOA
 
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
+// Sensor Setup
 volatile uint32_t sensor_time = 0;
 volatile float sensor_time_seconds = 0;
 volatile bool update_flag = false;
+
+// ADC Setup
+volatile uint32_t adc_val = 0;
+volatile float voltage = 0.0f;
+volatile float volt_per_bit = 0.0f;
+
+
+#define ADC_REF_VOLTAGE 3.3f
+#define ADC_MAX_RANGE 4095
+#define N_SAMPLES 16
+
+HAL_ADC_Start(&hadc1);
+volt_per_bit = ref_voltage / (float)ADC_MAX_RANGE;
+
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -120,6 +139,7 @@ int main(void)
   MX_USART2_UART_Init();
   MX_SPI3_Init();
   MX_TIM1_Init();
+  MX_ADC1_Init();
   /* USER CODE BEGIN 2 */
 
   HAL_TIM_Base_Start(&htim1);
