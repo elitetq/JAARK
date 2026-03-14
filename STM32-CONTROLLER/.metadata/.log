@@ -1,0 +1,23 @@
+!SESSION 2026-03-13 23:43:02.273 -----------------------------------------------
+eclipse.buildId=Version 2.0.0
+java.version=21.0.8
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_CA
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2026-03-13 23:43:09.005
+!MESSAGE Log4j2 initialized with config file C:\Users\jonar\JAARK\STM32-CONTROLLER\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2026-03-13 23:43:17.048
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-13 23:43:18.265
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-13 23:43:18.268
+!MESSAGE port: COM5
+
+!ENTRY org.eclipse.cdt.core 1 0 2026-03-13 23:44:12.361
+!MESSAGE Indexed 'STM32_CONTROLLER' (20 sources, 142 headers) in 6.26 sec: 12,570 declarations; 45,859 references; 1 unresolved inclusions; 92 syntax errors; 240 unresolved names (0.41%)

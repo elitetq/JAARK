@@ -58,6 +58,7 @@
 #define J_BUF_SIZE (J_HEIGHT * (J_LENGTH/J_DIV) * 2)
 
 #define J_CREATE_COUNTER ((j_counter){.start_x = -1, .end_x = -1, .prev_val = 0})
+#define J_CLAMP_VALUE(value, max_val, min_val) ((value > max_val) ? (max_val) : ((value < min_val) ? min_val : value))
 
 #define MAX_TEXT_TO_STRING_SIZE 10
 #define MAX_DECIMAL_SIZE 2
@@ -68,9 +69,10 @@ typedef enum {
     J_BLACK = 0x0000,
     J_BLUE = 0x001F,
     J_CYAN = 0x00EF,
-    J_RED = 0xF000,
+    J_RED = 0xF800,
     J_PINK = 0xF00F,
-    J_GREEN = 0x0E00
+    J_GREEN = 0x07E0,
+    J_YELLOW = 0xFFE0
 } j_color;
 
 typedef enum {
@@ -147,5 +149,7 @@ void fill_area(uint16_t color);
 void fill_text(uint8_t x, uint8_t y, char* str, int len, uint8_t font_size, j_color color, j_centering CENTERING);
 void draw_text(char ch, uint8_t font_size, j_color FILL_COL);
 void fill_counter(j_counter* counter, uint16_t x, uint16_t y, float num, uint8_t font_size, j_color FILL_COL, j_centering CENTERING);
+int fill_lbar(uint8_t x, uint8_t y, int value, int prev_value, int full_val, int length, int height, j_color col);
+void set_bg_col(j_color color);
 
 #endif /* J_ST7789_H_ */

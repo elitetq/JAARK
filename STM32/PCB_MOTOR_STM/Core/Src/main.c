@@ -49,6 +49,9 @@
 #define LED_PIN GPIO_PIN_1
 #define LED_BUS GPIOA
 
+#define DIST_WARN 25
+#define DIST_DANGER_PCNT 40
+
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
@@ -56,21 +59,30 @@
 /* USER CODE BEGIN PV */
 // Sensor Setup
 volatile uint32_t sensor_time = 0;
+volatile float distance = 0;
 volatile float sensor_time_seconds = 0;
-volatile bool update_flag = false;
+volatile float sensor_prev_dist_green = 0;
+volatile int distance_clamp = 0;
+volatile bool update_flag = false; // Update on-screen value
+volatile uint8_t lbar_update_flag = 0; // Update loading bar
+volatile uint8_t lbar_switch_color_flag = 0;
+volatile int prev_distance = 0;
 
-// ADC Setup
-volatile uint32_t adc_val = 0;
-volatile float voltage = 0.0f;
-volatile float volt_per_bit = 0.0f;
-
+#define SENS_EXP_FACTOR 0.4 // Exponential smoother
 
 #define ADC_REF_VOLTAGE 3.3f
 #define ADC_MAX_RANGE 4095
-#define N_SAMPLES 16
+#define N_SAMPLES 100
+#define ADC_THRESHOLD 2.4
+// ADC Setup
+volatile uint32_t adc_val = 0;
+volatile float voltage = 0.0f;
+volatile float volt_per_bit = ADC_REF_VOLTAGE / (float)ADC_MAX_RANGE;
+static float voltage_samples[N_SAMPLES];
+static int voltage_index = 0;
 
-HAL_ADC_Start(&hadc1);
-volt_per_bit = ref_voltage / (float)ADC_MAX_RANGE;
+
+
 
 
 /* USER CODE END PV */
@@ -83,14 +95,41 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+
+static uint32_t current_val = 0;
+static uint32_t previous_val = 0;
+static uint32_t delta_ticks = 0;
+
+void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim) {
+    if (htim->Instance == TIM5) {
+        if (htim->Channel == HAL_TIM_ACTIVE_CHANNEL_1) {
+
+            // 1. Read the new capture value
+            current_val = HAL_TIM_ReadCapturedValue(htim, TIM_CHANNEL_1);
+
+            // 2. Calculate the difference
+            // (Unsigned 32-bit math automatically handles the rollover gracefully)
+            delta_ticks = current_val - previous_val;
+            if(!delta_ticks) delta_ticks = 1;
+
+            // 3. Save the current value for the next interrupt
+            previous_val = current_val;
+
+            // At 500ns per tick, your period in seconds is: delta_ticks * 0.0000005
+            // Your frequency in Hz is: 2000000 / delta_ticks
+        }
+    }
+}
+
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
   if(GPIO_Pin == ECHO_PIN) {
     if(HAL_GPIO_ReadPin(ECHO_BUS,ECHO_PIN) == GPIO_PIN_SET) { // Rising edge echo
-      __HAL_TIM_SET_COUNTER(&htim1,0); // Initialize clock to 0
+      __HAL_TIM_SET_COUNTER(&htim2,0); // Initialize clock to 0
     } else { // Falling edge echo
-      sensor_time = __HAL_TIM_GET_COUNTER(&htim1);
+      sensor_time = __HAL_TIM_GET_COUNTER(&htim2);
       // Prescaler is set to 1MHz, therefore seconds = counter / 10^6
-      sensor_time_seconds = sensor_time/1000000.0f;
+      sensor_time_seconds = sensor_time/(1000000.0f*84);
+
       update_flag = true;
     }
   }
@@ -101,6 +140,20 @@ int _write(int file, char *ptr, int len) {
     ITM_SendChar(*ptr++);
   }
   return len;
+}
+
+float get_avg_adc() {
+  float sum = 0.0f;
+  for(int i = 0; i < N_SAMPLES; i++) {
+    sum += voltage_samples[i];
+  }
+  return sum / (float)N_SAMPLES;
+}
+
+float add_adc_val(float val) {
+  voltage_samples[voltage_index] = val;
+  voltage_index += 1;
+  voltage_index %= N_SAMPLES;
 }
 
 /* USER CODE END 0 */
@@ -138,14 +191,20 @@ int main(void)
   MX_GPIO_Init();
   MX_USART2_UART_Init();
   MX_SPI3_Init();
-  MX_TIM1_Init();
   MX_ADC1_Init();
+  MX_TIM2_Init();
+  MX_TIM5_Init();
+  MX_TIM1_Init();
   /* USER CODE BEGIN 2 */
 
-  HAL_TIM_Base_Start(&htim1);
+  //HAL_TIM_Base_Start(&htim5);
+  HAL_TIM_Base_Start_IT(&htim1);
+  HAL_TIM_IC_Start_IT(&htim5,TIM_CHANNEL_1); // 32-bit metal detector timer
+  HAL_TIM_Base_Start(&htim2); // 32-bit ultrasonic timer
 
   init_lcd();
   
+  set_bg_col(J_BLACK);
   //fill_area(0x000F);
   /* USER CODE END 2 */
 
@@ -159,35 +218,75 @@ int main(void)
   float s, prev_s;
   s = prev_s = 0;
   j_counter my_counter = J_CREATE_COUNTER;
-  volatile float distance = 0;
+  HAL_GPIO_WritePin(LED_BUS,LED_PIN,GPIO_PIN_SET);
 
+  fill_text(120,80,"Distance (cm)",-1,J_11X18_FONT,J_WHITE,J_CENTER);
+
+  HAL_ADC_Start(&hadc1);
   while (1)
 
   {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-    __HAL_TIM_SET_COUNTER(&htim1,0);
+    __HAL_TIM_SET_COUNTER(&htim2,0);
     HAL_GPIO_WritePin(TRIG_BUS,TRIG_PIN,GPIO_PIN_SET); // Set trig pin on
-    while(__HAL_TIM_GET_COUNTER(&htim1) < 15) {
+
+    while(__HAL_TIM_GET_COUNTER(&htim2) < 840) {
 
     }
     HAL_GPIO_WritePin(TRIG_BUS,TRIG_PIN,GPIO_PIN_RESET); // Set trig pin off after about 1000 microseconds
 
-
-    while(__HAL_TIM_GET_COUNTER(&htim1) < 65000) {
-      if(update_flag) break;
-    }
-    update_flag = false;
-
-    distance = (sensor_time_seconds * 34300.0f)/2.0;
+    HAL_Delay(60); // Super important
+    // while(__HAL_TIM_GET_COUNTER(&htim1) < 65000) {
+    //   if(update_flag) break;
+    // }
+    // if(HAL_ADC_PollForConversion(&hadc1,100) == HAL_OK) {
+    //   add_adc_val(HAL_ADC_GetValue(&hadc1)*volt_per_bit);
+    //   HAL_ADC_Start(&hadc1);
+    //   voltage = (get_avg_adc()) * 1;
+    //   //voltage > ADC_THRESHOLD ? HAL_GPIO_WritePin(LED_BUS,LED_PIN,GPIO_PIN_SET) : HAL_GPIO_WritePin(LED_BUS,LED_PIN,GPIO_PIN_RESET);
+    // }
+    // printf("Frequency: %d\n", 84000000/delta_ticks);
     //printf("%lf\n",distance);
-    printf("sensor_time: %d\nsensor_time_seconds: %lf\n",sensor_time,sensor_time_seconds);
+    if(update_flag) { // Update for sensor (update_flag)
+      update_flag = false;
 
-    fill_counter(&my_counter,120,120,distance,J_16X26_FONT,J_WHITE,J_CENTER);
+      distance = (sensor_time_seconds * 34300.0f)/2.0;
+      printf("Sensor Reading: %lf cm\n", distance);
+      // printf("sensor_time: %d\nsensor_time_seconds: %lf\n",sensor_time,sensor_time_seconds);
 
-    HAL_Delay(65);
+      distance_clamp = distance_clamp * (1-SENS_EXP_FACTOR) + (50 - distance) * SENS_EXP_FACTOR;
+      j_color write_col = J_GREEN;
+      if(distance_clamp < 0) distance_clamp = 0;
+      if(distance_clamp > 25) write_col = J_YELLOW;
+      if(distance_clamp > 40) write_col = J_RED;
+
+      fill_counter(&my_counter,120,120,distance,J_16X26_FONT,J_WHITE,J_CENTER);
+      sensor_prev_dist_green = fill_lbar(40,150,distance_clamp,sensor_prev_dist_green,50,160,10,write_col);
+
+
+    }
+    if(0) { // Check for voltage (voltage < 2.51)
+    	voltage = 3;
+    	for(int i = 0; i < N_SAMPLES; i++) {
+    		add_adc_val(3);
+    	}
+    	printf("Detected metal\n\n");
+      // for(int j = 0; j < 200; j++) {
+      //   HAL_GPIO_WritePin(LED_BUS,LED_PIN,GPIO_PIN_SET);
+      //   HAL_Delay(1);
+
+      //   HAL_GPIO_WritePin(LED_BUS,LED_PIN,GPIO_PIN_RESET);
+      //   HAL_Delay(1);
+      // }
+      //HAL_GPIO_WritePin(LED_BUS,LED_PIN,GPIO_PIN_SET);
+    	HAL_Delay(2000);
+      //HAL_GPIO_WritePin(LED_BUS,LED_PIN,GPIO_PIN_RESET);
+    }
+    HAL_Delay(1);
   }
+
 
   /* USER CODE END 3 */
 }

@@ -1,23 +1,21 @@
-00:52:11 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
+14:26:42 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
 make -j22 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
 ../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:165:27: warning: format '%d' expects argument of type 'int', but argument 2 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
-  165 |     printf("sensor_time: %d\nsensor_time_seconds: %lf\n",sensor_time,sensor_time_seconds);
-      |                          ~^                              ~~~~~~~~~~~
-      |                           |                              |
-      |                           int                            uint32_t {aka long unsigned int}
-      |                          %ld
-../Core/Src/main.c:139:9: warning: variable 's' set but not used [-Wunused-but-set-variable]
-  139 |   float s, prev_s;
+../Core/Src/main.c:218:9: warning: variable 's' set but not used [-Wunused-but-set-variable]
+  218 |   float s, prev_s;
       |         ^
-In file included from ../Core/Src/main.c:28:
+../Core/Src/main.c: In function 'add_adc_val':
+../Core/Src/main.c:157:1: warning: control reaches end of non-void function [-Wreturn-type]
+  157 | }
+      | ^
+In file included from ../Core/Src/main.c:29:
 ../Core/Inc/j_st7789.h: At top level:
-../Core/Inc/j_st7789.h:106:13: warning: 'j_flag_set_bounds' defined but not used [-Wunused-variable]
-  106 | static char j_flag_set_bounds = 1;
+../Core/Inc/j_st7789.h:108:13: warning: 'j_flag_set_bounds' defined but not used [-Wunused-variable]
+  108 | static char j_flag_set_bounds = 1;
       |             ^~~~~~~~~~~~~~~~~
-../Core/Inc/j_st7789.h:105:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
-  105 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
+../Core/Inc/j_st7789.h:107:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
+  107 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
       |                ^~~~~~~~
 In file included from ../Core/Inc/j_st7789.h:37:
 ../Core/Inc/j_fonts.h:338:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
@@ -32,11 +30,11 @@ Finished building target: PCB_MOTOR_STM.elf
 arm-none-eabi-size  PCB_MOTOR_STM.elf 
 arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
    text	   data	    bss	    dec	    hex	filename
-  41436	    504	  42056	  83996	  1481c	PCB_MOTOR_STM.elf
+  47300	    504	  42296	  90100	  15ff4	PCB_MOTOR_STM.elf
 Finished building: default.size.stdout
  
 Finished building: PCB_MOTOR_STM.list
  
 
-00:52:14 Build Finished. 0 errors, 6 warnings. (took 2s.847ms)
+14:26:44 Build Finished. 0 errors, 6 warnings. (took 2s.335ms)
 

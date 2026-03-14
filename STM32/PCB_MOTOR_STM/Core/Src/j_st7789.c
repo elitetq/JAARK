@@ -78,10 +78,13 @@ void init_lcd() {
     write_cmd(CMD_RAMWR);
 }
 
+void set_bg_col(j_color color) {
+    j_master_control.bgcol = color;
+}
+
 void fill_area(uint16_t color) {
     uint8_t lval = color;
     uint8_t hval = color >> 8;
-    j_master_control.bgcol = color;
     for(int i = 0; i < J_BUF_SIZE; i+= 2) {
         col_arr[i] = hval;
         col_arr[i+1] = lval;
@@ -204,5 +207,27 @@ void fill_counter(j_counter* counter, uint16_t x, uint16_t y, float num, uint8_t
         counter->start_x = x;
         counter->end_x = x + len*(j_fonts_length[font_size]);
     }
+    j_flag_set_bounds = 1;
     // fill_text(x,y,ret_str,len,font_size,FILL_COL,J_LEFT);
+}
+
+int fill_lbar(uint8_t x, uint8_t y, int value, int prev_value, int full_val, int length, int height, j_color col) {
+    j_flag_set_bounds = 0;
+    // Clamp values
+    int value_c, prev_val_c, x1, x2;
+    value_c = J_CLAMP_VALUE(value,full_val,0);
+    prev_val_c = J_CLAMP_VALUE(prev_value,full_val,0);
+
+    x1 = x + (length * value_c)/full_val;
+    x2 = x + (length * prev_val_c)/full_val;
+
+    j_color draw_temp_col = col;
+    if(value_c < prev_val_c) draw_temp_col = j_master_control.bgcol;
+
+    set_bounds(x1,x2,y,y+height);
+    fill_area(draw_temp_col);
+
+    j_flag_set_bounds = 1;
+
+    return value;
 }
