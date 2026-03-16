@@ -284,8 +284,6 @@ int main(void)
     	joystick_x = rx_data >> 4;
     	joystick_y = rx_data & 0x0F;
     	printf("%d  %d\n", joystick_x, joystick_y);
-
-    	//printf("%d, %d\n\n", joystick_x, joystick_y);
     }
 
     HAL_Delay(1);
@@ -346,13 +344,8 @@ void SystemClock_Config(void)
 
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
 
-    // Make sure the interrupt came from the correct UART port
     if (huart->Instance == USART1) {
-
         bt_dat_avail = 1; // Let the code know we have new data ready
-
-
-
     }
 }
 
