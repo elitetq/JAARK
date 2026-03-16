@@ -1,0 +1,8 @@
+../Drivers/CMSIS/Include/core_cm4.h:2064:26:ITM_SendChar	4
+../Core/Src/main.c:62:5:_write	2
+../Core/Src/main.c:79:5:main	1
+../Core/Src/main.c:170:6:SystemClock_Config	3
+../Core/Src/main.c:215:6:Send_HC_AT_Command	3
+../Core/Src/main.c:236:6:HAL_UART_RxCpltCallback	3
+../Core/Src/main.c:262:6:HAL_UART_ErrorCallback	3
+../Core/Src/main.c:281:6:Error_Handler	1

@@ -1,0 +1,85 @@
+16:29:18 **** Incremental Build of configuration Debug for project STM32_CONTROLLER ****
+make -j22 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:154:5: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+  154 |     printf("%d %d\n",hal_adc_val,hal_adc_val2);
+      |     ^~~~~~
+../Core/Src/main.c:24:1: note: include '<stdio.h>' or provide a declaration of 'printf'
+   23 | #include "gpio.h"
+  +++ |+#include <stdio.h>
+   24 | 
+../Core/Src/main.c:154:5: warning: incompatible implicit declaration of built-in function 'printf' [-Wbuiltin-declaration-mismatch]
+  154 |     printf("%d %d\n",hal_adc_val,hal_adc_val2);
+      |     ^~~~~~
+../Core/Src/main.c:154:5: note: include '<stdio.h>' or provide a declaration of 'printf'
+../Core/Src/main.c:154:14: warning: format '%d' expects argument of type 'int', but argument 2 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  154 |     printf("%d %d\n",hal_adc_val,hal_adc_val2);
+      |             ~^       ~~~~~~~~~~~
+      |              |       |
+      |              int     uint32_t {aka long unsigned int}
+      |             %ld
+../Core/Src/main.c:154:17: warning: format '%d' expects argument of type 'int', but argument 3 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  154 |     printf("%d %d\n",hal_adc_val,hal_adc_val2);
+      |                ~^                ~~~~~~~~~~~~
+      |                 |                |
+      |                 int              uint32_t {aka long unsigned int}
+      |                %ld
+../Core/Src/main.c:114:11: warning: unused variable 'rx_buffer' [-Wunused-variable]
+  114 |   uint8_t rx_buffer[BT_BUF_SIZE] = {0};
+      |           ^~~~~~~~~
+../Core/Src/main.c:113:11: warning: unused variable 'cmd_role' [-Wunused-variable]
+  113 |   uint8_t cmd_role[] = "AT+ADDR?\r\n";  // Setting to Slave
+      |           ^~~~~~~~
+../Core/Src/main.c:112:11: warning: unused variable 'cmd_at' [-Wunused-variable]
+  112 |   uint8_t cmd_at[] = "AT\r\n";
+      |           ^~~~~~
+../Core/Src/main.c: In function 'Send_HC_AT_Command':
+../Core/Src/main.c:221:3: warning: implicit declaration of function 'memset' [-Wimplicit-function-declaration]
+  221 |   memset(local_str,0,sizeof(local_str));
+      |   ^~~~~~
+../Core/Src/main.c:24:1: note: include '<string.h>' or provide a declaration of 'memset'
+   23 | #include "gpio.h"
+  +++ |+#include <string.h>
+   24 | 
+../Core/Src/main.c:221:3: warning: incompatible implicit declaration of built-in function 'memset' [-Wbuiltin-declaration-mismatch]
+  221 |   memset(local_str,0,sizeof(local_str));
+      |   ^~~~~~
+../Core/Src/main.c:221:3: note: include '<string.h>' or provide a declaration of 'memset'
+../Core/Src/main.c:223:3: warning: implicit declaration of function 'strcpy' [-Wimplicit-function-declaration]
+  223 |   strcpy(local_str,"-- Sending -> ");
+      |   ^~~~~~
+../Core/Src/main.c:223:3: note: include '<string.h>' or provide a declaration of 'strcpy'
+../Core/Src/main.c:223:3: warning: incompatible implicit declaration of built-in function 'strcpy' [-Wbuiltin-declaration-mismatch]
+../Core/Src/main.c:223:3: note: include '<string.h>' or provide a declaration of 'strcpy'
+../Core/Src/main.c:225:5: warning: implicit declaration of function 'strcat' [-Wimplicit-function-declaration]
+  225 |     strcat(local_str,str);
+      |     ^~~~~~
+../Core/Src/main.c:225:5: note: include '<string.h>' or provide a declaration of 'strcat'
+../Core/Src/main.c:225:5: warning: incompatible implicit declaration of built-in function 'strcat' [-Wbuiltin-declaration-mismatch]
+../Core/Src/main.c:225:5: note: include '<string.h>' or provide a declaration of 'strcat'
+../Core/Src/main.c:227:51: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
+  227 |   HAL_UART_Transmit(&huart2, (uint8_t*)local_str, strlen(local_str), 100);
+      |                                                   ^~~~~~
+../Core/Src/main.c:227:51: note: include '<string.h>' or provide a declaration of 'strlen'
+../Core/Src/main.c:227:51: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+../Core/Src/main.c:227:51: note: include '<string.h>' or provide a declaration of 'strlen'
+../Core/Src/main.c: In function 'HAL_UART_RxCpltCallback':
+../Core/Src/main.c:238:9: warning: incompatible implicit declaration of built-in function 'printf' [-Wbuiltin-declaration-mismatch]
+  238 |         printf("Entered callback\n");
+      |         ^~~~~~
+../Core/Src/main.c:238:9: note: include '<stdio.h>' or provide a declaration of 'printf'
+arm-none-eabi-gcc -o "STM32_CONTROLLER.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\STM32_CONTROLLER\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32_CONTROLLER.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32_CONTROLLER.elf
+ 
+arm-none-eabi-size  STM32_CONTROLLER.elf 
+arm-none-eabi-objdump -h -S STM32_CONTROLLER.elf  > "STM32_CONTROLLER.list"
+   text	   data	    bss	    dec	    hex	filename
+  19116	    104	   2200	  21420	   53ac	STM32_CONTROLLER.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32_CONTROLLER.list
+ 
+
+16:29:20 Build Finished. 0 errors, 16 warnings. (took 1s.714ms)
+

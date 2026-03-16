@@ -19,6 +19,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "adc.h"
+#include "dma.h"
 #include "spi.h"
 #include "tim.h"
 #include "usart.h"
@@ -96,9 +97,16 @@ void SystemClock_Config(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
+// Ultrasonic Variables
 static uint32_t current_val = 0;
 static uint32_t previous_val = 0;
 static uint32_t delta_ticks = 0;
+
+// Joystick Variables
+volatile uint8_t rx_data = 0;
+volatile uint8_t joystick_x = 0;
+volatile uint8_t joystick_y = 0;
+volatile char bt_dat_avail = 0;
 
 void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim) {
     if (htim->Instance == TIM5) {
@@ -189,18 +197,21 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_USART2_UART_Init();
+  MX_DMA_Init();
   MX_SPI3_Init();
   MX_ADC1_Init();
   MX_TIM2_Init();
   MX_TIM5_Init();
   MX_TIM1_Init();
+  MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
 
   //HAL_TIM_Base_Start(&htim5);
   HAL_TIM_Base_Start_IT(&htim1);
   HAL_TIM_IC_Start_IT(&htim5,TIM_CHANNEL_1); // 32-bit metal detector timer
   HAL_TIM_Base_Start(&htim2); // 32-bit ultrasonic timer
+
+  HAL_UART_Receive_DMA(&huart1, &rx_data, 1);
 
   init_lcd();
   
@@ -249,7 +260,7 @@ int main(void)
     // }
     // printf("Frequency: %d\n", 84000000/delta_ticks);
     //printf("%lf\n",distance);
-    if(update_flag) { // Update for sensor (update_flag)
+    if(0) { // Update for sensor (update_flag)
       update_flag = false;
 
       distance = (sensor_time_seconds * 34300.0f)/2.0;
@@ -267,23 +278,16 @@ int main(void)
 
 
     }
-    if(0) { // Check for voltage (voltage < 2.51)
-    	voltage = 3;
-    	for(int i = 0; i < N_SAMPLES; i++) {
-    		add_adc_val(3);
-    	}
-    	printf("Detected metal\n\n");
-      // for(int j = 0; j < 200; j++) {
-      //   HAL_GPIO_WritePin(LED_BUS,LED_PIN,GPIO_PIN_SET);
-      //   HAL_Delay(1);
 
-      //   HAL_GPIO_WritePin(LED_BUS,LED_PIN,GPIO_PIN_RESET);
-      //   HAL_Delay(1);
-      // }
-      //HAL_GPIO_WritePin(LED_BUS,LED_PIN,GPIO_PIN_SET);
-    	HAL_Delay(2000);
-      //HAL_GPIO_WritePin(LED_BUS,LED_PIN,GPIO_PIN_RESET);
+    if(bt_dat_avail) {
+    	bt_dat_avail = 0;
+    	joystick_x = rx_data >> 4;
+    	joystick_y = rx_data & 0x0F;
+    	printf("%d  %d\n", joystick_x, joystick_y);
+
+    	//printf("%d, %d\n\n", joystick_x, joystick_y);
     }
+
     HAL_Delay(1);
   }
 
@@ -339,6 +343,18 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
+
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
+
+    // Make sure the interrupt came from the correct UART port
+    if (huart->Instance == USART1) {
+
+        bt_dat_avail = 1; // Let the code know we have new data ready
+
+
+
+    }
+}
 
 /* USER CODE END 4 */
 

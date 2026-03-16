@@ -21,3 +21,1152 @@ COM5
 
 !ENTRY org.eclipse.cdt.core 1 0 2026-03-13 23:44:12.361
 !MESSAGE Indexed 'STM32_CONTROLLER' (20 sources, 142 headers) in 6.26 sec: 12,570 declarations; 45,859 references; 1 unresolved inclusions; 92 syntax errors; 240 unresolved names (0.41%)
+
+!ENTRY org.eclipse.cdt.dsf.gdb 4 104 2026-03-14 00:02:28.983
+!MESSAGE Program file does not exist
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 104 2026-03-14 00:02:28.983
+!MESSAGE 
+
+!ENTRY org.eclipse.cdt.dsf.gdb 4 104 2026-03-14 00:02:41.838
+!MESSAGE Program file does not exist
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 104 2026-03-14 00:02:41.838
+!MESSAGE 
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 00:04:28.019
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 00:06:48.882
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 00:09:20.391
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 00:10:29.043
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 00:12:31.970
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 00:15:33.747
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 00:16:09.932
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 00:17:40.894
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 00:19:15.816
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY org.eclipse.cdt.dsf.gdb 4 5012 2026-03-14 00:19:16.766
+!MESSAGE Error in final launch sequence:
+
+Setup exceptions
+!STACK 1
+org.eclipse.core.runtime.CoreException: Setup exceptions
+	at org.eclipse.cdt.dsf.concurrent.Query.get(Query.java:112)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugSession(GdbLaunchDelegate.java:252)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugger(GdbLaunchDelegate.java:109)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launch(GdbLaunchDelegate.java:97)
+	at com.st.stm32cube.ide.mcu.debug.launch.DSFDelegate.launch(DSFDelegate.java:333)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:805)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:716)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1054)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$1.run(DebugUIPlugin.java:1257)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+!SUBENTRY 1 com.st.stm32cube.ide.mcu.debug.launch 4 0 2026-03-14 00:19:16.770
+!MESSAGE Setup exceptions
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 00:19:29.054
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 00:20:19.924
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 00:22:11.635
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 00:22:55.859
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY org.eclipse.core.jobs 4 2 2026-03-14 00:23:37.744
+!MESSAGE An internal error occurred during: "Suspend monitor job.".
+!STACK 0
+java.util.concurrent.RejectedExecutionException: Task java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask@5570ee05[Not completed, task = java.util.concurrent.Executors$RunnableAdapter@6372a5ff[Wrapped task = org.eclipse.cdt.dsf.gdb.service.GDBRunControl_7_12$MonitorSuspendJob$2@1c8a1480]] rejected from org.eclipse.cdt.dsf.concurrent.DefaultDsfExecutor@128f1d3a[Terminated, pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 1946]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$AbortPolicy.rejectedExecution(ThreadPoolExecutor.java:2081)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.reject(ThreadPoolExecutor.java:841)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor.delayedExecute(ScheduledThreadPoolExecutor.java:340)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor.schedule(ScheduledThreadPoolExecutor.java:562)
+	at org.eclipse.cdt.dsf.concurrent.DefaultDsfExecutor.schedule(DefaultDsfExecutor.java:450)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor.submit(ScheduledThreadPoolExecutor.java:715)
+	at org.eclipse.cdt.dsf.concurrent.DefaultDsfExecutor.submit(DefaultDsfExecutor.java:482)
+	at org.eclipse.cdt.dsf.gdb.service.GDBRunControl_7_12$MonitorSuspendJob.run(GDBRunControl_7_12.java:358)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 00:23:41.869
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 00:33:45.572
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 00:33:45.575
+!MESSAGE port: 
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 00:42:35.996
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 00:42:35.999
+!MESSAGE port: COM5
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 00:42:41.781
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 00:42:41.785
+!MESSAGE port: 
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 00:42:48.858
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 00:42:48.861
+!MESSAGE port: COM5
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 00:45:36.849
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 00:47:13.503
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 00:48:27.084
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 00:53:35.527
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 00:56:17.257
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 00:56:17.259
+!MESSAGE port: 
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 00:57:44.896
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 00:57:44.899
+!MESSAGE port: COM5
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 00:59:06.363
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 01:02:41.925
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 01:03:27.579
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 01:03:40.898
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 01:03:40.902
+!MESSAGE port: 
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 01:03:43.843
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 01:03:43.846
+!MESSAGE port: COM5
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 01:05:56.474
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 01:09:22.995
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 01:09:23.000
+!MESSAGE port: COM5
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 01:09:25.190
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 01:09:25.193
+!MESSAGE port: COM5
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 01:14:11.188
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 01:14:11.196
+!MESSAGE port: COM5
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 01:14:16.738
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 01:14:16.742
+!MESSAGE port: COM5
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 01:19:27.411
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 01:19:27.419
+!MESSAGE port: COM5
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 01:19:29.806
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 01:19:29.810
+!MESSAGE port: COM5
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 01:23:01.175
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 01:23:01.180
+!MESSAGE port: 
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 01:23:08.831
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 01:23:08.836
+!MESSAGE port: COM5
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 01:23:33.941
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 01:23:33.947
+!MESSAGE port: COM5
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 01:23:36.066
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 01:23:36.069
+!MESSAGE port: COM5
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 01:24:22.856
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 01:24:22.863
+!MESSAGE port: COM5
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 01:24:26.282
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 01:24:26.288
+!MESSAGE port: COM5
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 01:30:08.273
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 01:30:52.661
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 01:30:52.667
+!MESSAGE port: COM5
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 01:30:56.433
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 01:30:56.437
+!MESSAGE port: COM5
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 01:34:15.627
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 01:34:15.634
+!MESSAGE port: COM5
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 01:34:18.958
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 01:34:18.963
+!MESSAGE port: COM5
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 01:43:19.832
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 01:43:19.838
+!MESSAGE port: 
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 01:43:25.853
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 01:43:25.858
+!MESSAGE port: COM5
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 01:47:10.630
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2026-03-14 01:47:11.836
+!MESSAGE Error - No active DSF-Session. tmpSessionId = 30 (contextManager row 121)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2026-03-14 01:47:11.840
+!MESSAGE Existing sessions are:
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2026-03-14 01:47:11.844
+!MESSAGE Error - No active DSF-Session. tmpSessionId = 30 (contextManager row 121)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2026-03-14 01:47:11.850
+!MESSAGE Existing sessions are:
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 01:47:26.943
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 01:47:26.951
+!MESSAGE port: COM5
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 01:47:30.041
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 01:47:30.050
+!MESSAGE port: COM5
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 01:48:37.003
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 01:48:37.008
+!MESSAGE port: COM5
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 01:48:39.198
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 01:48:39.202
+!MESSAGE port: COM5
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 01:53:21.973
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 01:55:31.962
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 01:57:27.634
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 02:04:18.567
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 02:05:56.970
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2026-03-14 02:05:58.133
+!MESSAGE Error - No active DSF-Session. tmpSessionId = 37 (contextManager row 121)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2026-03-14 02:05:58.137
+!MESSAGE Existing sessions are:
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2026-03-14 02:05:58.142
+!MESSAGE Error - No active DSF-Session. tmpSessionId = 37 (contextManager row 121)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2026-03-14 02:05:58.146
+!MESSAGE Existing sessions are:
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 02:08:58.428
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 02:11:15.024
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 02:12:43.134
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 02:16:04.325
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 02:17:20.188
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 02:17:52.413
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 02:17:52.418
+!MESSAGE port: 
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 14:20:07.334
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 14:20:07.393
+!MESSAGE port: COM5
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 14:31:30.066
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 14:32:05.718
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 14:33:24.255
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 14:42:12.628
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 14:42:44.036
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 14:43:13.469
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 14:43:13.477
+!MESSAGE port: COM5
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 14:43:18.974
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 14:43:18.980
+!MESSAGE port: COM5
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 14:43:35.916
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 14:44:32.790
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 14:44:32.801
+!MESSAGE port: COM5
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 14:44:37.185
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 14:44:37.192
+!MESSAGE port: COM5
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 14:44:57.587
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 14:45:27.806
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 14:45:27.818
+!MESSAGE port: COM5
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 14:45:32.500
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 14:45:32.508
+!MESSAGE port: COM5
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 14:46:43.942
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 14:46:56.160
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 14:46:56.180
+!MESSAGE port: COM5
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 14:46:58.845
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 14:46:58.854
+!MESSAGE port: COM5
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 14:48:29.287
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 14:48:35.970
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 14:48:35.988
+!MESSAGE port: COM5
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 14:48:39.747
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 14:48:39.753
+!MESSAGE port: COM5
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 14:52:52.347
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 14:53:12.144
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 14:53:12.151
+!MESSAGE port: COM5
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 14:53:14.491
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 14:53:14.499
+!MESSAGE port: COM5
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 14:55:31.887
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 14:55:31.894
+!MESSAGE port: COM5
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 14:55:34.186
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 14:55:34.196
+!MESSAGE port: COM5
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 14:59:32.908
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 14:59:32.916
+!MESSAGE port: COM5
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 14:59:35.067
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 14:59:35.076
+!MESSAGE port: COM5
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 15:03:04.026
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 15:04:26.901
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2026-03-14 15:04:28.123
+!MESSAGE Error - No active DSF-Session. tmpSessionId = 54 (contextManager row 121)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2026-03-14 15:04:28.131
+!MESSAGE Existing sessions are:
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2026-03-14 15:04:28.136
+!MESSAGE Error - No active DSF-Session. tmpSessionId = 54 (contextManager row 121)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2026-03-14 15:04:28.142
+!MESSAGE Existing sessions are:
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 15:06:03.901
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 15:10:36.033
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 15:14:05.917
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 15:19:17.833
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 15:22:51.845
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 15:22:51.850
+!MESSAGE port: 
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 15:23:22.949
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM6
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 15:23:22.955
+!MESSAGE port: COM6
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 15:43:11.512
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 15:43:11.551
+!MESSAGE port: COM5
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 15:43:13.652
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 15:43:13.661
+!MESSAGE port: COM5
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 15:44:01.899
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 15:44:52.460
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 15:48:09.197
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 15:48:09.204
+!MESSAGE port: COM5
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 15:48:17.240
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 15:48:17.246
+!MESSAGE port: COM5
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 15:48:33.120
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 15:48:45.862
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 15:48:45.868
+!MESSAGE port: 
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 15:49:15.024
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM6
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 15:49:15.029
+!MESSAGE port: COM6
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 15:53:29.773
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 15:53:29.779
+!MESSAGE port: 
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 15:53:34.960
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 15:53:34.966
+!MESSAGE port: COM5
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 15:54:32.615
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 15:54:38.855
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 15:54:38.861
+!MESSAGE port: 
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 15:54:55.131
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM6
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 15:54:55.139
+!MESSAGE port: COM6
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 15:56:33.089
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 15:56:33.097
+!MESSAGE port: COM5
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 15:56:35.260
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 15:56:35.266
+!MESSAGE port: COM5
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 15:56:49.184
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2026-03-14 15:56:50.367
+!MESSAGE Error - No active DSF-Session. tmpSessionId = 64 (contextManager row 121)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2026-03-14 15:56:50.373
+!MESSAGE Existing sessions are:
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2026-03-14 15:56:50.382
+!MESSAGE Error - No active DSF-Session. tmpSessionId = 64 (contextManager row 121)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2026-03-14 15:56:50.386
+!MESSAGE Existing sessions are:
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 15:57:12.854
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 15:57:12.861
+!MESSAGE port: 
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 15:57:35.120
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM6
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 15:57:35.130
+!MESSAGE port: COM6
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 16:00:02.750
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 16:00:02.756
+!MESSAGE port: 
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 16:00:07.091
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 16:00:07.101
+!MESSAGE port: COM5
+
+!ENTRY com.st.stm32cube.ide.mcu.toolchain 4 4 2026-03-14 16:00:24.682
+!MESSAGE ST-LINK GDB server failed to start (exit code = 0)
+
+!ENTRY org.eclipse.cdt.dsf.gdb 4 5012 2026-03-14 16:00:24.709
+!MESSAGE Error in final launch sequence:
+
+Failed to start GDB server
+!STACK 1
+org.eclipse.core.runtime.CoreException: Failed to start GDB server
+	at org.eclipse.cdt.dsf.concurrent.Query.get(Query.java:112)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugSession(GdbLaunchDelegate.java:252)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launchDebugger(GdbLaunchDelegate.java:109)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.launch(GdbLaunchDelegate.java:97)
+	at com.st.stm32cube.ide.mcu.debug.launch.DSFDelegate.launch(DSFDelegate.java:333)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:805)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:716)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1054)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$1.run(DebugUIPlugin.java:1257)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: org.eclipse.core.runtime.CoreException: Error in initializing ST-LINK device.
+Reason: (0) Unknown. Please check power and cabling to target.
+	at com.st.stm32cube.ide.mcu.debug.stlink.StLinkDebugHardware.verifyServer(StLinkDebugHardware.java:2083)
+	at com.st.stm32cube.ide.mcu.debug.launch.export.HardwareDebugUtil.startServer(HardwareDebugUtil.java:199)
+	at com.st.stm32cube.ide.mcu.debug.launch.export.HardwareDebugUtil.startServer(HardwareDebugUtil.java:93)
+	at com.st.stm32cube.ide.mcu.debug.launch.LaunchSequenceUtil.stepStartGDBServer(LaunchSequenceUtil.java:206)
+	at com.st.stm32cube.ide.mcu.debug.launch.GDBExtendedJtagDSFFinalLaunchSequence_7_12.stepStartGDBServer(GDBExtendedJtagDSFFinalLaunchSequence_7_12.java:104)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.eclipse.cdt.dsf.concurrent.ReflectionSequence$ReflectionStep.execute(ReflectionSequence.java:160)
+	at org.eclipse.cdt.dsf.concurrent.Sequence.executeStep(Sequence.java:475)
+	at org.eclipse.cdt.dsf.concurrent.Sequence$2.handleSuccess(Sequence.java:437)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor.handleCompleted(RequestMonitor.java:391)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor$2.run(RequestMonitor.java:317)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+!SUBENTRY 1 com.st.stm32cube.ide.mcu.debug.launch 4 0 2026-03-14 16:00:24.710
+!MESSAGE Failed to start GDB server
+!STACK 1
+org.eclipse.core.runtime.CoreException: Error in initializing ST-LINK device.
+Reason: (0) Unknown. Please check power and cabling to target.
+	at com.st.stm32cube.ide.mcu.debug.stlink.StLinkDebugHardware.verifyServer(StLinkDebugHardware.java:2083)
+	at com.st.stm32cube.ide.mcu.debug.launch.export.HardwareDebugUtil.startServer(HardwareDebugUtil.java:199)
+	at com.st.stm32cube.ide.mcu.debug.launch.export.HardwareDebugUtil.startServer(HardwareDebugUtil.java:93)
+	at com.st.stm32cube.ide.mcu.debug.launch.LaunchSequenceUtil.stepStartGDBServer(LaunchSequenceUtil.java:206)
+	at com.st.stm32cube.ide.mcu.debug.launch.GDBExtendedJtagDSFFinalLaunchSequence_7_12.stepStartGDBServer(GDBExtendedJtagDSFFinalLaunchSequence_7_12.java:104)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.eclipse.cdt.dsf.concurrent.ReflectionSequence$ReflectionStep.execute(ReflectionSequence.java:160)
+	at org.eclipse.cdt.dsf.concurrent.Sequence.executeStep(Sequence.java:475)
+	at org.eclipse.cdt.dsf.concurrent.Sequence$2.handleSuccess(Sequence.java:437)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor.handleCompleted(RequestMonitor.java:391)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor$2.run(RequestMonitor.java:317)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+!SUBENTRY 2 com.st.stm32cube.ide.mcu.toolchain 4 0 2026-03-14 16:00:24.710
+!MESSAGE Error in initializing ST-LINK device.
+Reason: (0) Unknown. Please check power and cabling to target.
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 16:00:34.337
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 16:00:43.037
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 16:00:43.043
+!MESSAGE port: 
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 16:01:15.040
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM6
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 16:01:15.048
+!MESSAGE port: COM6
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 16:11:41.127
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 16:11:41.148
+!MESSAGE port: COM5
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 16:11:44.529
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 16:11:44.550
+!MESSAGE port: COM5
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 16:11:56.024
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 16:12:07.609
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 16:12:07.623
+!MESSAGE port: 
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 16:12:30.235
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM6
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 16:12:30.247
+!MESSAGE port: COM6
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 16:16:04.946
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 16:16:04.953
+!MESSAGE port: 
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 16:16:09.472
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 16:16:09.483
+!MESSAGE port: COM5
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 16:16:21.410
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 16:16:30.838
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 16:16:30.843
+!MESSAGE port: 
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 16:16:52.210
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM6
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 16:16:52.216
+!MESSAGE port: COM6
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 16:21:13.897
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 16:21:13.905
+!MESSAGE port: 
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 16:21:17.004
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 16:21:17.011
+!MESSAGE port: COM5
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 16:21:28.459
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2026-03-14 16:21:29.684
+!MESSAGE Error - No active DSF-Session. tmpSessionId = 70 (contextManager row 121)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2026-03-14 16:21:29.690
+!MESSAGE Existing sessions are:
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2026-03-14 16:21:29.698
+!MESSAGE Error - No active DSF-Session. tmpSessionId = 70 (contextManager row 121)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2026-03-14 16:21:29.704
+!MESSAGE Existing sessions are:
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 16:21:36.238
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 16:21:36.256
+!MESSAGE port: 
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 16:21:59.966
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM6
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 16:21:59.977
+!MESSAGE port: COM6
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 16:23:57.083
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 16:23:57.094
+!MESSAGE port: COM5
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 16:23:59.408
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 16:23:59.418
+!MESSAGE port: COM5
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 16:24:14.224
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 16:24:55.626
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 16:26:27.103
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 16:27:23.090
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 16:27:45.090
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 16:27:45.096
+!MESSAGE port: 
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 16:28:09.203
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM6
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 16:28:09.212
+!MESSAGE port: COM6
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 16:29:18.198
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 16:29:18.209
+!MESSAGE port: COM5
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 16:29:21.084
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM5
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 16:29:21.091
+!MESSAGE port: COM5
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-03-14 16:29:28.843
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 82000000; div: 41
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 16:29:56.939
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 16:29:56.948
+!MESSAGE port: 
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 16:30:12.293
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM6
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 16:30:12.304
+!MESSAGE port: COM6
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 17:28:38.275
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 17:28:38.289
+!MESSAGE port: 
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 20:29:35.455
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM6
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 20:29:35.469
+!MESSAGE port: COM6
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 20:33:18.391
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 20:33:18.399
+!MESSAGE port: 
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 20:49:28.540
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM10
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 20:49:28.561
+!MESSAGE port: COM10
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 21:00:53.717
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 21:00:53.726
+!MESSAGE port: 
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 22:36:59.585
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM10
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 22:36:59.628
+!MESSAGE port: COM10
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 22:51:47.253
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-14 22:51:47.275
+!MESSAGE port: 
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-15 13:57:43.135
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM3
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-15 13:57:43.171
+!MESSAGE port: COM3
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-15 14:04:42.583
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-15 14:04:42.598
+!MESSAGE port: 
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-15 15:15:52.183
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM3
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-15 15:15:52.199
+!MESSAGE port: COM3
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-15 15:25:14.630
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-15 15:25:14.647
+!MESSAGE port: 
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-15 17:01:51.582
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM6
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-15 17:01:51.620
+!MESSAGE port: COM6
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-15 17:06:07.594
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-15 17:06:07.603
+!MESSAGE port: 
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-15 18:38:52.991
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+COM6
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-03-15 18:38:53.013
+!MESSAGE port: COM6

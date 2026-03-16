@@ -19,6 +19,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "adc.h"
+#include "usart.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
@@ -38,12 +39,19 @@
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
+// Slave address 2025:08:004B82
 
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
+// uint8_t rx_buf[1]; // Data we receive
+// uint8_t tx_buf[1]; // Data to transmit
+uint8_t pc_rx_buf[1];
+uint8_t hc_rx_buf[1];
+
+#define BT_BUF_SIZE 30
 
 /* USER CODE END PV */
 
@@ -51,6 +59,12 @@
 void SystemClock_Config(void);
 /* USER CODE BEGIN PFP */
 
+int _write(int file, char *ptr, int len) {
+  for(int i = 0; i < len; i++) {
+    ITM_SendChar(*ptr++);
+  }
+  return len;
+}
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -89,17 +103,62 @@ int main(void)
   MX_GPIO_Init();
   MX_ADC1_Init();
   MX_ADC2_Init();
+  MX_USART1_UART_Init();
+  MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
+  // HAL_UART_Receive_IT(&huart2, pc_rx_buf, 1);
+  // HAL_UART_Receive_IT(&huart1, hc_rx_buf, 1);
+
+  uint8_t cmd_at[] = "AT\r\n";
+  uint8_t cmd_role[] = "AT+ADDR?\r\n";  // Setting to Slave
+  uint8_t rx_buffer[BT_BUF_SIZE] = {0};
+
+
+  // HAL_UART_Transmit(&huart2, (uint8_t*)"\r\n--- Sending AT+ROLE=0 ---\r\n", 29, 100);
+  // HAL_UART_Transmit(&huart1, cmd_role, strlen((char*)cmd_role), 100);
+  
+  
+  // HAL_UART_Receive(&huart1, rx_buffer, sizeof(rx_buffer), 500);
+  // HAL_UART_Transmit(&huart2, rx_buffer, strlen((char*)rx_buffer), 100);
 
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  uint32_t hal_adc_val = 0; // X
+  uint32_t hal_adc_val2 = 0; // Y
+  uint8_t hal_combined[1] = {0};
   while (1)
   {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+    HAL_ADC_Start(&hadc1);
+    HAL_ADC_PollForConversion(&hadc1,1000);
+    hal_adc_val = HAL_ADC_GetValue(&hadc1);
+
+    HAL_ADC_Start(&hadc2);
+    HAL_ADC_PollForConversion(&hadc2,1000);
+    hal_adc_val2 = HAL_ADC_GetValue(&hadc2);
+
+    hal_adc_val = (hal_adc_val * 15)/4095; // cnv from 12-bit to 4-bit
+    hal_adc_val2 = (hal_adc_val2 * 15)/4095;
+
+    hal_combined[0] = ((hal_adc_val << 4) | (hal_adc_val2));
+    //hal_combined[0] = 0xF0;
+
+    HAL_UART_Transmit(&huart1,hal_combined,1,100);
+
+    HAL_Delay(10);
+
+    printf("%d %d\n",hal_adc_val,hal_adc_val2);
+
+
+
+
+
+
+    
   }
   /* USER CODE END 3 */
 }
@@ -124,7 +183,13 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
   RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
-  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_NONE;
+  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
+  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
+  RCC_OscInitStruct.PLL.PLLM = 8;
+  RCC_OscInitStruct.PLL.PLLN = 82;
+  RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
+  RCC_OscInitStruct.PLL.PLLQ = 2;
+  RCC_OscInitStruct.PLL.PLLR = 2;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {
     Error_Handler();
@@ -134,12 +199,12 @@ void SystemClock_Config(void)
   */
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
-  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_HSI;
+  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
-  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
+  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
 
-  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_0) != HAL_OK)
+  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK)
   {
     Error_Handler();
   }
@@ -147,6 +212,66 @@ void SystemClock_Config(void)
 
 /* USER CODE BEGIN 4 */
 
+void Send_HC_AT_Command(char *str, uint8_t *rx_buf) {
+  int i = 0;
+  while(str[i]) { // Get length
+    i++;
+  }
+  char local_str[64];
+  memset(local_str,0,sizeof(local_str));
+  
+  strcpy(local_str,"-- Sending -> ");
+  if(i <= 40)
+    strcat(local_str,str);
+
+  HAL_UART_Transmit(&huart2, (uint8_t*)local_str, strlen(local_str), 100);
+  HAL_UART_Transmit(&huart1, (uint8_t*)str, i, 100);
+
+  memset(rx_buf, 0, BT_BUF_SIZE);
+  
+  HAL_UART_Receive(&huart1, rx_buf, BT_BUF_SIZE, 500);
+  HAL_UART_Transmit(&huart2, rx_buf, BT_BUF_SIZE, 100);
+}
+
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+{
+	printf("Entered callback\n");
+  // If the byte came from the PC (USART2)
+  if (huart->Instance == USART2) 
+  {
+	printf("USART2\n");
+    // Forward it to the HC-05 (USART1)
+    HAL_UART_Transmit(&huart1, pc_rx_buf, 1, 10);
+    // Restart the listener for the next PC keystroke
+    HAL_UART_Receive_IT(&huart2, pc_rx_buf, 1);
+  }
+  
+  // If the byte came from the HC-05 (USART1)
+  if (huart->Instance == USART1) 
+  {
+	printf("USART1\n");
+    HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
+    // Forward it to the PC (USART2)
+    HAL_UART_Transmit(&huart2, hc_rx_buf, 1, 10);
+    // Restart the listener for the next HC-05 response
+    HAL_UART_Receive_IT(&huart1, hc_rx_buf, 1);
+  }
+}
+
+
+void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart)
+{
+    if(huart->Instance == USART1)
+    {
+        // Clear the error and restart the interrupt listener
+        HAL_UART_Receive_IT(&huart1, hc_rx_buf, 1);
+    }
+    
+    if(huart->Instance == USART2)
+    {
+        HAL_UART_Receive_IT(&huart2, pc_rx_buf, 1);
+    }
+}
 /* USER CODE END 4 */
 
 /**

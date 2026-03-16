@@ -5,7 +5,8 @@
             "includePath": [
                 "${default}",
                 "${workspaceFolder}/Drivers/STM32F4xx_HAL_Driver",
-                "${workspaceFolder}/Drivers/STM32F4xx_HAL_Driver/Inc"
+                "${workspaceFolder}/Drivers/STM32F4xx_HAL_Driver/Inc",
+                "${workspaceFolder}/Core/Inc"
             ],
             "defines": [
                 "_DEBUG",
