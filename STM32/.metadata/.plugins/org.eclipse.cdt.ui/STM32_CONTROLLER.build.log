@@ -1,0 +1,10 @@
+17:02:00 **** Incremental Build of configuration Debug for project STM32_CONTROLLER ****
+make -j22 all 
+arm-none-eabi-size  STM32_CONTROLLER.elf 
+   text	   data	    bss	    dec	    hex	filename
+  19116	    104	   2200	  21420	   53ac	STM32_CONTROLLER.elf
+Finished building: default.size.stdout
+ 
+
+17:02:00 Build Finished. 0 errors, 0 warnings. (took 345ms)
+

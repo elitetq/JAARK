@@ -24,6 +24,7 @@
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
+#include <string.h>
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -61,6 +62,10 @@
 // Sensor Setup
 volatile uint32_t sensor_time = 0;
 volatile float distance = 0;
+union { 
+  float fnum;
+  uint8_t bytes[4];
+} FloatPacket; // Float bytes for distance
 volatile float sensor_time_seconds = 0;
 volatile float sensor_prev_dist_green = 0;
 volatile int distance_clamp = 0;
@@ -103,10 +108,40 @@ static uint32_t previous_val = 0;
 static uint32_t delta_ticks = 0;
 
 // Joystick Variables
-volatile uint8_t rx_data = 0;
-volatile uint8_t joystick_x = 0;
-volatile uint8_t joystick_y = 0;
-volatile char bt_dat_avail = 0;
+volatile uint8_t rx_data[2] = {0,0};
+volatile uint16_t joystick_1 = 0;
+volatile uint16_t joystick_2 = 0;
+
+volatile uint16_t joystick_1_write_val = (7 << 8);
+volatile uint16_t joystick_2_write_val = (7 << 8);
+#define MOTOR_SMOOTH 0.80 // 0.. -> 1.0 max
+
+volatile char bt_dat_avail = 0; // Available data on bluetooth
+volatile char bt_timeout = 0; // FLag for bluetooth disconnection
+
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
+  if(htim->Instance == TIM3) {
+    bt_timeout = 1;
+  }
+}
+
+void BT_Watchdog() {
+  if(bt_timeout) {
+    bt_dat_avail = 0;
+    // Turn off all motors
+    __HAL_TIM_SET_COMPARE(&htim10, TIM_CHANNEL_1, 0);
+    __HAL_TIM_SET_COMPARE(&htim11, TIM_CHANNEL_1, 0);
+    __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_3, 0);
+    __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_4, 0);
+    
+    while(!bt_dat_avail) {
+      // Wait until bluetooth data is received
+      HAL_Delay(50);
+    }
+    __HAL_TIM_SET_COUNTER(&htim3,0); // Reset watchdog timer
+    bt_timeout = 0;
+  }
+}
 
 void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim) {
     if (htim->Instance == TIM5) {
@@ -204,18 +239,32 @@ int main(void)
   MX_TIM5_Init();
   MX_TIM1_Init();
   MX_USART1_UART_Init();
+  MX_TIM9_Init();
+  MX_TIM8_Init();
+  MX_TIM10_Init();
+  MX_TIM11_Init();
+  MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
 
   //HAL_TIM_Base_Start(&htim5);
+
+  HAL_TIM_PWM_Start(&htim8, TIM_CHANNEL_3);
+  HAL_TIM_PWM_Start(&htim8, TIM_CHANNEL_4);
+  HAL_TIM_PWM_Start(&htim10, TIM_CHANNEL_1);
+  HAL_TIM_PWM_Start(&htim11, TIM_CHANNEL_1);
   HAL_TIM_Base_Start_IT(&htim1);
+  HAL_TIM_Base_Start_IT(&htim3); // 16-bit bluetooth watchdog timer (currently configured for 1s timeout)
   HAL_TIM_IC_Start_IT(&htim5,TIM_CHANNEL_1); // 32-bit metal detector timer
   HAL_TIM_Base_Start(&htim2); // 32-bit ultrasonic timer
 
-  HAL_UART_Receive_DMA(&huart1, &rx_data, 1);
+  HAL_UART_Receive_DMA(&huart1, rx_data, 2); // Receive 2 bytes and store on the rx_data array
+
+  memset(FloatPacket.bytes,0,4);
 
   init_lcd();
   
   set_bg_col(J_BLACK);
+
   //fill_area(0x000F);
   /* USER CODE END 2 */
 
@@ -264,6 +313,9 @@ int main(void)
       update_flag = false;
 
       distance = (sensor_time_seconds * 34300.0f)/2.0;
+      memcpy(FloatPacket.bytes,distance,4); // Copy float into the Float Packet
+      HAL_UART_Transmit(&huart1,FloatPacket.bytes,4,100);
+
       printf("Sensor Reading: %lf cm\n", distance);
       // printf("sensor_time: %d\nsensor_time_seconds: %lf\n",sensor_time,sensor_time_seconds);
 
@@ -278,14 +330,63 @@ int main(void)
 
 
     }
+    //__HAL_TIM_SET_COMPARE(&htim10, TIM_CHANNEL_1, 300);
+    //__HAL_TIM_SET_COMPARE(&htim11, TIM_CHANNEL_1, 0);
 
     if(bt_dat_avail) {
+      __HAL_TIM_SET_COUNTER(&htim3,0); // Reset watchdog timer
     	bt_dat_avail = 0;
-    	joystick_x = rx_data >> 4;
-    	joystick_y = rx_data & 0x0F;
-    	printf("%d  %d\n", joystick_x, joystick_y);
+    	joystick_1 = rx_data[0] >> 4;
+    	joystick_1 = joystick_1 << 8; // Make 16 bit, higher accuracy
+    	joystick_2 = rx_data[0] & 0x0F;
+    	joystick_2 = joyrtick_2 << 8;
+    	//printf("%d  %d\n", joystick_2, joystick_1);
+
+    	joystick_1_write_val = joystick_1_write_val * MOTOR_SMOOTH + joystick_1 * (1-MOTOR_SMOOTH);
+    	joystick_2_write_val = joystick_2_write_val * MOTOR_SMOOTH + joystick_2 * (1-MOTOR_SMOOTH);
+    	printf("%d  %d\n", joystick_2_write_val, joystick_1_write_val);
+    	//__HAL_TIM_SET_COMPARE(&htim10, TIM_CHANNEL_1, 800);
+    	//__HAL_TIM_SET_COMPARE(&htim11, TIM_CHANNEL_1, 0);
+
+    	// Motor logic
+    	// Motor 1
+
+    	if(1) {
+    		if(joystick_2_write_val > (10<<8)) { // Forward
+    		    		//__HAL_TIM_SET_COMPARE(&htim10, TIM_CHANNEL_1, 800);
+    		    		__HAL_TIM_SET_COMPARE(&htim10, TIM_CHANNEL_1, (joystick_2_write_val) >> 2);
+    		    		__HAL_TIM_SET_COMPARE(&htim11, TIM_CHANNEL_1, 0);
+    		    	} else if(joystick_2_write_val < (5<<8)) { // Reverse
+    		    		__HAL_TIM_SET_COMPARE(&htim10, TIM_CHANNEL_1, 0);
+    		    		//__HAL_TIM_SET_COMPARE(&htim11, TIM_CHANNEL_1, 800);
+    		    		__HAL_TIM_SET_COMPARE(&htim11, TIM_CHANNEL_1, (((11<<8)-joystick_2_write_val)) >> 2);
+    		    	} else { // Stop
+    		    		__HAL_TIM_SET_COMPARE(&htim10, TIM_CHANNEL_1, 0);
+    		    		__HAL_TIM_SET_COMPARE(&htim11, TIM_CHANNEL_1, 0);
+    		    	}
+
+    	}
+
+    	// Motor 2
+    	if(1) {
+    		if(joystick_1_write_val > (10 << 8)) { // Forward
+    		    	    __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_3, (joystick_1_write_val) >> 2);
+    		    	    __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_4, 0);
+    		    	} else if(joystick_1_write_val < (5 << 8)) { // Reverse
+    		    		__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_3, 0);
+    		    	    __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_4, (((11 << 8)-joystick_1_write_val)) >> 2);
+    		    	} else { // Stop
+    		    	    __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_3, 0);
+    		    	    __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_4, 0);
+    		    	}
+    	}
+
+
+
+
     }
 
+    BT_Watchdog();
     HAL_Delay(1);
   }
 

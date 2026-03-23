@@ -17668,7 +17668,7 @@
 		(property "Reference" "C12"
 			(at -4.35 0.125 90)
 			(layer "B.SilkS")
-			(uuid "baad5215-af4a-4b0d-86fd-59816745ed29")
+			(uuid "fd008ca3-e821-4f7f-88ae-7b0a24fb7f36")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17681,7 +17681,7 @@
 			(at 0 0 90)
 			(layer "B.SilkS")
 			(hide yes)
-			(uuid "4a0c95d4-bc7c-4184-8c3c-4a7237fc94dd")
+			(uuid "6fc38da3-d680-4697-9e97-63e404d5f123")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17694,7 +17694,7 @@
 			(at 0 0 90)
 			(layer "B.Fab")
 			(hide yes)
-			(uuid "e8f89a68-3f86-4d1d-85ed-af3139c3fa5a")
+			(uuid "a8b0fa31-4ba8-438d-a8f5-e6cd842165f4")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17707,7 +17707,7 @@
 			(at 0 0 90)
 			(layer "B.Fab")
 			(hide yes)
-			(uuid "76a1d110-7f5d-4439-94cd-6157e1021dd4")
+			(uuid "fcc18740-5cd3-4a71-b28d-1b5821f784e4")
 			(effects
 				(font
 					(size 1.27 1.27)

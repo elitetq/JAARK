@@ -1,10 +1,50 @@
-18:38:54 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
+15:30:50 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
 make -j22 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:228:33: warning: passing argument 2 of 'HAL_UART_Receive_DMA' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  228 |   HAL_UART_Receive_DMA(&huart1, &rx_data, 1);
+      |                                 ^~~~~~~~
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:750:76: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'volatile uint8_t *' {aka 'volatile unsigned char *'}
+  750 | HAL_StatusTypeDef HAL_UART_Receive_DMA(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
+      |                                                                   ~~~~~~~~~^~~~~
+../Core/Src/main.c:243:9: warning: variable 's' set but not used [-Wunused-but-set-variable]
+  243 |   float s, prev_s;
+      |         ^
+../Core/Src/main.c: In function 'add_adc_val':
+../Core/Src/main.c:170:1: warning: control reaches end of non-void function [-Wreturn-type]
+  170 | }
+      | ^
+In file included from ../Core/Src/main.c:30:
+../Core/Inc/j_st7789.h: At top level:
+../Core/Inc/j_st7789.h:108:13: warning: 'j_flag_set_bounds' defined but not used [-Wunused-variable]
+  108 | static char j_flag_set_bounds = 1;
+      |             ^~~~~~~~~~~~~~~~~
+../Core/Inc/j_st7789.h:107:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
+  107 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
+      |                ^~~~~~~~
+In file included from ../Core/Inc/j_st7789.h:37:
+../Core/Inc/j_fonts.h:338:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
+  338 | static const uint16_t* j_fonts[4] = {
+      |                        ^~~~~~~
+../Core/Inc/j_fonts.h:27:16: warning: 'j_fonts_buffer' defined but not used [-Wunused-variable]
+   27 | static uint8_t j_fonts_buffer[J_FONT_BUFFER_SIZE];
+      |                ^~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: PCB_MOTOR_STM.elf
+ 
 arm-none-eabi-size  PCB_MOTOR_STM.elf 
+arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
    text	   data	    bss	    dec	    hex	filename
-  49732	    500	  42380	  92612	  169c4	PCB_MOTOR_STM.elf
+  53460	    504	  42672	  96636	  1797c	PCB_MOTOR_STM.elf
 Finished building: default.size.stdout
  
+Finished building: PCB_MOTOR_STM.list
+ 
 
-18:38:55 Build Finished. 0 errors, 0 warnings. (took 582ms)
+15:30:52 Build Finished. 0 errors, 7 warnings. (took 1s.384ms)
 

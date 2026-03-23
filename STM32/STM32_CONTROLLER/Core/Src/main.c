@@ -19,6 +19,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "adc.h"
+#include "dma.h"
 #include "usart.h"
 #include "gpio.h"
 
@@ -101,10 +102,11 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_ADC1_Init();
+  MX_DMA_Init();
   MX_ADC2_Init();
   MX_USART1_UART_Init();
   MX_USART2_UART_Init();
+  MX_ADC1_Init();
   /* USER CODE BEGIN 2 */
   // HAL_UART_Receive_IT(&huart2, pc_rx_buf, 1);
   // HAL_UART_Receive_IT(&huart1, hc_rx_buf, 1);
@@ -127,7 +129,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   uint32_t hal_adc_val = 0; // X
   uint32_t hal_adc_val2 = 0; // Y
-  uint8_t hal_combined[1] = {0};
+  uint8_t hal_combined[2] = {0,0}; // index 1 {Joystick Data} : index 2 {Headlight Data}
   while (1)
   {
     /* USER CODE END WHILE */
@@ -147,7 +149,7 @@ int main(void)
     hal_combined[0] = ((hal_adc_val << 4) | (hal_adc_val2));
     //hal_combined[0] = 0xF0;
 
-    HAL_UART_Transmit(&huart1,hal_combined,1,100);
+    HAL_UART_Transmit(&huart1,hal_combined,2,100);
 
     HAL_Delay(10);
 
