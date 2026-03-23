@@ -261,7 +261,7 @@ int main(void)
 
   memset(FloatPacket.bytes,0,4);
 
-  init_lcd();
+  init_lcd(J_90_DEG);
   
   set_bg_col(J_BLACK);
 
@@ -283,6 +283,12 @@ int main(void)
   fill_text(120,80,"Distance (cm)",-1,J_11X18_FONT,J_WHITE,J_CENTER);
 
   HAL_ADC_Start(&hadc1);
+
+
+  while(!bt_dat_avail) {
+    HAL_Delay(50) // Wait for first bluetooth data signal
+  }
+
   while (1)
 
   {

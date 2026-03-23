@@ -54,7 +54,7 @@ void write_s8(uint8_t dat) {
     
 }
 
-void init_lcd() {
+void init_lcd(uint8_t rot_value) {
 	HAL_GPIO_WritePin(J_CFG_RES_PORT,J_CFG_RES_PIN,0);
     HAL_Delay(50);
     HAL_GPIO_WritePin(J_CFG_RES_PORT,J_CFG_RES_PIN,1);
@@ -70,6 +70,10 @@ void init_lcd() {
     write_cmd(CMD_NORON);
     write_cmd(CMD_DISPON);
     write_cmd(CMD_INVON);
+    // Set screen rotation
+    write_cmd(CMD_MADCTL);
+    write_s8(rot_value);
+
     uint8_t bounds[] = {0,0,0,0xEF};
     write_cmd(CMD_CASET);
     write_u8(bounds,4);

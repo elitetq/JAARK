@@ -44,7 +44,15 @@
 #define CMD_DISPOFF 0x28
 #define CMD_SWFRES 0x01
 #define CMD_COLMOD 0x3A
+
+
 #define CMD_MADCTL 0x36
+
+#define J_90_DEG  0b11000000,
+#define J_180_DEG 0b01100000,
+#define J_270_DEG 0b10100000
+
+
 #define CMD_RAMWR 0x2C
 #define CMD_INVON 0x21
 #define CMD_INVOFF 0x20
