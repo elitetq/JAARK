@@ -20,6 +20,7 @@
 #include "main.h"
 #include "adc.h"
 #include "dma.h"
+#include "tim.h"
 #include "usart.h"
 #include "gpio.h"
 
@@ -52,6 +53,14 @@
 uint8_t pc_rx_buf[1];
 uint8_t hc_rx_buf[1];
 
+union { 
+  float fnum;
+  uint8_t bytes[4];
+} FloatPacket; // Float bytes for distance
+volatile char bt_dat_avail = 0;
+volatile char bt_timeout = 0;
+
+
 #define BT_BUF_SIZE 30
 
 /* USER CODE END PV */
@@ -59,6 +68,25 @@ uint8_t hc_rx_buf[1];
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 /* USER CODE BEGIN PFP */
+
+void BT_Watchdog() {
+  if(bt_timeout) {
+    bt_dat_avail = 0;
+    
+    while(!bt_dat_avail) {
+      // Wait until bluetooth data is received
+      HAL_Delay(50);
+    }
+    __HAL_TIM_SET_COUNTER(&htim3,0); // Reset watchdog timer
+    bt_timeout = 0;
+  }
+}
+
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
+  if(htim->Instance == TIM3) {
+    bt_timeout = 1;
+  }
+}
 
 int _write(int file, char *ptr, int len) {
   for(int i = 0; i < len; i++) {
@@ -107,14 +135,17 @@ int main(void)
   MX_USART1_UART_Init();
   MX_USART2_UART_Init();
   MX_ADC1_Init();
+  MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
   // HAL_UART_Receive_IT(&huart2, pc_rx_buf, 1);
   // HAL_UART_Receive_IT(&huart1, hc_rx_buf, 1);
+  HAL_UART_Receive_DMA(&huart1,FLoatPacket.bytes,4); // Receive ultrasonic data
 
   uint8_t cmd_at[] = "AT\r\n";
   uint8_t cmd_role[] = "AT+ADDR?\r\n";  // Setting to Slave
   uint8_t rx_buffer[BT_BUF_SIZE] = {0};
 
+  HAL_TIM_Base_Start_IT(&htim3); // 16-bit bluetooth watchdog timer (currently configured for 1s timeout)
 
   // HAL_UART_Transmit(&huart2, (uint8_t*)"\r\n--- Sending AT+ROLE=0 ---\r\n", 29, 100);
   // HAL_UART_Transmit(&huart1, cmd_role, strlen((char*)cmd_role), 100);
@@ -151,16 +182,17 @@ int main(void)
 
     HAL_UART_Transmit(&huart1,hal_combined,2,100);
 
-    HAL_Delay(10);
+    if(bt_dat_avail) {
+      bt_dat_avail = 0;
+      __HAL_TIM_SET_COUNTER(&htim3,0); // Reset watchdog timer
+      printk("Distance received: %lf\n",FloatPacket.fnum);
+    }
 
     printf("%d %d\n",hal_adc_val,hal_adc_val2);
 
+    HAL_Delay(10);
 
-
-
-
-
-    
+    BT_Watchdog();
   }
   /* USER CODE END 3 */
 }
@@ -251,12 +283,13 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
   // If the byte came from the HC-05 (USART1)
   if (huart->Instance == USART1) 
   {
-	printf("USART1\n");
-    HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
-    // Forward it to the PC (USART2)
-    HAL_UART_Transmit(&huart2, hc_rx_buf, 1, 10);
-    // Restart the listener for the next HC-05 response
-    HAL_UART_Receive_IT(&huart1, hc_rx_buf, 1);
+    bt_dat_avail = 1; // Let main know we have new bluetooth data
+	// printf("USART1\n");
+  //   HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
+  //   // Forward it to the PC (USART2)
+  //   HAL_UART_Transmit(&huart2, hc_rx_buf, 1, 10);
+  //   // Restart the listener for the next HC-05 response
+  //   HAL_UART_Receive_IT(&huart1, hc_rx_buf, 1);
   }
 }
 
