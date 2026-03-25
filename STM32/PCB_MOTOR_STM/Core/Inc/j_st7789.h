@@ -48,8 +48,8 @@
 
 #define CMD_MADCTL 0x36
 
-#define J_90_DEG  0b11000000,
-#define J_180_DEG 0b01100000,
+#define J_90_DEG  0b11000000
+#define J_180_DEG 0b01100000
 #define J_270_DEG 0b10100000
 
 
@@ -142,8 +142,10 @@ void write_u8(uint8_t* dat, size_t len);
 void write_s8(uint8_t dat);
 /**
  * @brief Initialize the LCD by sending the basic commands
+ * 
+ * @param rot_value Rotation uint8_t command for MAD_CTL, see the J_XXX_DEG defines
  */
-void init_lcd();
+void init_lcd(uint8_t rot_value);
 /**
  * @brief Set bounds of the screen for drawing
  * 

@@ -9,7 +9,6 @@ static uint8_t col_arr[J_BUF_SIZE];
 static int ten_power = pow(10,MAX_DECIMAL_SIZE);
 static char float_to_str_buf[MAX_TEXT_TO_STRING_SIZE];
 
-
 void set_bounds(uint8_t xlo, uint8_t xhi, uint8_t ylo, uint8_t yhi) {
     uint8_t temp;
     if(xlo > xhi) {
@@ -17,6 +16,7 @@ void set_bounds(uint8_t xlo, uint8_t xhi, uint8_t ylo, uint8_t yhi) {
         xhi = xlo;
         xlo = temp;
     }
+
     if(ylo > yhi) {
         temp = yhi;
         yhi = ylo;
@@ -70,6 +70,7 @@ void init_lcd(uint8_t rot_value) {
     write_cmd(CMD_NORON);
     write_cmd(CMD_DISPON);
     write_cmd(CMD_INVON);
+
     // Set screen rotation
     write_cmd(CMD_MADCTL);
     write_s8(rot_value);

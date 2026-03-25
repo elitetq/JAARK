@@ -20,12 +20,14 @@
 #include "main.h"
 #include "adc.h"
 #include "dma.h"
+#include "spi.h"
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "j_st7789.h"
 
 /* USER CODE END Includes */
 
@@ -53,7 +55,7 @@
 uint8_t pc_rx_buf[1];
 uint8_t hc_rx_buf[1];
 
-union { 
+volatile union { 
   float fnum;
   uint8_t bytes[4];
 } FloatPacket; // Float bytes for distance
@@ -136,16 +138,18 @@ int main(void)
   MX_USART2_UART_Init();
   MX_ADC1_Init();
   MX_TIM3_Init();
+  MX_SPI2_Init();
   /* USER CODE BEGIN 2 */
   // HAL_UART_Receive_IT(&huart2, pc_rx_buf, 1);
   // HAL_UART_Receive_IT(&huart1, hc_rx_buf, 1);
-  HAL_UART_Receive_DMA(&huart1,FLoatPacket.bytes,4); // Receive ultrasonic data
+  HAL_UART_Receive_DMA(&huart1,FloatPacket.bytes,4); // Receive ultrasonic data
 
   uint8_t cmd_at[] = "AT\r\n";
   uint8_t cmd_role[] = "AT+ADDR?\r\n";  // Setting to Slave
   uint8_t rx_buffer[BT_BUF_SIZE] = {0};
 
   HAL_TIM_Base_Start_IT(&htim3); // 16-bit bluetooth watchdog timer (currently configured for 1s timeout)
+
 
   // HAL_UART_Transmit(&huart2, (uint8_t*)"\r\n--- Sending AT+ROLE=0 ---\r\n", 29, 100);
   // HAL_UART_Transmit(&huart1, cmd_role, strlen((char*)cmd_role), 100);
@@ -161,6 +165,23 @@ int main(void)
   uint32_t hal_adc_val = 0; // X
   uint32_t hal_adc_val2 = 0; // Y
   uint8_t hal_combined[2] = {0,0}; // index 1 {Joystick Data} : index 2 {Headlight Data}
+  init_lcd(J_270_DEG);
+  HAL_Delay(50);
+  set_bg_col(J_RED);
+  int offset_x = 80;
+  int offset_y = 0;
+  set_bounds(0+offset_x,239+offset_x,0+offset_y,239+offset_y);
+  fill_area(get_bg_col());
+  HAL_Delay(100);
+  fill_text(0,120,"Hello World",-1,J_11X18_FONT,J_WHITE,J_LEFT);
+
+
+
+  HAL_GPIO_WritePin(GPIOB,GPIO_PIN_12,GPIO_PIN_SET);
+  HAL_Delay(2000);
+  HAL_GPIO_WritePin(GPIOB,GPIO_PIN_12,GPIO_PIN_RESET);
+  HAL_Delay(2000);
+  HAL_GPIO_WritePin(GPIOB,GPIO_PIN_12,GPIO_PIN_SET);
   while (1)
   {
     /* USER CODE END WHILE */
@@ -174,25 +195,36 @@ int main(void)
     HAL_ADC_PollForConversion(&hadc2,1000);
     hal_adc_val2 = HAL_ADC_GetValue(&hadc2);
 
-    hal_adc_val = (hal_adc_val * 15)/4095; // cnv from 12-bit to 4-bit
-    hal_adc_val2 = (hal_adc_val2 * 15)/4095;
+    hal_adc_val = (hal_adc_val << 4) >> 12; // cnv from 12-bit to 4-bit
+    hal_adc_val2 = (hal_adc_val2 << 4) >> 12;
 
     hal_combined[0] = ((hal_adc_val << 4) | (hal_adc_val2));
     //hal_combined[0] = 0xF0;
+
+    if(!(HAL_GPIO_ReadPin(GPIOC,GPIO_PIN_3) && HAL_GPIO_ReadPin(GPIOB,GPIO_PIN_4))) {
+      hal_combined[1] = 1; // Headlight data
+    } else {
+      hal_combined[1] = 0; 
+    }
 
     HAL_UART_Transmit(&huart1,hal_combined,2,100);
 
     if(bt_dat_avail) {
       bt_dat_avail = 0;
       __HAL_TIM_SET_COUNTER(&htim3,0); // Reset watchdog timer
-      printk("Distance received: %lf\n",FloatPacket.fnum);
+      printf("Distance received: [%d %d %d %d] %lf\n",FloatPacket.bytes[0],
+      FloatPacket.bytes[1],
+      FloatPacket.bytes[2],
+      FloatPacket.bytes[3], FloatPacket.fnum);
+
     }
 
-    printf("%d %d\n",hal_adc_val,hal_adc_val2);
+    // printf("Joystick Vals: %d %d\nHeadlight Val: %d\n\n",hal_adc_val,hal_adc_val2,hal_combined[1]);
+  
 
     HAL_Delay(10);
 
-    BT_Watchdog();
+    //BT_Watchdog();
   }
   /* USER CODE END 3 */
 }
@@ -269,16 +301,16 @@ void Send_HC_AT_Command(char *str, uint8_t *rx_buf) {
 
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
-	printf("Entered callback\n");
+	// printf("Entered callback\n");
   // If the byte came from the PC (USART2)
-  if (huart->Instance == USART2) 
-  {
-	printf("USART2\n");
-    // Forward it to the HC-05 (USART1)
-    HAL_UART_Transmit(&huart1, pc_rx_buf, 1, 10);
-    // Restart the listener for the next PC keystroke
-    HAL_UART_Receive_IT(&huart2, pc_rx_buf, 1);
-  }
+  // if (huart->Instance == USART2) 
+  // {
+	// printf("USART2\n");
+  //   // Forward it to the HC-05 (USART1)
+  //   HAL_UART_Transmit(&huart1, pc_rx_buf, 1, 10);
+  //   // Restart the listener for the next PC keystroke
+  //   HAL_UART_Receive_IT(&huart2, pc_rx_buf, 1);
+  // }
   
   // If the byte came from the HC-05 (USART1)
   if (huart->Instance == USART1) 

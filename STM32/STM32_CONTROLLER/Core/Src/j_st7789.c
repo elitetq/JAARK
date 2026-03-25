@@ -9,7 +9,6 @@ static uint8_t col_arr[J_BUF_SIZE];
 static int ten_power = pow(10,MAX_DECIMAL_SIZE);
 static char float_to_str_buf[MAX_TEXT_TO_STRING_SIZE];
 
-
 void set_bounds(uint8_t xlo, uint8_t xhi, uint8_t ylo, uint8_t yhi) {
     uint8_t temp;
     if(xlo > xhi) {
@@ -17,6 +16,7 @@ void set_bounds(uint8_t xlo, uint8_t xhi, uint8_t ylo, uint8_t yhi) {
         xhi = xlo;
         xlo = temp;
     }
+
     if(ylo > yhi) {
         temp = yhi;
         yhi = ylo;
@@ -54,7 +54,7 @@ void write_s8(uint8_t dat) {
     
 }
 
-void init_lcd() {
+void init_lcd(uint8_t rot_value) {
 	HAL_GPIO_WritePin(J_CFG_RES_PORT,J_CFG_RES_PIN,0);
     HAL_Delay(50);
     HAL_GPIO_WritePin(J_CFG_RES_PORT,J_CFG_RES_PIN,1);
@@ -70,6 +70,11 @@ void init_lcd() {
     write_cmd(CMD_NORON);
     write_cmd(CMD_DISPON);
     write_cmd(CMD_INVON);
+
+    // Set screen rotation
+    write_cmd(CMD_MADCTL);
+    write_s8(rot_value);
+
     uint8_t bounds[] = {0,0,0,0xEF};
     write_cmd(CMD_CASET);
     write_u8(bounds,4);
@@ -119,6 +124,8 @@ void fill_text(uint8_t x, uint8_t y, char* str, int len, uint8_t font_size, j_co
     set_bounds(j_bounds[0],j_bounds[1],j_bounds[2],j_bounds[3]);
     j_flag_set_bounds = 1;
 }
+
+
 
 void draw_text(char ch, uint8_t font_size, j_color FILL_COL) {
     j_color BG_COL = j_master_control.bgcol;
@@ -230,4 +237,8 @@ int fill_lbar(uint8_t x, uint8_t y, int value, int prev_value, int full_val, int
     j_flag_set_bounds = 1;
 
     return value;
+}
+
+j_color get_bg_col() {
+    return j_master_control.bgcol;
 }

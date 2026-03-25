@@ -24,7 +24,6 @@
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
-#include <string.h>
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -283,11 +282,15 @@ int main(void)
   fill_text(120,80,"Distance (cm)",-1,J_11X18_FONT,J_WHITE,J_CENTER);
 
   HAL_ADC_Start(&hadc1);
+  float test_num = 50;
+  memcpy((void*)FloatPacket.bytes,(void*)&test_num,4); // Copy float into the Float Packet
 
 
+  printf("waiting for bt data..\n");
   while(!bt_dat_avail) {
-    HAL_Delay(50) // Wait for first bluetooth data signal
+    HAL_Delay(50); // wait for first bluetooth data signal
   }
+  printf("bt connection started..\n");
 
   while (1)
 
@@ -315,24 +318,25 @@ int main(void)
     // }
     // printf("Frequency: %d\n", 84000000/delta_ticks);
     //printf("%lf\n",distance);
-    if(0) { // Update for sensor (update_flag)
+    HAL_UART_Transmit(&huart1,FloatPacket.bytes,4,100);
+    if(update_flag) { // Update for sensor (update_flag)
       update_flag = false;
 
       distance = (sensor_time_seconds * 34300.0f)/2.0;
-      memcpy(FloatPacket.bytes,distance,4); // Copy float into the Float Packet
+      memcpy((void*)FloatPacket.bytes,(void*)&distance,4); // Copy float into the Float Packet
       HAL_UART_Transmit(&huart1,FloatPacket.bytes,4,100);
 
-      printf("Sensor Reading: %lf cm\n", distance);
+      printf("Sensor Reading: %lf cm\n", FloatPacket.fnum);
       // printf("sensor_time: %d\nsensor_time_seconds: %lf\n",sensor_time,sensor_time_seconds);
 
-      distance_clamp = distance_clamp * (1-SENS_EXP_FACTOR) + (50 - distance) * SENS_EXP_FACTOR;
-      j_color write_col = J_GREEN;
-      if(distance_clamp < 0) distance_clamp = 0;
-      if(distance_clamp > 25) write_col = J_YELLOW;
-      if(distance_clamp > 40) write_col = J_RED;
+      // distance_clamp = distance_clamp * (1-SENS_EXP_FACTOR) + (50 - distance) * SENS_EXP_FACTOR;
+      // j_color write_col = J_GREEN;
+      // if(distance_clamp < 0) distance_clamp = 0;
+      // if(distance_clamp > 25) write_col = J_YELLOW;
+      // if(distance_clamp > 40) write_col = J_RED;
 
-      fill_counter(&my_counter,120,120,distance,J_16X26_FONT,J_WHITE,J_CENTER);
-      sensor_prev_dist_green = fill_lbar(40,150,distance_clamp,sensor_prev_dist_green,50,160,10,write_col);
+      // fill_counter(&my_counter,120,120,distance,J_16X26_FONT,J_WHITE,J_CENTER);
+      // sensor_prev_dist_green = fill_lbar(40,150,distance_clamp,sensor_prev_dist_green,50,160,10,write_col);
 
 
     }
@@ -345,19 +349,20 @@ int main(void)
     	joystick_1 = rx_data[0] >> 4;
     	joystick_1 = joystick_1 << 8; // Make 16 bit, higher accuracy
     	joystick_2 = rx_data[0] & 0x0F;
-    	joystick_2 = joyrtick_2 << 8;
+    	joystick_2 = joystick_2 << 8;
     	//printf("%d  %d\n", joystick_2, joystick_1);
 
     	joystick_1_write_val = joystick_1_write_val * MOTOR_SMOOTH + joystick_1 * (1-MOTOR_SMOOTH);
     	joystick_2_write_val = joystick_2_write_val * MOTOR_SMOOTH + joystick_2 * (1-MOTOR_SMOOTH);
-    	printf("%d  %d\n", joystick_2_write_val, joystick_1_write_val);
+    	printf("Joystick Vals: %d  %d\nHeadlight Data: %d", joystick_2_write_val, joystick_1_write_val, rx_data[2]);
+
     	//__HAL_TIM_SET_COMPARE(&htim10, TIM_CHANNEL_1, 800);
     	//__HAL_TIM_SET_COMPARE(&htim11, TIM_CHANNEL_1, 0);
 
     	// Motor logic
     	// Motor 1
 
-    	if(1) {
+    	if(0) {
     		if(joystick_2_write_val > (10<<8)) { // Forward
     		    		//__HAL_TIM_SET_COMPARE(&htim10, TIM_CHANNEL_1, 800);
     		    		__HAL_TIM_SET_COMPARE(&htim10, TIM_CHANNEL_1, (joystick_2_write_val) >> 2);
@@ -374,7 +379,7 @@ int main(void)
     	}
 
     	// Motor 2
-    	if(1) {
+    	if(0) {
     		if(joystick_1_write_val > (10 << 8)) { // Forward
     		    	    __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_3, (joystick_1_write_val) >> 2);
     		    	    __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_4, 0);
@@ -392,7 +397,7 @@ int main(void)
 
     }
 
-    BT_Watchdog();
+    //BT_Watchdog();
     HAL_Delay(1);
   }
 

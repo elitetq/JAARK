@@ -1,0 +1,13 @@
+../Core/Src/j_st7789.c:12:6:set_bounds	4
+../Core/Src/j_st7789.c:40:6:write_cmd	1
+../Core/Src/j_st7789.c:46:6:write_u8	1
+../Core/Src/j_st7789.c:51:6:write_s8	1
+../Core/Src/j_st7789.c:57:6:init_lcd	1
+../Core/Src/j_st7789.c:86:6:set_bg_col	1
+../Core/Src/j_st7789.c:90:6:fill_area	3
+../Core/Src/j_st7789.c:103:6:fill_text	7
+../Core/Src/j_st7789.c:130:6:draw_text	4
+../Core/Src/j_st7789.c:145:6:cnv_float_to_str	5
+../Core/Src/j_st7789.c:178:6:fill_counter	8
+../Core/Src/j_st7789.c:221:5:fill_lbar	4
+../Core/Src/j_st7789.c:242:9:get_bg_col	1

@@ -21,18 +21,19 @@
 #include <stdbool.h>
 
 // J_ST CFG ------------------------------
-#define J_CFG_DC_PIN GPIO_PIN_0
-#define J_CFG_DC_PORT GPIOC
+#define J_CFG_DC_PIN GPIO_PIN_6
+#define J_CFG_DC_PORT GPIOA
 
-#define J_CFG_RES_PIN GPIO_PIN_4
-#define J_CFG_RES_PORT GPIOC
+#define J_CFG_RES_PIN GPIO_PIN_6
+#define J_CFG_RES_PORT GPIOB
 
 #define J_CFG_SCREEN_LENGTH 240
 #define J_CFG_SCREEN_HEIGHT 240
 #define J_CFG_BYTES_PER_PIXEL 2
 
-#define J_CFG_SPI_OBJ hspi3
+#define J_CFG_SPI_OBJ hspi2
 // ----------------------------------------
+
 
 #include "j_fonts.h"
 
@@ -44,7 +45,15 @@
 #define CMD_DISPOFF 0x28
 #define CMD_SWFRES 0x01
 #define CMD_COLMOD 0x3A
+
+
 #define CMD_MADCTL 0x36
+
+#define J_90_DEG  0b11000000
+#define J_180_DEG 0b01100000
+#define J_270_DEG 0b10100000
+
+
 #define CMD_RAMWR 0x2C
 #define CMD_INVON 0x21
 #define CMD_INVOFF 0x20
@@ -113,6 +122,7 @@ static j_struct j_master_control = { // We should change this to be more user-fr
 };
 
 
+
 /**
  * @brief Write comand via SPI
  * 
@@ -134,8 +144,10 @@ void write_u8(uint8_t* dat, size_t len);
 void write_s8(uint8_t dat);
 /**
  * @brief Initialize the LCD by sending the basic commands
+ * 
+ * @param rot_value Rotation uint8_t command for MAD_CTL, see the J_XXX_DEG defines
  */
-void init_lcd();
+void init_lcd(uint8_t rot_value);
 /**
  * @brief Set bounds of the screen for drawing
  * 
@@ -151,5 +163,6 @@ void draw_text(char ch, uint8_t font_size, j_color FILL_COL);
 void fill_counter(j_counter* counter, uint16_t x, uint16_t y, float num, uint8_t font_size, j_color FILL_COL, j_centering CENTERING);
 int fill_lbar(uint8_t x, uint8_t y, int value, int prev_value, int full_val, int length, int height, j_color col);
 void set_bg_col(j_color color);
+j_color get_bg_col();
 
 #endif /* J_ST7789_H_ */
