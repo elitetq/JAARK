@@ -74,11 +74,37 @@ void SystemClock_Config(void);
 void BT_Watchdog() {
   if(bt_timeout) {
     bt_dat_avail = 0;
-    
+    set_bounds(0,239,200,239);
+    fill_area(get_bg_col());
+    fill_text(120,200,"WD | Bluetooth disconnected...",-1,J_7X10_FONT,J_WHITE,J_CENTER);
+    HAL_Delay(15);
+
+    uint8_t rec_index1, rec_index2, rec_flag1, rec_flag2;
+    rec_index2 = 0;
+    rec_index1 = 1;
+    rec_flag1 = 0;
+    rec_flag2 = 0;
     while(!bt_dat_avail) {
+      printf("WATCHDOG | Attempting reconnect...");
       // Wait until bluetooth data is received
+      set_bounds(110+rec_flag1*20,130+rec_flag1*20,170+rec_flag2*20,200+rec_flag2*20);
+      fill_area(J_WHITE);
+      HAL_UART_Receive_DMA(&huart1,FloatPacket.bytes,4); // Receive ultrasonic data
       HAL_Delay(50);
+
+      fill_area(get_bg_col());
+      rec_index1++;
+      rec_index2++;
+      if(rec_index1 >= 2) {
+        rec_flag1 = !rec_flag1;
+        rec_index1 %= 2;
+      }
+      if(rec_index2 >= 2) {
+        rec_flag2 = !rec_flag2;
+        rec_index2 %= 2;
+      }
     }
+    fill_area(get_bg_col());
     __HAL_TIM_SET_COUNTER(&htim3,0); // Reset watchdog timer
     bt_timeout = 0;
   }
@@ -86,6 +112,7 @@ void BT_Watchdog() {
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
   if(htim->Instance == TIM3) {
+    printf("Error text");
     bt_timeout = 1;
   }
 }
@@ -168,19 +195,15 @@ int main(void)
   init_lcd(J_270_DEG);
   HAL_Delay(50);
   set_bg_col(J_RED);
-  int offset_x = 80;
-  int offset_y = 0;
-  set_bounds(0+offset_x,239+offset_x,0+offset_y,239+offset_y);
+  set_bounds(0,239,0,239);
   fill_area(get_bg_col());
   HAL_Delay(100);
-  fill_text(0,120,"Hello World",-1,J_11X18_FONT,J_WHITE,J_LEFT);
+  // fill_text(120,120,"Hello World",-1,J_11X18_FONT,J_WHITE,J_CENTER);
+
+  j_counter my_counter = J_CREATE_COUNTER;
 
 
 
-  HAL_GPIO_WritePin(GPIOB,GPIO_PIN_12,GPIO_PIN_SET);
-  HAL_Delay(2000);
-  HAL_GPIO_WritePin(GPIOB,GPIO_PIN_12,GPIO_PIN_RESET);
-  HAL_Delay(2000);
   HAL_GPIO_WritePin(GPIOB,GPIO_PIN_12,GPIO_PIN_SET);
   while (1)
   {
@@ -216,6 +239,8 @@ int main(void)
       FloatPacket.bytes[1],
       FloatPacket.bytes[2],
       FloatPacket.bytes[3], FloatPacket.fnum);
+      // Writing to LCD
+      fill_counter(&my_counter,120,120,FloatPacket.fnum,J_16X26_FONT,J_WHITE,J_CENTER);
 
     }
 
@@ -224,7 +249,7 @@ int main(void)
 
     HAL_Delay(10);
 
-    //BT_Watchdog();
+    BT_Watchdog();
   }
   /* USER CODE END 3 */
 }
@@ -328,16 +353,11 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 
 void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart)
 {
-    if(huart->Instance == USART1)
-    {
-        // Clear the error and restart the interrupt listener
-        HAL_UART_Receive_IT(&huart1, hc_rx_buf, 1);
-    }
     
-    if(huart->Instance == USART2)
-    {
-        HAL_UART_Receive_IT(&huart2, pc_rx_buf, 1);
-    }
+    // if(huart->Instance == USART2)
+    // {
+    //     HAL_UART_Receive_IT(&huart2, pc_rx_buf, 1);
+    // }
 }
 /* USER CODE END 4 */
 

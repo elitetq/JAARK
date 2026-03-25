@@ -135,6 +135,8 @@ void BT_Watchdog() {
     
     while(!bt_dat_avail) {
       // Wait until bluetooth data is received
+      printf("WATCHDOG | Attempting reconnect...");
+      HAL_UART_Receive_DMA(&huart1, rx_data, 2); // Receive 2 bytes and store on the rx_data array
       HAL_Delay(50);
     }
     __HAL_TIM_SET_COUNTER(&htim3,0); // Reset watchdog timer
@@ -248,7 +250,7 @@ int main(void)
   //HAL_TIM_Base_Start(&htim5);
 
   HAL_TIM_PWM_Start(&htim8, TIM_CHANNEL_3);
-  HAL_TIM_PWM_Start(&htim8, TIM_CHANNEL_4);
+  HAL_TIM_PWM_Start(&htim8, TIM_CHANNEL_1);
   HAL_TIM_PWM_Start(&htim10, TIM_CHANNEL_1);
   HAL_TIM_PWM_Start(&htim11, TIM_CHANNEL_1);
   HAL_TIM_Base_Start_IT(&htim1);
@@ -259,8 +261,6 @@ int main(void)
   HAL_UART_Receive_DMA(&huart1, rx_data, 2); // Receive 2 bytes and store on the rx_data array
 
   memset(FloatPacket.bytes,0,4);
-
-  init_lcd(J_90_DEG);
   
   set_bg_col(J_BLACK);
 
@@ -269,17 +269,14 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  j_master_control.bgcol = J_BLACK;
-  set_bounds(0,239,0,239);
-  //set_bounds(30,40,30,47);
-  //draw_text('A',J_11X18_FONT,J_BLACK);
-  fill_area(j_master_control.bgcol);
-  float s, prev_s;
-  s = prev_s = 0;
-  j_counter my_counter = J_CREATE_COUNTER;
+  // j_master_control.bgcol = J_BLACK;
+  // float s, prev_s;
+  // s = prev_s = 0;
+  // j_counter my_counter = J_CREATE_COUNTER;
   HAL_GPIO_WritePin(LED_BUS,LED_PIN,GPIO_PIN_SET);
+  HAL_GPIO_WritePin(GPIOB,GPIO_PIN_0,GPIO_PIN_SET);
 
-  fill_text(120,80,"Distance (cm)",-1,J_11X18_FONT,J_WHITE,J_CENTER);
+  // fill_text(120,80,"Distance (cm)",-1,J_11X18_FONT,J_WHITE,J_CENTER);
 
   HAL_ADC_Start(&hadc1);
   float test_num = 50;
@@ -382,13 +379,13 @@ int main(void)
     	if(0) {
     		if(joystick_1_write_val > (10 << 8)) { // Forward
     		    	    __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_3, (joystick_1_write_val) >> 2);
-    		    	    __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_4, 0);
+    		    	    __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_1, 0);
     		    	} else if(joystick_1_write_val < (5 << 8)) { // Reverse
     		    		__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_3, 0);
-    		    	    __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_4, (((11 << 8)-joystick_1_write_val)) >> 2);
+    		    	    __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_1, (((11 << 8)-joystick_1_write_val)) >> 2);
     		    	} else { // Stop
     		    	    __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_3, 0);
-    		    	    __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_4, 0);
+    		    	    __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_1, 0);
     		    	}
     	}
 

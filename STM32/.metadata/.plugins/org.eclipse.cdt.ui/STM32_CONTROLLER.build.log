@@ -1,10 +1,10 @@
-12:23:15 **** Incremental Build of configuration Debug for project STM32_CONTROLLER ****
+16:56:51 **** Incremental Build of configuration Debug for project STM32_CONTROLLER ****
 make -j22 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:145:43: warning: passing argument 2 of 'HAL_UART_Receive_DMA' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
-  145 |   HAL_UART_Receive_DMA(&huart1,FloatPacket.bytes,4); // Receive ultrasonic data
-      |                                ~~~~~~~~~~~^~~~~~
+../Core/Src/main.c: In function 'BT_Watchdog':
+../Core/Src/main.c:92:47: warning: passing argument 2 of 'HAL_UART_Receive_DMA' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+   92 |       HAL_UART_Receive_DMA(&huart1,FloatPacket.bytes,4); // Receive ultrasonic data
+      |                                    ~~~~~~~~~~~^~~~~~
 In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
                  from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
                  from ../Core/Inc/main.h:30,
@@ -12,57 +12,64 @@ In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:750:76: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'volatile uint8_t *' {aka 'volatile unsigned char *'}
   750 | HAL_StatusTypeDef HAL_UART_Receive_DMA(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
       |                                                                   ~~~~~~~~~^~~~~
-../Core/Src/main.c:149:11: warning: unused variable 'rx_buffer' [-Wunused-variable]
-  149 |   uint8_t rx_buffer[BT_BUF_SIZE] = {0};
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:172:43: warning: passing argument 2 of 'HAL_UART_Receive_DMA' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  172 |   HAL_UART_Receive_DMA(&huart1,FloatPacket.bytes,4); // Receive ultrasonic data
+      |                                ~~~~~~~~~~~^~~~~~
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:750:76: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'volatile uint8_t *' {aka 'volatile unsigned char *'}
+  750 | HAL_StatusTypeDef HAL_UART_Receive_DMA(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
+      |                                                                   ~~~~~~~~~^~~~~
+../Core/Src/main.c:176:11: warning: unused variable 'rx_buffer' [-Wunused-variable]
+  176 |   uint8_t rx_buffer[BT_BUF_SIZE] = {0};
       |           ^~~~~~~~~
-../Core/Src/main.c:148:11: warning: unused variable 'cmd_role' [-Wunused-variable]
-  148 |   uint8_t cmd_role[] = "AT+ADDR?\r\n";  // Setting to Slave
+../Core/Src/main.c:175:11: warning: unused variable 'cmd_role' [-Wunused-variable]
+  175 |   uint8_t cmd_role[] = "AT+ADDR?\r\n";  // Setting to Slave
       |           ^~~~~~~~
-../Core/Src/main.c:147:11: warning: unused variable 'cmd_at' [-Wunused-variable]
-  147 |   uint8_t cmd_at[] = "AT\r\n";
+../Core/Src/main.c:174:11: warning: unused variable 'cmd_at' [-Wunused-variable]
+  174 |   uint8_t cmd_at[] = "AT\r\n";
       |           ^~~~~~
 ../Core/Src/main.c: In function 'Send_HC_AT_Command':
-../Core/Src/main.c:287:3: warning: implicit declaration of function 'memset' [-Wimplicit-function-declaration]
-  287 |   memset(local_str,0,sizeof(local_str));
+../Core/Src/main.c:312:3: warning: implicit declaration of function 'memset' [-Wimplicit-function-declaration]
+  312 |   memset(local_str,0,sizeof(local_str));
       |   ^~~~~~
 ../Core/Src/main.c:31:1: note: include '<string.h>' or provide a declaration of 'memset'
    30 | #include "j_st7789.h"
   +++ |+#include <string.h>
    31 | 
-../Core/Src/main.c:287:3: warning: incompatible implicit declaration of built-in function 'memset' [-Wbuiltin-declaration-mismatch]
-  287 |   memset(local_str,0,sizeof(local_str));
+../Core/Src/main.c:312:3: warning: incompatible implicit declaration of built-in function 'memset' [-Wbuiltin-declaration-mismatch]
+  312 |   memset(local_str,0,sizeof(local_str));
       |   ^~~~~~
-../Core/Src/main.c:287:3: note: include '<string.h>' or provide a declaration of 'memset'
-../Core/Src/main.c:289:3: warning: implicit declaration of function 'strcpy' [-Wimplicit-function-declaration]
-  289 |   strcpy(local_str,"-- Sending -> ");
+../Core/Src/main.c:312:3: note: include '<string.h>' or provide a declaration of 'memset'
+../Core/Src/main.c:314:3: warning: implicit declaration of function 'strcpy' [-Wimplicit-function-declaration]
+  314 |   strcpy(local_str,"-- Sending -> ");
       |   ^~~~~~
-../Core/Src/main.c:289:3: note: include '<string.h>' or provide a declaration of 'strcpy'
-../Core/Src/main.c:289:3: warning: incompatible implicit declaration of built-in function 'strcpy' [-Wbuiltin-declaration-mismatch]
-../Core/Src/main.c:289:3: note: include '<string.h>' or provide a declaration of 'strcpy'
-../Core/Src/main.c:291:5: warning: implicit declaration of function 'strcat' [-Wimplicit-function-declaration]
-  291 |     strcat(local_str,str);
+../Core/Src/main.c:314:3: note: include '<string.h>' or provide a declaration of 'strcpy'
+../Core/Src/main.c:314:3: warning: incompatible implicit declaration of built-in function 'strcpy' [-Wbuiltin-declaration-mismatch]
+../Core/Src/main.c:314:3: note: include '<string.h>' or provide a declaration of 'strcpy'
+../Core/Src/main.c:316:5: warning: implicit declaration of function 'strcat' [-Wimplicit-function-declaration]
+  316 |     strcat(local_str,str);
       |     ^~~~~~
-../Core/Src/main.c:291:5: note: include '<string.h>' or provide a declaration of 'strcat'
-../Core/Src/main.c:291:5: warning: incompatible implicit declaration of built-in function 'strcat' [-Wbuiltin-declaration-mismatch]
-../Core/Src/main.c:291:5: note: include '<string.h>' or provide a declaration of 'strcat'
-../Core/Src/main.c:293:51: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
-  293 |   HAL_UART_Transmit(&huart2, (uint8_t*)local_str, strlen(local_str), 100);
+../Core/Src/main.c:316:5: note: include '<string.h>' or provide a declaration of 'strcat'
+../Core/Src/main.c:316:5: warning: incompatible implicit declaration of built-in function 'strcat' [-Wbuiltin-declaration-mismatch]
+../Core/Src/main.c:316:5: note: include '<string.h>' or provide a declaration of 'strcat'
+../Core/Src/main.c:318:51: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
+  318 |   HAL_UART_Transmit(&huart2, (uint8_t*)local_str, strlen(local_str), 100);
       |                                                   ^~~~~~
-../Core/Src/main.c:293:51: note: include '<string.h>' or provide a declaration of 'strlen'
-../Core/Src/main.c:293:51: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
-../Core/Src/main.c:293:51: note: include '<string.h>' or provide a declaration of 'strlen'
+../Core/Src/main.c:318:51: note: include '<string.h>' or provide a declaration of 'strlen'
+../Core/Src/main.c:318:51: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+../Core/Src/main.c:318:51: note: include '<string.h>' or provide a declaration of 'strlen'
 In file included from ../Core/Src/main.c:30:
 ../Core/Inc/j_st7789.h: At top level:
-../Core/Inc/j_st7789.h:119:17: warning: 'j_master_control' defined but not used [-Wunused-variable]
-  119 | static j_struct j_master_control = { // We should change this to be more user-friendly
+../Core/Inc/j_st7789.h:122:17: warning: 'j_master_control' defined but not used [-Wunused-variable]
+  122 | static j_struct j_master_control = { // We should change this to be more user-friendly
       |                 ^~~~~~~~~~~~~~~~
-../Core/Inc/j_st7789.h:117:13: warning: 'j_flag_set_bounds' defined but not used [-Wunused-variable]
-  117 | static char j_flag_set_bounds = 1;
+../Core/Inc/j_st7789.h:120:13: warning: 'j_flag_set_bounds' defined but not used [-Wunused-variable]
+  120 | static char j_flag_set_bounds = 1;
       |             ^~~~~~~~~~~~~~~~~
-../Core/Inc/j_st7789.h:116:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
-  116 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
-      |                ^~~~~~~~
-In file included from ../Core/Inc/j_st7789.h:38:
+../Core/Inc/j_st7789.h:119:17: warning: 'j_bounds' defined but not used [-Wunused-variable]
+  119 | static uint16_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
+      |                 ^~~~~~~~
+In file included from ../Core/Inc/j_st7789.h:40:
 ../Core/Inc/j_fonts.h:338:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
   338 | static const uint16_t* j_fonts[4] = {
       |                        ^~~~~~~
@@ -75,11 +82,11 @@ Finished building target: STM32_CONTROLLER.elf
 arm-none-eabi-size  STM32_CONTROLLER.elf 
 arm-none-eabi-objdump -h -S STM32_CONTROLLER.elf  > "STM32_CONTROLLER.list"
    text	   data	    bss	    dec	    hex	filename
-  56396	    496	  41344	  98236	  17fbc	STM32_CONTROLLER.elf
+  59244	    504	  41344	 101092	  18ae4	STM32_CONTROLLER.elf
 Finished building: default.size.stdout
  
 Finished building: STM32_CONTROLLER.list
  
 
-12:23:17 Build Finished. 0 errors, 17 warnings. (took 2s.78ms)
+16:56:53 Build Finished. 0 errors, 18 warnings. (took 2s.44ms)
 

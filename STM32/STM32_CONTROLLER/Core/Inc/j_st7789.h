@@ -27,8 +27,10 @@
 #define J_CFG_RES_PIN GPIO_PIN_6
 #define J_CFG_RES_PORT GPIOB
 
-#define J_CFG_SCREEN_LENGTH 240
+// Warning, these must be smaller than or equal to 320
+#define J_CFG_SCREEN_LENGTH 240 
 #define J_CFG_SCREEN_HEIGHT 240
+
 #define J_CFG_BYTES_PER_PIXEL 2
 
 #define J_CFG_SPI_OBJ hspi2
@@ -38,27 +40,28 @@
 #include "j_fonts.h"
 
 // PRIVATE DEFINES (do not change) --------
-#define CMD_SLPIN 0x10
-#define CMD_SLPOUT 0x11
-#define CMD_NORON 0x13
-#define CMD_DISPON 0x29
+#define CMD_SLPIN   0x10
+#define CMD_SLPOUT  0x11
+#define CMD_NORON   0x13
+#define CMD_DISPON  0x29
 #define CMD_DISPOFF 0x28
-#define CMD_SWFRES 0x01
-#define CMD_COLMOD 0x3A
+#define CMD_SWFRES  0x01
+#define CMD_COLMOD  0x3A
 
 
 #define CMD_MADCTL 0x36
 
-#define J_90_DEG  0b11000000
-#define J_180_DEG 0b01100000
+#define J_0_DEG   0b00000000
+#define J_180_DEG 0b11000000
+#define J_90_DEG  0b01100000
 #define J_270_DEG 0b10100000
 
 
-#define CMD_RAMWR 0x2C
-#define CMD_INVON 0x21
+#define CMD_RAMWR  0x2C
+#define CMD_INVON  0x21
 #define CMD_INVOFF 0x20
-#define CMD_CASET 0x2A
-#define CMD_RASET 0x2B
+#define CMD_CASET  0x2A
+#define CMD_RASET  0x2B
 
 #define J_BIT_DEPTH J_CFG_BYTES_PER_PIXEL
 #define J_HEIGHT J_CFG_SCREEN_HEIGHT
@@ -113,7 +116,7 @@ typedef struct {
 } j_counter;
 
 
-static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
+static uint16_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
 static char j_flag_set_bounds = 1;
 
 static j_struct j_master_control = { // We should change this to be more user-friendly
@@ -156,7 +159,7 @@ void init_lcd(uint8_t rot_value);
  * @param ylo Low Y coordinate
  * @param yhi High Y coordinate
  */
-void set_bounds(uint8_t xlo, uint8_t xhi, uint8_t ylo, uint8_t yhi);
+void set_bounds(uint16_t xlo, uint16_t xhi, uint16_t ylo, uint16_t yhi);
 void fill_area(uint16_t color);
 void fill_text(uint8_t x, uint8_t y, char* str, int len, uint8_t font_size, j_color color, j_centering CENTERING);
 void draw_text(char ch, uint8_t font_size, j_color FILL_COL);

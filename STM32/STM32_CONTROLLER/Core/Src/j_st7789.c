@@ -8,9 +8,10 @@
 static uint8_t col_arr[J_BUF_SIZE];
 static int ten_power = pow(10,MAX_DECIMAL_SIZE);
 static char float_to_str_buf[MAX_TEXT_TO_STRING_SIZE];
+static int x_offset, y_offset;
 
-void set_bounds(uint8_t xlo, uint8_t xhi, uint8_t ylo, uint8_t yhi) {
-    uint8_t temp;
+void set_bounds(uint16_t xlo, uint16_t xhi, uint16_t ylo, uint16_t yhi) {
+    uint16_t temp;
     if(xlo > xhi) {
         temp = xhi;
         xhi = xlo;
@@ -22,14 +23,19 @@ void set_bounds(uint8_t xlo, uint8_t xhi, uint8_t ylo, uint8_t yhi) {
         yhi = ylo;
         ylo = temp;
     }
+    xlo += x_offset;
+    xhi += x_offset;
+    ylo += y_offset;
+    yhi += y_offset;
+    
     if(j_flag_set_bounds) {
         j_bounds[0] = xlo;
         j_bounds[1] = xhi-1;
         j_bounds[2] = ylo;
         j_bounds[3] = yhi-1;
     }
-    uint8_t bounds_x[] = {0,xlo,0,xhi};
-    uint8_t bounds_y[] = {0,ylo,0,yhi};
+    uint8_t bounds_x[] = {xlo >> 8,xlo,xhi >> 8,xhi};
+    uint8_t bounds_y[] = {ylo >> 8,ylo,yhi >> 8,yhi};
     write_cmd(CMD_CASET);
     write_u8(bounds_x,4);
     write_cmd(CMD_RASET);
@@ -72,15 +78,36 @@ void init_lcd(uint8_t rot_value) {
     write_cmd(CMD_INVON);
 
     // Set screen rotation
-    write_cmd(CMD_MADCTL);
-    write_s8(rot_value);
+    if(rot_value != J_0_DEG) {
+        write_cmd(CMD_MADCTL);
+        write_s8(rot_value);
+    }
 
-    uint8_t bounds[] = {0,0,0,0xEF};
-    write_cmd(CMD_CASET);
-    write_u8(bounds,4);
-    write_cmd(CMD_RASET);
-    write_u8(bounds,4);
-    write_cmd(CMD_RAMWR);
+    int delta_x = 320 - J_CFG_SCREEN_LENGTH;
+    int delta_y = 320 - J_CFG_SCREEN_HEIGHT;
+    switch(rot_value) {
+        case J_180_DEG:
+            x_offset = 0;
+            y_offset = delta_y;
+            break;
+        case J_270_DEG:
+            x_offset = delta_x;
+            y_offset = 0;
+            break;
+        default:
+            x_offset = 0;
+            y_offset = 0;
+            break;
+        
+    }
+
+    set_bounds(0,J_CFG_SCREEN_LENGTH-1,0,J_CFG_SCREEN_HEIGHT-1);
+    // uint8_t bounds[] = {0,0,0,0xEF};
+    // write_cmd(CMD_CASET);
+    // write_u8(bounds,4);
+    // write_cmd(CMD_RASET);
+    // write_u8(bounds,4);
+    // write_cmd(CMD_RAMWR);
 }
 
 void set_bg_col(j_color color) {
