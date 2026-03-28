@@ -57,13 +57,19 @@ uint8_t hc_rx_buf[1];
 
 volatile union { 
   float fnum;
-  uint8_t bytes[4];
+  uint8_t bytes[6];
 } FloatPacket; // Float bytes for distance
+volatile float fnum_stored = 0;
 volatile char bt_dat_avail = 0;
 volatile char bt_timeout = 0;
+volatile uint32_t hal_adc_val = 0; // X
+volatile uint32_t hal_adc_val2 = 0; // Y
+volatile uint8_t hal_combined[2] = {0,0}; // index 1 {Joystick Data} : index 2 {Headlight Data}
 
 
 #define BT_BUF_SIZE 30
+#define BG_COL J_BLACK
+#define WATCHDOG_BG_COL J_RED
 
 /* USER CODE END PV */
 
@@ -71,25 +77,50 @@ volatile char bt_timeout = 0;
 void SystemClock_Config(void);
 /* USER CODE BEGIN PFP */
 
+void Reset_DMA_Channel(UART_HandleTypeDef *huart, uint8_t *pData, uint8_t size) {
+}
+
+void Setup_Main_Screen() {
+  set_bounds(0,239,0,239);
+  set_bg_col(BG_COL);
+  fill_area(get_bg_col());
+
+  fill_text(120,90,"Distance (cm)",13,J_11X18_FONT,J_WHITE,J_CENTER);
+}
+
 void BT_Watchdog() {
   if(bt_timeout) {
     bt_dat_avail = 0;
-    set_bounds(0,239,200,239);
+    set_bounds(0,239,0,239);
+    set_bg_col(WATCHDOG_BG_COL);
     fill_area(get_bg_col());
-    fill_text(120,200,"WD | Bluetooth disconnected...",-1,J_7X10_FONT,J_WHITE,J_CENTER);
+
+    fill_text(120,75,"WATCHDOG",-1,J_16X26_FONT,J_WHITE,J_CENTER);
+    fill_text(120,102,"No Bluetooth Signal",-1,J_11X18_FONT,J_WHITE,J_CENTER);
+    fill_text(120,125,"Attempting Reconnect...",-1,J_7X10_FONT,J_WHITE,J_CENTER);
+
     HAL_Delay(15);
 
-    uint8_t rec_index1, rec_index2, rec_flag1, rec_flag2;
+    uint8_t rec_index1, rec_index2, rec_flag1, rec_flag2, x_pos, y_pos, width;
     rec_index2 = 0;
     rec_index1 = 1;
     rec_flag1 = 0;
     rec_flag2 = 0;
+    x_pos = 100;
+    y_pos = 165;
+    width = 20;
+
+
     while(!bt_dat_avail) {
       printf("WATCHDOG | Attempting reconnect...");
       // Wait until bluetooth data is received
-      set_bounds(110+rec_flag1*20,130+rec_flag1*20,170+rec_flag2*20,200+rec_flag2*20);
+      set_bounds(x_pos+rec_flag1*width,x_pos+width*(1+rec_flag1),y_pos+rec_flag2*width,y_pos+width*(1+rec_flag2)); // Loading bar
       fill_area(J_WHITE);
-      HAL_UART_Receive_DMA(&huart1,FloatPacket.bytes,4); // Receive ultrasonic data
+      // HAL_UART_Receive_DMA(&huart1,FloatPacket.bytes,4); // Receive ultrasonic data
+      HAL_UART_DMAStop(&huart1); 
+      HAL_UART_Receive_DMA(&huart1,FloatPacket.bytes,sizeof(FloatPacket));
+      HAL_UART_Transmit(&huart1,hal_combined,2,100);
+
       HAL_Delay(50);
 
       fill_area(get_bg_col());
@@ -104,7 +135,14 @@ void BT_Watchdog() {
         rec_index2 %= 2;
       }
     }
-    fill_area(get_bg_col());
+    Setup_Main_Screen();
+
+    // Make sure we are back in sync with data
+    HAL_UART_DMAStop(&huart1); // A timeout means unexpected drop in bt connection, we need to disable dma in case of data corruption
+    HAL_Delay(100);
+    memset(FloatPacket.bytes,0,6);
+    HAL_UART_Receive_DMA(&huart1,FloatPacket.bytes,sizeof(FloatPacket));
+
     __HAL_TIM_SET_COUNTER(&htim3,0); // Reset watchdog timer
     bt_timeout = 0;
   }
@@ -112,7 +150,6 @@ void BT_Watchdog() {
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
   if(htim->Instance == TIM3) {
-    printf("Error text");
     bt_timeout = 1;
   }
 }
@@ -167,9 +204,16 @@ int main(void)
   MX_TIM3_Init();
   MX_SPI2_Init();
   /* USER CODE BEGIN 2 */
+  GPIO_InitTypeDef GPIO_InitStruct = {0};
+  GPIO_InitStruct.Pin = GPIO_PIN_10;
+  GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;   // Alternate Function Push-Pull
+  GPIO_InitStruct.Pull = GPIO_PULLUP;      // This prevents the "float"
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+  GPIO_InitStruct.Alternate = GPIO_AF7_USART1; // AF7 is standard for UART on PA10
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
   // HAL_UART_Receive_IT(&huart2, pc_rx_buf, 1);
   // HAL_UART_Receive_IT(&huart1, hc_rx_buf, 1);
-  HAL_UART_Receive_DMA(&huart1,FloatPacket.bytes,4); // Receive ultrasonic data
+  HAL_UART_Receive_DMA(&huart1,FloatPacket.bytes,sizeof(FloatPacket)); // Receive ultrasonic data
 
   uint8_t cmd_at[] = "AT\r\n";
   uint8_t cmd_role[] = "AT+ADDR?\r\n";  // Setting to Slave
@@ -189,9 +233,6 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  uint32_t hal_adc_val = 0; // X
-  uint32_t hal_adc_val2 = 0; // Y
-  uint8_t hal_combined[2] = {0,0}; // index 1 {Joystick Data} : index 2 {Headlight Data}
   init_lcd(J_270_DEG);
   HAL_Delay(50);
   set_bg_col(J_RED);
@@ -235,12 +276,13 @@ int main(void)
     if(bt_dat_avail) {
       bt_dat_avail = 0;
       __HAL_TIM_SET_COUNTER(&htim3,0); // Reset watchdog timer
-      printf("Distance received: [%d %d %d %d] %lf\n",FloatPacket.bytes[0],
-      FloatPacket.bytes[1],
-      FloatPacket.bytes[2],
-      FloatPacket.bytes[3], FloatPacket.fnum);
+      // printf("Distance received: [%d %d %d %d] %lf\n",FloatPacket.bytes[0],
+      // FloatPacket.bytes[1],
+      // FloatPacket.bytes[2],
+      // FloatPacket.bytes[3], FloatPacket.fnum);
+      printf("Data received: %lf", fnum_stored);
       // Writing to LCD
-      fill_counter(&my_counter,120,120,FloatPacket.fnum,J_16X26_FONT,J_WHITE,J_CENTER);
+      fill_counter(&my_counter,120,120,fnum_stored,J_16X26_FONT,J_WHITE,J_CENTER);
 
     }
 
@@ -341,6 +383,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
   if (huart->Instance == USART1) 
   {
     bt_dat_avail = 1; // Let main know we have new bluetooth data
+    fnum_stored = FloatPacket.fnum;
 	// printf("USART1\n");
   //   HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
   //   // Forward it to the PC (USART2)

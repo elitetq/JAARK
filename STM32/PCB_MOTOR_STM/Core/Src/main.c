@@ -53,6 +53,10 @@
 #define DIST_WARN 25
 #define DIST_DANGER_PCNT 40
 
+#define BT_WATCHDOG_EN
+#define METAL_DETECT_EN
+#define ULTRASONIC_EN
+#define MOTOR_DRIVER_EN
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
@@ -63,11 +67,11 @@ volatile uint32_t sensor_time = 0;
 volatile float distance = 0;
 union { 
   float fnum;
-  uint8_t bytes[4];
+  uint8_t bytes[6];
 } FloatPacket; // Float bytes for distance
 volatile float sensor_time_seconds = 0;
 volatile float sensor_prev_dist_green = 0;
-volatile int distance_clamp = 0;
+volatile int distance_clamp = 1;
 volatile bool update_flag = false; // Update on-screen value
 volatile uint8_t lbar_update_flag = 0; // Update loading bar
 volatile uint8_t lbar_switch_color_flag = 0;
@@ -101,10 +105,17 @@ void SystemClock_Config(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
-// Ultrasonic Variables
-static uint32_t current_val = 0;
-static uint32_t previous_val = 0;
-static uint32_t delta_ticks = 0;
+// Metal Detector Variables
+volatile static uint32_t current_val = 0;
+volatile static uint32_t previous_val = 0;
+volatile static uint32_t delta_ticks = 1;
+static float fast_delta_buf = 48.0f;
+static float slow_delta_buf = 48.0f;
+static char md_bypass = 0; // Used for debounce after metal trigger event
+#define TRIGGER_DELTA 5 // FAST-SLOW DELTA * 100
+#define FAST_DELTA_BUF_DAMP 0.2
+#define SLOW_DELTA_BUF_DAMP 0.085
+#define EXP_SMOOTH(prev_val,new_val,damping_factor) (prev_val * (1-damping_factor) + new_val * (damping_factor));
 
 // Joystick Variables
 volatile uint8_t rx_data[2] = {0,0};
@@ -119,8 +130,13 @@ volatile char bt_dat_avail = 0; // Available data on bluetooth
 volatile char bt_timeout = 0; // FLag for bluetooth disconnection
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
-  if(htim->Instance == TIM3) {
+  if(htim->Instance == TIM3) { // Bluetooth timeout (watchdog)
     bt_timeout = 1;
+  }
+  if(htim->Instance == TIM4) { // Metal detector timer callback
+    md_bypass = 0;
+    __HAL_TIM_SET_COMPARE(&htim12, TIM_CHANNEL_1, 0); // Turn off buzzer
+    HAL_TIM_Base_Stop_IT(&htim4); // Stop debounce timer
   }
 }
 
@@ -131,36 +147,93 @@ void BT_Watchdog() {
     __HAL_TIM_SET_COMPARE(&htim10, TIM_CHANNEL_1, 0);
     __HAL_TIM_SET_COMPARE(&htim11, TIM_CHANNEL_1, 0);
     __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_3, 0);
-    __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_4, 0);
+    __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_1, 0);
+
+  int bt_pulses = 0;
     
+  while(bt_pulses < 2) {
     while(!bt_dat_avail) {
       // Wait until bluetooth data is received
       printf("WATCHDOG | Attempting reconnect...");
-      HAL_UART_Receive_DMA(&huart1, rx_data, 2); // Receive 2 bytes and store on the rx_data array
+      HAL_UART_DMAStop(&huart1);
+      HAL_UART_Receive_DMA(&huart1, rx_data, 2); 
+      HAL_UART_Transmit(&huart1,FloatPacket.bytes,sizeof(FloatPacket),100);
       HAL_Delay(50);
     }
+    bt_pulses++;
+  }
+
+    // Make sure we are back in sync with data
+    HAL_UART_DMAStop(&huart1); 
+    HAL_Delay(500);
+    memset(FloatPacket.bytes,0,4);
+    HAL_UART_Receive_DMA(&huart1, rx_data, 2); 
+
     __HAL_TIM_SET_COUNTER(&htim3,0); // Reset watchdog timer
     bt_timeout = 0;
   }
 }
 
+void Metal_Detect_Calibrate(int passes) {
+  float frequency_poll = 84000.0f/(float)delta_ticks; // KHz
+  slow_delta_buf = frequency_poll;
+  int delay_val = 10;
+  int bar_progress = 0;
+  printf("Calibrating with %d passes (%lfs total time)\n",passes,(float)passes*delay_val/1000.0f);
+  for(int i = 0; i < passes; i++) {
+    frequency_poll = 84000.0f/(float)delta_ticks; // KHz
+    slow_delta_buf = EXP_SMOOTH(slow_delta_buf,frequency_poll,SLOW_DELTA_BUF_DAMP);
+    bar_progress = (i * 10) / passes;
+    printf("[ ");
+    for(int j = 0; j < bar_progress; j++) {
+      printf("X");
+    }
+    for(int j = 0; j < (10 - bar_progress); j++) {
+      printf("-");
+    }
+    printf(" ]\r");
+    HAL_Delay(delay_val);
+  }
+  fast_delta_buf = slow_delta_buf;
+  printf("\nCompleted calibration...\n\n");
+  HAL_Delay(500);
+}
+
+void Metal_Detect_Logic() {
+  float frequency_poll = 84000.0f/(float)delta_ticks; // KHz
+  int sf_delta = 0;
+  if(frequency_poll < 40 || frequency_poll > 55) {
+    return; // Invalid values
+  }
+  slow_delta_buf = EXP_SMOOTH(slow_delta_buf,frequency_poll,SLOW_DELTA_BUF_DAMP);
+  fast_delta_buf = EXP_SMOOTH(fast_delta_buf,frequency_poll,FAST_DELTA_BUF_DAMP);
+  if(!md_bypass) {
+    sf_delta = (int)(fast_delta_buf*100) - (int)(slow_delta_buf*100);
+
+
+    if(sf_delta > TRIGGER_DELTA) {
+      __HAL_TIM_SET_COMPARE(&htim12, TIM_CHANNEL_1, 10);
+      HAL_TIM_Base_Start_IT(&htim4);
+      __HAL_TIM_SET_COUNTER(&htim4,0);
+      md_bypass = 1;
+      fast_delta_buf = slow_delta_buf = (fast_delta_buf + slow_delta_buf) / 2;
+    }
+  } else {
+    printf("\n[ METAL HAS BEEN DETECTED!! ]");
+  }
+  printf("fast_delta_buf: %lf\nslow_delta_buf: %lf\ndelta: %d\n-----\n",fast_delta_buf,slow_delta_buf,sf_delta);
+}
+
 void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim) {
-    if (htim->Instance == TIM5) {
+    if (htim->Instance == TIM5) { // Metal detector timer
         if (htim->Channel == HAL_TIM_ACTIVE_CHANNEL_1) {
 
-            // 1. Read the new capture value
             current_val = HAL_TIM_ReadCapturedValue(htim, TIM_CHANNEL_1);
 
-            // 2. Calculate the difference
-            // (Unsigned 32-bit math automatically handles the rollover gracefully)
             delta_ticks = current_val - previous_val;
-            if(!delta_ticks) delta_ticks = 1;
+            if(!delta_ticks) delta_ticks = 1; // Handle div by 0
 
-            // 3. Save the current value for the next interrupt
             previous_val = current_val;
-
-            // At 500ns per tick, your period in seconds is: delta_ticks * 0.0000005
-            // Your frequency in Hz is: 2000000 / delta_ticks
         }
     }
 }
@@ -245,14 +318,19 @@ int main(void)
   MX_TIM10_Init();
   MX_TIM11_Init();
   MX_TIM3_Init();
+  MX_TIM12_Init();
+  MX_TIM4_Init();
   /* USER CODE BEGIN 2 */
 
   //HAL_TIM_Base_Start(&htim5);
 
+  // Motor PWM's
   HAL_TIM_PWM_Start(&htim8, TIM_CHANNEL_3);
   HAL_TIM_PWM_Start(&htim8, TIM_CHANNEL_1);
   HAL_TIM_PWM_Start(&htim10, TIM_CHANNEL_1);
   HAL_TIM_PWM_Start(&htim11, TIM_CHANNEL_1);
+
+  HAL_TIM_PWM_Start(&htim12, TIM_CHANNEL_1); // Buzzer PWM (Base freq 100KHz / 50 (ARR) to get 2KHz PWM)
   HAL_TIM_Base_Start_IT(&htim1);
   HAL_TIM_Base_Start_IT(&htim3); // 16-bit bluetooth watchdog timer (currently configured for 1s timeout)
   HAL_TIM_IC_Start_IT(&htim5,TIM_CHANNEL_1); // 32-bit metal detector timer
@@ -260,7 +338,7 @@ int main(void)
 
   HAL_UART_Receive_DMA(&huart1, rx_data, 2); // Receive 2 bytes and store on the rx_data array
 
-  memset(FloatPacket.bytes,0,4);
+  memset(FloatPacket.bytes,0,6);
   
   set_bg_col(J_BLACK);
 
@@ -276,18 +354,23 @@ int main(void)
   HAL_GPIO_WritePin(LED_BUS,LED_PIN,GPIO_PIN_SET);
   HAL_GPIO_WritePin(GPIOB,GPIO_PIN_0,GPIO_PIN_SET);
 
+  // __HAL_TIM_SET_COMPARE(&htim10, TIM_CHANNEL_1, 500);
+  // __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_3, 500);
+
   // fill_text(120,80,"Distance (cm)",-1,J_11X18_FONT,J_WHITE,J_CENTER);
 
   HAL_ADC_Start(&hadc1);
   float test_num = 50;
   memcpy((void*)FloatPacket.bytes,(void*)&test_num,4); // Copy float into the Float Packet
+  
+  // Metal_Detect_Calibrate(500);
 
 
-  printf("waiting for bt data..\n");
-  while(!bt_dat_avail) {
-    HAL_Delay(50); // wait for first bluetooth data signal
-  }
-  printf("bt connection started..\n");
+  // printf("waiting for bt data..\n");
+  // while(!bt_dat_avail) {
+  //   HAL_Delay(50); // wait for first bluetooth data signal
+  // }
+  // printf("bt connection started..\n");
 
   while (1)
 
@@ -304,41 +387,18 @@ int main(void)
     HAL_GPIO_WritePin(TRIG_BUS,TRIG_PIN,GPIO_PIN_RESET); // Set trig pin off after about 1000 microseconds
 
     HAL_Delay(60); // Super important
-    // while(__HAL_TIM_GET_COUNTER(&htim1) < 65000) {
-    //   if(update_flag) break;
-    // }
-    // if(HAL_ADC_PollForConversion(&hadc1,100) == HAL_OK) {
-    //   add_adc_val(HAL_ADC_GetValue(&hadc1)*volt_per_bit);
-    //   HAL_ADC_Start(&hadc1);
-    //   voltage = (get_avg_adc()) * 1;
-    //   //voltage > ADC_THRESHOLD ? HAL_GPIO_WritePin(LED_BUS,LED_PIN,GPIO_PIN_SET) : HAL_GPIO_WritePin(LED_BUS,LED_PIN,GPIO_PIN_RESET);
-    // }
-    // printf("Frequency: %d\n", 84000000/delta_ticks);
-    //printf("%lf\n",distance);
-    HAL_UART_Transmit(&huart1,FloatPacket.bytes,4,100);
+
     if(update_flag) { // Update for sensor (update_flag)
       update_flag = false;
 
       distance = (sensor_time_seconds * 34300.0f)/2.0;
       memcpy((void*)FloatPacket.bytes,(void*)&distance,4); // Copy float into the Float Packet
-      HAL_UART_Transmit(&huart1,FloatPacket.bytes,4,100);
+      HAL_UART_Transmit(&huart1,FloatPacket.bytes,sizeof(FloatPacket),100);
 
       printf("Sensor Reading: %lf cm\n", FloatPacket.fnum);
-      // printf("sensor_time: %d\nsensor_time_seconds: %lf\n",sensor_time,sensor_time_seconds);
-
-      // distance_clamp = distance_clamp * (1-SENS_EXP_FACTOR) + (50 - distance) * SENS_EXP_FACTOR;
-      // j_color write_col = J_GREEN;
-      // if(distance_clamp < 0) distance_clamp = 0;
-      // if(distance_clamp > 25) write_col = J_YELLOW;
-      // if(distance_clamp > 40) write_col = J_RED;
-
-      // fill_counter(&my_counter,120,120,distance,J_16X26_FONT,J_WHITE,J_CENTER);
-      // sensor_prev_dist_green = fill_lbar(40,150,distance_clamp,sensor_prev_dist_green,50,160,10,write_col);
 
 
     }
-    //__HAL_TIM_SET_COMPARE(&htim10, TIM_CHANNEL_1, 300);
-    //__HAL_TIM_SET_COMPARE(&htim11, TIM_CHANNEL_1, 0);
 
     if(bt_dat_avail) {
       __HAL_TIM_SET_COUNTER(&htim3,0); // Reset watchdog timer
@@ -359,7 +419,7 @@ int main(void)
     	// Motor logic
     	// Motor 1
 
-    	if(0) {
+    	if(1) {
     		if(joystick_2_write_val > (10<<8)) { // Forward
     		    		//__HAL_TIM_SET_COMPARE(&htim10, TIM_CHANNEL_1, 800);
     		    		__HAL_TIM_SET_COMPARE(&htim10, TIM_CHANNEL_1, (joystick_2_write_val) >> 2);
@@ -376,7 +436,7 @@ int main(void)
     	}
 
     	// Motor 2
-    	if(0) {
+    	if(1) {
     		if(joystick_1_write_val > (10 << 8)) { // Forward
     		    	    __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_3, (joystick_1_write_val) >> 2);
     		    	    __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_1, 0);
@@ -394,7 +454,8 @@ int main(void)
 
     }
 
-    //BT_Watchdog();
+    BT_Watchdog();
+    // Metal_Detect_Logic();
     HAL_Delay(1);
   }
 
