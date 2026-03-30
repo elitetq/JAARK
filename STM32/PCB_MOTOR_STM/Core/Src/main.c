@@ -65,10 +65,13 @@
 // Sensor Setup
 volatile uint32_t sensor_time = 0;
 volatile float distance = 0;
-union { 
+
+union {  // Last 2 bytes used for checksum
   float fnum;
   uint8_t bytes[6];
 } FloatPacket; // Float bytes for distance
+int checksum_index = 4; // start of checksum
+
 volatile float sensor_time_seconds = 0;
 volatile float sensor_prev_dist_green = 0;
 volatile int distance_clamp = 1;
@@ -118,7 +121,7 @@ static char md_bypass = 0; // Used for debounce after metal trigger event
 #define EXP_SMOOTH(prev_val,new_val,damping_factor) (prev_val * (1-damping_factor) + new_val * (damping_factor));
 
 // Joystick Variables
-volatile uint8_t rx_data[2] = {0,0};
+volatile uint8_t rx_data[4] = {0,0,0,0};
 volatile uint16_t joystick_1 = 0;
 volatile uint16_t joystick_2 = 0;
 
@@ -128,6 +131,33 @@ volatile uint16_t joystick_2_write_val = (7 << 8);
 
 volatile char bt_dat_avail = 0; // Available data on bluetooth
 volatile char bt_timeout = 0; // FLag for bluetooth disconnection
+
+/**
+ * @brief generate a checksum for the array given at the checksum index
+ * 
+ * @param arr Array to be sifted through
+ * @param chksum_ind index of checksum (must allow for 2 bytes of storage on an array), if less than 0, will not store any value on the array
+ * 
+ */
+uint16_t Checksum_Generate(uint8_t* arr, int chksum_ind) {
+  // Using fletcher 16 algorithm
+  uint8_t s1 = 0;
+  uint8_t s2 = 0;
+  char do_arr_replacement = 1;
+  if(chksum_ind < 0) {
+    chksum_ind = chksum_ind * -1;
+    do_arr_replacement = 0;
+  }
+  for(int i = 0; i < chksum_ind; i++) {
+    s1 += arr[i];
+    s2 += s1;
+  }
+  if(do_arr_replacement) {
+    arr[chksum_ind] = s2;
+    arr[chksum_ind+1] = s1;
+  }
+  return ((uint16_t)s2 << 8) + (uint16_t)s1;
+}
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
   if(htim->Instance == TIM3) { // Bluetooth timeout (watchdog)
@@ -149,25 +179,18 @@ void BT_Watchdog() {
     __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_3, 0);
     __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_1, 0);
 
-  int bt_pulses = 0;
-    
-  while(bt_pulses < 2) {
     while(!bt_dat_avail) {
       // Wait until bluetooth data is received
       printf("WATCHDOG | Attempting reconnect...");
-      HAL_UART_DMAStop(&huart1);
-      HAL_UART_Receive_DMA(&huart1, rx_data, 2); 
-      HAL_UART_Transmit(&huart1,FloatPacket.bytes,sizeof(FloatPacket),100);
+      // HAL_UART_DMAStop(&huart1);
+      // HAL_UART_Receive_DMA(&huart1, rx_data, 2); 
+      // HAL_UART_Transmit(&huart1,FloatPacket.bytes,sizeof(FloatPacket.bytes),100);
       HAL_Delay(50);
     }
-    bt_pulses++;
-  }
 
     // Make sure we are back in sync with data
-    HAL_UART_DMAStop(&huart1); 
-    HAL_Delay(500);
-    memset(FloatPacket.bytes,0,4);
-    HAL_UART_Receive_DMA(&huart1, rx_data, 2); 
+    // memset(FloatPacket.bytes,0,4);
+    // HAL_UART_Receive_DMA(&huart1, rx_data, 2); 
 
     __HAL_TIM_SET_COUNTER(&htim3,0); // Reset watchdog timer
     bt_timeout = 0;
@@ -336,9 +359,11 @@ int main(void)
   HAL_TIM_IC_Start_IT(&htim5,TIM_CHANNEL_1); // 32-bit metal detector timer
   HAL_TIM_Base_Start(&htim2); // 32-bit ultrasonic timer
 
-  HAL_UART_Receive_DMA(&huart1, rx_data, 2); // Receive 2 bytes and store on the rx_data array
+  // HAL_UART_Receive_DMA(&huart1, rx_data, sizeof(rx_data)); // Receive 2 bytes and store on the rx_data array
+  HAL_UARTEx_ReceiveToIdle_DMA(&huart1,rx_data,sizeof(rx_data));
+  __HAL_DMA_DISABLE_IT(huart1.hdmarx,DMA_IT_HT);
 
-  memset(FloatPacket.bytes,0,6);
+  memset(FloatPacket.bytes,0,sizeof(FloatPacket.bytes));
   
   set_bg_col(J_BLACK);
 
@@ -366,11 +391,11 @@ int main(void)
   // Metal_Detect_Calibrate(500);
 
 
-  // printf("waiting for bt data..\n");
-  // while(!bt_dat_avail) {
-  //   HAL_Delay(50); // wait for first bluetooth data signal
-  // }
-  // printf("bt connection started..\n");
+
+  while(!bt_dat_avail) {
+    HAL_Delay(50); // wait for first bluetooth data signal
+  }
+  printf("bt connection started..\n");
 
   while (1)
 
@@ -393,7 +418,9 @@ int main(void)
 
       distance = (sensor_time_seconds * 34300.0f)/2.0;
       memcpy((void*)FloatPacket.bytes,(void*)&distance,4); // Copy float into the Float Packet
-      HAL_UART_Transmit(&huart1,FloatPacket.bytes,sizeof(FloatPacket),100);
+      Checksum_Generate(FloatPacket.bytes,checksum_index);
+      HAL_UART_Transmit(&huart1,FloatPacket.bytes,sizeof(FloatPacket.bytes),100);
+      HAL_Delay(10);
 
       printf("Sensor Reading: %lf cm\n", FloatPacket.fnum);
 
@@ -411,7 +438,7 @@ int main(void)
 
     	joystick_1_write_val = joystick_1_write_val * MOTOR_SMOOTH + joystick_1 * (1-MOTOR_SMOOTH);
     	joystick_2_write_val = joystick_2_write_val * MOTOR_SMOOTH + joystick_2 * (1-MOTOR_SMOOTH);
-    	printf("Joystick Vals: %d  %d\nHeadlight Data: %d", joystick_2_write_val, joystick_1_write_val, rx_data[2]);
+    	printf("Joystick Vals: %d  %d\nHeadlight Data: %d", joystick_2_write_val, joystick_1_write_val, rx_data[1]);
 
     	//__HAL_TIM_SET_COMPARE(&htim10, TIM_CHANNEL_1, 800);
     	//__HAL_TIM_SET_COMPARE(&htim11, TIM_CHANNEL_1, 0);
@@ -422,7 +449,8 @@ int main(void)
     	if(1) {
     		if(joystick_2_write_val > (10<<8)) { // Forward
     		    		//__HAL_TIM_SET_COMPARE(&htim10, TIM_CHANNEL_1, 800);
-    		    		__HAL_TIM_SET_COMPARE(&htim10, TIM_CHANNEL_1, (joystick_2_write_val) >> 2);
+    		    		__HAL_TIM_SET_COMPARE(&htim10, TIM_CHANNEL_1, (joystick_2_write_val) >> 2); // Ranges from 640 -> 960
+
     		    		__HAL_TIM_SET_COMPARE(&htim11, TIM_CHANNEL_1, 0);
     		    	} else if(joystick_2_write_val < (5<<8)) { // Reverse
     		    		__HAL_TIM_SET_COMPARE(&htim10, TIM_CHANNEL_1, 0);
@@ -437,7 +465,7 @@ int main(void)
 
     	// Motor 2
     	if(1) {
-    		if(joystick_1_write_val > (10 << 8)) { // Forward
+    		if(joystick_1_write_val > (9<<8)) { // Forward
     		    	    __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_3, (joystick_1_write_val) >> 2);
     		    	    __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_1, 0);
     		    	} else if(joystick_1_write_val < (5 << 8)) { // Reverse
@@ -512,11 +540,25 @@ void SystemClock_Config(void)
 
 /* USER CODE BEGIN 4 */
 
-void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
+// void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
 
-    if (huart->Instance == USART1) {
-        bt_dat_avail = 1; // Let the code know we have new data ready
+//     if (huart->Instance == USART1) {
+//         bt_dat_avail = 1; // Let the code know we have new data ready
+//     }
+// }
+
+void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size) {
+  if(huart->Instance == USART1) {
+    if(Size == sizeof(rx_data)) {
+      uint16_t checksum = Checksum_Generate(rx_data,-2);
+      if(checksum == ((rx_data[2] << 8) + rx_data[3])) {
+        bt_dat_avail = 1;
+      }
     }
+      HAL_UARTEx_ReceiveToIdle_DMA(&huart1,rx_data,sizeof(rx_data));
+      __HAL_DMA_DISABLE_IT(huart->hdmarx,DMA_IT_HT);
+  }
+
 }
 
 /* USER CODE END 4 */

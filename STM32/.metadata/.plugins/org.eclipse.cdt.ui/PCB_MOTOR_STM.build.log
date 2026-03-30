@@ -1,54 +1,50 @@
-13:13:08 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
+15:27:04 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
 make -j22 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'BT_Watchdog':
-../Core/Src/main.c:159:37: warning: passing argument 2 of 'HAL_UART_Receive_DMA' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
-  159 |       HAL_UART_Receive_DMA(&huart1, rx_data, 2);
-      |                                     ^~~~~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:363:40: warning: passing argument 2 of 'HAL_UARTEx_ReceiveToIdle_DMA' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  363 |   HAL_UARTEx_ReceiveToIdle_DMA(&huart1,rx_data,sizeof(rx_data));
+      |                                        ^~~~~~~
 In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
                  from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
                  from ../Core/Inc/main.h:30,
                  from ../Core/Src/main.c:20:
-../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:750:76: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'volatile uint8_t *' {aka 'volatile unsigned char *'}
-  750 | HAL_StatusTypeDef HAL_UART_Receive_DMA(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
-      |                                                                   ~~~~~~~~~^~~~~
-../Core/Src/main.c:169:5: warning: implicit declaration of function 'memset' [-Wimplicit-function-declaration]
-  169 |     memset(FloatPacket.bytes,0,4);
-      |     ^~~~~~
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:758:84: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'volatile uint8_t *' {aka 'volatile unsigned char *'}
+  758 | HAL_StatusTypeDef HAL_UARTEx_ReceiveToIdle_DMA(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
+      |                                                                           ~~~~~~~~~^~~~~
+../Core/Src/main.c:366:3: warning: implicit declaration of function 'memset' [-Wimplicit-function-declaration]
+  366 |   memset(FloatPacket.bytes,0,sizeof(FloatPacket.bytes));
+      |   ^~~~~~
 ../Core/Src/main.c:31:1: note: include '<string.h>' or provide a declaration of 'memset'
    30 | #include "j_st7789.h"
   +++ |+#include <string.h>
    31 | /* USER CODE END Includes */
-../Core/Src/main.c:169:5: warning: incompatible implicit declaration of built-in function 'memset' [-Wbuiltin-declaration-mismatch]
-  169 |     memset(FloatPacket.bytes,0,4);
-      |     ^~~~~~
-../Core/Src/main.c:169:5: note: include '<string.h>' or provide a declaration of 'memset'
-../Core/Src/main.c:170:35: warning: passing argument 2 of 'HAL_UART_Receive_DMA' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
-  170 |     HAL_UART_Receive_DMA(&huart1, rx_data, 2);
-      |                                   ^~~~~~~
-../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:750:76: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'volatile uint8_t *' {aka 'volatile unsigned char *'}
-  750 | HAL_StatusTypeDef HAL_UART_Receive_DMA(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
-      |                                                                   ~~~~~~~~~^~~~~
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:339:33: warning: passing argument 2 of 'HAL_UART_Receive_DMA' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
-  339 |   HAL_UART_Receive_DMA(&huart1, rx_data, 2); // Receive 2 bytes and store on the rx_data array
-      |                                 ^~~~~~~
-../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:750:76: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'volatile uint8_t *' {aka 'volatile unsigned char *'}
-  750 | HAL_StatusTypeDef HAL_UART_Receive_DMA(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
-      |                                                                   ~~~~~~~~~^~~~~
-../Core/Src/main.c:341:3: warning: incompatible implicit declaration of built-in function 'memset' [-Wbuiltin-declaration-mismatch]
-  341 |   memset(FloatPacket.bytes,0,6);
+../Core/Src/main.c:366:3: warning: incompatible implicit declaration of built-in function 'memset' [-Wbuiltin-declaration-mismatch]
+  366 |   memset(FloatPacket.bytes,0,sizeof(FloatPacket.bytes));
       |   ^~~~~~
-../Core/Src/main.c:341:3: note: include '<string.h>' or provide a declaration of 'memset'
-../Core/Src/main.c:364:3: warning: implicit declaration of function 'memcpy' [-Wimplicit-function-declaration]
-  364 |   memcpy((void*)FloatPacket.bytes,(void*)&test_num,4); // Copy float into the Float Packet
+../Core/Src/main.c:366:3: note: include '<string.h>' or provide a declaration of 'memset'
+../Core/Src/main.c:389:3: warning: implicit declaration of function 'memcpy' [-Wimplicit-function-declaration]
+  389 |   memcpy((void*)FloatPacket.bytes,(void*)&test_num,4); // Copy float into the Float Packet
       |   ^~~~~~
-../Core/Src/main.c:364:3: note: include '<string.h>' or provide a declaration of 'memcpy'
-../Core/Src/main.c:364:3: warning: incompatible implicit declaration of built-in function 'memcpy' [-Wbuiltin-declaration-mismatch]
-../Core/Src/main.c:364:3: note: include '<string.h>' or provide a declaration of 'memcpy'
+../Core/Src/main.c:389:3: note: include '<string.h>' or provide a declaration of 'memcpy'
+../Core/Src/main.c:389:3: warning: incompatible implicit declaration of built-in function 'memcpy' [-Wbuiltin-declaration-mismatch]
+../Core/Src/main.c:389:3: note: include '<string.h>' or provide a declaration of 'memcpy'
+../Core/Src/main.c: In function 'HAL_UARTEx_RxEventCallback':
+../Core/Src/main.c:552:45: warning: passing argument 1 of 'Checksum_Generate' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  552 |       uint16_t checksum = Checksum_Generate(rx_data,-2);
+      |                                             ^~~~~~~
+../Core/Src/main.c:142:37: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'volatile uint8_t *' {aka 'volatile unsigned char *'}
+  142 | uint16_t Checksum_Generate(uint8_t* arr, int chksum_ind) {
+      |                            ~~~~~~~~~^~~
+../Core/Src/main.c:557:44: warning: passing argument 2 of 'HAL_UARTEx_ReceiveToIdle_DMA' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  557 |       HAL_UARTEx_ReceiveToIdle_DMA(&huart1,rx_data,sizeof(rx_data));
+      |                                            ^~~~~~~
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:758:84: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'volatile uint8_t *' {aka 'volatile unsigned char *'}
+  758 | HAL_StatusTypeDef HAL_UARTEx_ReceiveToIdle_DMA(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
+      |                                                                           ~~~~~~~~~^~~~~
 ../Core/Src/main.c: In function 'add_adc_val':
-../Core/Src/main.c:274:1: warning: control reaches end of non-void function [-Wreturn-type]
-  274 | }
+../Core/Src/main.c:297:1: warning: control reaches end of non-void function [-Wreturn-type]
+  297 | }
       | ^
 In file included from ../Core/Src/main.c:30:
 ../Core/Inc/j_st7789.h: At top level:
@@ -74,11 +70,11 @@ Finished building target: PCB_MOTOR_STM.elf
 arm-none-eabi-size  PCB_MOTOR_STM.elf 
 arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
    text	   data	    bss	    dec	    hex	filename
-  43308	    480	   4024	  47812	   bac4	PCB_MOTOR_STM.elf
+  43556	    484	   4028	  48068	   bbc4	PCB_MOTOR_STM.elf
 Finished building: default.size.stdout
  
 Finished building: PCB_MOTOR_STM.list
  
 
-13:13:10 Build Finished. 0 errors, 14 warnings. (took 1s.482ms)
+15:27:06 Build Finished. 0 errors, 13 warnings. (took 1s.439ms)
 

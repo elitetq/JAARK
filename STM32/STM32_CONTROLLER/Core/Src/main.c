@@ -64,7 +64,10 @@ volatile char bt_dat_avail = 0;
 volatile char bt_timeout = 0;
 volatile uint32_t hal_adc_val = 0; // X
 volatile uint32_t hal_adc_val2 = 0; // Y
-volatile uint8_t hal_combined[2] = {0,0}; // index 1 {Joystick Data} : index 2 {Headlight Data}
+volatile uint8_t hal_combined[4] = {0,0,0,0}; // index 1 {Joystick Data} : index 2 {Headlight Data}
+const uint8_t checksum_index = 2;
+
+volatile char headlight_update_debounce = 0;
 
 
 #define BT_BUF_SIZE 30
@@ -78,6 +81,34 @@ void SystemClock_Config(void);
 /* USER CODE BEGIN PFP */
 
 void Reset_DMA_Channel(UART_HandleTypeDef *huart, uint8_t *pData, uint8_t size) {
+}
+
+
+/**
+ * @brief generate a checksum for the array given at the checksum index
+ * 
+ * @param arr Array to be sifted through
+ * @param chksum_ind index of checksum (must allow for 2 bytes of storage on an array), if less than 0, will not store any value on the array
+ * 
+ */
+uint16_t Checksum_Generate(uint8_t* arr, int chksum_ind) {
+  // Using fletcher 16 algorithm
+  uint8_t s1 = 0;
+  uint8_t s2 = 0;
+  char do_arr_replacement = 1;
+  if(chksum_ind < 0) {
+    chksum_ind = chksum_ind * -1;
+    do_arr_replacement = 0;
+  }
+  for(int i = 0; i < chksum_ind; i++) {
+    s1 += arr[i];
+    s2 += s1;
+  }
+  if(do_arr_replacement) {
+    arr[chksum_ind] = s2;
+    arr[chksum_ind+1] = s1;
+  }
+  return ((uint16_t)s2 << 8) + (uint16_t)s1;
 }
 
 void Setup_Main_Screen() {
@@ -110,6 +141,18 @@ void BT_Watchdog() {
     y_pos = 165;
     width = 20;
 
+    // 1. Completely abort the UART reception and reset its state machine to READY
+    HAL_UART_AbortReceive(&huart1);
+
+    // 2. Clear any lingering hardware errors caused by the disconnect/static
+    __HAL_UART_CLEAR_OREFLAG(&huart1);
+    __HAL_UART_CLEAR_FEFLAG(&huart1);
+    __HAL_UART_CLEAR_NEFLAG(&huart1);
+
+    // 3. Start a brand new, clean DMA reception from index [0]
+    HAL_UARTEx_ReceiveToIdle_DMA(&huart1, FloatPacket.bytes, sizeof(FloatPacket.bytes));
+    __HAL_DMA_DISABLE_IT(huart1.hdmarx, DMA_IT_HT);
+
 
     while(!bt_dat_avail) {
       printf("WATCHDOG | Attempting reconnect...");
@@ -117,9 +160,9 @@ void BT_Watchdog() {
       set_bounds(x_pos+rec_flag1*width,x_pos+width*(1+rec_flag1),y_pos+rec_flag2*width,y_pos+width*(1+rec_flag2)); // Loading bar
       fill_area(J_WHITE);
       // HAL_UART_Receive_DMA(&huart1,FloatPacket.bytes,4); // Receive ultrasonic data
-      HAL_UART_DMAStop(&huart1); 
-      HAL_UART_Receive_DMA(&huart1,FloatPacket.bytes,sizeof(FloatPacket));
-      HAL_UART_Transmit(&huart1,hal_combined,2,100);
+      // HAL_UART_DMAStop(&huart1); 
+      // HAL_UART_Receive_DMA(&huart1,FloatPacket.bytes,sizeof(FloatPacket));
+      HAL_UART_Transmit(&huart1,hal_combined,sizeof(hal_combined),100);
 
       HAL_Delay(50);
 
@@ -138,19 +181,22 @@ void BT_Watchdog() {
     Setup_Main_Screen();
 
     // Make sure we are back in sync with data
-    HAL_UART_DMAStop(&huart1); // A timeout means unexpected drop in bt connection, we need to disable dma in case of data corruption
-    HAL_Delay(100);
-    memset(FloatPacket.bytes,0,6);
-    HAL_UART_Receive_DMA(&huart1,FloatPacket.bytes,sizeof(FloatPacket));
+    // HAL_UART_DMAStop(&huart1); // A timeout means unexpected drop in bt connection, we need to disable dma in case of data corruption
+    // HAL_Delay(100);
+    // memset(FloatPacket.bytes,0,6);
+    // HAL_UART_Receive_DMA(&huart1,FloatPacket.bytes,sizeof(FloatPacket));
 
     __HAL_TIM_SET_COUNTER(&htim3,0); // Reset watchdog timer
     bt_timeout = 0;
   }
+  printf("Exiting\n\n\n");
 }
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
   if(htim->Instance == TIM3) {
     bt_timeout = 1;
+  } else if (htim->Instance == TIM1) {
+    headlight_update_debounce = 0;
   }
 }
 
@@ -203,6 +249,7 @@ int main(void)
   MX_ADC1_Init();
   MX_TIM3_Init();
   MX_SPI2_Init();
+  MX_TIM1_Init();
   /* USER CODE BEGIN 2 */
   GPIO_InitTypeDef GPIO_InitStruct = {0};
   GPIO_InitStruct.Pin = GPIO_PIN_10;
@@ -213,7 +260,11 @@ int main(void)
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
   // HAL_UART_Receive_IT(&huart2, pc_rx_buf, 1);
   // HAL_UART_Receive_IT(&huart1, hc_rx_buf, 1);
-  HAL_UART_Receive_DMA(&huart1,FloatPacket.bytes,sizeof(FloatPacket)); // Receive ultrasonic data
+
+  // HAL_UART_Receive_DMA(&huart1,FloatPacket.bytes,sizeof(FloatPacket)); // Receive ultrasonic data
+
+  HAL_UARTEx_ReceiveToIdle_DMA(&huart1,FloatPacket.bytes,sizeof(FloatPacket.bytes));
+  __HAL_DMA_DISABLE_IT(huart1.hdmarx,DMA_IT_HT);
 
   uint8_t cmd_at[] = "AT\r\n";
   uint8_t cmd_role[] = "AT+ADDR?\r\n";  // Setting to Slave
@@ -222,24 +273,13 @@ int main(void)
   HAL_TIM_Base_Start_IT(&htim3); // 16-bit bluetooth watchdog timer (currently configured for 1s timeout)
 
 
-  // HAL_UART_Transmit(&huart2, (uint8_t*)"\r\n--- Sending AT+ROLE=0 ---\r\n", 29, 100);
-  // HAL_UART_Transmit(&huart1, cmd_role, strlen((char*)cmd_role), 100);
-  
-  
-  // HAL_UART_Receive(&huart1, rx_buffer, sizeof(rx_buffer), 500);
-  // HAL_UART_Transmit(&huart2, rx_buffer, strlen((char*)rx_buffer), 100);
 
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   init_lcd(J_270_DEG);
-  HAL_Delay(50);
-  set_bg_col(J_RED);
-  set_bounds(0,239,0,239);
-  fill_area(get_bg_col());
-  HAL_Delay(100);
-  // fill_text(120,120,"Hello World",-1,J_11X18_FONT,J_WHITE,J_CENTER);
+  Setup_Main_Screen();
 
   j_counter my_counter = J_CREATE_COUNTER;
 
@@ -248,6 +288,11 @@ int main(void)
   HAL_GPIO_WritePin(GPIOB,GPIO_PIN_12,GPIO_PIN_SET);
   while (1)
   {
+    // printf("Data received: [ ");
+    // for(int i = 0; i < sizeof(FloatPacket.bytes); i++) {
+    //   printf("%d ", FloatPacket.bytes[i]);
+    // }
+    // printf("]\n");
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -265,13 +310,17 @@ int main(void)
     hal_combined[0] = ((hal_adc_val << 4) | (hal_adc_val2));
     //hal_combined[0] = 0xF0;
 
-    if(!(HAL_GPIO_ReadPin(GPIOC,GPIO_PIN_3) && HAL_GPIO_ReadPin(GPIOB,GPIO_PIN_4))) {
-      hal_combined[1] = 1; // Headlight data
-    } else {
-      hal_combined[1] = 0; 
+    if(!headlight_update_debounce) {
+      if(!(HAL_GPIO_ReadPin(GPIOC,GPIO_PIN_3) && HAL_GPIO_ReadPin(GPIOB,GPIO_PIN_4))) {
+        hal_combined[1] = !hal_combined[1]; // Toggle headlight
+        headlight_update_debounce = 1;
+      }
+      __HAL_TIM_SET_COUNTER(&htim1,0);
     }
+    Checksum_Generate(hal_combined,checksum_index);
 
-    HAL_UART_Transmit(&huart1,hal_combined,2,100);
+    HAL_UART_Transmit(&huart1,hal_combined,sizeof(hal_combined),100);
+    HAL_Delay(5); // important for IDLE line
 
     if(bt_dat_avail) {
       bt_dat_avail = 0;
@@ -366,31 +415,33 @@ void Send_HC_AT_Command(char *str, uint8_t *rx_buf) {
   HAL_UART_Transmit(&huart2, rx_buf, BT_BUF_SIZE, 100);
 }
 
-void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
-{
-	// printf("Entered callback\n");
-  // If the byte came from the PC (USART2)
-  // if (huart->Instance == USART2) 
-  // {
-	// printf("USART2\n");
-  //   // Forward it to the HC-05 (USART1)
-  //   HAL_UART_Transmit(&huart1, pc_rx_buf, 1, 10);
-  //   // Restart the listener for the next PC keystroke
-  //   HAL_UART_Receive_IT(&huart2, pc_rx_buf, 1);
-  // }
-  
-  // If the byte came from the HC-05 (USART1)
-  if (huart->Instance == USART1) 
-  {
-    bt_dat_avail = 1; // Let main know we have new bluetooth data
-    fnum_stored = FloatPacket.fnum;
-	// printf("USART1\n");
-  //   HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
-  //   // Forward it to the PC (USART2)
-  //   HAL_UART_Transmit(&huart2, hc_rx_buf, 1, 10);
-  //   // Restart the listener for the next HC-05 response
-  //   HAL_UART_Receive_IT(&huart1, hc_rx_buf, 1);
+// void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+// {
+//   if (huart->Instance == USART1) 
+//   {
+//     bt_dat_avail = 1; // Let main know we have new bluetooth data
+//     fnum_stored = FloatPacket.fnum;
+//   }
+// }
+
+void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size) {
+  if(huart->Instance == USART1) {
+    if(Size == sizeof(FloatPacket.bytes)) {
+      uint16_t checksum = Checksum_Generate(FloatPacket.bytes,-4);
+      if(checksum == ((FloatPacket.bytes[4] << 8) + FloatPacket.bytes[5])) {
+        bt_dat_avail = 1;
+        fnum_stored = FloatPacket.fnum;
+      }
+      HAL_UARTEx_ReceiveToIdle_DMA(&huart1,FloatPacket.bytes,sizeof(FloatPacket.bytes));
+    } else {
+      for(int i = 0; i < sizeof(FloatPacket.bytes)-1; i++) {
+        FloatPacket.bytes[i] = FloatPacket.bytes[i+1];
+      }
+      HAL_UARTEx_ReceiveToIdle_DMA(&huart1,&FloatPacket.bytes[sizeof(FloatPacket.bytes)-1],1);
+    }
+    __HAL_DMA_DISABLE_IT(huart->hdmarx,DMA_IT_HT);
   }
+
 }
 
 
