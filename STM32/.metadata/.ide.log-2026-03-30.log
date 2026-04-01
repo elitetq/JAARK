@@ -1,0 +1,114 @@
+2026-03-30 11:57:39,821 [INFO] Activator:176 - 
+
+
+2026-03-30 11:57:39,828 [INFO] Activator:177 - !SESSION log4j initialized
+2026-03-30 11:57:45,269 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] 
+2026-03-30 11:57:47,612 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 11:57:49,657 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 11:57:51,701 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 12:17:10,419 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 12:17:12,449 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 12:17:14,470 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 12:17:16,691 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 12:17:18,709 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 12:17:20,732 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 12:28:05,151 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 12:28:57,867 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 12:28:59,895 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 12:29:01,917 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 12:29:03,968 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 12:29:06,086 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 12:29:08,105 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 12:36:23,822 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 12:36:25,845 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 12:36:27,902 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 12:36:29,919 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 12:36:31,937 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 12:37:31,481 [ERROR] AdobePublisher:162 - Exception while opening the connection: java.net.SocketTimeoutException: Read timed out
+2026-03-30 12:37:33,510 [ERROR] AdobePublisher:162 - Exception while opening the connection: java.net.SocketTimeoutException: Read timed out
+2026-03-30 12:37:35,620 [ERROR] AdobePublisher:162 - Exception while opening the connection: java.net.SocketTimeoutException: Read timed out
+2026-03-30 12:37:37,684 [ERROR] AdobePublisher:162 - Exception while opening the connection: java.net.SocketTimeoutException: Read timed out
+2026-03-30 12:37:39,719 [ERROR] AdobePublisher:162 - Exception while opening the connection: java.net.SocketTimeoutException: Read timed out
+2026-03-30 12:37:41,739 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 12:37:43,759 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 12:37:45,780 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 12:43:39,661 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 12:43:41,698 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 12:43:43,721 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 12:43:45,806 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 12:43:47,838 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 12:43:49,858 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 12:44:14,374 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 12:44:16,393 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 12:44:18,417 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 12:44:30,112 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 12:48:57,524 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 12:48:59,543 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 12:49:01,562 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 12:49:03,604 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 12:49:05,633 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 12:49:07,663 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 12:56:39,620 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 12:56:41,642 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 12:56:43,687 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 12:56:45,752 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 12:56:47,798 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 12:56:50,026 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 13:06:57,040 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 13:06:59,111 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 13:07:01,128 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 13:07:03,146 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 13:11:50,924 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 13:11:52,946 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 13:11:54,965 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 13:11:58,191 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 13:12:00,212 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 13:16:27,709 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 13:16:29,738 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 13:16:31,772 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 13:16:33,894 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 13:16:35,917 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 13:16:37,936 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 13:22:42,226 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 13:22:44,261 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 13:22:46,280 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 13:22:48,329 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 13:22:50,347 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 13:22:52,366 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 13:27:28,656 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 13:27:30,680 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 13:27:32,701 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 13:27:34,763 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 13:27:36,823 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 13:27:38,848 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 13:30:51,190 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 13:30:53,259 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 13:30:55,279 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 13:30:57,355 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 13:30:59,374 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 13:31:01,395 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 13:31:43,583 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 13:31:45,611 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 13:35:41,665 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 13:36:20,061 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 13:36:22,082 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 13:36:24,156 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 13:36:26,181 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 13:36:29,538 [ERROR] AdobePublisher:162 - Exception while opening the connection: java.net.SocketTimeoutException: Read timed out
+2026-03-30 13:36:31,574 [ERROR] AdobePublisher:162 - Exception while opening the connection: java.net.SocketTimeoutException: Read timed out
+2026-03-30 13:36:33,674 [ERROR] AdobePublisher:162 - Exception while opening the connection: java.net.SocketTimeoutException: Read timed out
+2026-03-30 13:36:35,728 [ERROR] AdobePublisher:162 - Exception while opening the connection: java.net.SocketTimeoutException: Read timed out
+2026-03-30 13:36:37,842 [ERROR] AdobePublisher:162 - Exception while opening the connection: java.net.SocketTimeoutException: Read timed out
+2026-03-30 13:50:11,473 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 13:50:13,543 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 13:50:15,562 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 13:50:17,650 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 13:50:19,670 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 13:52:46,256 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 13:52:48,289 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 13:52:50,346 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 13:52:52,410 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 13:54:44,344 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 13:54:46,391 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 13:54:48,409 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-03-30 13:54:50,429 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out

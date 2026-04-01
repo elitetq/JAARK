@@ -266,6 +266,48 @@ int fill_lbar(uint8_t x, uint8_t y, int value, int prev_value, int full_val, int
     return value;
 }
 
+int fill_lbar_vert(uint8_t x, uint8_t y, int value, int prev_value, int full_val, int length, int height, j_color col) {
+    j_flag_set_bounds = 0;
+    // Clamp values
+    int value_c, prev_val_c, y1, y2;
+    value_c = J_CLAMP_VALUE(value,full_val,0);
+    prev_val_c = J_CLAMP_VALUE(prev_value,full_val,0);
+
+    y1 = y - (height * value_c)/full_val;
+    y2 = y - (height * prev_val_c)/full_val;
+
+    j_color draw_temp_col = col;
+    if(value_c < prev_val_c) draw_temp_col = j_master_control.bgcol;
+
+    set_bounds(x,x+length,y1,y2);
+    fill_area(draw_temp_col);
+
+    j_flag_set_bounds = 1;
+
+    return value;
+}
+
+int fill_lbar_vert_down(uint8_t x, uint8_t y, int value, int prev_value, int full_val, int length, int height, j_color col) {
+    j_flag_set_bounds = 0;
+    // Clamp values
+    int value_c, prev_val_c, y1, y2;
+    value_c = J_CLAMP_VALUE(value,full_val,0);
+    prev_val_c = J_CLAMP_VALUE(prev_value,full_val,0);
+
+    y1 = y + (height * value_c)/full_val;
+    y2 = y + (height * prev_val_c)/full_val;
+
+    j_color draw_temp_col = col;
+    if(value_c < prev_val_c) draw_temp_col = j_master_control.bgcol;
+
+    set_bounds(x,x+length,y1,y2);
+    fill_area(draw_temp_col);
+
+    j_flag_set_bounds = 1;
+
+    return value;
+}
+
 j_color get_bg_col() {
     return j_master_control.bgcol;
 }

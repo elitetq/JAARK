@@ -64,6 +64,11 @@ volatile char bt_dat_avail = 0;
 volatile char bt_timeout = 0;
 volatile uint32_t hal_adc_val = 0; // X
 volatile uint32_t hal_adc_val2 = 0; // Y
+
+volatile uint32_t hal1_write_up_prev = 0;
+volatile uint32_t hal2_write_up_prev = 0;
+volatile uint32_t hal1_write_down_prev = 0;
+volatile uint32_t hal2_write_down_prev = 0;
 volatile uint8_t hal_combined[4] = {0,0,0,0}; // index 1 {Joystick Data} : index 2 {Headlight Data}
 const uint8_t checksum_index = 2;
 
@@ -149,7 +154,6 @@ void BT_Watchdog() {
     __HAL_UART_CLEAR_FEFLAG(&huart1);
     __HAL_UART_CLEAR_NEFLAG(&huart1);
 
-    // 3. Start a brand new, clean DMA reception from index [0]
     HAL_UARTEx_ReceiveToIdle_DMA(&huart1, FloatPacket.bytes, sizeof(FloatPacket.bytes));
     __HAL_DMA_DISABLE_IT(huart1.hdmarx, DMA_IT_HT);
 
@@ -177,6 +181,16 @@ void BT_Watchdog() {
         rec_flag2 = !rec_flag2;
         rec_index2 %= 2;
       }
+      if(huart1.RxState != HAL_UART_STATE_BUSY_RX) {
+        HAL_UART_AbortReceive(&huart1);
+
+        __HAL_UART_CLEAR_OREFLAG(&huart1);
+        __HAL_UART_CLEAR_FEFLAG(&huart1);
+        __HAL_UART_CLEAR_NEFLAG(&huart1);
+
+        HAL_UARTEx_ReceiveToIdle_DMA(&huart1, FloatPacket.bytes, sizeof(FloatPacket.bytes));
+        __HAL_DMA_DISABLE_IT(huart1.hdmarx, DMA_IT_HT);
+      }
     }
     Setup_Main_Screen();
 
@@ -189,7 +203,6 @@ void BT_Watchdog() {
     __HAL_TIM_SET_COUNTER(&htim3,0); // Reset watchdog timer
     bt_timeout = 0;
   }
-  printf("Exiting\n\n\n");
 }
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
@@ -271,6 +284,7 @@ int main(void)
   uint8_t rx_buffer[BT_BUF_SIZE] = {0};
 
   HAL_TIM_Base_Start_IT(&htim3); // 16-bit bluetooth watchdog timer (currently configured for 1s timeout)
+  HAL_TIM_Base_Start_IT(&htim1); // Debounce for headlights
 
 
 
@@ -316,8 +330,9 @@ int main(void)
         headlight_update_debounce = 1;
       }
       __HAL_TIM_SET_COUNTER(&htim1,0);
+      printf("HEADLIGHT VAL: %d\n\n", hal_combined[1]);
     }
-    Checksum_Generate(hal_combined,checksum_index);
+    Checksum_Generate(hal_combined,sizeof(hal_combined)-2);
 
     HAL_UART_Transmit(&huart1,hal_combined,sizeof(hal_combined),100);
     HAL_Delay(5); // important for IDLE line
@@ -329,9 +344,15 @@ int main(void)
       // FloatPacket.bytes[1],
       // FloatPacket.bytes[2],
       // FloatPacket.bytes[3], FloatPacket.fnum);
-      printf("Data received: %lf", fnum_stored);
+      // printf("Data received: %lf", fnum_stored);
       // Writing to LCD
       fill_counter(&my_counter,120,120,fnum_stored,J_16X26_FONT,J_WHITE,J_CENTER);
+
+      int hal_adc_val1_write = (hal_adc_val*8)/7;
+      fill_lbar_vert(5,234,hal_adc_val2,hal2_write_up_prev,15,10,230,J_WHITE);
+      fill_lbar_vert(224,234,hal_adc_val1_write,hal1_write_up_prev,15,10,230,J_WHITE);
+      hal1_write_up_prev = hal_adc_val1_write;
+      hal2_write_up_prev = hal_adc_val2;
 
     }
 
@@ -426,18 +447,17 @@ void Send_HC_AT_Command(char *str, uint8_t *rx_buf) {
 
 void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size) {
   if(huart->Instance == USART1) {
-    if(Size == sizeof(FloatPacket.bytes)) {
-      uint16_t checksum = Checksum_Generate(FloatPacket.bytes,-4);
-      if(checksum == ((FloatPacket.bytes[4] << 8) + FloatPacket.bytes[5])) {
-        bt_dat_avail = 1;
-        fnum_stored = FloatPacket.fnum;
-      }
-      HAL_UARTEx_ReceiveToIdle_DMA(&huart1,FloatPacket.bytes,sizeof(FloatPacket.bytes));
+    int fp_size = sizeof(FloatPacket.bytes);
+    uint16_t checksum = Checksum_Generate(FloatPacket.bytes,-1 * (fp_size-2));
+    if(checksum == ((FloatPacket.bytes[fp_size-2] << 8) + FloatPacket.bytes[fp_size-1])) {
+      bt_dat_avail = 1;
+      fnum_stored = FloatPacket.fnum;
+      HAL_UARTEx_ReceiveToIdle_DMA(&huart1,FloatPacket.bytes,fp_size);
     } else {
-      for(int i = 0; i < sizeof(FloatPacket.bytes)-1; i++) {
+      for(int i = 0; i < fp_size-1; i++) {
         FloatPacket.bytes[i] = FloatPacket.bytes[i+1];
       }
-      HAL_UARTEx_ReceiveToIdle_DMA(&huart1,&FloatPacket.bytes[sizeof(FloatPacket.bytes)-1],1);
+      HAL_UARTEx_ReceiveToIdle_DMA(&huart1,&FloatPacket.bytes[fp_size-1],1);
     }
     __HAL_DMA_DISABLE_IT(huart->hdmarx,DMA_IT_HT);
   }

@@ -165,6 +165,8 @@ void fill_text(uint8_t x, uint8_t y, char* str, int len, uint8_t font_size, j_co
 void draw_text(char ch, uint8_t font_size, j_color FILL_COL);
 void fill_counter(j_counter* counter, uint16_t x, uint16_t y, float num, uint8_t font_size, j_color FILL_COL, j_centering CENTERING);
 int fill_lbar(uint8_t x, uint8_t y, int value, int prev_value, int full_val, int length, int height, j_color col);
+int fill_lbar_vert(uint8_t x, uint8_t y, int value, int prev_value, int full_val, int length, int height, j_color col);
+int fill_lbar_vert_down(uint8_t x, uint8_t y, int value, int prev_value, int full_val, int length, int height, j_color col);
 void set_bg_col(j_color color);
 j_color get_bg_col();
 
