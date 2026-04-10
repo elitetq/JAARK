@@ -1,0 +1,32 @@
+2026-04-01 09:35:29,389 [INFO] Activator:176 - 
+
+
+2026-04-01 09:35:29,402 [INFO] Activator:177 - !SESSION log4j initialized
+2026-04-01 09:35:39,303 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] 
+2026-04-01 12:02:36,829 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-04-01 12:02:38,859 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-04-01 12:02:40,921 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-04-01 12:02:43,001 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-04-01 12:02:45,020 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-04-01 12:02:47,087 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-04-01 12:05:10,734 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-04-01 12:07:20,277 [ERROR] AdobePublisher:162 - Exception while opening the connection: java.net.SocketTimeoutException: Read timed out
+2026-04-01 12:07:22,319 [ERROR] AdobePublisher:162 - Exception while opening the connection: java.net.SocketTimeoutException: Read timed out
+2026-04-01 12:31:53,791 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-04-01 12:35:17,116 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-04-01 12:35:19,312 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-04-01 12:35:21,333 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-04-01 12:35:23,385 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-04-01 12:35:25,408 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-04-01 12:35:27,427 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-04-01 12:42:47,375 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-04-01 12:42:49,394 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-04-01 12:42:51,422 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-04-01 12:42:55,212 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-04-01 12:42:57,277 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-04-01 12:43:25,418 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-04-01 12:43:27,440 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-04-01 12:48:29,972 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-04-01 13:05:41,252 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-04-01 13:05:43,594 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2026-04-01 13:05:45,618 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out

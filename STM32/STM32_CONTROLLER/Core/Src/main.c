@@ -24,6 +24,7 @@
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
+#include "string.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -57,9 +58,16 @@ uint8_t hc_rx_buf[1];
 
 volatile union { 
   float fnum;
-  uint8_t bytes[6];
+  uint8_t bytes[7];
 } FloatPacket; // Float bytes for distance
 volatile float fnum_stored = 0;
+volatile float sensor_val_stored = 10;
+#define SENSOR_DAMP 0.4
+#define EXP_SMOOTH(prev_val,new_val,damping_factor) (prev_val * (1-damping_factor) + new_val * (damping_factor));
+
+volatile char metal_detect_flag = 0;
+volatile char headlight_flag = 0;
+
 volatile char bt_dat_avail = 0;
 volatile char bt_timeout = 0;
 volatile uint32_t hal_adc_val = 0; // X
@@ -73,7 +81,6 @@ volatile uint8_t hal_combined[4] = {0,0,0,0}; // index 1 {Joystick Data} : index
 const uint8_t checksum_index = 2;
 
 volatile char headlight_update_debounce = 0;
-
 
 #define BT_BUF_SIZE 30
 #define BG_COL J_BLACK
@@ -193,6 +200,11 @@ void BT_Watchdog() {
       }
     }
     Setup_Main_Screen();
+    if(hal_combined[1]) {
+      fill_text(120,40,"Headlight:  ON",14,J_11X18_FONT,J_WHITE,J_CENTER);
+    } else {
+      fill_text(120,40,"Headlight: OFF",14,J_11X18_FONT,J_WHITE,J_CENTER);
+    }
 
     // Make sure we are back in sync with data
     // HAL_UART_DMAStop(&huart1); // A timeout means unexpected drop in bt connection, we need to disable dma in case of data corruption
@@ -294,6 +306,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   init_lcd(J_270_DEG);
   Setup_Main_Screen();
+  fill_text(120,40,"Headlight: OFF",14,J_11X18_FONT,J_WHITE,J_CENTER);
 
   j_counter my_counter = J_CREATE_COUNTER;
 
@@ -322,6 +335,7 @@ int main(void)
     hal_adc_val2 = (hal_adc_val2 << 4) >> 12;
 
     hal_combined[0] = ((hal_adc_val << 4) | (hal_adc_val2));
+
     //hal_combined[0] = 0xF0;
 
     if(!headlight_update_debounce) {
@@ -333,6 +347,20 @@ int main(void)
       printf("HEADLIGHT VAL: %d\n\n", hal_combined[1]);
     }
     Checksum_Generate(hal_combined,sizeof(hal_combined)-2);
+
+    if(headlight_flag) {
+      if(!hal_combined[1]) {
+        fill_text(120,40,"Headlight: OFF",14,J_11X18_FONT,J_WHITE,J_CENTER);
+        headlight_flag = 0;
+      }
+    } else {
+      if(hal_combined[1]) {
+        fill_text(120,40,"Headlight:  ON",14,J_11X18_FONT,J_WHITE,J_CENTER);
+        headlight_flag = 1;
+      }
+    }
+
+
 
     HAL_UART_Transmit(&huart1,hal_combined,sizeof(hal_combined),100);
     HAL_Delay(5); // important for IDLE line
@@ -346,7 +374,23 @@ int main(void)
       // FloatPacket.bytes[3], FloatPacket.fnum);
       // printf("Data received: %lf", fnum_stored);
       // Writing to LCD
-      fill_counter(&my_counter,120,120,fnum_stored,J_16X26_FONT,J_WHITE,J_CENTER);
+      // add_value_sensor(fnum_stored);
+      sensor_val_stored = EXP_SMOOTH(sensor_val_stored,fnum_stored,SENSOR_DAMP);
+      fill_counter(&my_counter,120,120,sensor_val_stored,J_16X26_FONT,J_WHITE,J_CENTER);
+
+      // Check metal detector
+      if(metal_detect_flag) {
+        if(FloatPacket.bytes[4] == 0) {
+          metal_detect_flag = 0;
+          set_bounds(25,214,190,239);
+          fill_area(get_bg_col());
+        }
+      } else {
+        if(FloatPacket.bytes[4] == 1) {
+          metal_detect_flag = 1;
+          fill_text(120,200,"Metal Detected",14,J_11X18_FONT,J_WHITE,J_CENTER);
+        }
+      }
 
       int hal_adc_val1_write = (hal_adc_val*8)/7;
       fill_lbar_vert(5,234,hal_adc_val2,hal2_write_up_prev,15,10,230,J_WHITE);
@@ -450,10 +494,11 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size) {
     int fp_size = sizeof(FloatPacket.bytes);
     uint16_t checksum = Checksum_Generate(FloatPacket.bytes,-1 * (fp_size-2));
     if(checksum == ((FloatPacket.bytes[fp_size-2] << 8) + FloatPacket.bytes[fp_size-1])) {
+      // Valid data
       bt_dat_avail = 1;
       fnum_stored = FloatPacket.fnum;
       HAL_UARTEx_ReceiveToIdle_DMA(&huart1,FloatPacket.bytes,fp_size);
-    } else {
+    } else { // Hunt mode
       for(int i = 0; i < fp_size-1; i++) {
         FloatPacket.bytes[i] = FloatPacket.bytes[i+1];
       }

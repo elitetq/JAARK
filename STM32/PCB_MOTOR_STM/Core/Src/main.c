@@ -64,11 +64,11 @@
 /* USER CODE BEGIN PV */
 // Sensor Setup
 volatile uint32_t sensor_time = 0;
-volatile float distance = 0;
+volatile float distance = 1;
 
 union {  // Last 2 bytes used for checksum
   float fnum;
-  uint8_t bytes[6];
+  uint8_t bytes[7];
 } FloatPacket; // Float bytes for distance
 int checksum_index = 4; // start of checksum
 
@@ -115,7 +115,7 @@ volatile static uint32_t delta_ticks = 1;
 static float fast_delta_buf = 48.0f;
 static float slow_delta_buf = 48.0f;
 static char md_bypass = 0; // Used for debounce after metal trigger event
-#define TRIGGER_DELTA 5 // FAST-SLOW DELTA * 100
+#define TRIGGER_DELTA 10 // FAST-SLOW DELTA * 100
 #define FAST_DELTA_BUF_DAMP 0.2
 #define SLOW_DELTA_BUF_DAMP 0.085
 #define EXP_SMOOTH(prev_val,new_val,damping_factor) (prev_val * (1-damping_factor) + new_val * (damping_factor));
@@ -166,6 +166,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
   }
   if(htim->Instance == TIM4) { // Metal detector timer callback
     md_bypass = 0;
+    FloatPacket.bytes[4] = 0;
     __HAL_TIM_SET_COMPARE(&htim12, TIM_CHANNEL_1, 0); // Turn off buzzer
     HAL_TIM_Base_Stop_IT(&htim4); // Stop debounce timer
   }
@@ -259,6 +260,7 @@ void Metal_Detect_Logic() {
       __HAL_TIM_SET_COMPARE(&htim12, TIM_CHANNEL_1, 10);
       HAL_TIM_Base_Start_IT(&htim4);
       __HAL_TIM_SET_COUNTER(&htim4,0);
+      FloatPacket.bytes[4] = 1;
       md_bypass = 1;
       fast_delta_buf = slow_delta_buf = (fast_delta_buf + slow_delta_buf) / 2;
     }
@@ -374,7 +376,7 @@ int main(void)
   HAL_TIM_PWM_Start(&htim10, TIM_CHANNEL_1);
   HAL_TIM_PWM_Start(&htim11, TIM_CHANNEL_1);
 
-  HAL_TIM_PWM_Start(&htim12, TIM_CHANNEL_1); // Buzzer PWM (Base freq 100KHz / 50 (ARR) to get 2KHz PWM)
+  HAL_TIM_PWM_Start(&htim12, TIM_CHANNEL_1); // Buzzer PWM (Base freq 100KHz / 20 (ARR) to get 2KHz PWM)
   HAL_TIM_Base_Start_IT(&htim1);
   HAL_TIM_Base_Start_IT(&htim3); // 16-bit bluetooth watchdog timer (currently configured for 1s timeout)
   HAL_TIM_IC_Start_IT(&htim5,TIM_CHANNEL_1); // 32-bit metal detector timer
@@ -423,7 +425,10 @@ int main(void)
   Metal_Detect_Calibrate(500);
 
 
-  // __HAL_TIM_SET_COMPARE(&htim12, TIM_CHANNEL_1, 10);
+  __HAL_TIM_SET_COMPARE(&htim12, TIM_CHANNEL_1, 10);
+  HAL_Delay(1000);
+  __HAL_TIM_SET_COMPARE(&htim12, TIM_CHANNEL_1, 0);
+  HAL_Delay(1000);
 
   while(!bt_dat_avail) {
     HAL_Delay(50); // wait for first bluetooth data signal
