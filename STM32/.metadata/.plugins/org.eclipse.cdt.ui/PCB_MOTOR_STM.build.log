@@ -1,4 +1,4 @@
-11:37:20 **** Build of configuration Debug for project PCB_MOTOR_STM ****
+11:40:55 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
 make -j22 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
 ../Core/Src/main.c: In function 'BT_Watchdog':
@@ -43,20 +43,20 @@ In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
 ../Core/Src/main.c:423:3: warning: incompatible implicit declaration of built-in function 'memcpy' [-Wbuiltin-declaration-mismatch]
 ../Core/Src/main.c:423:3: note: include '<string.h>' or provide a declaration of 'memcpy'
 ../Core/Src/main.c: In function 'HAL_UARTEx_RxEventCallback':
-../Core/Src/main.c:593:43: warning: passing argument 1 of 'Checksum_Generate' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
-  593 |     uint16_t checksum = Checksum_Generate(rx_data,-1*(rx_size-2));
+../Core/Src/main.c:595:43: warning: passing argument 1 of 'Checksum_Generate' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  595 |     uint16_t checksum = Checksum_Generate(rx_data,-1*(rx_size-2));
       |                                           ^~~~~~~
 ../Core/Src/main.c:143:37: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'volatile uint8_t *' {aka 'volatile unsigned char *'}
   143 | uint16_t Checksum_Generate(uint8_t* arr, int chksum_ind) {
       |                            ~~~~~~~~~^~~
-../Core/Src/main.c:596:44: warning: passing argument 2 of 'HAL_UARTEx_ReceiveToIdle_DMA' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
-  596 |       HAL_UARTEx_ReceiveToIdle_DMA(&huart1,rx_data,rx_size);
+../Core/Src/main.c:598:44: warning: passing argument 2 of 'HAL_UARTEx_ReceiveToIdle_DMA' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  598 |       HAL_UARTEx_ReceiveToIdle_DMA(&huart1,rx_data,rx_size);
       |                                            ^~~~~~~
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:758:84: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'volatile uint8_t *' {aka 'volatile unsigned char *'}
   758 | HAL_StatusTypeDef HAL_UARTEx_ReceiveToIdle_DMA(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
       |                                                                           ~~~~~~~~~^~~~~
-../Core/Src/main.c:601:44: warning: passing argument 2 of 'HAL_UARTEx_ReceiveToIdle_DMA' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
-  601 |       HAL_UARTEx_ReceiveToIdle_DMA(&huart1,&rx_data[rx_size-1],1);
+../Core/Src/main.c:603:44: warning: passing argument 2 of 'HAL_UARTEx_ReceiveToIdle_DMA' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  603 |       HAL_UARTEx_ReceiveToIdle_DMA(&huart1,&rx_data[rx_size-1],1);
       |                                            ^~~~~~~~~~~~~~~~~~~
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:758:84: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'volatile uint8_t *' {aka 'volatile unsigned char *'}
   758 | HAL_StatusTypeDef HAL_UARTEx_ReceiveToIdle_DMA(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
@@ -89,11 +89,11 @@ Finished building target: PCB_MOTOR_STM.elf
 arm-none-eabi-size  PCB_MOTOR_STM.elf 
 arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
    text	   data	    bss	    dec	    hex	filename
-  45404	    492	   4020	  49916	   c2fc	PCB_MOTOR_STM.elf
+  45484	    492	   4020	  49996	   c34c	PCB_MOTOR_STM.elf
 Finished building: default.size.stdout
  
 Finished building: PCB_MOTOR_STM.list
  
 
-11:37:23 Build Finished. 0 errors, 16 warnings. (took 3s.108ms)
+11:40:57 Build Finished. 0 errors, 16 warnings. (took 2s.102ms)
 

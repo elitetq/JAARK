@@ -44572,3 +44572,588 @@ Finished building: default.size.stdout
  
 Finished building: PCB_MOTOR_STM.list
  
+11:43:06 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
+make -j22 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/tim.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/tim.d" -MT"Core/Src/tim.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/tim.o"
+../Core/Src/main.c: In function 'BT_Watchdog':
+../Core/Src/main.c:190:43: warning: passing argument 2 of 'HAL_UARTEx_ReceiveToIdle_DMA' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  190 |     HAL_UARTEx_ReceiveToIdle_DMA(&huart1, rx_data, sizeof(rx_data));
+      |                                           ^~~~~~~
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:758:84: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'volatile uint8_t *' {aka 'volatile unsigned char *'}
+  758 | HAL_StatusTypeDef HAL_UARTEx_ReceiveToIdle_DMA(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
+      |                                                                           ~~~~~~~~~^~~~~
+../Core/Src/main.c:208:47: warning: passing argument 2 of 'HAL_UARTEx_ReceiveToIdle_DMA' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  208 |         HAL_UARTEx_ReceiveToIdle_DMA(&huart1, rx_data, sizeof(rx_data));
+      |                                               ^~~~~~~
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:758:84: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'volatile uint8_t *' {aka 'volatile unsigned char *'}
+  758 | HAL_StatusTypeDef HAL_UARTEx_ReceiveToIdle_DMA(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
+      |                                                                           ~~~~~~~~~^~~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:398:40: warning: passing argument 2 of 'HAL_UARTEx_ReceiveToIdle_DMA' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  398 |   HAL_UARTEx_ReceiveToIdle_DMA(&huart1,rx_data,sizeof(rx_data));
+      |                                        ^~~~~~~
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:758:84: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'volatile uint8_t *' {aka 'volatile unsigned char *'}
+  758 | HAL_StatusTypeDef HAL_UARTEx_ReceiveToIdle_DMA(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
+      |                                                                           ~~~~~~~~~^~~~~
+../Core/Src/main.c:401:3: warning: implicit declaration of function 'memset' [-Wimplicit-function-declaration]
+  401 |   memset(FloatPacket.bytes,0,sizeof(FloatPacket.bytes));
+      |   ^~~~~~
+../Core/Src/main.c:31:1: note: include '<string.h>' or provide a declaration of 'memset'
+   30 | #include "j_st7789.h"
+  +++ |+#include <string.h>
+   31 | /* USER CODE END Includes */
+../Core/Src/main.c:401:3: warning: incompatible implicit declaration of built-in function 'memset' [-Wbuiltin-declaration-mismatch]
+  401 |   memset(FloatPacket.bytes,0,sizeof(FloatPacket.bytes));
+      |   ^~~~~~
+../Core/Src/main.c:401:3: note: include '<string.h>' or provide a declaration of 'memset'
+../Core/Src/main.c:424:3: warning: implicit declaration of function 'memcpy' [-Wimplicit-function-declaration]
+  424 |   memcpy((void*)FloatPacket.bytes,(void*)&test_num,4); // Copy float into the Float Packet
+      |   ^~~~~~
+../Core/Src/main.c:424:3: note: include '<string.h>' or provide a declaration of 'memcpy'
+../Core/Src/main.c:424:3: warning: incompatible implicit declaration of built-in function 'memcpy' [-Wbuiltin-declaration-mismatch]
+../Core/Src/main.c:424:3: note: include '<string.h>' or provide a declaration of 'memcpy'
+../Core/Src/main.c: In function 'HAL_UARTEx_RxEventCallback':
+../Core/Src/main.c:594:43: warning: passing argument 1 of 'Checksum_Generate' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  594 |     uint16_t checksum = Checksum_Generate(rx_data,-1*(rx_size-2));
+      |                                           ^~~~~~~
+../Core/Src/main.c:143:37: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'volatile uint8_t *' {aka 'volatile unsigned char *'}
+  143 | uint16_t Checksum_Generate(uint8_t* arr, int chksum_ind) {
+      |                            ~~~~~~~~~^~~
+../Core/Src/main.c:597:44: warning: passing argument 2 of 'HAL_UARTEx_ReceiveToIdle_DMA' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  597 |       HAL_UARTEx_ReceiveToIdle_DMA(&huart1,rx_data,rx_size);
+      |                                            ^~~~~~~
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:758:84: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'volatile uint8_t *' {aka 'volatile unsigned char *'}
+  758 | HAL_StatusTypeDef HAL_UARTEx_ReceiveToIdle_DMA(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
+      |                                                                           ~~~~~~~~~^~~~~
+../Core/Src/main.c:602:44: warning: passing argument 2 of 'HAL_UARTEx_ReceiveToIdle_DMA' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  602 |       HAL_UARTEx_ReceiveToIdle_DMA(&huart1,&rx_data[rx_size-1],1);
+      |                                            ^~~~~~~~~~~~~~~~~~~
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:758:84: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'volatile uint8_t *' {aka 'volatile unsigned char *'}
+  758 | HAL_StatusTypeDef HAL_UARTEx_ReceiveToIdle_DMA(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
+      |                                                                           ~~~~~~~~~^~~~~
+../Core/Src/main.c: In function 'add_adc_val':
+../Core/Src/main.c:320:1: warning: control reaches end of non-void function [-Wreturn-type]
+  320 | }
+      | ^
+In file included from ../Core/Src/main.c:30:
+../Core/Inc/j_st7789.h: At top level:
+../Core/Inc/j_st7789.h:118:17: warning: 'j_master_control' defined but not used [-Wunused-variable]
+  118 | static j_struct j_master_control = { // We should change this to be more user-friendly
+      |                 ^~~~~~~~~~~~~~~~
+../Core/Inc/j_st7789.h:116:13: warning: 'j_flag_set_bounds' defined but not used [-Wunused-variable]
+  116 | static char j_flag_set_bounds = 1;
+      |             ^~~~~~~~~~~~~~~~~
+../Core/Inc/j_st7789.h:115:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
+  115 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
+      |                ^~~~~~~~
+In file included from ../Core/Inc/j_st7789.h:37:
+../Core/Inc/j_fonts.h:338:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
+  338 | static const uint16_t* j_fonts[4] = {
+      |                        ^~~~~~~
+../Core/Inc/j_fonts.h:27:16: warning: 'j_fonts_buffer' defined but not used [-Wunused-variable]
+   27 | static uint8_t j_fonts_buffer[J_FONT_BUFFER_SIZE];
+      |                ^~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: PCB_MOTOR_STM.elf
+ 
+arm-none-eabi-size  PCB_MOTOR_STM.elf 
+arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
+   text	   data	    bss	    dec	    hex	filename
+  45580	    492	   4020	  50092	   c3ac	PCB_MOTOR_STM.elf
+Finished building: default.size.stdout
+ 
+Finished building: PCB_MOTOR_STM.list
+ 
+11:46:27 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
+make -j22 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'BT_Watchdog':
+../Core/Src/main.c:190:43: warning: passing argument 2 of 'HAL_UARTEx_ReceiveToIdle_DMA' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  190 |     HAL_UARTEx_ReceiveToIdle_DMA(&huart1, rx_data, sizeof(rx_data));
+      |                                           ^~~~~~~
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:758:84: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'volatile uint8_t *' {aka 'volatile unsigned char *'}
+  758 | HAL_StatusTypeDef HAL_UARTEx_ReceiveToIdle_DMA(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
+      |                                                                           ~~~~~~~~~^~~~~
+../Core/Src/main.c:208:47: warning: passing argument 2 of 'HAL_UARTEx_ReceiveToIdle_DMA' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  208 |         HAL_UARTEx_ReceiveToIdle_DMA(&huart1, rx_data, sizeof(rx_data));
+      |                                               ^~~~~~~
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:758:84: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'volatile uint8_t *' {aka 'volatile unsigned char *'}
+  758 | HAL_StatusTypeDef HAL_UARTEx_ReceiveToIdle_DMA(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
+      |                                                                           ~~~~~~~~~^~~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:398:40: warning: passing argument 2 of 'HAL_UARTEx_ReceiveToIdle_DMA' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  398 |   HAL_UARTEx_ReceiveToIdle_DMA(&huart1,rx_data,sizeof(rx_data));
+      |                                        ^~~~~~~
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:758:84: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'volatile uint8_t *' {aka 'volatile unsigned char *'}
+  758 | HAL_StatusTypeDef HAL_UARTEx_ReceiveToIdle_DMA(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
+      |                                                                           ~~~~~~~~~^~~~~
+../Core/Src/main.c:401:3: warning: implicit declaration of function 'memset' [-Wimplicit-function-declaration]
+  401 |   memset(FloatPacket.bytes,0,sizeof(FloatPacket.bytes));
+      |   ^~~~~~
+../Core/Src/main.c:31:1: note: include '<string.h>' or provide a declaration of 'memset'
+   30 | #include "j_st7789.h"
+  +++ |+#include <string.h>
+   31 | /* USER CODE END Includes */
+../Core/Src/main.c:401:3: warning: incompatible implicit declaration of built-in function 'memset' [-Wbuiltin-declaration-mismatch]
+  401 |   memset(FloatPacket.bytes,0,sizeof(FloatPacket.bytes));
+      |   ^~~~~~
+../Core/Src/main.c:401:3: note: include '<string.h>' or provide a declaration of 'memset'
+../Core/Src/main.c:424:3: warning: implicit declaration of function 'memcpy' [-Wimplicit-function-declaration]
+  424 |   memcpy((void*)FloatPacket.bytes,(void*)&test_num,4); // Copy float into the Float Packet
+      |   ^~~~~~
+../Core/Src/main.c:424:3: note: include '<string.h>' or provide a declaration of 'memcpy'
+../Core/Src/main.c:424:3: warning: incompatible implicit declaration of built-in function 'memcpy' [-Wbuiltin-declaration-mismatch]
+../Core/Src/main.c:424:3: note: include '<string.h>' or provide a declaration of 'memcpy'
+../Core/Src/main.c: In function 'HAL_UARTEx_RxEventCallback':
+../Core/Src/main.c:596:43: warning: passing argument 1 of 'Checksum_Generate' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  596 |     uint16_t checksum = Checksum_Generate(rx_data,-1*(rx_size-2));
+      |                                           ^~~~~~~
+../Core/Src/main.c:143:37: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'volatile uint8_t *' {aka 'volatile unsigned char *'}
+  143 | uint16_t Checksum_Generate(uint8_t* arr, int chksum_ind) {
+      |                            ~~~~~~~~~^~~
+../Core/Src/main.c:599:44: warning: passing argument 2 of 'HAL_UARTEx_ReceiveToIdle_DMA' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  599 |       HAL_UARTEx_ReceiveToIdle_DMA(&huart1,rx_data,rx_size);
+      |                                            ^~~~~~~
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:758:84: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'volatile uint8_t *' {aka 'volatile unsigned char *'}
+  758 | HAL_StatusTypeDef HAL_UARTEx_ReceiveToIdle_DMA(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
+      |                                                                           ~~~~~~~~~^~~~~
+../Core/Src/main.c:604:44: warning: passing argument 2 of 'HAL_UARTEx_ReceiveToIdle_DMA' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  604 |       HAL_UARTEx_ReceiveToIdle_DMA(&huart1,&rx_data[rx_size-1],1);
+      |                                            ^~~~~~~~~~~~~~~~~~~
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:758:84: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'volatile uint8_t *' {aka 'volatile unsigned char *'}
+  758 | HAL_StatusTypeDef HAL_UARTEx_ReceiveToIdle_DMA(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
+      |                                                                           ~~~~~~~~~^~~~~
+../Core/Src/main.c: In function 'add_adc_val':
+../Core/Src/main.c:320:1: warning: control reaches end of non-void function [-Wreturn-type]
+  320 | }
+      | ^
+In file included from ../Core/Src/main.c:30:
+../Core/Inc/j_st7789.h: At top level:
+../Core/Inc/j_st7789.h:118:17: warning: 'j_master_control' defined but not used [-Wunused-variable]
+  118 | static j_struct j_master_control = { // We should change this to be more user-friendly
+      |                 ^~~~~~~~~~~~~~~~
+../Core/Inc/j_st7789.h:116:13: warning: 'j_flag_set_bounds' defined but not used [-Wunused-variable]
+  116 | static char j_flag_set_bounds = 1;
+      |             ^~~~~~~~~~~~~~~~~
+../Core/Inc/j_st7789.h:115:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
+  115 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
+      |                ^~~~~~~~
+In file included from ../Core/Inc/j_st7789.h:37:
+../Core/Inc/j_fonts.h:338:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
+  338 | static const uint16_t* j_fonts[4] = {
+      |                        ^~~~~~~
+../Core/Inc/j_fonts.h:27:16: warning: 'j_fonts_buffer' defined but not used [-Wunused-variable]
+   27 | static uint8_t j_fonts_buffer[J_FONT_BUFFER_SIZE];
+      |                ^~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: PCB_MOTOR_STM.elf
+ 
+arm-none-eabi-size  PCB_MOTOR_STM.elf 
+arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
+   text	   data	    bss	    dec	    hex	filename
+  45596	    492	   4020	  50108	   c3bc	PCB_MOTOR_STM.elf
+Finished building: default.size.stdout
+ 
+Finished building: PCB_MOTOR_STM.list
+ 
+11:55:35 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
+make -j22 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/tim.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/tim.d" -MT"Core/Src/tim.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/tim.o"
+../Core/Src/main.c: In function 'BT_Watchdog':
+../Core/Src/main.c:190:43: warning: passing argument 2 of 'HAL_UARTEx_ReceiveToIdle_DMA' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  190 |     HAL_UARTEx_ReceiveToIdle_DMA(&huart1, rx_data, sizeof(rx_data));
+      |                                           ^~~~~~~
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:758:84: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'volatile uint8_t *' {aka 'volatile unsigned char *'}
+  758 | HAL_StatusTypeDef HAL_UARTEx_ReceiveToIdle_DMA(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
+      |                                                                           ~~~~~~~~~^~~~~
+../Core/Src/main.c:208:47: warning: passing argument 2 of 'HAL_UARTEx_ReceiveToIdle_DMA' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  208 |         HAL_UARTEx_ReceiveToIdle_DMA(&huart1, rx_data, sizeof(rx_data));
+      |                                               ^~~~~~~
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:758:84: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'volatile uint8_t *' {aka 'volatile unsigned char *'}
+  758 | HAL_StatusTypeDef HAL_UARTEx_ReceiveToIdle_DMA(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
+      |                                                                           ~~~~~~~~~^~~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:397:40: warning: passing argument 2 of 'HAL_UARTEx_ReceiveToIdle_DMA' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  397 |   HAL_UARTEx_ReceiveToIdle_DMA(&huart1,rx_data,sizeof(rx_data));
+      |                                        ^~~~~~~
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:758:84: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'volatile uint8_t *' {aka 'volatile unsigned char *'}
+  758 | HAL_StatusTypeDef HAL_UARTEx_ReceiveToIdle_DMA(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
+      |                                                                           ~~~~~~~~~^~~~~
+../Core/Src/main.c:400:3: warning: implicit declaration of function 'memset' [-Wimplicit-function-declaration]
+  400 |   memset(FloatPacket.bytes,0,sizeof(FloatPacket.bytes));
+      |   ^~~~~~
+../Core/Src/main.c:31:1: note: include '<string.h>' or provide a declaration of 'memset'
+   30 | #include "j_st7789.h"
+  +++ |+#include <string.h>
+   31 | /* USER CODE END Includes */
+../Core/Src/main.c:400:3: warning: incompatible implicit declaration of built-in function 'memset' [-Wbuiltin-declaration-mismatch]
+  400 |   memset(FloatPacket.bytes,0,sizeof(FloatPacket.bytes));
+      |   ^~~~~~
+../Core/Src/main.c:400:3: note: include '<string.h>' or provide a declaration of 'memset'
+../Core/Src/main.c:423:3: warning: implicit declaration of function 'memcpy' [-Wimplicit-function-declaration]
+  423 |   memcpy((void*)FloatPacket.bytes,(void*)&test_num,4); // Copy float into the Float Packet
+      |   ^~~~~~
+../Core/Src/main.c:423:3: note: include '<string.h>' or provide a declaration of 'memcpy'
+../Core/Src/main.c:423:3: warning: incompatible implicit declaration of built-in function 'memcpy' [-Wbuiltin-declaration-mismatch]
+../Core/Src/main.c:423:3: note: include '<string.h>' or provide a declaration of 'memcpy'
+../Core/Src/main.c: In function 'HAL_UARTEx_RxEventCallback':
+../Core/Src/main.c:595:43: warning: passing argument 1 of 'Checksum_Generate' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  595 |     uint16_t checksum = Checksum_Generate(rx_data,-1*(rx_size-2));
+      |                                           ^~~~~~~
+../Core/Src/main.c:143:37: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'volatile uint8_t *' {aka 'volatile unsigned char *'}
+  143 | uint16_t Checksum_Generate(uint8_t* arr, int chksum_ind) {
+      |                            ~~~~~~~~~^~~
+../Core/Src/main.c:598:44: warning: passing argument 2 of 'HAL_UARTEx_ReceiveToIdle_DMA' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  598 |       HAL_UARTEx_ReceiveToIdle_DMA(&huart1,rx_data,rx_size);
+      |                                            ^~~~~~~
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:758:84: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'volatile uint8_t *' {aka 'volatile unsigned char *'}
+  758 | HAL_StatusTypeDef HAL_UARTEx_ReceiveToIdle_DMA(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
+      |                                                                           ~~~~~~~~~^~~~~
+../Core/Src/main.c:603:44: warning: passing argument 2 of 'HAL_UARTEx_ReceiveToIdle_DMA' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  603 |       HAL_UARTEx_ReceiveToIdle_DMA(&huart1,&rx_data[rx_size-1],1);
+      |                                            ^~~~~~~~~~~~~~~~~~~
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:758:84: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'volatile uint8_t *' {aka 'volatile unsigned char *'}
+  758 | HAL_StatusTypeDef HAL_UARTEx_ReceiveToIdle_DMA(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
+      |                                                                           ~~~~~~~~~^~~~~
+../Core/Src/main.c: In function 'add_adc_val':
+../Core/Src/main.c:320:1: warning: control reaches end of non-void function [-Wreturn-type]
+  320 | }
+      | ^
+In file included from ../Core/Src/main.c:30:
+../Core/Inc/j_st7789.h: At top level:
+../Core/Inc/j_st7789.h:118:17: warning: 'j_master_control' defined but not used [-Wunused-variable]
+  118 | static j_struct j_master_control = { // We should change this to be more user-friendly
+      |                 ^~~~~~~~~~~~~~~~
+../Core/Inc/j_st7789.h:116:13: warning: 'j_flag_set_bounds' defined but not used [-Wunused-variable]
+  116 | static char j_flag_set_bounds = 1;
+      |             ^~~~~~~~~~~~~~~~~
+../Core/Inc/j_st7789.h:115:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
+  115 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
+      |                ^~~~~~~~
+In file included from ../Core/Inc/j_st7789.h:37:
+../Core/Inc/j_fonts.h:338:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
+  338 | static const uint16_t* j_fonts[4] = {
+      |                        ^~~~~~~
+../Core/Inc/j_fonts.h:27:16: warning: 'j_fonts_buffer' defined but not used [-Wunused-variable]
+   27 | static uint8_t j_fonts_buffer[J_FONT_BUFFER_SIZE];
+      |                ^~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: PCB_MOTOR_STM.elf
+ 
+arm-none-eabi-size  PCB_MOTOR_STM.elf 
+arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
+   text	   data	    bss	    dec	    hex	filename
+  45436	    492	   4020	  49948	   c31c	PCB_MOTOR_STM.elf
+Finished building: default.size.stdout
+ 
+Finished building: PCB_MOTOR_STM.list
+ 
+10:44:51 **** Build of configuration Debug for project PCB_MOTOR_STM ****
+make -j22 all 
+arm-none-eabi-size  PCB_MOTOR_STM.elf 
+   text	   data	    bss	    dec	    hex	filename
+  45436	    492	   4020	  49948	   c31c	PCB_MOTOR_STM.elf
+Finished building: default.size.stdout
+ 
+10:47:19 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
+make -j22 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'BT_Watchdog':
+../Core/Src/main.c:190:43: warning: passing argument 2 of 'HAL_UARTEx_ReceiveToIdle_DMA' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  190 |     HAL_UARTEx_ReceiveToIdle_DMA(&huart1, rx_data, sizeof(rx_data));
+      |                                           ^~~~~~~
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:758:84: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'volatile uint8_t *' {aka 'volatile unsigned char *'}
+  758 | HAL_StatusTypeDef HAL_UARTEx_ReceiveToIdle_DMA(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
+      |                                                                           ~~~~~~~~~^~~~~
+../Core/Src/main.c:208:47: warning: passing argument 2 of 'HAL_UARTEx_ReceiveToIdle_DMA' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  208 |         HAL_UARTEx_ReceiveToIdle_DMA(&huart1, rx_data, sizeof(rx_data));
+      |                                               ^~~~~~~
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:758:84: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'volatile uint8_t *' {aka 'volatile unsigned char *'}
+  758 | HAL_StatusTypeDef HAL_UARTEx_ReceiveToIdle_DMA(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
+      |                                                                           ~~~~~~~~~^~~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:397:40: warning: passing argument 2 of 'HAL_UARTEx_ReceiveToIdle_DMA' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  397 |   HAL_UARTEx_ReceiveToIdle_DMA(&huart1,rx_data,sizeof(rx_data));
+      |                                        ^~~~~~~
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:758:84: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'volatile uint8_t *' {aka 'volatile unsigned char *'}
+  758 | HAL_StatusTypeDef HAL_UARTEx_ReceiveToIdle_DMA(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
+      |                                                                           ~~~~~~~~~^~~~~
+../Core/Src/main.c:400:3: warning: implicit declaration of function 'memset' [-Wimplicit-function-declaration]
+  400 |   memset(FloatPacket.bytes,0,sizeof(FloatPacket.bytes));
+      |   ^~~~~~
+../Core/Src/main.c:31:1: note: include '<string.h>' or provide a declaration of 'memset'
+   30 | #include "j_st7789.h"
+  +++ |+#include <string.h>
+   31 | /* USER CODE END Includes */
+../Core/Src/main.c:400:3: warning: incompatible implicit declaration of built-in function 'memset' [-Wbuiltin-declaration-mismatch]
+  400 |   memset(FloatPacket.bytes,0,sizeof(FloatPacket.bytes));
+      |   ^~~~~~
+../Core/Src/main.c:400:3: note: include '<string.h>' or provide a declaration of 'memset'
+../Core/Src/main.c:423:3: warning: implicit declaration of function 'memcpy' [-Wimplicit-function-declaration]
+  423 |   memcpy((void*)FloatPacket.bytes,(void*)&test_num,4); // Copy float into the Float Packet
+      |   ^~~~~~
+../Core/Src/main.c:423:3: note: include '<string.h>' or provide a declaration of 'memcpy'
+../Core/Src/main.c:423:3: warning: incompatible implicit declaration of built-in function 'memcpy' [-Wbuiltin-declaration-mismatch]
+../Core/Src/main.c:423:3: note: include '<string.h>' or provide a declaration of 'memcpy'
+../Core/Src/main.c: In function 'HAL_UARTEx_RxEventCallback':
+../Core/Src/main.c:595:43: warning: passing argument 1 of 'Checksum_Generate' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  595 |     uint16_t checksum = Checksum_Generate(rx_data,-1*(rx_size-2));
+      |                                           ^~~~~~~
+../Core/Src/main.c:143:37: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'volatile uint8_t *' {aka 'volatile unsigned char *'}
+  143 | uint16_t Checksum_Generate(uint8_t* arr, int chksum_ind) {
+      |                            ~~~~~~~~~^~~
+../Core/Src/main.c:598:44: warning: passing argument 2 of 'HAL_UARTEx_ReceiveToIdle_DMA' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  598 |       HAL_UARTEx_ReceiveToIdle_DMA(&huart1,rx_data,rx_size);
+      |                                            ^~~~~~~
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:758:84: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'volatile uint8_t *' {aka 'volatile unsigned char *'}
+  758 | HAL_StatusTypeDef HAL_UARTEx_ReceiveToIdle_DMA(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
+      |                                                                           ~~~~~~~~~^~~~~
+../Core/Src/main.c:603:44: warning: passing argument 2 of 'HAL_UARTEx_ReceiveToIdle_DMA' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  603 |       HAL_UARTEx_ReceiveToIdle_DMA(&huart1,&rx_data[rx_size-1],1);
+      |                                            ^~~~~~~~~~~~~~~~~~~
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:758:84: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'volatile uint8_t *' {aka 'volatile unsigned char *'}
+  758 | HAL_StatusTypeDef HAL_UARTEx_ReceiveToIdle_DMA(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
+      |                                                                           ~~~~~~~~~^~~~~
+../Core/Src/main.c: In function 'add_adc_val':
+../Core/Src/main.c:320:1: warning: control reaches end of non-void function [-Wreturn-type]
+  320 | }
+      | ^
+In file included from ../Core/Src/main.c:30:
+../Core/Inc/j_st7789.h: At top level:
+../Core/Inc/j_st7789.h:118:17: warning: 'j_master_control' defined but not used [-Wunused-variable]
+  118 | static j_struct j_master_control = { // We should change this to be more user-friendly
+      |                 ^~~~~~~~~~~~~~~~
+../Core/Inc/j_st7789.h:116:13: warning: 'j_flag_set_bounds' defined but not used [-Wunused-variable]
+  116 | static char j_flag_set_bounds = 1;
+      |             ^~~~~~~~~~~~~~~~~
+../Core/Inc/j_st7789.h:115:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
+  115 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
+      |                ^~~~~~~~
+In file included from ../Core/Inc/j_st7789.h:37:
+../Core/Inc/j_fonts.h:338:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
+  338 | static const uint16_t* j_fonts[4] = {
+      |                        ^~~~~~~
+../Core/Inc/j_fonts.h:27:16: warning: 'j_fonts_buffer' defined but not used [-Wunused-variable]
+   27 | static uint8_t j_fonts_buffer[J_FONT_BUFFER_SIZE];
+      |                ^~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: PCB_MOTOR_STM.elf
+ 
+arm-none-eabi-size  PCB_MOTOR_STM.elf 
+arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
+   text	   data	    bss	    dec	    hex	filename
+  45484	    492	   4020	  49996	   c34c	PCB_MOTOR_STM.elf
+Finished building: default.size.stdout
+ 
+Finished building: PCB_MOTOR_STM.list
+ 
+10:50:02 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
+make -j22 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'BT_Watchdog':
+../Core/Src/main.c:190:43: warning: passing argument 2 of 'HAL_UARTEx_ReceiveToIdle_DMA' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  190 |     HAL_UARTEx_ReceiveToIdle_DMA(&huart1, rx_data, sizeof(rx_data));
+      |                                           ^~~~~~~
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:758:84: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'volatile uint8_t *' {aka 'volatile unsigned char *'}
+  758 | HAL_StatusTypeDef HAL_UARTEx_ReceiveToIdle_DMA(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
+      |                                                                           ~~~~~~~~~^~~~~
+../Core/Src/main.c:208:47: warning: passing argument 2 of 'HAL_UARTEx_ReceiveToIdle_DMA' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  208 |         HAL_UARTEx_ReceiveToIdle_DMA(&huart1, rx_data, sizeof(rx_data));
+      |                                               ^~~~~~~
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:758:84: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'volatile uint8_t *' {aka 'volatile unsigned char *'}
+  758 | HAL_StatusTypeDef HAL_UARTEx_ReceiveToIdle_DMA(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
+      |                                                                           ~~~~~~~~~^~~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:397:40: warning: passing argument 2 of 'HAL_UARTEx_ReceiveToIdle_DMA' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  397 |   HAL_UARTEx_ReceiveToIdle_DMA(&huart1,rx_data,sizeof(rx_data));
+      |                                        ^~~~~~~
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:758:84: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'volatile uint8_t *' {aka 'volatile unsigned char *'}
+  758 | HAL_StatusTypeDef HAL_UARTEx_ReceiveToIdle_DMA(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
+      |                                                                           ~~~~~~~~~^~~~~
+../Core/Src/main.c:400:3: warning: implicit declaration of function 'memset' [-Wimplicit-function-declaration]
+  400 |   memset(FloatPacket.bytes,0,sizeof(FloatPacket.bytes));
+      |   ^~~~~~
+../Core/Src/main.c:31:1: note: include '<string.h>' or provide a declaration of 'memset'
+   30 | #include "j_st7789.h"
+  +++ |+#include <string.h>
+   31 | /* USER CODE END Includes */
+../Core/Src/main.c:400:3: warning: incompatible implicit declaration of built-in function 'memset' [-Wbuiltin-declaration-mismatch]
+  400 |   memset(FloatPacket.bytes,0,sizeof(FloatPacket.bytes));
+      |   ^~~~~~
+../Core/Src/main.c:400:3: note: include '<string.h>' or provide a declaration of 'memset'
+../Core/Src/main.c:423:3: warning: implicit declaration of function 'memcpy' [-Wimplicit-function-declaration]
+  423 |   memcpy((void*)FloatPacket.bytes,(void*)&test_num,4); // Copy float into the Float Packet
+      |   ^~~~~~
+../Core/Src/main.c:423:3: note: include '<string.h>' or provide a declaration of 'memcpy'
+../Core/Src/main.c:423:3: warning: incompatible implicit declaration of built-in function 'memcpy' [-Wbuiltin-declaration-mismatch]
+../Core/Src/main.c:423:3: note: include '<string.h>' or provide a declaration of 'memcpy'
+../Core/Src/main.c: In function 'HAL_UARTEx_RxEventCallback':
+../Core/Src/main.c:595:43: warning: passing argument 1 of 'Checksum_Generate' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  595 |     uint16_t checksum = Checksum_Generate(rx_data,-1*(rx_size-2));
+      |                                           ^~~~~~~
+../Core/Src/main.c:143:37: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'volatile uint8_t *' {aka 'volatile unsigned char *'}
+  143 | uint16_t Checksum_Generate(uint8_t* arr, int chksum_ind) {
+      |                            ~~~~~~~~~^~~
+../Core/Src/main.c:598:44: warning: passing argument 2 of 'HAL_UARTEx_ReceiveToIdle_DMA' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  598 |       HAL_UARTEx_ReceiveToIdle_DMA(&huart1,rx_data,rx_size);
+      |                                            ^~~~~~~
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:758:84: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'volatile uint8_t *' {aka 'volatile unsigned char *'}
+  758 | HAL_StatusTypeDef HAL_UARTEx_ReceiveToIdle_DMA(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
+      |                                                                           ~~~~~~~~~^~~~~
+../Core/Src/main.c:603:44: warning: passing argument 2 of 'HAL_UARTEx_ReceiveToIdle_DMA' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  603 |       HAL_UARTEx_ReceiveToIdle_DMA(&huart1,&rx_data[rx_size-1],1);
+      |                                            ^~~~~~~~~~~~~~~~~~~
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:758:84: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'volatile uint8_t *' {aka 'volatile unsigned char *'}
+  758 | HAL_StatusTypeDef HAL_UARTEx_ReceiveToIdle_DMA(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
+      |                                                                           ~~~~~~~~~^~~~~
+../Core/Src/main.c: In function 'add_adc_val':
+../Core/Src/main.c:320:1: warning: control reaches end of non-void function [-Wreturn-type]
+  320 | }
+      | ^
+In file included from ../Core/Src/main.c:30:
+../Core/Inc/j_st7789.h: At top level:
+../Core/Inc/j_st7789.h:118:17: warning: 'j_master_control' defined but not used [-Wunused-variable]
+  118 | static j_struct j_master_control = { // We should change this to be more user-friendly
+      |                 ^~~~~~~~~~~~~~~~
+../Core/Inc/j_st7789.h:116:13: warning: 'j_flag_set_bounds' defined but not used [-Wunused-variable]
+  116 | static char j_flag_set_bounds = 1;
+      |             ^~~~~~~~~~~~~~~~~
+../Core/Inc/j_st7789.h:115:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
+  115 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
+      |                ^~~~~~~~
+In file included from ../Core/Inc/j_st7789.h:37:
+../Core/Inc/j_fonts.h:338:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
+  338 | static const uint16_t* j_fonts[4] = {
+      |                        ^~~~~~~
+../Core/Inc/j_fonts.h:27:16: warning: 'j_fonts_buffer' defined but not used [-Wunused-variable]
+   27 | static uint8_t j_fonts_buffer[J_FONT_BUFFER_SIZE];
+      |                ^~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: PCB_MOTOR_STM.elf
+ 
+arm-none-eabi-size  PCB_MOTOR_STM.elf 
+arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
+   text	   data	    bss	    dec	    hex	filename
+  45484	    492	   4020	  49996	   c34c	PCB_MOTOR_STM.elf
+Finished building: default.size.stdout
+ 
+Finished building: PCB_MOTOR_STM.list
+ 
+11:40:55 **** Incremental Build of configuration Debug for project PCB_MOTOR_STM ****
+make -j22 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'BT_Watchdog':
+../Core/Src/main.c:190:43: warning: passing argument 2 of 'HAL_UARTEx_ReceiveToIdle_DMA' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  190 |     HAL_UARTEx_ReceiveToIdle_DMA(&huart1, rx_data, sizeof(rx_data));
+      |                                           ^~~~~~~
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:758:84: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'volatile uint8_t *' {aka 'volatile unsigned char *'}
+  758 | HAL_StatusTypeDef HAL_UARTEx_ReceiveToIdle_DMA(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
+      |                                                                           ~~~~~~~~~^~~~~
+../Core/Src/main.c:208:47: warning: passing argument 2 of 'HAL_UARTEx_ReceiveToIdle_DMA' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  208 |         HAL_UARTEx_ReceiveToIdle_DMA(&huart1, rx_data, sizeof(rx_data));
+      |                                               ^~~~~~~
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:758:84: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'volatile uint8_t *' {aka 'volatile unsigned char *'}
+  758 | HAL_StatusTypeDef HAL_UARTEx_ReceiveToIdle_DMA(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
+      |                                                                           ~~~~~~~~~^~~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:397:40: warning: passing argument 2 of 'HAL_UARTEx_ReceiveToIdle_DMA' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  397 |   HAL_UARTEx_ReceiveToIdle_DMA(&huart1,rx_data,sizeof(rx_data));
+      |                                        ^~~~~~~
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:758:84: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'volatile uint8_t *' {aka 'volatile unsigned char *'}
+  758 | HAL_StatusTypeDef HAL_UARTEx_ReceiveToIdle_DMA(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
+      |                                                                           ~~~~~~~~~^~~~~
+../Core/Src/main.c:400:3: warning: implicit declaration of function 'memset' [-Wimplicit-function-declaration]
+  400 |   memset(FloatPacket.bytes,0,sizeof(FloatPacket.bytes));
+      |   ^~~~~~
+../Core/Src/main.c:31:1: note: include '<string.h>' or provide a declaration of 'memset'
+   30 | #include "j_st7789.h"
+  +++ |+#include <string.h>
+   31 | /* USER CODE END Includes */
+../Core/Src/main.c:400:3: warning: incompatible implicit declaration of built-in function 'memset' [-Wbuiltin-declaration-mismatch]
+  400 |   memset(FloatPacket.bytes,0,sizeof(FloatPacket.bytes));
+      |   ^~~~~~
+../Core/Src/main.c:400:3: note: include '<string.h>' or provide a declaration of 'memset'
+../Core/Src/main.c:423:3: warning: implicit declaration of function 'memcpy' [-Wimplicit-function-declaration]
+  423 |   memcpy((void*)FloatPacket.bytes,(void*)&test_num,4); // Copy float into the Float Packet
+      |   ^~~~~~
+../Core/Src/main.c:423:3: note: include '<string.h>' or provide a declaration of 'memcpy'
+../Core/Src/main.c:423:3: warning: incompatible implicit declaration of built-in function 'memcpy' [-Wbuiltin-declaration-mismatch]
+../Core/Src/main.c:423:3: note: include '<string.h>' or provide a declaration of 'memcpy'
+../Core/Src/main.c: In function 'HAL_UARTEx_RxEventCallback':
+../Core/Src/main.c:595:43: warning: passing argument 1 of 'Checksum_Generate' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  595 |     uint16_t checksum = Checksum_Generate(rx_data,-1*(rx_size-2));
+      |                                           ^~~~~~~
+../Core/Src/main.c:143:37: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'volatile uint8_t *' {aka 'volatile unsigned char *'}
+  143 | uint16_t Checksum_Generate(uint8_t* arr, int chksum_ind) {
+      |                            ~~~~~~~~~^~~
+../Core/Src/main.c:598:44: warning: passing argument 2 of 'HAL_UARTEx_ReceiveToIdle_DMA' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  598 |       HAL_UARTEx_ReceiveToIdle_DMA(&huart1,rx_data,rx_size);
+      |                                            ^~~~~~~
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:758:84: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'volatile uint8_t *' {aka 'volatile unsigned char *'}
+  758 | HAL_StatusTypeDef HAL_UARTEx_ReceiveToIdle_DMA(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
+      |                                                                           ~~~~~~~~~^~~~~
+../Core/Src/main.c:603:44: warning: passing argument 2 of 'HAL_UARTEx_ReceiveToIdle_DMA' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  603 |       HAL_UARTEx_ReceiveToIdle_DMA(&huart1,&rx_data[rx_size-1],1);
+      |                                            ^~~~~~~~~~~~~~~~~~~
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:758:84: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'volatile uint8_t *' {aka 'volatile unsigned char *'}
+  758 | HAL_StatusTypeDef HAL_UARTEx_ReceiveToIdle_DMA(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
+      |                                                                           ~~~~~~~~~^~~~~
+../Core/Src/main.c: In function 'add_adc_val':
+../Core/Src/main.c:320:1: warning: control reaches end of non-void function [-Wreturn-type]
+  320 | }
+      | ^
+In file included from ../Core/Src/main.c:30:
+../Core/Inc/j_st7789.h: At top level:
+../Core/Inc/j_st7789.h:118:17: warning: 'j_master_control' defined but not used [-Wunused-variable]
+  118 | static j_struct j_master_control = { // We should change this to be more user-friendly
+      |                 ^~~~~~~~~~~~~~~~
+../Core/Inc/j_st7789.h:116:13: warning: 'j_flag_set_bounds' defined but not used [-Wunused-variable]
+  116 | static char j_flag_set_bounds = 1;
+      |             ^~~~~~~~~~~~~~~~~
+../Core/Inc/j_st7789.h:115:16: warning: 'j_bounds' defined but not used [-Wunused-variable]
+  115 | static uint8_t j_bounds[] = {0,J_CFG_SCREEN_LENGTH,0,J_CFG_SCREEN_HEIGHT};
+      |                ^~~~~~~~
+In file included from ../Core/Inc/j_st7789.h:37:
+../Core/Inc/j_fonts.h:338:24: warning: 'j_fonts' defined but not used [-Wunused-variable]
+  338 | static const uint16_t* j_fonts[4] = {
+      |                        ^~~~~~~
+../Core/Inc/j_fonts.h:27:16: warning: 'j_fonts_buffer' defined but not used [-Wunused-variable]
+   27 | static uint8_t j_fonts_buffer[J_FONT_BUFFER_SIZE];
+      |                ^~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "PCB_MOTOR_STM.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\jonar\JAARK\STM32\PCB_MOTOR_STM\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PCB_MOTOR_STM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: PCB_MOTOR_STM.elf
+ 
+arm-none-eabi-size  PCB_MOTOR_STM.elf 
+arm-none-eabi-objdump -h -S PCB_MOTOR_STM.elf  > "PCB_MOTOR_STM.list"
+   text	   data	    bss	    dec	    hex	filename
+  45484	    492	   4020	  49996	   c34c	PCB_MOTOR_STM.elf
+Finished building: default.size.stdout
+ 
+Finished building: PCB_MOTOR_STM.list
+ 

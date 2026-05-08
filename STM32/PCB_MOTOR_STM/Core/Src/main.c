@@ -115,7 +115,7 @@ volatile static uint32_t delta_ticks = 1;
 static float fast_delta_buf = 48.0f;
 static float slow_delta_buf = 48.0f;
 static char md_bypass = 0; // Used for debounce after metal trigger event
-#define TRIGGER_DELTA 10 // FAST-SLOW DELTA * 100
+#define TRIGGER_DELTA 20 // FAST-SLOW DELTA * 100
 #define FAST_DELTA_BUF_DAMP 0.2
 #define SLOW_DELTA_BUF_DAMP 0.085
 #define EXP_SMOOTH(prev_val,new_val,damping_factor) (prev_val * (1-damping_factor) + new_val * (damping_factor));
@@ -128,7 +128,7 @@ volatile uint16_t joystick_2 = 0;
 volatile uint16_t joystick_1_write_val = (7 << 8);
 volatile uint16_t joystick_2_write_val = (7 << 8);
 volatile uint16_t joystick_curved_val;
-#define MOTOR_SMOOTH 0.6 // 0.. -> 1.0 max
+#define MOTOR_SMOOTH 0.4 // 0.. -> 1.0 max
 
 volatile char bt_dat_avail = 0; // Available data on bluetooth
 volatile char bt_timeout = 0; // FLag for bluetooth disconnection
@@ -247,9 +247,9 @@ void Metal_Detect_Calibrate(int passes) {
 void Metal_Detect_Logic() {
   float frequency_poll = 84000.0f/(float)delta_ticks; // KHz
   int sf_delta = 0;
-  // if(frequency_poll < 40 || frequency_poll > 55) {
-  //   return; // Invalid values
-  // }
+  if(frequency_poll < 40 || frequency_poll > 55) {
+    return; // Invalid values
+  }
   slow_delta_buf = EXP_SMOOTH(slow_delta_buf,frequency_poll,SLOW_DELTA_BUF_DAMP);
   fast_delta_buf = EXP_SMOOTH(fast_delta_buf,frequency_poll,FAST_DELTA_BUF_DAMP);
   if(!md_bypass) {
@@ -425,10 +425,12 @@ int main(void)
   Metal_Detect_Calibrate(500);
 
 
-  __HAL_TIM_SET_COMPARE(&htim12, TIM_CHANNEL_1, 10);
-  HAL_Delay(1000);
-  __HAL_TIM_SET_COMPARE(&htim12, TIM_CHANNEL_1, 0);
-  HAL_Delay(1000);
+  // __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, 41999999); // 50% duty
+  // __HAL_TIM_SET_COMPARE(&htim12, TIM_CHANNEL_1, 10); // 50% duty
+  // HAL_Delay(1000);
+  // __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, 0);
+  // __HAL_TIM_SET_COMPARE(&htim12, TIM_CHANNEL_1, 0); 
+  // HAL_Delay(1000);
 
   while(!bt_dat_avail) {
     HAL_Delay(50); // wait for first bluetooth data signal
